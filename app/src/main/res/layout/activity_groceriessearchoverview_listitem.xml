@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:text="Möhre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idName"
+        android:layout_weight="1"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="5 Stück"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idAmount"
+        android:layout_weight="1"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="120 kcal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_weight="1"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textAlignment="textEnd" />
+</LinearLayout>
