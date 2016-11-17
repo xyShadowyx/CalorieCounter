@@ -17,6 +17,33 @@ public class ApplicationLogic {
     }
 
     private void initListener() {
+        ClickListener cl;
+
+        cl = new ClickListener(this);
+        mGui.getSelectMenuName().setOnClickListener(cl);
+        mGui.getSelectPortionSize().setOnClickListener(cl);
+        mGui.getDeleteGroceries().setOnClickListener(cl);
+        mGui.getOpenGroceriesSearchOverview().setOnClickListener(cl);
+        mGui.getAddMenu().setOnClickListener(cl);
+    }
+
+    public void onSelectMenuNameClicked() {
+
+    }
+
+    public void onSelectPortionSizeClicked() {
+
+    }
+
+    public void onDeleteGroceriesClicked() {
+
+    }
+
+    public void onOpenGroceriesSearchOverviewClicked() {
+
+    }
+
+    public void onAddMenuClicked() {
 
     }
 }
