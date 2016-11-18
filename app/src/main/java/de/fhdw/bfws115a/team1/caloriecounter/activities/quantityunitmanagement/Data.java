@@ -2,44 +2,43 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 
 import android.os.Bundle;
 
+/**
+ * Created by Florian on 08.11.2016.
+ */
 public class Data {
+
     private Init mActivity;
 
-    /* Data variables */
-    private String mDummyString;
-    private int mDummyInt;
+    private String mNewQuantityunitName;
 
-    /* Default values */
-    private final String DEFAULTDUMMYSTRING = "Dummy";
-    private final int DEFAULTDUMMYINT = 937;
+    private final String DEFAULTNEWQUANTITYUNITNAME = "";
 
-    /* Keys */
-    private final String KEYDUMMYSTRING = "quantityunitmanagement1";
-    private final String KEYDUMMYINT = "quantityunitmanagement2";
-
+    private final String KEYNEWQUANTITYUNITNAME = "K1";
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
 
         if (savedInstanceState == null) {
-            mDummyString = DEFAULTDUMMYSTRING;
-            mDummyInt = DEFAULTDUMMYINT;
+            mNewQuantityunitName = DEFAULTNEWQUANTITYUNITNAME;
         } else {
             restoreDataFromBundle(savedInstanceState);
         }
     }
 
+
     public void saveDataInBundle(Bundle b) {
-        b.putString(KEYDUMMYSTRING, mDummyString);
-        b.putInt(KEYDUMMYINT, DEFAULTDUMMYINT);
+        b.putString(KEYNEWQUANTITYUNITNAME, mNewQuantityunitName);
     }
 
     private void restoreDataFromBundle(Bundle b) {
-        mDummyString = b.getString(KEYDUMMYSTRING);
-        mDummyInt = b.getInt(KEYDUMMYINT);
+        mNewQuantityunitName = b.getString(KEYNEWQUANTITYUNITNAME);
     }
+    //setter
 
-    public Init getActivity() {
-        return mActivity;
+    public void setNewQuantityunitName(String mNewQuantityunitName) {
+        this.mNewQuantityunitName = mNewQuantityunitName;
     }
+    //getter
+
+
 }
