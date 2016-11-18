@@ -18,16 +18,16 @@ public class ClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        /* IDs müssen vom Layout noch zugewiesen werden!
+        /* IDs müssen vom Layout noch zugewiesen werden! */
         switch (view.getId()) {
             //case für + Button
-            case R.id.idAddQuantityunit:
-                mApplicationLogic.onAddNewQuantityunit();
+            case R.id.idAddQuantityUnit:
+                mApplicationLogic.onAddNewQuantityUnit();
                 break;
             //case für - Button
-            case R.id.idDeleteQuantityunit:
-                mApplicationLogic.onDeleteQuantityunit();
-                break; */
+            case R.id.idDeleteQuantityUnit:
+                mApplicationLogic.onDeleteQuantityUnit();
+                break;
     }
 }
 

@@ -1,7 +1,5 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
 import de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement.Init;
 
@@ -14,7 +12,7 @@ public class Gui {
     private LinearLayout mLayout;
 
 
-    private EditText mGrocerieName;// abfangen wann etwas geändert wird
+    private EditText mGroceryName;// abfangen wann etwas geändert wird
     private EditText mQuantity;
     private EditText mKiloCalories;
 
@@ -32,7 +30,7 @@ public class Gui {
         mLayout = (LinearLayout) activity.findViewById(R.id.idLinearLayout);
 
 
-        mGrocerieName = (EditText) activity.findViewById(R.id.idEditNewGrocerieName);
+        mGroceryName = (EditText) activity.findViewById(R.id.idEditNewGrocerieName);
         mQuantity = (EditText) activity.findViewById(R.id.idEditNewQuantity);
         mKiloCalories = (EditText) activity.findViewById(R.id.idEditNewKiloCalories);
 

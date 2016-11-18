@@ -8,26 +8,25 @@ import de.fhdw.bfws115a.team1.caloriecounter.R;
  */
 public class ClickListener implements View.OnClickListener {
 
-    private de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement.ApplicationLogic mApplicationLogic;
+    private ApplicationLogic mApplicationLogic;
 
-    public ClickListener(de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement.ApplicationLogic applicationLogic) {
+    public ClickListener(ApplicationLogic applicationLogic) {
         mApplicationLogic = applicationLogic;
     }
-
-
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             //case für + Button
             case R.id.idAddQuantity:
-                mApplicationLogic.onAddNewQuantity();
+                mApplicationLogic.onAddNewQuantityClicked();
                 break;
             //case für - Button
             case R.id.idDeleteQuantity:
-                mApplicationLogic.onDeleteQuantity();
+                mApplicationLogic.onDeleteQuantityClicked();
                 break;
             case R.id.idSaveGrocerie:
+                mApplicationLogic.onAddGroceryClicked();
                 //speichern in der Datenbank
                 break;
 

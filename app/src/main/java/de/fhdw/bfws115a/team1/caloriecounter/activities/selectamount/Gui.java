@@ -8,7 +8,7 @@ public class Gui {
 
     private TextView mPickedGrocery;
 
-    private EditText mSelectAmount;
+    private EditText mSelectedAmount;
 
     private Spinner mSpinner;
 
@@ -20,7 +20,7 @@ public class Gui {
         /* IDs müssen noch auf das passende Layout referenziert werden!
         mPickedGrocery = (TextView) activity.findViewById(R.id.idPickedGrocery);
 
-        mSelectAmount = (EditText) activity.findViewById(R.id.idSelectAmount);
+        mSelectedAmount = (EditText) activity.findViewById(R.id.idSelectAmount);
 
         mSpinner = activity.findViewById(R.id.idSpinnerMenu);
 
@@ -32,11 +32,11 @@ public class Gui {
         return mPickedGrocery;
     }
 
-    public EditText getSelectAmount() {
-        return mSelectAmount;
+    public EditText getSelectedAmount() {
+        return mSelectedAmount;
     }
 
-    public Spinner getDropDown() {
+    public Spinner getSpinnerStatus() {
         return mSpinner;
     }
 

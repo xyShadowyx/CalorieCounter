@@ -1,5 +1,12 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Toast;
+import de.fhdw.bfws115a.team1.caloriecounter.R;
+import de.fhdw.bfws115a.team1.caloriecounter.utilities.validation;
+
 public class ApplicationLogic {
 
     private Data mData;
@@ -20,28 +27,24 @@ public class ApplicationLogic {
         ClickListener cl;
 
         cl = new ClickListener(this);
-        mGui.getSelectAmount().setOnClickListener(cl);
-        mGui.getDropDown().setOnClickListener(cl);
+        mGui.getSelectedAmount().setOnClickListener(cl);
+        mGui.getSpinnerStatus().setOnClickListener(cl);
         mGui.getAddAmount().setOnClickListener(cl);
     }
 
-    public void onSelectMenuNameClicked() {
+    public void onAddAmountClicked() {
+        if (validation.checkNumberValue(mData.getSelectedAmount())) {
+            Context context = mData.getActivity().getApplicationContext();
+            Toast toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
+            toast.show();
+        }
 
-    }
-
-    public void onSelectPortionSizeClicked() {
-
-    }
-
-    public void onDeleteGroceriesClicked() {
-
-    }
-
-    public void onOpenGroceriesSearchOverviewClicked() {
-
-    }
-
-    public void onAddMenuClicked() {
-
+        /* Return of values to the activity which triggered 'selectamount' */
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("amount", Integer.parseInt(mGui.getSelectedAmount().getText().toString()));
+        resultIntent.putExtra("unit", mGui.getSpinnerStatus().getSelectedItem().toString());
+        mData.getActivity().setResult(Activity.RESULT_OK, resultIntent);
+        mData.getActivity().finish();
     }
 }
+

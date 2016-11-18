@@ -1,33 +1,31 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount;
 
 import android.os.Bundle;
+import de.fhdw.bfws115a.team1.caloriecounter.R;
 
 public class Data {
 
     /* Data variables */
     private Init mActivity;
     private String mPickedGrocery;
-    private int mSelectAmount;
+    private int mSelectedAmount;
     private String mSpinnerStatus;
 
     /* Default values */
-    private final String DEFAULT_PICKEDGROCERY = "Error";
-    private final int DEFAULT_SELECTAMOUNT = 0;
-    private final String DEFAULT_SPINNERSTATUS = "Einheit";
+    private final int DEFAULT_SELECTEDAMOUNT = 0;
 
     /* Keys */
-    private final String KEY_PICKEDGROCERY = "K1";
-    private final String KEY_SELECTAMOUNT = "K2";
-    private final String KEY_SPINNERSTATUS = "K3";
-
+    private final String KEY_PICKEDGROCERY = "selectamount1";
+    private final String KEY_SELECTAMOUNT = "selectamount2";
+    private final String KEY_SPINNERSTATUS = "selectamount3";
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
 
         if (savedInstanceState == null) {
-            mPickedGrocery = DEFAULT_PICKEDGROCERY;
-            mSelectAmount = DEFAULT_SELECTAMOUNT;
-            mSpinnerStatus = DEFAULT_SPINNERSTATUS;
+            mPickedGrocery = mActivity.getResources().getString(R.string.selectamount_default_pickedgrocery);
+            mSelectedAmount = DEFAULT_SELECTEDAMOUNT;
+            mSpinnerStatus = mActivity.getResources().getString(R.string.selectamount_default_spinnerstatus);
         } else {
             restoreDataFromBundle(savedInstanceState);
         }
@@ -35,16 +33,15 @@ public class Data {
 
     public void saveDataInBundle(Bundle b) {
         b.putString(KEY_PICKEDGROCERY, mPickedGrocery);
-        b.putInt(KEY_SELECTAMOUNT, mSelectAmount);
+        b.putInt(KEY_SELECTAMOUNT, mSelectedAmount);
         b.putString(KEY_SPINNERSTATUS, mSpinnerStatus);
     }
 
     private void restoreDataFromBundle(Bundle b) {
         mPickedGrocery = b.getString(KEY_PICKEDGROCERY);
-        mSelectAmount = b.getInt(KEY_SELECTAMOUNT);
+        mSelectedAmount = b.getInt(KEY_SELECTAMOUNT);
         mSpinnerStatus = b.getString(KEY_SPINNERSTATUS);
     }
-
 
     /* Getter methods */
     public Init getActivity() {
@@ -55,11 +52,11 @@ public class Data {
         return mPickedGrocery;
     }
 
-    public int getSelectAmount() {
-        return mSelectAmount;
+    public int getSelectedAmount() {
+        return mSelectedAmount;
     }
 
-    public String getDropDownStatus() {
+    public String getSpinnerStatus() {
         return mSpinnerStatus;
     }
 
@@ -73,10 +70,13 @@ public class Data {
     }
 
     public void setSelectAmount(int mSelectAmount) {
-        this.mSelectAmount = mSelectAmount;
+        this.mSelectedAmount = mSelectAmount;
     }
 
     public void setSpinnerStatus(String mSpinnerStatus) {
         this.mSpinnerStatus = this.mSpinnerStatus;
     }
+
+    /* Other methods */
+
 }

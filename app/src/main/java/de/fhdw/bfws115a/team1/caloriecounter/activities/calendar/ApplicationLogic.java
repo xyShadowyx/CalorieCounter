@@ -2,7 +2,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
 
 import android.app.Activity;
 import android.content.Intent;
-//test test vasilli
+
 public class ApplicationLogic {
 
     private Data mData;
