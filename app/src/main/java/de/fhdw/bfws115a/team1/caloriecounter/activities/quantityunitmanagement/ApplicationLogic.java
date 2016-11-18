@@ -1,5 +1,8 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 
+/**
+ * Created by Florian on 08.11.2016.
+ */
 public class ApplicationLogic {
 
     private Data mData;
@@ -12,11 +15,40 @@ public class ApplicationLogic {
         initListener();
     }
 
+    private void initListener() {
+        ClickListener cl;
+
+        cl = new ClickListener(this);
+        mGui.getAddNewQuantityunit().setOnClickListener(cl);
+        mGui.getDeleteQuantityunit().setOnClickListener(cl);
+    }
+
     private void initGui() {
 
     }
 
-    private void initListener() {
+    public void onAddNewQuantityunit() {
+        //prüfen ob es diese einheit schon gibt
+        mGui.getLayout().addView(mGui.createNewTextView(mGui.getEditNewQuantityunit().getText().toString()));
+        mGui.getLayout().addView(mGui.createNewImageView());
+        mData.setNewQuantityunitName("");
+        //abspeichern in der DB
+    }
+
+    public void onDeleteQuantityunit() {
+    }
+
+    public void onNewQuantityunitChanged() {
+//Textfeld füllen mit eingabe
+        //Text in mData speichern
+
+    }
+
+    public void onAddNewQuantity() {
+
+    }
+
+    public void onDeleteQuantity() {
 
     }
 }

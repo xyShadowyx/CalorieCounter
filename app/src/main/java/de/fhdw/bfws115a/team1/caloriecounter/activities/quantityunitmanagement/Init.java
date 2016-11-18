@@ -3,10 +3,9 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 import android.app.Activity;
 import android.os.Bundle;
 
-/*
-* FORK
-* */
-
+/**
+ * Created by Niklas on 04.11.2016.
+ */
 public class Init extends Activity {
 
     private Data mData;
@@ -19,6 +18,7 @@ public class Init extends Activity {
         initData(savedInstanceState);
         initGui();
         initApplicationLogic();
+
     }
 
     private void initData(Bundle savedInstanceState) {
@@ -38,6 +38,4 @@ public class Init extends Activity {
         mData.saveDataInBundle(outState);
         super.onSaveInstanceState(outState);
     }
-
 }
-
