@@ -3,6 +3,9 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 import android.app.Activity;
 import android.os.Bundle;
 
+/**
+ * Created by Florian on 13.11.2016.
+ */
 public class Init extends Activity {
 
     private Data mData;
@@ -36,4 +39,3 @@ public class Init extends Activity {
     }
 
 }
-

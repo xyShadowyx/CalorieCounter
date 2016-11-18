@@ -93,18 +93,10 @@
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/exploded-aar/com.android.support/transition/25.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/incremental" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/incremental-classes" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/incremental-runtime-classes" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/incremental-verifier" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/instant-run-support" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/jniLibs" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/manifests" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/reload-dex" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/res" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/restart-dex" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/symbols" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../app/build/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/../../../app/build/tmp" />
     </content>

@@ -2,44 +2,66 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
 import android.os.Bundle;
 
+/**
+ * Created by Florian on 08.11.2016.
+ */
 public class Data {
-    private Init mActivity;
 
-    /* Data variables */
-    private String mDummyString;
-    private int mDummyInt;
+    private de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement.Init mActivity;
 
-    /* Default values */
-    private final String DEFAULTDUMMYSTRING = "Dummy";
-    private final int DEFAULTDUMMYINT = 937;
-
-    /* Keys */
-    private final String KEYDUMMYSTRING = "grocerymanagement1";
-    private final String KEYDUMMYINT = "grocerymanagement2";
+    private String mGrocerieName;
+    private String mNewQuantity;
+    private String mKiloCalories;
 
 
-    public Data(Bundle savedInstanceState, Init activity) {
+    private final String DEFAULTGROCERIENAME = "";
+    private final String DEFAULTNEWQUANTITY = "";
+    private final String DEFAULTKILOCALORIES = "";
+
+    private final String KEYGROCERIENAME  = "K1";
+    private final String KEYNEWQUANTITY = "K2";
+    private final String KEYKILOCALORIES = "K3";
+
+    public Data(Bundle savedInstanceState, de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement.Init activity) {
         mActivity = activity;
 
         if (savedInstanceState == null) {
-            mDummyString = DEFAULTDUMMYSTRING;
-            mDummyInt = DEFAULTDUMMYINT;
+            mGrocerieName = DEFAULTGROCERIENAME;
+            mNewQuantity = DEFAULTNEWQUANTITY;
+            mKiloCalories = DEFAULTKILOCALORIES;
+
         } else {
             restoreDataFromBundle(savedInstanceState);
         }
     }
 
+
     public void saveDataInBundle(Bundle b) {
-        b.putString(KEYDUMMYSTRING, mDummyString);
-        b.putInt(KEYDUMMYINT, DEFAULTDUMMYINT);
+        b.putString(KEYGROCERIENAME, mGrocerieName);
+        b.putString(KEYNEWQUANTITY, mNewQuantity);
+        b.putString(KEYKILOCALORIES, mKiloCalories);
     }
 
     private void restoreDataFromBundle(Bundle b) {
-        mDummyString = b.getString(KEYDUMMYSTRING);
-        mDummyInt = b.getInt(KEYDUMMYINT);
+        mGrocerieName = b.getString(KEYGROCERIENAME);
+        mNewQuantity = b.getString(KEYNEWQUANTITY);
+        mKiloCalories = b.getString(KEYKILOCALORIES);
+    }
+    //setter
+
+
+    public void setGrocerieName(String mGrocerieName) {
+        this.mGrocerieName = mGrocerieName;
     }
 
-    public Init getActivity() {
-        return mActivity;
+    public void setNewQuantity(String mNewQuantity) {
+        this.mNewQuantity = mNewQuantity;
     }
+
+    public void setKiloCalories(String mKiloCalories) {
+        this.mKiloCalories = mKiloCalories;
+    }
+    //getter
+
+
 }
