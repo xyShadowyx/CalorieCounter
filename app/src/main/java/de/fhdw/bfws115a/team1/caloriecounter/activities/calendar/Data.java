@@ -44,6 +44,7 @@ public class Data {
         mSelectedDay = b.getInt(KEYSELECTEDDAY);
     }
 
+    /* Getter methods */
     public Init getActivity() {
         return mActivity;
     }
@@ -60,6 +61,7 @@ public class Data {
         return mSelectedMonth;
     }
 
+    /* Setter methods */
     public void setSelectedMonth(int mSelectedMonth) {
         this.mSelectedMonth = mSelectedMonth;
     }

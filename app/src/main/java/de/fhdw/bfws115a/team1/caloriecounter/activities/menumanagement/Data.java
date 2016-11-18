@@ -16,10 +16,9 @@ public class Data {
     private final String DEFAULT_ADDEDGROCERIES = "";
 
     /* Keys */
-    private final String KEY_SELECTMENUNAME = "K1";
-    private final String KEY_SELECTPORTIONSIZE = "K2";
-    private final String KEY_ADDEDGROCERIES = "K3";
-
+    private final String KEY_SELECTMENUNAME = "menumanagement1";
+    private final String KEY_SELECTPORTIONSIZE = "menumanagement2";
+    private final String KEY_ADDEDGROCERIES = "menumanagement3";
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;

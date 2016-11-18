@@ -39,7 +39,10 @@ public class Data {
         mDummyInt = b.getInt(KEYDUMMYINT);
     }
 
+    /* Getter methods */
     public Init getActivity() {
         return mActivity;
     }
+
+    /* Setter methods */
 }

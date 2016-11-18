@@ -10,30 +10,30 @@ public class Data {
     /* Data variables */
     private Init mActivity;
 
-    private String mNewQuantityunitName;
+    private String mNewQuantityUnitName;
 
     /* Default values */
     private final String DEFAULT_NEWQUANTITYUNITNAME = "";
 
     /* Keys */
-    private final String KEY_NEWQUANTITYUNITNAME = "K1";
+    private final String KEY_NEWQUANTITYUNITNAME = "quantityunitmanagement1";
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
 
         if (savedInstanceState == null) {
-            mNewQuantityunitName = DEFAULT_NEWQUANTITYUNITNAME;
+            mNewQuantityUnitName = DEFAULT_NEWQUANTITYUNITNAME;
         } else {
             restoreDataFromBundle(savedInstanceState);
         }
     }
 
     public void saveDataInBundle(Bundle b) {
-        b.putString(KEY_NEWQUANTITYUNITNAME, mNewQuantityunitName);
+        b.putString(KEY_NEWQUANTITYUNITNAME, mNewQuantityUnitName);
     }
 
     private void restoreDataFromBundle(Bundle b) {
-        mNewQuantityunitName = b.getString(KEY_NEWQUANTITYUNITNAME);
+        mNewQuantityUnitName = b.getString(KEY_NEWQUANTITYUNITNAME);
     }
 
     /* Getter methods */
@@ -41,12 +41,12 @@ public class Data {
         return mActivity;
     }
 
-    public String getNewQuantityunitName() {
-        return mNewQuantityunitName;
+    public String getNewQuantityUnitName() {
+        return mNewQuantityUnitName;
     }
 
     /* Setter methods */
     public void setNewQuantityunitName(String mNewQuantityunitName) {
-        this.mNewQuantityunitName = mNewQuantityunitName;
+        this.mNewQuantityUnitName = mNewQuantityunitName;
     }
 }
