@@ -7,38 +7,46 @@ import android.os.Bundle;
  */
 public class Data {
 
+    /* Data variables */
     private Init mActivity;
 
     private String mNewQuantityunitName;
 
-    private final String DEFAULTNEWQUANTITYUNITNAME = "";
+    /* Default values */
+    private final String DEFAULT_NEWQUANTITYUNITNAME = "";
 
-    private final String KEYNEWQUANTITYUNITNAME = "K1";
+    /* Keys */
+    private final String KEY_NEWQUANTITYUNITNAME = "K1";
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
 
         if (savedInstanceState == null) {
-            mNewQuantityunitName = DEFAULTNEWQUANTITYUNITNAME;
+            mNewQuantityunitName = DEFAULT_NEWQUANTITYUNITNAME;
         } else {
             restoreDataFromBundle(savedInstanceState);
         }
     }
 
-
     public void saveDataInBundle(Bundle b) {
-        b.putString(KEYNEWQUANTITYUNITNAME, mNewQuantityunitName);
+        b.putString(KEY_NEWQUANTITYUNITNAME, mNewQuantityunitName);
     }
 
     private void restoreDataFromBundle(Bundle b) {
-        mNewQuantityunitName = b.getString(KEYNEWQUANTITYUNITNAME);
+        mNewQuantityunitName = b.getString(KEY_NEWQUANTITYUNITNAME);
     }
-    //setter
 
+    /* Getter methods */
+    public Init getActivity() {
+        return mActivity;
+    }
+
+    public String getNewQuantityunitName() {
+        return mNewQuantityunitName;
+    }
+
+    /* Setter methods */
     public void setNewQuantityunitName(String mNewQuantityunitName) {
         this.mNewQuantityunitName = mNewQuantityunitName;
     }
-    //getter
-
-
 }
