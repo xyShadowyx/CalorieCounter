@@ -29,8 +29,6 @@ public class ApplicationLogic {
 
     public void onAddNewQuantityunit() {
         //prüfen ob es diese einheit schon gibt
-        mGui.getLayout().addView(mGui.createNewTextView(mGui.getEditNewQuantityunit().getText().toString()));
-        mGui.getLayout().addView(mGui.createNewImageView());
         mData.setNewQuantityunitName("");
         //abspeichern in der DB
     }
@@ -39,9 +37,8 @@ public class ApplicationLogic {
     }
 
     public void onNewQuantityunitChanged() {
-//Textfeld füllen mit eingabe
+        //Textfeld füllen mit eingabe
         //Text in mData speichern
-
     }
 
     public void onAddNewQuantity() {
