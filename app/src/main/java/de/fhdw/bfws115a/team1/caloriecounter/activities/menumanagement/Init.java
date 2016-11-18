@@ -34,6 +34,5 @@ public class Init extends Activity {
         mData.saveDataInBundle(outState);
         super.onSaveInstanceState(outState);
     }
-
 }
 

@@ -29,6 +29,4 @@ public class SpinnerItemChangeListener implements Spinner.OnItemSelectedListener
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-
-
 }
