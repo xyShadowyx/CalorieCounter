@@ -48,10 +48,4 @@ public class ApplicationLogic {
 
     public void onDeleteQuantityUnitClicked() {
     }
-
-    public void onNewQuantityUnitChanged() {
-        //Textfeld füllen mit eingabe
-        //Text in mData speichern
-        /* Stand 19.11.2016 --> Was soll diese Methode bezwecken? */
-    }
 }
