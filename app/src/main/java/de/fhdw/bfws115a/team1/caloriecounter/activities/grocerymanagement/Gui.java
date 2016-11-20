@@ -1,6 +1,7 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
 import android.widget.*;
+import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement.Init;
 
 /**
@@ -8,46 +9,36 @@ import de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement.I
  */
 public class Gui {
 
-
-    private LinearLayout mLayout;
-
-
-    private EditText mGroceryName;// abfangen wann etwas geändert wird
-    private EditText mQuantity;
+    private EditText mGroceryName;
+    private EditText mSelectedAmount;
     private EditText mKiloCalories;
 
-    private Spinner mDropDowm;
+    private Spinner mSpinner;
 
     private ImageView mAddNewQuantity;
     private ImageView mDeleteQuantity;
 
-    private Button mSaveGrocerie;
+    private Button mSaveGrocery;
 
 
     public Gui(Init activity) {
         activity.setContentView(R.layout.quantityunitmanagement);
 
-        mLayout = (LinearLayout) activity.findViewById(R.id.idLinearLayout);
+        mGroceryName = (EditText) activity.findViewById(R.id.idGroceryName);
+        mSelectedAmount = (EditText) activity.findViewById(R.id.idSelectedAmount);
+        mKiloCalories = (EditText) activity.findViewById(R.id.idKiloCalories);
 
+        mSpinner = activity.findViewById(R.id.idSpinner);
 
-        mGroceryName = (EditText) activity.findViewById(R.id.idEditNewGrocerieName);
-        mQuantity = (EditText) activity.findViewById(R.id.idEditNewQuantity);
-        mKiloCalories = (EditText) activity.findViewById(R.id.idEditNewKiloCalories);
-
-        mDropDowm = activity.findViewById(R.id.idGrocerieunitDropDown);
-
-        mAddNewQuantity = (ImageView) activity.findViewById(R.id.idAddQuantity);
+        mAddNewQuantity = (ImageView) activity.findViewById(R.id.idAddNewQuantity);
         mDeleteQuantity = (ImageView) activity.findViewById(R.id.idDeleteQuantity);
 
-        mSaveGrocerie = activity.findViewById(R.id.idSaveGrocerie);
-
-
+        mSaveGrocery = activity.findViewById(R.id.idSaveGrocery);
     }
 
-//getter
-
-    public Spinner getDropDowm() {
-        return mDropDowm;
+    /* Getter methods */
+    public Spinner getSpinner() {
+        return mSpinner;
     }
 
     public ImageView getAddNewQuantity() {
@@ -58,12 +49,9 @@ public class Gui {
         return mDeleteQuantity;
     }
 
-    public Button getSaveGrocerie() {
-        return mSaveGrocerie;
+    public Button getSaveGrocery() {
+        return mSaveGrocery;
     }
 
-
-//methods
-
-
+    /* Setter methods */
 }

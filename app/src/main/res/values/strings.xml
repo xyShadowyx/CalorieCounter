@@ -69,7 +69,7 @@
 
     <!-- ### TOAST STRING VALUES ARE DEFINED HERE #### -->
     <string name="selectamount_emptyamounttoast">Bitte geben Sie einen gültigen Wert ein.</string>
-    <string name="quantityunitmanagement_incorrectquantityunittoast">Diese Einheit ist bereits in der Datenbank
+    <string name="quantityunitmanagement_incorrectquantityunittoast">Diese Einheit ist bereits in Ihrer Datenbank
         vorhanden.
     </string>
     <string name="quantityunitmanagement_existinggroceryindbtoast">Ein Lebensmittel mit diesem Namen ist bereits in

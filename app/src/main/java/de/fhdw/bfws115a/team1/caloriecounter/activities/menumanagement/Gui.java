@@ -9,26 +9,26 @@ public class Gui {
     private EditText mSelectMenuName;
     private EditText mSelectPortionSize;
 
-    private ImageView mDeleteGroceries;
-    private ImageView mOpenGroceriesSearchOverview;
+    private ImageView mDeleteGrocery;
+    private ImageView mAddNewGrocery;
 
-    private TextView mAddedGroceries;
+    private TextView mAddedGrocery;
 
     private Button mAddMenu;
 
     public Gui(Init activity) {
         activity.setContentView(R.layout.activity_main);
 
-        /* IDs müssen noch auf das passende Layout referenziert werden!
+        /* IDs müssen noch auf das passende Layout referenziert werden! */
         mSelectMenuName = (EditText) activity.findViewById(R.id.idSelectMenuName);
         mSelectPortionSize = (EditText) activity.findViewById(R.id.idSelectPortionSize);
 
-        mDeleteGroceries = activity.findViewById(R.id.idDeleteGroceries);
-        mOpenGroceriesSearchOverview = activity.findViewById(R.id.idOpenGroceriesSearchOverview);
+        mDeleteGrocery = activity.findViewById(R.id.idDeleteGrocery);
+        mAddNewGrocery = activity.findViewById(R.id.idAddNewGrocery);
 
-        mAddedGroceries = activity.findViewById(R.id.idAddedGroceries);
+        mAddedGrocery = activity.findViewById(R.id.idAddedGrocery);
 
-        mAddMenu = activity.findViewById(R.id.idAddMenu); */
+        mAddMenu = activity.findViewById(R.id.idAddMenu);
     }
 
     /* Getter methods */
@@ -40,16 +40,16 @@ public class Gui {
         return mSelectPortionSize;
     }
 
-    public ImageView getDeleteGroceries() {
-        return mDeleteGroceries;
+    public ImageView getDeleteGrocery() {
+        return mDeleteGrocery;
     }
 
-    public ImageView getOpenGroceriesSearchOverview() {
-        return mOpenGroceriesSearchOverview;
+    public ImageView getAddNewGrocery() {
+        return mAddNewGrocery;
     }
 
     public TextView getAddedGroceries() {
-        return mAddedGroceries;
+        return mAddedGrocery;
     }
 
     public Button getAddMenu() {

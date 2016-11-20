@@ -25,19 +25,19 @@ public class ApplicationLogic {
         ClickListener cl;
 
         cl = new ClickListener(this);
-        mGui.getAddNewQuantityunit().setOnClickListener(cl);
-        mGui.getDeleteQuantityunit().setOnClickListener(cl);
+        mGui.getAddNewQuantityUnit().setOnClickListener(cl);
+        mGui.getDeleteQuantityUnit().setOnClickListener(cl);
     }
 
     private void initGui() {
 
     }
 
-    public void onAddNewQuantityUnit() {
-        //prüfen ob es diese einheit schon gibt (Datenbankabfrage) -- toast message "Einheit ist bereits vorhanden"
+    public void onAddNewQuantityUnitClicked() {
+        //prüfen ob es diese Einheit schon gibt (Datenbankabfrage) -- toast message "Einheit ist bereits vorhanden"
         if (validation.checkLenght(DatabaseHelper.short_name_length, mData.getNewQuantityUnitName())
                 && /* Ist bereits in der DB vorhanden? */) {
-            mData.setNewQuantityunitName(""); // Methode leert das Textfeld!
+            mData.setNewQuantityUnitName(""); // Methode leert das Textfeld!
             //abspeichern in der DB
         } else {
             Context context = mData.getActivity().getApplicationContext();
@@ -46,19 +46,12 @@ public class ApplicationLogic {
         }
     }
 
-    public void onDeleteQuantityUnit() {
+    public void onDeleteQuantityUnitClicked() {
     }
 
-    public void onNewQuantityunitChanged() {
+    public void onNewQuantityUnitChanged() {
         //Textfeld füllen mit eingabe
         //Text in mData speichern
-    }
-
-    public void onAddNewQuantity() {
-
-    }
-
-    public void onDeleteQuantity() {
-
+        /* Stand 19.11.2016 --> Was soll diese Methode bezwecken? */
     }
 }
