@@ -22,7 +22,7 @@ public class Gui {
 
         mSelectedAmount = (EditText) activity.findViewById(R.id.idSelectAmount);
 
-        mSpinner = activity.findViewById(R.id.idSpinnerMenu);
+        mSpinner = activity.findViewById(R.id.idSpinner);
 
         mAddAmount = activity.findViewById(R.id.idAddAmount); */
     }

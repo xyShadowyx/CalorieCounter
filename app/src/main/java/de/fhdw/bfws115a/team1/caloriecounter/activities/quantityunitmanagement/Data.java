@@ -46,7 +46,7 @@ public class Data {
     }
 
     /* Setter methods */
-    public void setNewQuantityunitName(String mNewQuantityunitName) {
-        this.mNewQuantityUnitName = mNewQuantityunitName;
+    public void setNewQuantityUnitName(String mNewQuantityUnitName) {
+        this.mNewQuantityUnitName = mNewQuantityUnitName;
     }
 }

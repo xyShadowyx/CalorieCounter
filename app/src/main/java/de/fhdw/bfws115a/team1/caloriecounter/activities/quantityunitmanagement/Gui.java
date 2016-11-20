@@ -1,12 +1,9 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import de.fhdw.bfws115a.team1.caloriecounter.R;
 
 /**
  * Created by Florian on 08.11.2016.
@@ -15,12 +12,12 @@ public class Gui {
 
     private LinearLayout mLayout;
 
-    private EditText mEditNewQuantityunit;// abfangen wann etwas geändert wird
+    private EditText mEditNewQuantityUnit;// abfangen wann etwas geändert wird
 
-    private TextView mQuantityunit;
+    private TextView mQuantityUnit;
 
-    private ImageView mAddNewQuantityunit;
-    private ImageView mDeleteQuantityunit;
+    private ImageView mAddNewQuantityUnit;
+    private ImageView mDeleteQuantityUnit;
 
 
     public Gui(Init activity) {
@@ -28,12 +25,12 @@ public class Gui {
         activity.setContentView(R.layout.quantityunitmanagement);
 
         mLayout = (LinearLayout) activity.findViewById(R.id.idLinearLayout);
-        mEditNewQuantityunit = (EditText) activity.findViewById(R.id.idEditNewQuantityunit);
+        mEditNewQuantityUnit = (EditText) activity.findViewById(R.id.idEditNewQuantityUnit);
 
-        mQuantityunit = activity.findViewById(R.id.idQuantityunit);
+        mQuantityUnit = activity.findViewById(R.id.idQuantityUnit);
 
-        mAddNewQuantityunit = (ImageView) activity.findViewById(R.id.idAddQuantityunit);
-        mDeleteQuantityunit = (ImageView) activity.findViewById(R.id.idDeleteQuantityunit);
+        mAddNewQuantityUnit = (ImageView) activity.findViewById(R.id.idAddQuantityUnit);
+        mDeleteQuantityUnit = (ImageView) activity.findViewById(R.id.idDeleteQuantityUnit);
         */
     }
 
@@ -42,19 +39,19 @@ public class Gui {
         return mLayout;
     }
 
-    public EditText getEditNewQuantityunit() {
-        return mEditNewQuantityunit;
+    public EditText getEditNewQuantityUnit() {
+        return mEditNewQuantityUnit;
     }
 
-    public ImageView getAddNewQuantityunit() {
-        return mAddNewQuantityunit;
+    public ImageView getAddNewQuantityUnit() {
+        return mAddNewQuantityUnit;
     }
 
-    public ImageView getDeleteQuantityunit() {
-        return mDeleteQuantityunit;
+    public ImageView getDeleteQuantityUnit() {
+        return mDeleteQuantityUnit;
     }
 
-    //methods
+    /* Other methods */
 }
 
 

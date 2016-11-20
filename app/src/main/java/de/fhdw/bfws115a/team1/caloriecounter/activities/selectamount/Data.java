@@ -69,8 +69,8 @@ public class Data {
         this.mPickedGrocery = mPickedGrocery;
     }
 
-    public void setSelectAmount(int mSelectAmount) {
-        this.mSelectedAmount = mSelectAmount;
+    public void setSelectedAmount(int mSelectedAmount) {
+        this.mSelectedAmount = mSelectedAmount;
     }
 
     public void setSpinnerStatus(String mSpinnerStatus) {
@@ -78,5 +78,4 @@ public class Data {
     }
 
     /* Other methods */
-
 }

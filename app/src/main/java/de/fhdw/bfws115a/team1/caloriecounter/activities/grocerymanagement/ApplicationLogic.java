@@ -27,10 +27,10 @@ public class ApplicationLogic {
         cl = new ClickListener(this);
         mGui.getAddNewQuantity().setOnClickListener(cl);
         mGui.getDeleteQuantity().setOnClickListener(cl);
-        mGui.getSaveGrocerie().setOnClickListener(cl);
+        mGui.getSaveGrocery().setOnClickListener(cl);
 
         //dropdown??
-        mGui.getDropDowm().setOnClickListener(cl);
+        mGui.getSpinner().setOnClickListener(cl);
     }
 
     private void initGui() {
@@ -51,9 +51,9 @@ public class ApplicationLogic {
         /* Lösche aus der DB! */
     }
 
-    public void onAddGroceryClicked() {
+    public void onSaveGroceryClicked() {
         //prüfen ob es diese einheit schon gibt (Datenbankabfrage) -- toast message "Einheit ist bereits vorhanden"
-        if (validation.checkLenght(DatabaseHelper.medium_name_length, mData.getGrocerieName())
+        if (validation.checkLenght(DatabaseHelper.medium_name_length, mData.getGroceryName())
                 && /* Ist bereits in der DB vorhanden? */) {
             if (validation.checkNumberValue(mData.getKiloCalories())) {
                 //abspeichern in der DB }
