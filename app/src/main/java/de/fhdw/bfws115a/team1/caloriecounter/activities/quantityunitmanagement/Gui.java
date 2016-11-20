@@ -1,87 +1,57 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 
-import android.content.Context;
-import android.media.Image;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import static android.R.attr.text;
 
 /**
  * Created by Florian on 08.11.2016.
  */
 public class Gui {
 
-
     private LinearLayout mLayout;
 
+    private EditText mEditNewQuantityUnit;// abfangen wann etwas geändert wird
 
-    private EditText mEditNewQuantityunit;// abfangen wann etwas geändert wird
+    private TextView mQuantityUnit;
 
-    private TextView mQuantityunit;
-
-    private ImageView mAddNewQuantityunit;
-    private ImageView mDeleteQuantityunit;
+    private ImageView mAddNewQuantityUnit;
+    private ImageView mDeleteQuantityUnit;
 
 
     public Gui(Init activity) {
+        /* ID´s müssen noch vom Layout zugewiesen werden!
         activity.setContentView(R.layout.quantityunitmanagement);
 
         mLayout = (LinearLayout) activity.findViewById(R.id.idLinearLayout);
-        mEditNewQuantityunit = (EditText) activity.findViewById(R.id.idEditNewQuantityunit);
+        mEditNewQuantityUnit = (EditText) activity.findViewById(R.id.idEditNewQuantityUnit);
 
-        mQuantityunit = activity.findViewById(R.id.idQuantityunit);
+        mQuantityUnit = activity.findViewById(R.id.idQuantityUnit);
 
-        mAddNewQuantityunit = (ImageView) activity.findViewById(R.id.idAddQuantityunit);
-        mDeleteQuantityunit = (ImageView) activity.findViewById(R.id.idDeleteQuantityunit);
-
-
+        mAddNewQuantityUnit = (ImageView) activity.findViewById(R.id.idAddQuantityUnit);
+        mDeleteQuantityUnit = (ImageView) activity.findViewById(R.id.idDeleteQuantityUnit);
+        */
     }
 
-//getter
-
+    /* Getter methods */
     public LinearLayout getLayout() {
         return mLayout;
     }
 
-    public EditText getEditNewQuantityunit() {
-        return mEditNewQuantityunit;
+    public EditText getEditNewQuantityUnit() {
+        return mEditNewQuantityUnit;
     }
 
-    public ImageView getAddNewQuantityunit() {
-        return mAddNewQuantityunit;
+    public ImageView getAddNewQuantityUnit() {
+        return mAddNewQuantityUnit;
     }
 
-    public ImageView getDeleteQuantityunit() {
-        return mDeleteQuantityunit;
+    public ImageView getDeleteQuantityUnit() {
+        return mDeleteQuantityUnit;
     }
 
-    //methods
-
-    public TextView createNewTextView(String text) {
-        final ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        final TextView textView = new TextView(this);
-        textView.setLayoutParams(lparams);
-        textView.setText("New text: " + text);
-        return textView;
-    }
-
-
-    public View createNewImageView() {
-        final ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        final ImageView imageView = new ImageView(this);
-        imageView.setLayoutParams(lparams);
-        imageView.setImageResource(R.drawable.plusButton);
-        //muss eine Id bekommen mit der einer mengenangabe zugeordnet sein
-        return imageView;
-    }
-
+    /* Other methods */
 }
 
 

@@ -17,6 +17,27 @@ public class ApplicationLogic {
     }
 
     private void initListener() {
+        ClickListener cl;
 
+        cl = new ClickListener(this);
+        mGui.getSelectMenuName().setOnClickListener(cl);
+        mGui.getSelectPortionSize().setOnClickListener(cl);
+        mGui.getDeleteGrocery().setOnClickListener(cl);
+        mGui.getAddNewGrocery().setOnClickListener(cl);
+        mGui.getAddMenu().setOnClickListener(cl);
+    }
+
+    public void onDeleteGroceryClicked() {
+        /* Löscht ein hinzugefügtes Lebensmittel aus dem Menü! */
+    }
+
+    public void onAddNewGroceryClicked() {
+        /* Öffnet/Verweist die Activity 'groceriessearchoverview', um dem Menü neue Lebensmittel hinzuzufügen! */
+    }
+
+    public void onAddMenuClicked() {
+        /* Menüname + Portionsgröße + hinzugefügte Lebensmittel werden als Menü zusammengefasst in die Datenbank geschrieben
+        * Menüname und Portionsgröße müssen überprüft werden hinsichtlich Eingabe
+        * */
     }
 }

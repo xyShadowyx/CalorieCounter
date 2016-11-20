@@ -1,4 +1,79 @@
 <resources>
     <string name="app_name">CalorieCounter</string>
     <string name="action_settings">Settings</string>
+
+
+    <!-- ### ACTIVITIES STRING DEFAULT VALUES ARE DEFINED HERE ### -->
+    <!-- Default values 'selectamount'-activity-->
+    <string name="selectamount_default_pickedgrocery">Error</string>
+    <string name="selectamount_default_spinnerstatus">Einheit</string>
+
+    <!-- Default values 'quantityunitmanagement'-activity-->
+    <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
+
+    <!-- Default values 'menumanagement'-activity-->
+    <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
+
+    <!-- Default values 'grocerymanagement'-activity-->
+    <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
+
+    <!-- Default values 'groceriessearchoverview'-activity-->
+    <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
+
+    <!-- Default values 'dailyoverview'-activity-->
+    <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
+
+    <!-- Default values 'calendar'-activity-->
+    <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
+
+    <!-- Default values 'spinner'-activity-->
+    <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
+
+
+    <!-- ### LAYOUT STRING VALUES ARE DEFINED HERE ### -->
+    <!-- Value for every layouthead -->
+    <string name="titel">Kalorienzähler</string>
+
+    <!-- Values 'calender'-layout -->
+    <string name="calender_today">Heute</string>
+    <string name="calender_calendar">Kalender</string>
+
+    <!-- Values 'groceriesearchoverview'-layout -->
+    <string name="groceriesearchoverview_search">Suche</string>
+    <string name="groceriesearchoverview_newGrocery">Neues Lebensmittel</string>
+    <string name="groceriesearchoverview_newMenu">Neues Menü</string>
+
+    <!-- Values 'dailyoverview'-layout -->
+    <string name="dailyoverview_date">Datum</string>
+    <string name="dailyoverview_caloriesmax">Ziel</string>
+    <string name="dailyoverview_minus">-</string>
+    <string name="dailyoverview_caloriesconsumed">Auf</string>
+    <string name="dailyoverview_caloriesleft">Übrig</string>
+    <string name="dailyoverview_newinput">Neuer Eintrag</string>
+    <string name="dailyoverview_grocery">Lebensmittel</string>
+
+    <!-- Values 'menumanagement'-layout -->
+    <string name="menumanagement_menumanagement">Menü-Management</string>
+    <string name="menumanagement_name">Name:</string>
+    <string name="menumanagement_portion">Portion:</string>
+    <string name="menumanagement_lastadd">Zuletzt hinzugefügtes Lebensmittel</string>
+
+    <!-- Values 'quantityunitmanagement'-layout -->
+    <string name="quantityunitmanagement_quantityunitmanagement">Mengeneinheiten</string>
+    <string name="add">Hinzufügen</string>
+
+
+    <!-- Values 'grocerymanagement'-layout -->
+
+    <!-- Values 'selectamount'-layout -->
+
+    <!-- ### TOAST STRING VALUES ARE DEFINED HERE #### -->
+    <string name="selectamount_emptyamounttoast">Bitte geben Sie einen gültigen Wert ein.</string>
+    <string name="quantityunitmanagement_incorrectquantityunittoast">Diese Einheit ist bereits in Ihrer Datenbank
+        vorhanden.
+    </string>
+    <string name="quantityunitmanagement_existinggroceryindbtoast">Ein Lebensmittel mit diesem Namen ist bereits in
+        Ihrer Datenbank vorhanden.
+    </string>
+
 </resources>

@@ -7,38 +7,46 @@ import android.os.Bundle;
  */
 public class Data {
 
+    /* Data variables */
     private Init mActivity;
 
-    private String mNewQuantityunitName;
+    private String mNewQuantityUnitName;
 
-    private final String DEFAULTNEWQUANTITYUNITNAME = "";
+    /* Default values */
+    private final String DEFAULT_NEWQUANTITYUNITNAME = "";
 
-    private final String KEYNEWQUANTITYUNITNAME = "K1";
+    /* Keys */
+    private final String KEY_NEWQUANTITYUNITNAME = "quantityunitmanagement1";
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
 
         if (savedInstanceState == null) {
-            mNewQuantityunitName = DEFAULTNEWQUANTITYUNITNAME;
+            mNewQuantityUnitName = DEFAULT_NEWQUANTITYUNITNAME;
         } else {
             restoreDataFromBundle(savedInstanceState);
         }
     }
 
-
     public void saveDataInBundle(Bundle b) {
-        b.putString(KEYNEWQUANTITYUNITNAME, mNewQuantityunitName);
+        b.putString(KEY_NEWQUANTITYUNITNAME, mNewQuantityUnitName);
     }
 
     private void restoreDataFromBundle(Bundle b) {
-        mNewQuantityunitName = b.getString(KEYNEWQUANTITYUNITNAME);
+        mNewQuantityUnitName = b.getString(KEY_NEWQUANTITYUNITNAME);
     }
-    //setter
 
-    public void setNewQuantityunitName(String mNewQuantityunitName) {
-        this.mNewQuantityunitName = mNewQuantityunitName;
+    /* Getter methods */
+    public Init getActivity() {
+        return mActivity;
     }
-    //getter
 
+    public String getNewQuantityUnitName() {
+        return mNewQuantityUnitName;
+    }
 
+    /* Setter methods */
+    public void setNewQuantityUnitName(String mNewQuantityUnitName) {
+        this.mNewQuantityUnitName = mNewQuantityUnitName;
+    }
 }

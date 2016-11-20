@@ -1,67 +1,85 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
 import android.os.Bundle;
+import de.fhdw.bfws115a.team1.caloriecounter.R;
 
 /**
  * Created by Florian on 08.11.2016.
  */
 public class Data {
 
-    private de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement.Init mActivity;
+    /* Data variables */
+    private Init mActivity;
+    private String mGroceryName;
+    private int mSelectedAmount;
+    private String mSpinnerStatus;
+    private int mKiloCalories;
 
-    private String mGrocerieName;
-    private String mNewQuantity;
-    private String mKiloCalories;
+    /* Default values */
+    private final String DEFAULT_GROCERYNAME = "";
+    private final int DEFAULT_SELECTEDAMOUNT = 0;
+    private final int DEFAULt_KILOCALORIES = 0;
 
+    /* Keys */
+    private final String KEY_GROCERYNAME = "grocerymanagement1";
+    private final String KEY_NEWQUANTITY = "grocerymanagement2";
+    private final String KEY_KILOCALORIES = "grocerymanagement3";
+    private final String KEY_SPINNERSTATUS = "grocerymanagement4";
 
-    private final String DEFAULTGROCERIENAME = "";
-    private final String DEFAULTNEWQUANTITY = "";
-    private final String DEFAULTKILOCALORIES = "";
-
-    private final String KEYGROCERIENAME  = "K1";
-    private final String KEYNEWQUANTITY = "K2";
-    private final String KEYKILOCALORIES = "K3";
-
-    public Data(Bundle savedInstanceState, de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement.Init activity) {
+    public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
 
         if (savedInstanceState == null) {
-            mGrocerieName = DEFAULTGROCERIENAME;
-            mNewQuantity = DEFAULTNEWQUANTITY;
-            mKiloCalories = DEFAULTKILOCALORIES;
-
+            mGroceryName = DEFAULT_GROCERYNAME;
+            mSelectedAmount = DEFAULT_SELECTEDAMOUNT;
+            mKiloCalories = DEFAULt_KILOCALORIES;
+            mSpinnerStatus = mActivity.getResources().getString(R.string.selectamount_default_spinnerstatus);
         } else {
             restoreDataFromBundle(savedInstanceState);
         }
     }
 
-
     public void saveDataInBundle(Bundle b) {
-        b.putString(KEYGROCERIENAME, mGrocerieName);
-        b.putString(KEYNEWQUANTITY, mNewQuantity);
-        b.putString(KEYKILOCALORIES, mKiloCalories);
+        b.putString(KEY_GROCERYNAME, mGroceryName);
+        b.putInt(KEY_NEWQUANTITY, mSelectedAmount);
+        b.putInt(KEY_KILOCALORIES, mKiloCalories);
+        b.putString(KEY_SPINNERSTATUS, mSpinnerStatus);
     }
 
     private void restoreDataFromBundle(Bundle b) {
-        mGrocerieName = b.getString(KEYGROCERIENAME);
-        mNewQuantity = b.getString(KEYNEWQUANTITY);
-        mKiloCalories = b.getString(KEYKILOCALORIES);
-    }
-    //setter
-
-
-    public void setGrocerieName(String mGrocerieName) {
-        this.mGrocerieName = mGrocerieName;
+        mGroceryName = b.getString(KEY_GROCERYNAME);
+        mSelectedAmount = b.getInt(KEY_NEWQUANTITY);
+        mKiloCalories = b.getInt(KEY_KILOCALORIES);
+        mSpinnerStatus = b.getString(KEY_SPINNERSTATUS);
     }
 
-    public void setNewQuantity(String mNewQuantity) {
-        this.mNewQuantity = mNewQuantity;
+    /* Getter methods */
+    public Init getActivity() {
+        return mActivity;
     }
 
-    public void setKiloCalories(String mKiloCalories) {
+    public String getGroceryName() {
+        return mGroceryName;
+    }
+
+    public int getSelectedAmount() {
+        return mSelectedAmount;
+    }
+
+    public int getKiloCalories() {
+        return mKiloCalories;
+    }
+
+    public String getSpinnerStatus() {
+        return mSpinnerStatus;
+    }
+
+    /* Setter methods */
+    public void setGroceryName(String mGroceryName) {
+        this.mGroceryName = mGroceryName;
+    }
+
+    public void setKiloCalories(int mKiloCalories) {
         this.mKiloCalories = mKiloCalories;
     }
-    //getter
-
-
 }

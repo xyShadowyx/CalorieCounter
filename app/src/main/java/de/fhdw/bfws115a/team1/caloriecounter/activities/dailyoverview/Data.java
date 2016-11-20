@@ -17,7 +17,6 @@ public class Data {
     private final String KEYDUMMYSTRING = "dailyoverview1";
     private final String KEYDUMMYINT = "dailyoverview2";
 
-
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
 
@@ -39,7 +38,10 @@ public class Data {
         mDummyInt = b.getInt(KEYDUMMYINT);
     }
 
+    /* Getter methods */
     public Init getActivity() {
         return mActivity;
     }
+
+    /* Setter methods */
 }
