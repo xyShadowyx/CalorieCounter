@@ -11,6 +11,8 @@ public class Grocery {
     private int mKcal;
 
     public Grocery(String name, Unit unit, double amount, int kcal) {
+        super();
+
         mName = name;
         mUnit = unit;
         mAmount = amount;

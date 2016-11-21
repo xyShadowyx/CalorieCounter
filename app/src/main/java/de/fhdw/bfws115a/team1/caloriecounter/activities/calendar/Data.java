@@ -2,11 +2,20 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Data {
     private Init mActivity;
+    private DatabaseHelper mDatabaseHelper;
+    private DatabaseEntityManager mDatabaseEntityManager;
 
     /* Data variables */
     private int mSelectedYear;
@@ -20,6 +29,19 @@ public class Data {
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
+        mDatabaseHelper = new DatabaseHelper(mActivity.getApplicationContext(), activity);
+        mDatabaseEntityManager = new DatabaseEntityManager(mDatabaseHelper);
+
+        List<DatabaseUnit> databaseUnits = (ArrayList<DatabaseUnit>) mDatabaseEntityManager.getAllUnits();
+
+        mDatabaseEntityManager.createUnit(new Unit("abc"));
+
+        for(DatabaseUnit dbu : databaseUnits) {
+            Toast.makeText(mActivity.getApplicationContext(), "Unit: " + dbu.getName(), Toast.LENGTH_SHORT).show();
+        }
+
+
+
         Intent intent = mActivity.getIntent();
 
         if (savedInstanceState == null) {
