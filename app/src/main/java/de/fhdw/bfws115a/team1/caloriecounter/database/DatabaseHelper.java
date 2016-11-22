@@ -137,11 +137,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UNIT_NAME + " VARCHAR (" + SHORT_NAME_LENGTH + ")"
             + ");";
 
-    private Init mInit;
-
-    public DatabaseHelper(Context context, Init init) {
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        mInit = init;
     }
 
     @Override

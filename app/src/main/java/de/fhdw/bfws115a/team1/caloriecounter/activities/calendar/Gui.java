@@ -30,8 +30,8 @@ public class Gui {
     /* Methods to apply changes */
     public void setSelectedDate(int year, int month, int day) {
         Calendar date = Calendar.getInstance();
-        date.set(year, month, day);
 
-        mCalendarView.setDate(date.getTimeInMillis());
+        date.set(year, month, day);
+        mCalendarView.setDate(date.getTimeInMillis(), true, true);
     }
 }

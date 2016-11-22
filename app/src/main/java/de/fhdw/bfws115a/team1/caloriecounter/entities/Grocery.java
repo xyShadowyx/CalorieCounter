@@ -38,4 +38,24 @@ public class Grocery {
     public int getKcal() {
         return mKcal;
     }
+
+    public void setName(String mName) {
+        this.mName = mName;
+    }
+
+    public void setUnit(Unit mUnit) {
+        this.mUnit = mUnit;
+    }
+
+    public void setAmount(double mAmount) {
+        this.mAmount = mAmount;
+    }
+
+    public void setKcal(int mKcal) {
+        this.mKcal = mKcal;
+    }
+
+    public String toString() {
+        return "Grocery(Name: " + getName() + ", Unit: " + getUnit().toString() + ", Amount: " + getAmount() + ", KCal: " + getKcal() + ")";
+    }
 }

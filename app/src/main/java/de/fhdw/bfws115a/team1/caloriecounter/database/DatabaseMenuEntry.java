@@ -18,4 +18,8 @@ public class DatabaseMenuEntry extends MenuEntry implements DatabaseEntity {
     public long getId() {
         return mId;
     }
+
+    public String toString() {
+        return "DatabaseMenuEntry(Id: " + getId() +", MenuEntry: " + super.toString() + ")";
+    }
 }

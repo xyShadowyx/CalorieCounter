@@ -13,7 +13,6 @@ public class Entry {
     private int mYear;
     private int mMonth;
     private int mDay;
-    private int mOrderInDay;
 
     public Entry(int year, int month, int day) {
         mYear = year;
@@ -37,11 +36,13 @@ public class Entry {
         return mDay;
     }
 
-    private void setOrderInDay(int order) {
-        mOrderInDay = order;
+    public void setDate(int year, int month, int day) {
+        mYear = year;
+        mMonth = month;
+        mDay = day;
     }
 
-    public int getOrderInDay() {
-        return mOrderInDay;
+    public String toString() {
+        return "Entry(Year: " + getYear() + ", Month: " + getMonth() + ", Day: " + getDay() + ")";
     }
 }

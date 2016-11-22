@@ -19,4 +19,12 @@ public class GroceryEntry extends Entry {
     public Grocery getGrocery() {
         return mGrocery;
     }
+
+    public void setGrocery(Grocery grocery) {
+        mGrocery = new Grocery(grocery);
+    }
+
+    public String toString() {
+        return "GroceryEntry(Year: " + getYear() + ", Month: " + getMonth() + ", Day: " + getDay() + ", Grocery: " + getGrocery().toString() + ")";
+    }
 }

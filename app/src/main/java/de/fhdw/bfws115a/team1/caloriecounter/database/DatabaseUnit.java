@@ -19,4 +19,8 @@ public class DatabaseUnit extends Unit implements DatabaseEntity {
     public long getId() {
         return mId;
     }
+
+    public String toString() {
+        return "DatabaseUnit(Id: " + getId() +", Unit: " + super.toString() + ")";
+    }
 }

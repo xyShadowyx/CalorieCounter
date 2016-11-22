@@ -23,12 +23,12 @@ public class Gui {
         mSelectMenuName = (EditText) activity.findViewById(R.id.idSelectMenuName);
         mSelectPortionSize = (EditText) activity.findViewById(R.id.idSelectPortionSize);
 
-        mDeleteGrocery = activity.findViewById(R.id.idDeleteGrocery);
-        mAddNewGrocery = activity.findViewById(R.id.idAddNewGrocery);
+        mDeleteGrocery = (ImageView) activity.findViewById(R.id.idDeleteGrocery);
+        mAddNewGrocery = (ImageView) activity.findViewById(R.id.idAddNewGrocery);
 
-        mAddedGrocery = activity.findViewById(R.id.idAddedGrocery);
+        mAddedGrocery = (TextView) activity.findViewById(R.id.idAddedGrocery);
 
-        mAddMenu = activity.findViewById(R.id.idAddMenu);
+        mAddMenu = (Button) activity.findViewById(R.id.idAddMenu);
     }
 
     /* Getter methods */

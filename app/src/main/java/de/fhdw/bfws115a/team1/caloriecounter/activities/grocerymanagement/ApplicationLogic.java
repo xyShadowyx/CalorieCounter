@@ -53,8 +53,8 @@ public class ApplicationLogic {
 
     public void onSaveGroceryClicked() {
         //prüfen ob es diese einheit schon gibt (Datenbankabfrage) -- toast message "Einheit ist bereits vorhanden"
-        if (validation.checkLenght(DatabaseHelper.medium_name_length, mData.getGroceryName())
-                && /* Ist bereits in der DB vorhanden? */) {
+        if (validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getGroceryName())
+                && false /* Ist bereits in der DB vorhanden? */) {
             if (validation.checkNumberValue(mData.getKiloCalories())) {
                 //abspeichern in der DB }
             } else {

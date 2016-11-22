@@ -43,8 +43,8 @@ public class ApplicationLogic {
     }
 
     public void onAddMenuClicked() {
-        if (validation.checkLenght(DatabaseHelper.medium_name_length, mData.getSelectMenuName())
-                && /* Ist bereits in der DB vorhanden? */) {
+        if (validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getSelectMenuName())
+                && false /* Ist bereits in der DB vorhanden? */) {
             if (validation.checkNumberValue(mData.getSelectPortionSize())) {
                 //abspeichern in der DB }
             } else {

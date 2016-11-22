@@ -22,7 +22,7 @@ public class Menu {
     public Menu(Menu menu) {
         this(menu.getName(), menu.getPortions());
         for(Grocery g : menu.getGroceries()) {
-            menu.addGrocery(new Grocery(g));
+            addGrocery(new Grocery(g));
         }
     }
 
@@ -38,6 +38,14 @@ public class Menu {
         return mKcal;
     }
 
+    public void setName(String mName) {
+        this.mName = mName;
+    }
+
+    public void setPortions(double mPortions) {
+        this.mPortions = mPortions;
+    }
+
     public ArrayList<Grocery> getGroceries() {
         return mGroceries;
     }
@@ -51,5 +59,21 @@ public class Menu {
         if(mGroceries.remove(grocery)) {
             mKcal -= grocery.getKcal();
         }
+    }
+
+    public String toString() {
+        String result = "Menu(Name: " + getName() + ", Portions: " + getPortions() + ", Groceries: ";
+        ArrayList<Grocery> groceries = getGroceries();
+        if(groceries.size() > 0) {
+            for (Grocery g : groceries) {
+                result += g.toString();
+                result += ", ";
+            }
+            result = result.substring(0, result.length() - 2);
+        } else {
+            result += "-";
+        }
+        result += ")";
+        return result;
     }
 }

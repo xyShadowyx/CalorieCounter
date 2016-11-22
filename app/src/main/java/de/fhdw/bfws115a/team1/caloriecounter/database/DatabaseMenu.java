@@ -17,4 +17,8 @@ public class DatabaseMenu extends Menu implements DatabaseEntity {
     public long getId() {
         return mId;
     }
+
+    public String toString() {
+        return "DatabaseMenu(Id: " + getId() +", Menu: " + super.toString() + ")";
+    }
 }

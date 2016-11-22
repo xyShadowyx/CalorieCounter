@@ -35,8 +35,8 @@ public class ApplicationLogic {
 
     public void onAddNewQuantityUnitClicked() {
         //prüfen ob es diese Einheit schon gibt (Datenbankabfrage) -- toast message "Einheit ist bereits vorhanden"
-        if (validation.checkLenght(DatabaseHelper.short_name_length, mData.getNewQuantityUnitName())
-                && /* Ist bereits in der DB vorhanden? */) {
+        if (validation.checkLenght(DatabaseHelper.SHORT_NAME_LENGTH, mData.getNewQuantityUnitName())
+                && false /* Ist bereits in der DB vorhanden? */) {
             mData.setNewQuantityUnitName(""); // Methode leert das Textfeld!
             //abspeichern in der DB
         } else {

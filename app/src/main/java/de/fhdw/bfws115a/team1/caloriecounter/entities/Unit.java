@@ -18,4 +18,12 @@ public class Unit {
     public String getName() {
         return mName;
     }
+
+    public void setName(String name) {
+        mName = name;
+    }
+
+    public String toString() {
+        return "Unit(Name: " + getName() + ")";
+    }
 }

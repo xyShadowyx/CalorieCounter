@@ -57,7 +57,7 @@ public class DatabaseEntityManager {
         return mDatabaseHelper.loadGroceryEntry(groceryEntryId);
     }
 
-    public List<DatabaseGroceryEntry> getAllGroceriyEntries() {
+    public List<DatabaseGroceryEntry> getAllGroceryEntries() {
         return mDatabaseHelper.getAllGroceryEntries();
     }
 

@@ -14,8 +14,6 @@ import java.util.List;
 
 public class Data {
     private Init mActivity;
-    private DatabaseHelper mDatabaseHelper;
-    private DatabaseEntityManager mDatabaseEntityManager;
 
     /* Data variables */
     private int mSelectedYear;
@@ -29,19 +27,6 @@ public class Data {
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
-        mDatabaseHelper = new DatabaseHelper(mActivity.getApplicationContext(), activity);
-        mDatabaseEntityManager = new DatabaseEntityManager(mDatabaseHelper);
-
-        List<DatabaseUnit> databaseUnits = (ArrayList<DatabaseUnit>) mDatabaseEntityManager.getAllUnits();
-
-        mDatabaseEntityManager.createUnit(new Unit("abc"));
-
-        for(DatabaseUnit dbu : databaseUnits) {
-            Toast.makeText(mActivity.getApplicationContext(), "Unit: " + dbu.getName(), Toast.LENGTH_SHORT).show();
-        }
-
-
-
         Intent intent = mActivity.getIntent();
 
         if (savedInstanceState == null) {
@@ -75,21 +60,21 @@ public class Data {
         return mSelectedYear;
     }
 
-    public void setSelectedYear(int mSelectedYear) {
-        this.mSelectedYear = mSelectedYear;
-    }
-
     public int getSelectedMonth() {
         return mSelectedMonth;
     }
 
-    /* Setter methods */
-    public void setSelectedMonth(int mSelectedMonth) {
-        this.mSelectedMonth = mSelectedMonth;
-    }
-
     public int getSelectedDay() {
         return mSelectedDay;
+    }
+
+    /* Setter methods */
+    public void setSelectedYear(int mSelectedYear) {
+        this.mSelectedYear = mSelectedYear;
+    }
+
+    public void setSelectedMonth(int mSelectedMonth) {
+        this.mSelectedMonth = mSelectedMonth;
     }
 
     public void setSelectedDay(int mSelectedDay) {

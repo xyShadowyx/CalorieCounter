@@ -18,4 +18,8 @@ public class DatabaseGroceryEntry extends GroceryEntry implements DatabaseEntity
     public long getId() {
         return mId;
     }
+
+    public String toString() {
+        return "DatabaseGroceryEntry(Id: " + getId() +", GroceryEntry: " + super.toString() + ")";
+    }
 }
