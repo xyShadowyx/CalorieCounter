@@ -8,24 +8,16 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 public class Entry {
-    private boolean mIsDatabaseObject;
-    private int mId;
+    private String mName;
 
     private int mYear;
     private int mMonth;
     private int mDay;
-    private int mOrderInDay;
-
-    /* static functions */
-    public static int getNextOrderInDay() {
-        return 0;
-    }
 
     public Entry(int year, int month, int day) {
         mYear = year;
         mMonth = month;
         mDay = day;
-        mIsDatabaseObject = false;
     }
 
     public Entry(Entry entry) {
@@ -44,15 +36,13 @@ public class Entry {
         return mDay;
     }
 
-    private void setToDatabaseObject() {
-        mIsDatabaseObject = true;
+    public void setDate(int year, int month, int day) {
+        mYear = year;
+        mMonth = month;
+        mDay = day;
     }
 
-    private void setOrderInDay(int order) {
-        mOrderInDay = order;
-    }
-
-    public int getOrderInDay() {
-        return mOrderInDay;
+    public String toString() {
+        return "Entry(Year: " + getYear() + ", Month: " + getMonth() + ", Day: " + getDay() + ")";
     }
 }

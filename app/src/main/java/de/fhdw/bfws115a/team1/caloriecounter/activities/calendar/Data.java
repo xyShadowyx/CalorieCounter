@@ -2,8 +2,15 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Data {
     private Init mActivity;
@@ -53,21 +60,21 @@ public class Data {
         return mSelectedYear;
     }
 
-    public void setSelectedYear(int mSelectedYear) {
-        this.mSelectedYear = mSelectedYear;
-    }
-
     public int getSelectedMonth() {
         return mSelectedMonth;
     }
 
-    /* Setter methods */
-    public void setSelectedMonth(int mSelectedMonth) {
-        this.mSelectedMonth = mSelectedMonth;
-    }
-
     public int getSelectedDay() {
         return mSelectedDay;
+    }
+
+    /* Setter methods */
+    public void setSelectedYear(int mSelectedYear) {
+        this.mSelectedYear = mSelectedYear;
+    }
+
+    public void setSelectedMonth(int mSelectedMonth) {
+        this.mSelectedMonth = mSelectedMonth;
     }
 
     public void setSelectedDay(int mSelectedDay) {

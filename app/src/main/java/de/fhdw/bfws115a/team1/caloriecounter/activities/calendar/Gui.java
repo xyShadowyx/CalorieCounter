@@ -13,7 +13,7 @@ public class Gui {
     private Button mTodayButton;
 
     public Gui(Init activity) {
-        activity.setContentView(R.layout.activity_calendar);
+        activity.setContentView(R.layout.calendar);
 
         mCalendarView = (CalendarView) activity.findViewById(R.id.idCalendarView);
         mTodayButton = (Button) activity.findViewById(R.id.idTodayButton);
@@ -30,8 +30,8 @@ public class Gui {
     /* Methods to apply changes */
     public void setSelectedDate(int year, int month, int day) {
         Calendar date = Calendar.getInstance();
-        date.set(year, month, day);
 
-        mCalendarView.setDate(date.getTimeInMillis());
+        date.set(year, month, day);
+        mCalendarView.setDate(date.getTimeInMillis(), true, true);
     }
 }

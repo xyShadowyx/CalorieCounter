@@ -1,18 +1,13 @@
 package de.fhdw.bfws115a.team1.caloriecounter.entities;
 
 /**
- * Created by Viktor on 15.11.2016.
+ * Created by xySha on 23.11.2016.
  */
-
-public class Unit {
+public abstract class GroceriesEntity {
     private String mName;
 
-    public Unit(String name) {
+    public GroceriesEntity(String name) {
         mName = name;
-    }
-
-    public Unit(Unit unit) {
-        this(unit.getName());
     }
 
     public String getName() {
@@ -23,7 +18,7 @@ public class Unit {
         mName = name;
     }
 
-    public String toString() {
-        return "Unit(Name: " + getName() + ")";
-    }
+    public abstract Unit getUnit();
+    public abstract int getKcal();
+    public abstract double getAmount();
 }

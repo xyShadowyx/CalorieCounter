@@ -3,6 +3,8 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
 import android.app.Activity;
 import android.content.Intent;
 
+import java.util.Calendar;
+
 public class ApplicationLogic {
 
     private Data mData;
@@ -21,8 +23,26 @@ public class ApplicationLogic {
 
     private void initListener() {
         DateChangeListener dcl = new DateChangeListener(this);
+        ButtonClickListener bcl = new ButtonClickListener(this);
 
         mGui.getCalendarView().setOnDateChangeListener(dcl);
+        mGui.getTodayButton().setOnClickListener(bcl);
+    }
+
+    public void selectToday() {
+        Calendar calendarToday;
+        int year, month, day;
+
+        calendarToday = Calendar.getInstance();
+        year = calendarToday.get(Calendar.YEAR);
+        month = calendarToday.get(Calendar.MONTH);
+        day = calendarToday.get(Calendar.DAY_OF_MONTH);
+
+        mData.setSelectedYear(year);
+        mData.setSelectedMonth(month);
+        mData.setSelectedDay(day);
+
+        mGui.setSelectedDate(year, month, day);
     }
 
     public void onDateSelect(int year, int month, int day) {

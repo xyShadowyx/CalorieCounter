@@ -1,5 +1,11 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement;
 
+import android.content.Context;
+import android.widget.Toast;
+import de.fhdw.bfws115a.team1.caloriecounter.R;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
+import de.fhdw.bfws115a.team1.caloriecounter.utilities.validation;
+
 public class ApplicationLogic {
 
     private Data mData;
@@ -33,11 +39,27 @@ public class ApplicationLogic {
 
     public void onAddNewGroceryClicked() {
         /* Öffnet/Verweist die Activity 'groceriessearchoverview', um dem Menü neue Lebensmittel hinzuzufügen! */
+
     }
 
     public void onAddMenuClicked() {
+        if (validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getSelectMenuName())
+                && false /* Ist bereits in der DB vorhanden? */) {
+            if (validation.checkNumberValue(mData.getSelectPortionSize())) {
+                //abspeichern in der DB }
+            } else {
+                Context context = mData.getActivity().getApplicationContext();
+                Toast toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        } else {
+            Context context = mData.getActivity().getApplicationContext();
+            Toast toast = Toast.makeText(context, R.string.menumanagement_existingmenuindbtoast, Toast.LENGTH_SHORT);
+            toast.show();
+        }
         /* Menüname + Portionsgröße + hinzugefügte Lebensmittel werden als Menü zusammengefasst in die Datenbank geschrieben
         * Menüname und Portionsgröße müssen überprüft werden hinsichtlich Eingabe
+        * Überlegung Strings allgemeiner zu fassen oder umzubenennen toast_xxx
         * */
     }
 }
