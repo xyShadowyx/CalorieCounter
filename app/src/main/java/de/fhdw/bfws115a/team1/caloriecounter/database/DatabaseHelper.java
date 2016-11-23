@@ -431,11 +431,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         values = new ContentValues();
         values.put(MENU_NAME, menu.getName());
-        values.put(MENU_PORTIONS, menu.getPortions());
+        values.put(MENU_PORTIONS, menu.getAmount());
 
         menuId = database.insert(TABLE_MENU, null, values);
 
-        databaseMenu = new DatabaseMenu(menu.getName(), menu.getPortions(), menuId);
+        databaseMenu = new DatabaseMenu(menu.getName(), menu.getAmount(), menuId);
         for (Grocery g : menu.getGroceries()) {
             values = new ContentValues();
             values.put(MENU_GROCERY_MENU_ID, menuId);
@@ -500,7 +500,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         values = new ContentValues();
         values.put(MENU_ENTRY_NAME, databaseMenu.getName());
-        values.put(MENU_ENTRY_PORTIONS, databaseMenu.getPortions());
+        values.put(MENU_ENTRY_PORTIONS, databaseMenu.getAmount());
 
         result = database.update(TABLE_MENU_ENTRY, values, MENU_ENTRY_ID + "=" + databaseMenu.getId(), null);
         if (result == 0) return false;
@@ -590,7 +590,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values = new ContentValues();
         values.put(MENU_ENTRY_NAME, menuEntry.getMenu().getName());
         values.put(MENU_ENTRY_DATE, menuEntry.getYear() + "-" + menuEntry.getMonth() + "-" + menuEntry.getDay());
-        values.put(MENU_ENTRY_PORTIONS, menuEntry.getMenu().getPortions());
+        values.put(MENU_ENTRY_PORTIONS, menuEntry.getMenu().getAmount());
 
         menuEntryId = database.insert(TABLE_MENU_ENTRY, null, values);
         databaseMenuEntry = new DatabaseMenuEntry(menuEntry.getYear(), menuEntry.getMonth(), menuEntry.getDay(), new Menu(menuEntry.getMenu()), menuEntryId);
@@ -618,7 +618,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values = new ContentValues();
         values.put(MENU_ENTRY_NAME, databaseMenuEntry.getMenu().getName());
         values.put(MENU_ENTRY_DATE, databaseMenuEntry.getYear() + "-" + databaseMenuEntry.getMonth() + "-" + databaseMenuEntry.getDay());
-        values.put(MENU_ENTRY_PORTIONS, databaseMenuEntry.getMenu().getPortions());
+        values.put(MENU_ENTRY_PORTIONS, databaseMenuEntry.getMenu().getAmount());
 
         result = database.update(TABLE_MENU_ENTRY, values, MENU_ENTRY_ID + "=" + databaseMenuEntry.getId(), null);
         if (result == 0) return false;

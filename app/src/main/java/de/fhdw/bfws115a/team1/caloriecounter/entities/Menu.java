@@ -6,44 +6,43 @@ import java.util.ArrayList;
  * Created by Viktor on 15.11.2016.
  */
 
-public class Menu {
-    private String mName;
-    private double mPortions;
+public class Menu extends GroceriesEntity {
+    private double mAmount;
     private int mKcal;
     private ArrayList<Grocery> mGroceries;
 
-    public Menu(String name, double portions) {
-        mName = name;
-        mPortions = portions;
+    public Menu(String name, double amount) {
+        super(name);
+        mAmount = amount;
         mKcal = 0;
         mGroceries = new ArrayList<Grocery>();
     }
 
     public Menu(Menu menu) {
-        this(menu.getName(), menu.getPortions());
+        this(menu.getName(), menu.getAmount());
         for(Grocery g : menu.getGroceries()) {
             addGrocery(new Grocery(g));
         }
     }
 
-    public String getName() {
-        return mName;
+    @Override
+    public Unit getUnit() {
+        // TODO: add 'Portionen' to values as string
+        return new Unit("Portionen");
     }
 
-    public double getPortions() {
-        return mPortions;
-    }
-
+    @Override
     public int getKcal() {
         return mKcal;
     }
 
-    public void setName(String mName) {
-        this.mName = mName;
+    @Override
+    public double getAmount() {
+        return mAmount;
     }
 
-    public void setPortions(double mPortions) {
-        this.mPortions = mPortions;
+    public void setAmount(double mAmount) {
+        this.mAmount = mAmount;
     }
 
     public ArrayList<Grocery> getGroceries() {
@@ -62,7 +61,7 @@ public class Menu {
     }
 
     public String toString() {
-        String result = "Menu(Name: " + getName() + ", Portions: " + getPortions() + ", Groceries: ";
+        String result = "Menu(Name: " + getName() + ", Portions: " + getAmount() + ", Groceries: ";
         ArrayList<Grocery> groceries = getGroceries();
         if(groceries.size() > 0) {
             for (Grocery g : groceries) {
