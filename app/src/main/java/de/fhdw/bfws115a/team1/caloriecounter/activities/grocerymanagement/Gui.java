@@ -23,11 +23,11 @@ public class Gui {
     public Gui(Init activity) {
         activity.setContentView(R.layout.quantityunitmanagement);
 
-        mGroceryName = (EditText) activity.findViewById(R.id.idGroceryName);
-        mSelectedAmount = (EditText) activity.findViewById(R.id.idSelectedAmount);
-        mKiloCalories = (EditText) activity.findViewById(R.id.idKiloCalories);
+        mGroceryName = (EditText) activity.findViewById(R.id.idGroceryManagementGroceryName);
+        mSelectedAmount = (EditText) activity.findViewById(R.id.idGroceryManagementSelectedAmount);
+        mKiloCalories = (EditText) activity.findViewById(R.id.idGroceryManagementKiloCalories);
 
-        mSpinner = (Spinner) activity.findViewById(R.id.idSpinner);
+        mSpinner = (Spinner) activity.findViewById(R.id.idGroceryManagementSpinner);
 
         mAddNewQuantity = (ImageView) activity.findViewById(R.id.idAddNewQuantity);
         mDeleteQuantity = (ImageView) activity.findViewById(R.id.idDeleteQuantity);

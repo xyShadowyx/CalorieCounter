@@ -18,13 +18,13 @@ public class Gui {
         activity.setContentView(R.layout.activity_main);
 
         /* IDs müssen noch auf das passende Layout referenziert werden!
-        mPickedGrocery = (TextView) activity.findViewById(R.id.idPickedGrocery);
+        mPickedGrocery = (TextView) activity.findViewById(R.id.idSelectAmountPickedGrocery);
 
-        mSelectedAmount = (EditText) activity.findViewById(R.id.idSelectAmount);
+        mSelectedAmount = (EditText) activity.findViewById(R.id.idSelectAmountSelectAmount);
 
-        mSpinner = activity.findViewById(R.id.idSpinner);
+        mSpinner = activity.findViewById(R.id.idSelectAmountSpinner);
 
-        mAddAmount = activity.findViewById(R.id.idAddAmount); */
+        mAddAmount = activity.findViewById(R.id.idSelectAmountAddAmount); */
     }
 
     /* Getter methods */
