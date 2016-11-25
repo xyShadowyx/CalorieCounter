@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:id="@+id/rowNewGrocery">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="horizontal">
+
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:src="@drawable/plus_32"
+                   android:layout_margin="@dimen/margin"
+                   android:id="@+id/idMenuManagementAddNewGrocery"
+                   android:gravity="center_vertical"/>
+
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="@string/menumanagement_newGroceryInput"
+                  android:textSize="@dimen/textsize"
+                  android:maxLength="32"
+                  android:id="@+id/idMenuManagementAddedGrocery"
+                  android:textColor="@color/gray"
+                  android:layout_margin="@dimen/margin"/>
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="horizontal">
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/menumanagement_lastadd"
+                  android:layout_marginLeft="@dimen/margin"
+                  android:textColor="@color/black"
+                  android:textSize="@dimen/textsize"/>
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:src="@drawable/settings_32"
+                   android:id="@+id/idEditAmountOfGrocery"
+                   android:layout_marginLeft="@dimen/margin"
+        />
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:id="@+id/idMenuManagementDeleteGrocery"
+                   android:src="@drawable/xmark_32"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+

@@ -19,16 +19,16 @@ public class Gui {
     public Gui(Init activity) {
         activity.setContentView(R.layout.activity_main);
 
-        /* IDs müssen noch auf das passende Layout referenziert werden! */
-        mSelectMenuName = (EditText) activity.findViewById(R.id.idSelectMenuName);
-        mSelectPortionSize = (EditText) activity.findViewById(R.id.idSelectPortionSize);
+        /* IDs müssen noch auf das passende Layout referenziert werden! Erledigt*/
+        mSelectMenuName = (EditText) activity.findViewById(R.id.idMenuManagementSelectMenuName);
+        mSelectPortionSize = (EditText) activity.findViewById(R.id.idMenuManagementSelectPortionSize);
 
-        mDeleteGrocery = (ImageView) activity.findViewById(R.id.idDeleteGrocery);
-        mAddNewGrocery = (ImageView) activity.findViewById(R.id.idAddNewGrocery);
+        mDeleteGrocery = (ImageView) activity.findViewById(R.id.idMenuManagementDeleteGrocery);
+        mAddNewGrocery = (ImageView) activity.findViewById(R.id.idMenuManagementAddNewGrocery);
 
-        mAddedGrocery = (TextView) activity.findViewById(R.id.idAddedGrocery);
+        mAddedGrocery = (TextView) activity.findViewById(R.id.idMenuManagementAddedGrocery);
 
-        mAddMenu = (Button) activity.findViewById(R.id.idAddMenu);
+        mAddMenu = (Button) activity.findViewById(R.id.idMenuManagementAddMenu);
     }
 
     /* Getter methods */
