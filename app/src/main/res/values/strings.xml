@@ -42,6 +42,7 @@
     <!-- Values 'groceriesearchoverview'-layout -->
     <string name="groceriesearchoverview_search">Suche</string>
     <string name="groceriesearchoverview_newGrocery">Neues Lebensmittel</string>
+    <string name="groceriesearchoverview_grocery">Lebensmittel</string>
     <string name="groceriesearchoverview_newMenu">Neues Menü</string>
 
     <!-- Values 'dailyoverview'-layout -->
