@@ -10,7 +10,7 @@ public class validation {
      *
      * @param maxLength The maximum length of the given string.
      * @param string    The given string which is checked.
-     * @return False if the string is larger than the maximum value. True if this is not.
+     * @return 'False' if the string is larger than the maximum value. Returns 'true' if this is not.
      */
     public static boolean checkLenght(int maxLength, String string) {
         if (string.length() >= maxLength) {
@@ -24,7 +24,7 @@ public class validation {
      * Checks if an integer value is higher that 0. Returns 'false' if this is not true.
      *
      * @param numberValue The value of a number field.
-     * @return True if the number value is higher than 0. Return false if this is not true.
+     * @return 'True' if the number value is higher than 0. Returns 'false' if this is not true.
      */
     public static boolean checkNumberValue(int numberValue) {
         if (numberValue > 0) {

@@ -2,6 +2,8 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
 import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
 
 /**
  * Created by Florian on 08.11.2016.
@@ -14,6 +16,9 @@ public class Data {
     private int mSelectedAmount;
     private String mSpinnerStatus;
     private int mKiloCalories;
+
+    /* Database Entity Manager */
+    private DatabaseEntityManager mDatabaseEntityManager;
 
     /* Default values */
     private final String DEFAULT_GROCERYNAME = "";
@@ -28,6 +33,7 @@ public class Data {
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
+        mDatabaseEntityManager = new DatabaseEntityManager(new DatabaseHelper(mActivity.getApplicationContext()));
 
         if (savedInstanceState == null) {
             mGroceryName = DEFAULT_GROCERYNAME;
@@ -72,6 +78,10 @@ public class Data {
 
     public String getSpinnerStatus() {
         return mSpinnerStatus;
+    }
+
+    public DatabaseEntityManager getDatabaseEntityManager() {
+        return mDatabaseEntityManager;
     }
 
     /* Setter methods */

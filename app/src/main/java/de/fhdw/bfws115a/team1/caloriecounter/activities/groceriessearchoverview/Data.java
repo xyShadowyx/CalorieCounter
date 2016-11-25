@@ -1,6 +1,10 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview;
 
 import android.os.Bundle;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGrocery;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Grocery;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Menu;
@@ -16,6 +20,7 @@ public class Data {
     private int mDummyInt;
     private ArrayList<GroceriesEntity> mGroceriesEntityList;
     private ListAdapter mListAdapter;
+    private DatabaseEntityManager mDatabaseEntityManager;
 
     /* Default values */
     private final String DEFAULTDUMMYSTRING = "Dummy";
@@ -28,6 +33,8 @@ public class Data {
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
+
+        mDatabaseEntityManager = new DatabaseEntityManager(new DatabaseHelper(mActivity.getApplicationContext()));
 
         mGroceriesEntityList = new ArrayList<GroceriesEntity>();
         mGroceriesEntityList.add(new Grocery("Möhre", new Unit("Stück"), 2.0, 120));
@@ -51,6 +58,14 @@ public class Data {
         m1.addGrocery(new Grocery("Cola", new Unit("ml"), 330.0, 300));
 
         mGroceriesEntityList.add(m1);
+
+        Grocery g1 = new Grocery("Eine kleine Pommes", new Unit("Gramm"), 100.0, 300);
+        DatabaseGrocery dg = mDatabaseEntityManager.createGrocery(g1);
+
+        dg.setName("Eine mittlere Pommes");
+
+        mDatabaseEntityManager.saveGrocery(dg);
+
 
         mListAdapter = new ListAdapter(mActivity, mGroceriesEntityList);
 

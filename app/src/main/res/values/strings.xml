@@ -4,29 +4,29 @@
 
 
     <!-- ### ACTIVITIES STRING DEFAULT VALUES ARE DEFINED HERE ### -->
-    <!-- Default values 'selectamount'-activity-->
+    <!-- Default values 'selectamount'-activity -->
     <string name="selectamount_default_pickedgrocery">Error</string>
     <string name="selectamount_default_spinnerstatus">Einheit</string>
 
-    <!-- Default values 'quantityunitmanagement'-activity-->
+    <!-- Default values 'quantityunitmanagement'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
-    <!-- Default values 'menumanagement'-activity-->
+    <!-- Default values 'menumanagement'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
-    <!-- Default values 'grocerymanagement'-activity-->
+    <!-- Default values 'grocerymanagement'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
-    <!-- Default values 'groceriessearchoverview'-activity-->
+    <!-- Default values 'groceriessearchoverview'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
-    <!-- Default values 'dailyoverview'-activity-->
+    <!-- Default values 'dailyoverview'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
-    <!-- Default values 'calendar'-activity-->
+    <!-- Default values 'calendar'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
-    <!-- Default values 'spinner'-activity-->
+    <!-- Default values 'spinner'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
 
