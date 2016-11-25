@@ -1,9 +1,14 @@
-package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
+package de.fhdw.bfws115a.team1.caloriecounter.activities.databasetest;
 
 import android.app.Activity;
 import android.os.Bundle;
 
+/*
+    Commit Test
+ */
+
 public class Init extends Activity {
+
     private Data mData;
     private Gui mGui;
     private ApplicationLogic mApplicationLogic;

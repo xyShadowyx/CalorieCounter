@@ -1,5 +1,7 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.widget.CalendarView;
 
 /**

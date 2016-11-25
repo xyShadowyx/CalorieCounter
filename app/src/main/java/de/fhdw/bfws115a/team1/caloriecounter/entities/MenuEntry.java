@@ -21,4 +21,12 @@ public class MenuEntry extends Entry {
     public Menu getMenu() {
         return mMenu;
     }
+
+    public void setMenu(Menu menu) {
+        mMenu = new Menu(menu);
+    }
+
+    public String toString() {
+        return "MenuEntry(Year: " + getYear() + ", Month: " + getMonth() + ", Day: " + getDay() + ", Menu: " + getMenu().toString() + ")";
+    }
 }
