@@ -1,6 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.database;
 
-import de.fhdw.bfws115a.team1.caloriecounter.entities.Grocery;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceryEntry;
 
 /**
@@ -9,8 +9,8 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceryEntry;
 public class DatabaseGroceryEntry extends GroceryEntry implements DatabaseEntity {
     private long mId;
 
-    public DatabaseGroceryEntry(int year, int month, int day, Grocery grocery, long id) {
-        super(year, month, day, grocery);
+    public DatabaseGroceryEntry(int year, int month, int day, FixGrocery fixGrocery, long id) {
+        super(year, month, day, fixGrocery);
         mId = id;
     }
 

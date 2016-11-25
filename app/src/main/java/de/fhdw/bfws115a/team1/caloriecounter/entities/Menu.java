@@ -9,34 +9,26 @@ import java.util.ArrayList;
 public class Menu extends GroceriesEntity {
     private double mAmount;
     private int mKcal;
-    private ArrayList<Grocery> mGroceries;
+    private ArrayList<FixGrocery> mFixGroceries;
 
     public Menu(String name, double amount) {
         super(name);
         mAmount = amount;
         mKcal = 0;
-        mGroceries = new ArrayList<Grocery>();
+        mFixGroceries = new ArrayList<FixGrocery>();
     }
 
     public Menu(Menu menu) {
         this(menu.getName(), menu.getAmount());
-        for(Grocery g : menu.getGroceries()) {
-            addGrocery(new Grocery(g));
+        for(FixGrocery fg : menu.getFixGroceries()) {
+            addGrocery(new FixGrocery(fg));
         }
     }
 
-    @Override
-    public Unit getUnit() {
-        // TODO: add 'Portionen' to values as string
-        return new Unit("Portionen");
-    }
-
-    @Override
     public int getKcal() {
         return mKcal;
     }
 
-    @Override
     public double getAmount() {
         return mAmount;
     }
@@ -45,27 +37,29 @@ public class Menu extends GroceriesEntity {
         this.mAmount = mAmount;
     }
 
-    public ArrayList<Grocery> getGroceries() {
-        return mGroceries;
+    public ArrayList<FixGrocery> getFixGroceries() {
+        return mFixGroceries;
     }
 
-    public void addGrocery(Grocery grocery) {
-        mGroceries.add(new Grocery(grocery));
-        mKcal += grocery.getKcal();
+    public void addGrocery(FixGrocery fixGrocery) {
+        mFixGroceries.add(new FixGrocery(fixGrocery));
+        mKcal += fixGrocery.getKcal();
     }
 
-    public void removeGrocery(Grocery grocery) {
-        if(mGroceries.remove(grocery)) {
-            mKcal -= grocery.getKcal();
+    public boolean removeGrocery(FixGrocery fixGrocery) {
+        if(mFixGroceries.remove(fixGrocery)) {
+            mKcal -= fixGrocery.getKcal();
+            return true;
         }
+        return false;
     }
 
     public String toString() {
         String result = "Menu(Name: " + getName() + ", Portions: " + getAmount() + ", Groceries: ";
-        ArrayList<Grocery> groceries = getGroceries();
-        if(groceries.size() > 0) {
-            for (Grocery g : groceries) {
-                result += g.toString();
+        ArrayList<FixGrocery> fixGroceries = getFixGroceries();
+        if(fixGroceries.size() > 0) {
+            for (FixGrocery fg : fixGroceries) {
+                result += fg.toString();
                 result += ", ";
             }
             result = result.substring(0, result.length() - 2);
