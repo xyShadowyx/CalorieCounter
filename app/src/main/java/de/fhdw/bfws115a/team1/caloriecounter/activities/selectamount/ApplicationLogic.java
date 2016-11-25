@@ -32,6 +32,10 @@ public class ApplicationLogic {
         mGui.getAddAmount().setOnClickListener(cl);
     }
 
+    /**
+     * If called, it adds an amount with the right quantity unit to a grocery or menu entity.
+     * A validation checker controls if the input has a valid value.
+     */
     public void onAddAmountClicked() {
         if (validation.checkNumberValue(mData.getSelectedAmount())) {
             Context context = mData.getActivity().getApplicationContext();

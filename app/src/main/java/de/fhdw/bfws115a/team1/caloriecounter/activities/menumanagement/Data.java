@@ -1,6 +1,10 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement;
 
 import android.os.Bundle;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
+
+import java.util.ArrayList;
 
 public class Data {
 
@@ -9,6 +13,10 @@ public class Data {
     private String mSelectMenuName;
     private int mSelectPortionSize;
     private String mAddedGroceries;
+    private ArrayList<FixGrocery> mMenuFixGroceries;
+
+    /* Database Entity Manager */
+    private DatabaseEntityManager mDatabaseEntityManager;
 
     /* Default values */
     private final String DEFAULT_SELECTMENUNAME = "";
@@ -22,6 +30,7 @@ public class Data {
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
+        mDatabaseEntityManager = new DatabaseEntityManager(activity.getApplicationContext());
 
         if (savedInstanceState == null) {
             mSelectMenuName = DEFAULT_SELECTMENUNAME;
@@ -59,6 +68,14 @@ public class Data {
 
     public String getAddedGroceries() {
         return mAddedGroceries;
+    }
+
+    public ArrayList<FixGrocery> getmMenuFixGroceries() {
+        return mMenuFixGroceries;
+    }
+
+    public DatabaseEntityManager getDatabaseEntityManager() {
+        return mDatabaseEntityManager;
     }
 
     /* Setter methods */
