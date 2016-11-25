@@ -15,8 +15,8 @@ public class Gui {
     public Gui(Init activity) {
         activity.setContentView(R.layout.calendar);
 
-        mCalendarView = (CalendarView) activity.findViewById(R.id.idCalendarView);
-        mTodayButton = (Button) activity.findViewById(R.id.idTodayButton);
+        mCalendarView = (CalendarView) activity.findViewById(R.id.idCalendarCalendarView);
+        mTodayButton = (Button) activity.findViewById(R.id.idCalendarTodayButton);
     }
 
     public CalendarView getCalendarView() {
