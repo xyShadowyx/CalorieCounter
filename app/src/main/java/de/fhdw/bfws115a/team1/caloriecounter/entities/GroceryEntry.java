@@ -5,26 +5,26 @@ package de.fhdw.bfws115a.team1.caloriecounter.entities;
  */
 
 public class GroceryEntry extends Entry {
-    private Grocery mGrocery;
+    private FixGrocery mFixGrocery;
 
-    public GroceryEntry(int year, int month, int day, Grocery grocery) {
+    public GroceryEntry(int year, int month, int day, FixGrocery fixGrocery) {
         super(year, month, day);
-        mGrocery = grocery;
+        mFixGrocery = fixGrocery;
     }
 
     public GroceryEntry(GroceryEntry groceryEntry) {
-        this(groceryEntry.getYear(), groceryEntry.getMonth(), groceryEntry.getDay(), groceryEntry.getGrocery());
+        this(groceryEntry.getYear(), groceryEntry.getMonth(), groceryEntry.getDay(), groceryEntry.getFixGrocery());
     }
 
-    public Grocery getGrocery() {
-        return mGrocery;
+    public FixGrocery getFixGrocery() {
+        return mFixGrocery;
     }
 
-    public void setGrocery(Grocery grocery) {
-        mGrocery = new Grocery(grocery);
+    public void setFixGrocery(FixGrocery fixGrocery) {
+        mFixGrocery = new FixGrocery(fixGrocery);
     }
 
     public String toString() {
-        return "GroceryEntry(Year: " + getYear() + ", Month: " + getMonth() + ", Day: " + getDay() + ", Grocery: " + getGrocery().toString() + ")";
+        return "GroceryEntry(Year: " + getYear() + ", Month: " + getMonth() + ", Day: " + getDay() + ", FixGrocery: " + getFixGrocery().toString() + ")";
     }
 }

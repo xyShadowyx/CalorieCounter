@@ -17,8 +17,4 @@ public abstract class GroceriesEntity {
     public void setName(String name) {
         mName = name;
     }
-
-    public abstract Unit getUnit();
-    public abstract int getKcal();
-    public abstract double getAmount();
 }
