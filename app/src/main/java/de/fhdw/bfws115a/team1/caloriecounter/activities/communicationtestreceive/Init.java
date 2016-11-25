@@ -1,4 +1,4 @@
-package de.fhdw.bfws115a.team1.caloriecounter.activities.databasetest;
+package de.fhdw.bfws115a.team1.caloriecounter.activities.communicationtestreceive;
 
 import android.app.Activity;
 import android.os.Bundle;

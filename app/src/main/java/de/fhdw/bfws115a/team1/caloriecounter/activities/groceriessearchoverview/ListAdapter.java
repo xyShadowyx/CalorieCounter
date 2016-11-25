@@ -54,7 +54,7 @@ public class ListAdapter extends BaseAdapter implements Filterable {
         }
 
         GroceriesEntity groceryEnity = (GroceriesEntity) getItem(position);
-        viewHolder.nameText.setText(String.format("%s (%s %s, %d KCal)", groceryEnity.getName(), groceryEnity.getAmount(), groceryEnity.getUnit().getName(), groceryEnity.getKcal()));
+        viewHolder.nameText.setText(String.format("%s ()", groceryEnity.getName()));
         return convertView;
     }
 

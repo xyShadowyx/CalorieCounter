@@ -30,7 +30,7 @@ public class Data {
         mActivity = activity;
 
         mGroceriesEntityList = new ArrayList<GroceriesEntity>();
-        mGroceriesEntityList.add(new Grocery("Möhre", new Unit("Stück"), 2.0, 120));
+/*        mGroceriesEntityList.add(new Grocery("Möhre", new Unit("Stück"), 2.0, 120));
         mGroceriesEntityList.add(new Grocery("Hamburger", new Unit("g"), 200.0, 1200));
         mGroceriesEntityList.add(new Grocery("Cola", new Unit("ml"), 330.0, 300));
         mGroceriesEntityList.add(new Grocery("Kiwi", new Unit("g"), 50.0, 40));
@@ -50,7 +50,7 @@ public class Data {
         m1.addGrocery(new Grocery("Burger", new Unit("g"), 300.0, 1000));
         m1.addGrocery(new Grocery("Cola", new Unit("ml"), 330.0, 300));
 
-        mGroceriesEntityList.add(m1);
+        mGroceriesEntityList.add(m1);*/
 
         mListAdapter = new ListAdapter(mActivity, mGroceriesEntityList);
 

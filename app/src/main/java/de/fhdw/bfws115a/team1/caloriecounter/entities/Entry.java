@@ -1,5 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.entities;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -7,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by Viktor on 15.11.2016.
  */
 
-public class Entry {
+public class Entry implements Serializable {
     private String mName;
 
     private int mYear;

@@ -1,9 +1,11 @@
 package de.fhdw.bfws115a.team1.caloriecounter.entities;
 
+import java.io.Serializable;
+
 /**
  * Created by xySha on 24.11.2016.
  */
-public class GroceryUnit {
+public class GroceryUnit implements Serializable {
     private Unit mUnit;
     private double mAmount;
     private int mKcal;
