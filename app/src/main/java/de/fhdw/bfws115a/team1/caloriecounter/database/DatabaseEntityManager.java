@@ -1,5 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.database;
 
+import android.content.Context;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.List;
@@ -10,8 +11,8 @@ import java.util.List;
 public class DatabaseEntityManager {
     private DatabaseHelper mDatabaseHelper;
 
-    public DatabaseEntityManager(DatabaseHelper databaseHelper) {
-        mDatabaseHelper = databaseHelper;
+    public DatabaseEntityManager(Context context) {
+        mDatabaseHelper = new DatabaseHelper(context);
     }
 
     /* Manage Groceries */

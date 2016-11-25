@@ -60,6 +60,7 @@
 
     <!-- Values 'quantityunitmanagement'-layout -->
     <string name="quantityunitmanagement_quantityunitmanagement">Mengeneinheiten</string>
+    <string name="quantityunitmanagement_exit">Fertig</string>
     <string name="add">Hinzufügen</string>
 
 
