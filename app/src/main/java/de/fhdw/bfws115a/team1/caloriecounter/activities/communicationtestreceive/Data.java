@@ -1,12 +1,9 @@
-package de.fhdw.bfws115a.team1.caloriecounter.activities.databasetest;
+package de.fhdw.bfws115a.team1.caloriecounter.activities.communicationtestreceive;
 
 import android.os.Bundle;
-import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
-import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
 
 public class Data {
     private Init mActivity;
-    private DatabaseEntityManager mDatabaseEntityManager;
 
     /* Data variables */
     private String mDummyString;
@@ -17,12 +14,11 @@ public class Data {
     private final int DEFAULTDUMMYINT = 937;
 
     /* Keys */
-    private final String KEYDUMMYSTRING = "databasetest1";
-    private final String KEYDUMMYINT = "databasetest2";
+    private final String KEYDUMMYSTRING = "dailyoverview1";
+    private final String KEYDUMMYINT = "dailyoverview2";
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
-        mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
 
         if (savedInstanceState == null) {
             mDummyString = DEFAULTDUMMYSTRING;
@@ -47,8 +43,5 @@ public class Data {
         return mActivity;
     }
 
-    public DatabaseEntityManager getDatabaseEntityManager() {
-        return mDatabaseEntityManager;
-    }
     /* Setter methods */
 }

@@ -28,23 +28,21 @@
 
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:id="@+id/NewQuantity">
+                  android:orientation="horizontal">
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/idQuantityUnitManagementAddNewQuantityUnit"
+                   android:src="@drawable/plus_32"
+                   android:layout_margin="@dimen/margin"/>
 
         <ListView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:id="@+id/ListQuantityUnit">
+                  android:id="@+id/idListQuantityUnitManagement">
 
         </ListView>
 
 
     </LinearLayout>
-
-    <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/AddQuantityUnit"
-            android:text="@string/quantityunitmanagement_exit"
-            android:layout_margin="@dimen/margin"
-            android:layout_gravity="end"/>
 
 </LinearLayout>
