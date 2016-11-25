@@ -13,6 +13,7 @@
 
     <!-- Default values 'menumanagement'-activity-->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
+    <string name="grocerymanagement_default_spinnerstatus">Einheit</string>
 
     <!-- Default values 'grocerymanagement'-activity-->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
@@ -65,8 +66,15 @@
 
 
     <!-- Values 'grocerymanagement'-layout -->
+    <string name="grocerymanagement_grocerymanagement">Lebensmittel-Management</string>
+    <string name="grocerymanagement_name">Name:</string>
+    <string name="grocerymanagement_amount">Menge:</string>
+    <string name="grocerymanagement_kcal">Kalorien:</string>
+    <string name="grocerymanagement_add">Hinzufügen</string>
 
     <!-- Values 'selectamount'-layout -->
+    <string name="selectamount_amount">Menge:</string>
+    <string name="selectamount_accept">Übernehmen</string>
 
     <!-- ### TOAST STRING VALUES ARE DEFINED HERE #### -->
     <string name="selectamount_emptyamounttoast">Bitte geben Sie einen gültigen Wert ein.</string>
