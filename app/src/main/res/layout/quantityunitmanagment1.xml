@@ -32,7 +32,7 @@
 
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:id="@+id/idQuantityunitmanagementAddNewQuantityUnit"
+                   android:id="@+id/idQuantityUnitManagementAddNewQuantityUnit"
                    android:src="@drawable/plus_32"
                    android:layout_margin="@dimen/margin"/>
 

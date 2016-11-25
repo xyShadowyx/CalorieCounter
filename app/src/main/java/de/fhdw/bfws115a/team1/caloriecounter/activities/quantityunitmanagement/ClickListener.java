@@ -21,11 +21,11 @@ public class ClickListener implements View.OnClickListener {
         /* IDs müssen vom Layout noch zugewiesen werden! */
         switch (view.getId()) {
             //case für + Button
-            case R.id.idQuantityunitmanagementAddNewQuantityUnit:
+            case R.id.idQuantityUnitManagementAddNewQuantityUnit:
                 mApplicationLogic.onAddNewQuantityUnitClicked();
                 break;
             //case für - Button
-            case R.id.idDQuantityunitmanagementSelectQuantityUnit:
+            case R.id.idDQuantityUnitManagementSelectQuantityUnit:
                 mApplicationLogic.onDeleteQuantityUnitClicked();
                 break;
         }

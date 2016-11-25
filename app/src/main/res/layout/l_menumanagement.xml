@@ -41,9 +41,10 @@
         <EditText android:layout_width="@dimen/inputSize"
                   android:layout_height="wrap_content"
                   android:layout_weight="2"
-                  android:id="@+id/idMenumanagementSelectMenuName"
+                  android:id="@+id/idMenuManagementSelectMenuName"
                   android:layout_marginTop="@dimen/margin"
                   android:layout_marginRight="@dimen/margin"
+                  android:maxLength="32"
                   android:text="@string/menumanagement_newNameInput"
                   android:textSize="@dimen/inputTextSize"
                   android:textColor="@color/gray"/>
@@ -64,11 +65,12 @@
 
         <EditText android:layout_width="@dimen/inputSize"
                   android:layout_height="wrap_content"
-                  android:id="@+id/idMenumanagementSelectPortionSize"
+                  android:id="@+id/idMenuManagementSelectPortionSize"
                   android:layout_weight="2"
                   android:layout_marginTop="@dimen/margin"
                   android:layout_marginRight="@dimen/margin"
                   android:text="@string/menumanagement_newPortionInput"
+                  android:maxLength="16"
                   android:textSize="@dimen/inputTextSize"
                   android:textColor="@color/gray"/>
     </LinearLayout>
@@ -78,7 +80,7 @@
 
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:id="@+id/idMenumanagementAddNewGrocery"
+                   android:id="@+id/idMenuManagementAddNewGrocery"
                    android:src="@drawable/plus_32"
                    android:layout_margin="@dimen/margin"/>
 
@@ -92,6 +94,6 @@
                 android:layout_height="match_parent"
                 android:text="@string/menumanagement_addMenu"
                 android:layout_gravity="end"
-                android:id="@+id/idMenumanagementAddMenu"/>
+                android:id="@+id/idMenuManagementAddMenu"/>
     </LinearLayout>
 </LinearLayout>

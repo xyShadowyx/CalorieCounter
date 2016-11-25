@@ -16,8 +16,8 @@ public class Gui {
         /* ID´s müssen noch vom Layout zugewiesen werden! */
         activity.setContentView(R.layout.quantityunitmanagement);
 
-        mAddNewQuantityUnit = (ImageView) activity.findViewById(R.id.idQuantityunitmanagementAddNewQuantityUnit);
-        mDeleteQuantityUnit = (ImageView) activity.findViewById(R.id.idDQuantityunitmanagementSelectQuantityUnit);
+        mAddNewQuantityUnit = (ImageView) activity.findViewById(R.id.idQuantityUnitManagementAddNewQuantityUnit);
+        mDeleteQuantityUnit = (ImageView) activity.findViewById(R.id.idDQuantityUnitManagementSelectQuantityUnit);
     }
 
     /* Getter methods */

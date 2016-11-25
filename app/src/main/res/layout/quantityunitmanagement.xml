@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/idQuantityunitmanagementAddNewQuantityUnit" />
+            android:id="@+id/idQuantityUnitManagementAddNewQuantityUnit" />
     <ImageView
             android:text="EditText"
             android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/idDQuantityunitmanagementSelectQuantityUnit" />
+            android:id="@+id/idDQuantityUnitManagementSelectQuantityUnit" />
     <EditText
             android:text="EditText"
             android:layout_width="wrap_content"
@@ -115,33 +115,33 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/idMenumanagementSelectPortionSize" />
+            android:id="@+id/idMenuManagementSelectPortionSize" />
     <ImageView
             android:text="EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/idMenumanagementDeleteGrocery" />
+            android:id="@+id/idMenuManagementDeleteGrocery" />
     <ImageView
             android:text="EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/idMenumanagementAddNewGrocery" />
+            android:id="@+id/idMenuManagementAddNewGrocery" />
     <EditText
             android:text="EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/idMenumanagementAddedGrocery" />
+            android:id="@+id/idMenuManagementAddedGrocery" />
     <Button
             android:text="EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/idMenumanagementAddMenu" />
+            android:id="@+id/idMenuManagementAddMenu" />
 </LinearLayout>
