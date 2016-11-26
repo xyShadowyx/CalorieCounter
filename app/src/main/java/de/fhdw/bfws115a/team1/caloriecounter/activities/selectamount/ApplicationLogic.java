@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.utilities.validation;
 
 public class ApplicationLogic {
@@ -38,17 +39,17 @@ public class ApplicationLogic {
      */
     public void onAddAmountClicked() {
         if (validation.checkNumberValue(mData.getSelectedAmount())) {
+            /* Return of values to the activity which triggered 'selectamount' */
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("amount", Integer.parseInt(mGui.getSelectedAmount().getText().toString()));
+            resultIntent.putExtra("unit", mGui.getSpinnerStatus().getSelectedItem().toString());
+            mData.getActivity().setResult(Activity.RESULT_OK, resultIntent);
+            mData.getActivity().finish();
+        } else {
             Context context = mData.getActivity().getApplicationContext();
             Toast toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
             toast.show();
         }
-
-        /* Return of values to the activity which triggered 'selectamount' */
-        Intent resultIntent = new Intent();
-        resultIntent.putExtra("amount", Integer.parseInt(mGui.getSelectedAmount().getText().toString()));
-        resultIntent.putExtra("unit", mGui.getSpinnerStatus().getSelectedItem().toString());
-        mData.getActivity().setResult(Activity.RESULT_OK, resultIntent);
-        mData.getActivity().finish();
     }
 }
 
