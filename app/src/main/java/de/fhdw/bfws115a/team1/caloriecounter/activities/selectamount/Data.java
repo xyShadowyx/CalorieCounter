@@ -2,6 +2,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount;
 
 import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 
 public class Data {
 
