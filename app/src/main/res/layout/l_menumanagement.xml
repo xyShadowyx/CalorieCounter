@@ -31,14 +31,13 @@
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="match_parent"
-                  android:layout_weight="1"
                   android:text="@string/menumanagement_name"
                   android:textColor="@color/black"
                   android:layout_marginTop="@dimen/margin"
                   android:layout_marginLeft="@dimen/margin"
                   android:layout_marginRight="@dimen/margin"/>
 
-        <EditText android:layout_width="@dimen/inputSize"
+        <EditText android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_weight="2"
                   android:id="@+id/idMenuManagementSelectMenuName"
@@ -50,45 +49,55 @@
                   android:textColor="@color/gray"/>
     </LinearLayout>
 
-    <LinearLayout android:layout_width="match_parent"
+    <LinearLayout android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:orientation="horizontal">
 
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="match_parent"
-                  android:layout_weight="1"
                   android:text="@string/menumanagement_portion"
                   android:textColor="@color/black"
                   android:layout_marginTop="@dimen/margin"
                   android:layout_marginLeft="@dimen/margin"/>
 
-        <EditText android:layout_width="@dimen/inputSize"
+        <EditText android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:id="@+id/idMenuManagementSelectPortionSize"
-                  android:layout_weight="2"
                   android:layout_marginTop="@dimen/margin"
                   android:layout_marginRight="@dimen/margin"
                   android:text="@string/menumanagement_newPortionInput"
                   android:maxLength="16"
                   android:textSize="@dimen/inputTextSize"
                   android:textColor="@color/gray"/>
+
     </LinearLayout>
 
     <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal">
 
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:id="@+id/idMenuManagementAddNewGrocery"
                    android:src="@drawable/plus_32"
-                   android:layout_margin="@dimen/margin"/>
+                   android:layout_margin="@dimen/margin"
+                   android:id="@+id/idMenuManagementAddNewGrocery"/>
 
-
-        <ListView android:layout_width="wrap_content"
+        <EditText android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:id="@+id/idMenuMangementList">
-        </ListView>
+                  android:text="@string/menumanagement_newGroceryInput"
+                  android:textSize="@dimen/textsize"
+                  android:maxLength="32"
+                  android:id="@+id/idMenuManagementAddedGrocery"
+                  android:textColor="@color/gray"
+                  android:layout_margin="@dimen/margin"/>
+
+    </LinearLayout>
+
+    <ListView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/idMenuMangementList">
+    </ListView>
 
         <Button android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -96,4 +105,4 @@
                 android:layout_gravity="end"
                 android:id="@+id/idMenuManagementAddMenu"/>
     </LinearLayout>
-</LinearLayout>
+
