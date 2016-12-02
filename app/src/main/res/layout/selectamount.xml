@@ -62,8 +62,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:entries="@array/amount_array"
-            android:prompt="@string/amountstring"
-            />
+        />
+            <!--android:prompt="@string/amountstring"-->
     </LinearLayout>
 
     <Button

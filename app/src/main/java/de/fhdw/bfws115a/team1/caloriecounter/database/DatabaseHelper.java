@@ -342,6 +342,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return getGroceries(GROCERY_NAME + " LIKE '%" + DatabaseUtils.sqlEscapeString(name) + "%'");
     }
 
+    public boolean isGroceryNameAvailable(String name) {
+        return getGroceries(GROCERY_NAME + " = '" + DatabaseUtils.sqlEscapeString(name) + "'").size() > 0;
+    }
+
     /* GroceryEntry Methods */
     public DatabaseGroceryEntry createGroceryEntry(GroceryEntry groceryEntry) {
         SQLiteDatabase database;
@@ -641,6 +645,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return getMenus(MENU_NAME + " = '" + DatabaseUtils.sqlEscapeString(name) + "'");
     }
 
+    public boolean isMenuNameAvailable(String name) {
+        return getMenus(MENU_NAME + " = '" + DatabaseUtils.sqlEscapeString(name) + "'").size() > 0;
+    }
+
     /* MenuEntry Methods */
     public DatabaseMenuEntry createMenuEntry(MenuEntry menuEntry) {
         SQLiteDatabase database;
@@ -927,5 +935,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 UNIT_ID + " = ?",
                 new String[]{String.valueOf(databaseUnit.getId())}
         ) > 0;
+    }
+
+    public boolean isUnitNameAvailable(String name) {
+        return getUnits(UNIT_NAME + " = '" + DatabaseUtils.sqlEscapeString(name) + "'").size() > 0;
     }
 }

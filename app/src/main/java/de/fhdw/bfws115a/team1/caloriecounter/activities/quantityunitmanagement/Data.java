@@ -25,7 +25,7 @@ public class Data {
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
-        mDatabaseEntityManager = new DatabaseEntityManager(new DatabaseHelper(mActivity.getApplicationContext()));
+        mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
 
         if (savedInstanceState == null) {
             mNewQuantityUnitName = DEFAULT_NEWQUANTITYUNITNAME;
