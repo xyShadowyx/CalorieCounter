@@ -27,9 +27,8 @@ public class Data {
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
-        Intent intent = mActivity.getIntent();
-
         if (savedInstanceState == null) {
+            Intent intent = mActivity.getIntent();
             Calendar calendarToday = Calendar.getInstance();
             mSelectedYear = intent.getIntExtra("year", calendarToday.get(Calendar.YEAR));
             mSelectedMonth = intent.getIntExtra("month", calendarToday.get(Calendar.MONTH));

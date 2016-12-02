@@ -21,6 +21,10 @@ public class FixGrocery extends GroceriesEntity {
         this(fixGrocery.getName(), fixGrocery.getUnit(), fixGrocery.getAmount(), fixGrocery.getKcal());
     }
 
+    public FixGrocery(Grocery grocery, GroceryUnit groceryUnit) {
+        this(grocery.getName(), groceryUnit.getUnit(), groceryUnit.getAmount(), groceryUnit.getKcal());
+    }
+
     public Unit getUnit() {
         return mUnit;
     }

@@ -45,7 +45,7 @@ public class ApplicationLogic {
     public void onAddNewQuantityUnitClicked() {
         //prüfen ob es diese Einheit schon gibt (Datenbankabfrage) -- toast message "Einheit ist bereits vorhanden"
         if (validation.checkLenght(DatabaseHelper.SHORT_NAME_LENGTH, mData.getNewQuantityUnitName())
-                && mDatabaseEntityManager.isQuanitityUnitNameAvailable(mData.getNewQuantityUnitName())) {
+                && mDatabaseEntityManager.isUnitNameAvailable(mData.getNewQuantityUnitName())) {
 
             //erstellen + abspeichern in der DB
             Unit newQuantity = new Unit(mData.getNewQuantityUnitName());

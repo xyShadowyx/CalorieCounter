@@ -3,14 +3,19 @@ package de.fhdw.bfws115a.team1.caloriecounter.entities;
 import java.util.ArrayList;
 
 /**
- * Created by Viktor on 15.11.2016.
+ * This class contains the structure of a menu.
  */
-
 public class Menu extends GroceriesEntity {
     private double mAmount;
     private int mKcal;
     private ArrayList<FixGrocery> mFixGroceries;
 
+    /**
+     * Constructor
+     *
+     * @param name
+     * @param amount
+     */
     public Menu(String name, double amount) {
         super(name);
         mAmount = amount;
@@ -18,6 +23,11 @@ public class Menu extends GroceriesEntity {
         mFixGroceries = new ArrayList<FixGrocery>();
     }
 
+    /**
+     * Constructor for copies
+     *
+     * @param menu
+     */
     public Menu(Menu menu) {
         this(menu.getName(), menu.getAmount());
         for(FixGrocery fg : menu.getFixGroceries()) {
@@ -25,10 +35,20 @@ public class Menu extends GroceriesEntity {
         }
     }
 
+    /**
+     * Get calories of this menu
+     *
+     * @return amount of kilocalories
+     */
     public int getKcal() {
         return mKcal;
     }
 
+    /**
+     * Get the
+     *
+     * @return
+     */
     public double getAmount() {
         return mAmount;
     }

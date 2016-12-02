@@ -53,10 +53,18 @@
         <ListView
                 android:id="@+id/idListView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="312dp"
                 android:paddingBottom="@dimen/margin">
 
         </ListView>
+
+        <TextView
+                android:id="@+id/idGrocerySearchoverviewEmptyListText"
+                android:text="Keine Einträge gefunden"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+        />
 
     </LinearLayout>
 

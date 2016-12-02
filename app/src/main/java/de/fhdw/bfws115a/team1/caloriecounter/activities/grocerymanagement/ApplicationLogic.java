@@ -71,7 +71,7 @@ public class ApplicationLogic {
 
         //prüfen ob es diese einheit schon gibt (Datenbankabfrage) -- toast message "Einheit ist bereits vorhanden"
         if (validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getGroceryName())
-                && mDatabaseEntityManager.isGroveryNameAvailable(mData.getGroceryName())) {
+                && mDatabaseEntityManager.isGroceryNameAvailable(mData.getGroceryName())) {
             if (validation.checkNumberValue(mData.getKiloCalories())) {
                 //abspeichern in der DB }
             } else {
