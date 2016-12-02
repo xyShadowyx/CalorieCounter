@@ -74,6 +74,11 @@ public class Menu extends GroceriesEntity {
         return false;
     }
 
+    public void removeAllGrocery() {
+        mFixGroceries.clear();
+        mKcal = 0;
+    }
+
     public String toString() {
         String result = "Menu(Name: " + getName() + ", Portions: " + getAmount() + ", Groceries: ";
         ArrayList<FixGrocery> fixGroceries = getFixGroceries();
