@@ -47,13 +47,14 @@ public class ApplicationLogic {
         if (validation.checkLenght(DatabaseHelper.SHORT_NAME_LENGTH, mData.getNewQuantityUnitName())
                 && mDatabaseEntityManager.isUnitNameAvailable(mData.getNewQuantityUnitName())) {
 
-            //erstellen + abspeichern in der DB
+            /* Creates a new quantity unit and writes it in personal database. */
             Unit newQuantity = new Unit(mData.getNewQuantityUnitName());
             mDatabaseEntityManager.createUnit(newQuantity);
 
             // Liste aktualisieren
 
-            mData.setNewQuantityUnitName(""); // Methode leert das Textfeld!
+            /* Clears the input edit text for a new quantity unit. */
+            mData.setNewQuantityUnitName("");
 
         } else {
             Context context = mData.getActivity().getApplicationContext();
@@ -67,5 +68,6 @@ public class ApplicationLogic {
      * Furthermore it deletes the quantity unit in the personal database.
      */
     public void onDeleteQuantityUnitClicked() {
+        /* Löschen der speziefischen Einheit */
     }
 }

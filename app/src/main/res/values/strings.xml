@@ -90,7 +90,7 @@
         Ihrer Datenbank vorhanden.
     </string>
     <string name="menumanagement_existingmenuindbtoast">Ein Menü mit diesem Namen ist bereits in Ihrer Datenbank
-        vorhanden
+        vorhanden.
     </string>
 
 </resources>
