@@ -16,6 +16,8 @@ public class ApplicationLogic {
     private Gui mGui;
     private DatabaseEntityManager mDatabaseEntityManager;
 
+    private ListAdapter mla;
+
     public ApplicationLogic(Data data, Gui gui) {
         mData = data;
         mGui = gui;
@@ -41,22 +43,14 @@ public class ApplicationLogic {
     }
 
     private void initAdapter() {
-        ListAdapter la = new ListAdapter(mData, this);
+        mla = new ListAdapter(mData, this);
 
-        mGui.getListView().setAdapter(la);
+        mGui.getListView().setAdapter(mla);
 
         mData.getMenuFixGroceries().add(new FixGrocery("String1", new Unit("String"), 10.0, 1));
         mData.getMenuFixGroceries().add(new FixGrocery("String2", new Unit("String"), 10.0, 1));
         mData.getMenuFixGroceries().add(new FixGrocery("String3", new Unit("String"), 10.0, 1));
         mData.getMenuFixGroceries().add(new FixGrocery("String4", new Unit("String"), 10.0, 1));
-    }
-
-    /**
-     * If called, it deletes the selected grocery entity.
-     * Furthermore it deletes the specific grocery entity of the selected menu.
-     */
-    public void onDeleteGroceryClicked() {
-        /* Löscht ein hinzugefügtes Lebensmittel aus dem Menü! */
     }
 
     /**
@@ -72,11 +66,12 @@ public class ApplicationLogic {
      * if the menu name is not already saved in the personal database.
      */
     public void onAddMenuClicked() {
-
+        
     }
 
     public void onDeleteGroceryClicked(FixGrocery fixGrocery) {
         mData.getMenuFixGroceries().remove(fixGrocery);
+        mla.notifyDataSetChanged();
     }
 
     /**
