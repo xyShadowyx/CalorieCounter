@@ -10,10 +10,32 @@
                   android:layout_height="match_parent"
                   android:orientation="horizontal">
 
-        <TextView android:layout_width="wrap_content"
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:src="@drawable/plus_32"
+                   android:layout_margin="@dimen/margin"
+                   android:id="@+id/idMenuManagementAddNewGrocery"
+                   android:gravity="center_vertical"/>
+
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="@string/menumanagement_newGroceryInput"
+                  android:textSize="@dimen/textsize"
+                  android:id="@+id/idMenuManagementAddedGrocery"
+                  android:maxLength="32"
+                  android:textColor="@color/gray"
+                  android:layout_margin="@dimen/margin"/>
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="horizontal">
+
+        <TextView android:id="@+id/idMenuManagementName"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:text="@string/menumanagement_lastadd"
-                  android:id="@+id/idMenuManagementLastAdd"
                   android:layout_marginLeft="@dimen/margin"
                   android:textColor="@color/black"
                   android:textSize="@dimen/textsize"/>

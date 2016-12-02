@@ -7,6 +7,7 @@ import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Menu;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 import de.fhdw.bfws115a.team1.caloriecounter.utilities.validation;
 
 public class ApplicationLogic {
@@ -21,6 +22,7 @@ public class ApplicationLogic {
         mDatabaseEntityManager = mData.getDatabaseEntityManager();
         initGui();
         initListener();
+        initAdapter();
     }
 
     private void initGui() {
@@ -28,14 +30,25 @@ public class ApplicationLogic {
     }
 
     private void initListener() {
-        ClickListener cl;
+        /*ClickListener cl;
 
         cl = new ClickListener(this);
         mGui.getSelectMenuName().setOnClickListener(cl);
         mGui.getSelectPortionSize().setOnClickListener(cl);
         mGui.getDeleteGrocery().setOnClickListener(cl);
         mGui.getAddNewGrocery().setOnClickListener(cl);
-        mGui.getAddMenu().setOnClickListener(cl);
+        mGui.getAddMenu().setOnClickListener(cl);*/
+    }
+
+    private void initAdapter() {
+        ListAdapter la = new ListAdapter(mData, this);
+
+        mGui.getListView().setAdapter(la);
+
+        mData.getMenuFixGroceries().add(new FixGrocery("String1", new Unit("String"), 10.0, 1));
+        mData.getMenuFixGroceries().add(new FixGrocery("String2", new Unit("String"), 10.0, 1));
+        mData.getMenuFixGroceries().add(new FixGrocery("String3", new Unit("String"), 10.0, 1));
+        mData.getMenuFixGroceries().add(new FixGrocery("String4", new Unit("String"), 10.0, 1));
     }
 
     /**
@@ -59,12 +72,24 @@ public class ApplicationLogic {
      * if the menu name is not already saved in the personal database.
      */
     public void onAddMenuClicked() {
+
+    }
+
+    public void onDeleteGroceryClicked(FixGrocery fixGrocery) {
+        mData.getMenuFixGroceries().remove(fixGrocery);
+    }
+
+    /**
+     *
+     */
+    public void createNewMenu() {
         /* Neues Menü anlegen und in der Datenbank speichern */
         if (validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getSelectMenuName())
-                && mDatabaseEntityManager.isMenuNameAvailable(mData.getSelectMenuName())) { /* Wird bearbeitet oder nicht */
+                && mDatabaseEntityManager.isMenuNameAvailable(mData.getSelectMenuName())) {
+
             if (validation.checkNumberValue(mData.getSelectPortionSize())) {
                 Menu newMenu = new Menu(mData.getSelectMenuName(), mData.getSelectPortionSize());
-                for (FixGrocery fg : mData.getmMenuFixGroceries()) {
+                for (FixGrocery fg : mData.getMenuFixGroceries()) {
                     newMenu.addGrocery(new FixGrocery(fg));
                 }
                 mDatabaseEntityManager.createMenu(newMenu);
@@ -73,15 +98,37 @@ public class ApplicationLogic {
                 Toast toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
                 toast.show();
             }
+
         } else {
             Context context = mData.getActivity().getApplicationContext();
             Toast toast = Toast.makeText(context, R.string.menumanagement_existingmenuindbtoast, Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
 
-        /* Menüname + Portionsgröße + hinzugefügte Lebensmittel werden als Menü zusammengefasst in die Datenbank geschrieben
-        * Menüname und Portionsgröße müssen überprüft werden hinsichtlich Eingabe
-        * Überlegung Strings allgemeiner zu fassen oder umzubenennen toast_xxx
-        * */
+    public void editMenu() {
+        if (validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getSelectMenuName()) &&
+                (mData.getInputMenu().getName() == mData.getSelectMenuName() || mDatabaseEntityManager.isMenuNameAvailable(mData.getSelectMenuName()))) {
+
+            if (validation.checkNumberValue(mData.getSelectPortionSize())) {
+                mData.getInputMenu().removeAllGrocery();
+                mData.getInputMenu().setName(mData.getSelectMenuName());
+                mData.getInputMenu().setAmount(mData.getSelectPortionSize());
+
+                for (FixGrocery fg : mData.getMenuFixGroceries()) {
+                    mData.getInputMenu().addGrocery(new FixGrocery(fg));
+                }
+                mDatabaseEntityManager.saveMenu(mData.getInputMenu());
+            } else {
+                Context context = mData.getActivity().getApplicationContext();
+                Toast toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
+                toast.show();
+            }
+
+        } else {
+            Context context = mData.getActivity().getApplicationContext();
+            Toast toast = Toast.makeText(context, R.string.menumanagement_existingmenuindbtoast, Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 }
