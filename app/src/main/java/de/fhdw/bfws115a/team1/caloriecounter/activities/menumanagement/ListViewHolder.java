@@ -19,7 +19,7 @@ public class ListViewHolder {
         mApplicationLogic = applicationLogic;
         mFixGrocery = fixGrocery;
 
-        mNameText = (TextView) view.findViewById(R.id.idMenuManagementName);
+        mNameText = (TextView) view.findViewById(R.id.idMenuManagementLastAdd);
         mDeleteImage = (ImageView) view.findViewById(R.id.idMenuManagementDeleteGrocery);
 
         initListener();
