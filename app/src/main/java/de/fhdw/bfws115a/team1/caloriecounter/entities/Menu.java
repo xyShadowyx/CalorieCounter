@@ -30,7 +30,7 @@ public class Menu extends GroceriesEntity {
      */
     public Menu(Menu menu) {
         this(menu.getName(), menu.getAmount());
-        for(FixGrocery fg : menu.getFixGroceries()) {
+        for (FixGrocery fg : menu.getFixGroceries()) {
             addGrocery(new FixGrocery(fg));
         }
     }
@@ -54,6 +54,12 @@ public class Menu extends GroceriesEntity {
     }
 
     public void setAmount(double mAmount) {
+        mKcal = 0;
+        for (FixGrocery fg : getFixGroceries()) {
+            fg.setAmount(fg.getAmount() * mAmount);
+            fg.setKcal((int) Math.round(fg.getAmount() * mAmount * fg.getKcal()));
+            mKcal += fg.getKcal();
+        }
         this.mAmount = mAmount;
     }
 
@@ -67,7 +73,7 @@ public class Menu extends GroceriesEntity {
     }
 
     public boolean removeGrocery(FixGrocery fixGrocery) {
-        if(mFixGroceries.remove(fixGrocery)) {
+        if (mFixGroceries.remove(fixGrocery)) {
             mKcal -= fixGrocery.getKcal();
             return true;
         }
@@ -82,7 +88,7 @@ public class Menu extends GroceriesEntity {
     public String toString() {
         String result = "Menu(Name: " + getName() + ", Portions: " + getAmount() + ", Groceries: ";
         ArrayList<FixGrocery> fixGroceries = getFixGroceries();
-        if(fixGroceries.size() > 0) {
+        if (fixGroceries.size() > 0) {
             for (FixGrocery fg : fixGroceries) {
                 result += fg.toString();
                 result += ", ";

@@ -8,14 +8,16 @@ import java.util.ArrayList;
 
 public class Grocery extends GroceriesEntity {
     private ArrayList<GroceryUnit> mGroceryUnits;
+    private double mKcal;
 
-    public Grocery(String name) {
+    public Grocery(String name, double kcal) {
         super(name);
         mGroceryUnits = new ArrayList<GroceryUnit>();
+        mKcal = kcal;
     }
 
     public Grocery(Grocery grocery) {
-        this(grocery.getName());
+        this(grocery.getName(), grocery.getKcal());
         for(GroceryUnit gu : grocery.getGroceryUnits()) {
             addGroceryUnit(new GroceryUnit(gu));
         }
@@ -46,6 +48,14 @@ public class Grocery extends GroceriesEntity {
             mGroceryUnits.remove(removeGroceryUnit);
         }
         return false;*/
+    }
+
+    public double getKcal() {
+        return mKcal;
+    }
+
+    public void setKcal(double mKcal) {
+        this.mKcal = mKcal;
     }
 
     public String toString() {
