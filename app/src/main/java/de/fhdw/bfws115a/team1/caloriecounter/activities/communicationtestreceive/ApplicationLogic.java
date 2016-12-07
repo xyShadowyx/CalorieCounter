@@ -28,7 +28,6 @@ public class ApplicationLogic {
 
     private void doSmth() {
         Unit unit = (Unit) mData.getActivity().getIntent().getSerializableExtra("unit");
-        //mGui.getDummyTextView().setText("test");
         mGui.getDummyTextView().setText(unit.getName());
     }
 }

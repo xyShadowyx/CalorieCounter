@@ -14,47 +14,36 @@ public class Data {
     private Init mActivity;
 
     /* Data variables */
-    private String mDummyString;
-    private int mDummyInt;
     private ArrayList<GroceriesEntity> mGroceriesEntityList;
     private DatabaseEntityManager mDatabaseEntityManager;
 
-    private boolean mIsWaitingForResult;
-
     /* Default values */
-    private final boolean DEFAULTISWAITINGFORRESULT = false;
+    private final boolean DEFAULT_GROCERIESENTITYLIST = false;
 
     /* Keys */
-    private final String KEYISWAITINGFORRESULT = "groceriessearchoverview1";
+    private final String KEY_GROCERIES_ENTITY_LIST = "groceriessearchoverview1";
 
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
-
         mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
-        mGroceriesEntityList = new ArrayList<GroceriesEntity>();
-
-        mGroceriesEntityList.addAll(mDatabaseEntityManager.getAllGroceries());
-        mGroceriesEntityList.addAll(mDatabaseEntityManager.getAllMenus());
 
         if (savedInstanceState == null) {
-            Intent intent = mActivity.getIntent();
-            mIsWaitingForResult = intent.getBooleanExtra("waiting_for_result", DEFAULTISWAITINGFORRESULT);
+            mGroceriesEntityList = new ArrayList<GroceriesEntity>();
+
+            mGroceriesEntityList.addAll(mDatabaseEntityManager.getAllGroceries());
+            mGroceriesEntityList.addAll(mDatabaseEntityManager.getAllMenus());
         } else {
             restoreDataFromBundle(savedInstanceState);
         }
     }
 
     public void saveDataInBundle(Bundle b) {
-        b.putBoolean(KEYISWAITINGFORRESULT, mIsWaitingForResult);
+        b.putSerializable(KEY_GROCERIES_ENTITY_LIST, mGroceriesEntityList);
     }
 
     private void restoreDataFromBundle(Bundle b) {
-        mIsWaitingForResult = b.getBoolean(KEYISWAITINGFORRESULT);
-    }
-
-    public boolean isWaitingForResult() {
-        return mIsWaitingForResult;
+        mGroceriesEntityList = (ArrayList<GroceriesEntity>) b.getSerializable(KEY_GROCERIES_ENTITY_LIST);
     }
 
     /* Getter methods */

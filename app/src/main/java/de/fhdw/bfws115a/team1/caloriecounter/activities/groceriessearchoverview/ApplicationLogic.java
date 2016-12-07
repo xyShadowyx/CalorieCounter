@@ -42,10 +42,9 @@ public class ApplicationLogic {
     }
 
     public void onItemSelected(GroceriesEntity groceriesEntity) {
-        if(mData.isWaitingForResult()) {
-            Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount.Init.class);
-            mData.getActivity().startActivityForResult(intent, ResultCodes.SELECT_AMOUNT);
-        }
+        Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount.Init.class);
+
+        mData.getActivity().startActivityForResult(intent, ResultCodes.SELECT_AMOUNT);
     }
 
     public void onSelectAmountResult(Intent data) {
