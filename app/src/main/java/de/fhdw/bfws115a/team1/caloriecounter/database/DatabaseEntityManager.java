@@ -40,6 +40,10 @@ public class DatabaseEntityManager {
         return mDatabaseHelper.getGroceriesContains(name);
     }
 
+    public boolean isGroceryNameAvailable(String name) {
+        return mDatabaseHelper.isGroceryNameAvailable(name);
+    }
+
 
     /* Manage GroceryEntries */
     public DatabaseGroceryEntry createGroceryEntry(GroceryEntry groceryEntry) {
@@ -91,6 +95,10 @@ public class DatabaseEntityManager {
         return mDatabaseHelper.getMenusContains(name);
     }
 
+    public boolean isMenuNameAvailable(String name) {
+        return mDatabaseHelper.isMenuNameAvailable(name);
+    }
+
     /* Manage MenuEntries */
     public DatabaseMenuEntry createMenuEntry(MenuEntry menuEntry) {
         return mDatabaseHelper.createMenuEntry(menuEntry);
@@ -136,4 +144,9 @@ public class DatabaseEntityManager {
     public List<DatabaseUnit> getAllUnits() {
         return mDatabaseHelper.getAllUnits();
     }
+
+    public boolean isUnitNameAvailable(String name) {
+        return mDatabaseHelper.isUnitNameAvailable(name);
+    }
+
 }

@@ -1,21 +1,21 @@
 package de.fhdw.bfws115a.team1.caloriecounter.entities;
 
+import java.io.Serializable;
+
 /**
  * Created by xySha on 24.11.2016.
  */
-public class GroceryUnit {
+public class GroceryUnit implements Serializable {
     private Unit mUnit;
     private double mAmount;
-    private int mKcal;
 
-    public GroceryUnit(Unit unit, double amount, int kcal) {
+    public GroceryUnit(Unit unit, double amount) {
         mUnit = new Unit(unit);
         mAmount = amount;
-        mKcal = kcal;
     }
 
     public GroceryUnit(GroceryUnit groceryUnit) {
-        this(groceryUnit.getUnit(), groceryUnit.getAmount(), groceryUnit.getKcal());
+        this(groceryUnit.getUnit(), groceryUnit.getAmount());
     }
 
     public Unit getUnit() {
@@ -34,17 +34,8 @@ public class GroceryUnit {
         this.mAmount = mAmount;
     }
 
-    public int getKcal() {
-        return mKcal;
-    }
-
-    public void setmKcal(int mKcal) {
-        this.mKcal = mKcal;
-    }
-
     public boolean equals(GroceryUnit groceryUnit) {
         return (groceryUnit.getUnit().getName() == this.getUnit().getName()
-                && groceryUnit.getKcal() == this.getKcal()
                 && groceryUnit.getAmount() == this.getAmount());
     }
 }

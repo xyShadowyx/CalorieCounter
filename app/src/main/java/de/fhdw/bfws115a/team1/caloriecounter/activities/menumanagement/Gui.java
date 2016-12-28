@@ -16,19 +16,23 @@ public class Gui {
 
     private Button mAddMenu;
 
+    private ListView mListView;
+
     public Gui(Init activity) {
-        activity.setContentView(R.layout.activity_main);
+        activity.setContentView(R.layout.menumanagement);
 
-        /* IDs müssen noch auf das passende Layout referenziert werden! */
-        mSelectMenuName = (EditText) activity.findViewById(R.id.idSelectMenuName);
-        mSelectPortionSize = (EditText) activity.findViewById(R.id.idSelectPortionSize);
+        /* IDs müssen noch auf das passende Layout referenziert werden! Erledigt*/
+        mSelectMenuName = (EditText) activity.findViewById(R.id.idMenuManagementSelectMenuName);
+        mSelectPortionSize = (EditText) activity.findViewById(R.id.idMenuManagementSelectPortionSize);
 
-        mDeleteGrocery = (ImageView) activity.findViewById(R.id.idDeleteGrocery);
-        mAddNewGrocery = (ImageView) activity.findViewById(R.id.idAddNewGrocery);
+        mDeleteGrocery = (ImageView) activity.findViewById(R.id.idMenuManagementDeleteGrocery);
+        mAddNewGrocery = (ImageView) activity.findViewById(R.id.idMenuManagementAddNewGrocery);
 
-        mAddedGrocery = (TextView) activity.findViewById(R.id.idAddedGrocery);
+        mAddedGrocery = (TextView) activity.findViewById(R.id.idMenuManagementAddedGrocery);
 
-        mAddMenu = (Button) activity.findViewById(R.id.idAddMenu);
+        mAddMenu = (Button) activity.findViewById(R.id.idMenuManagementAddMenu);
+
+        mListView = (ListView) activity.findViewById(R.id.idMenuMangementList);
     }
 
     /* Getter methods */
@@ -56,5 +60,8 @@ public class Gui {
         return mAddMenu;
     }
 
+    public ListView getListView() {
+        return mListView;
+    }
     /* Methods to change view attributes */
 }

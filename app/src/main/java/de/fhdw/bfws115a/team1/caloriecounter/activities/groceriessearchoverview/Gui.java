@@ -3,6 +3,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview
 import android.widget.*;
 
 import de.fhdw.bfws115a.team1.caloriecounter.R;
+import org.w3c.dom.Text;
 
 public class Gui {
 
@@ -10,6 +11,7 @@ public class Gui {
     private ListView mListView;
     private ImageView mAddGroceryButton;
     private ImageView mAddMenuButton;
+    private TextView mEmptyListTextView;
 
     public Gui(Init activity) {
         activity.setContentView(R.layout.groceriessearchoverview);
@@ -19,6 +21,7 @@ public class Gui {
 
         mAddGroceryButton = (ImageView) activity.findViewById(R.id.idAddGroceryButton);
         mAddMenuButton = (ImageView) activity.findViewById(R.id.idAddMenuButton);
+        mEmptyListTextView = (TextView) activity.findViewById(R.id.idGrocerySearchoverviewEmptyListText);
     }
 
     public ListView getListView() {
@@ -35,5 +38,9 @@ public class Gui {
 
     public ImageView getAddMenuButton() {
         return mAddMenuButton;
+    }
+
+    public TextView getEmptyListTextView() {
+        return mEmptyListTextView;
     }
 }

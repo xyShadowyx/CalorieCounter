@@ -3,6 +3,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 import android.content.Context;
 import android.widget.Toast;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
 import de.fhdw.bfws115a.team1.caloriecounter.utilities.validation;
 
@@ -13,10 +14,12 @@ public class ApplicationLogic {
 
     private Data mData;
     private Gui mGui;
+    private DatabaseEntityManager mDatabaseEntityManager;
 
     public ApplicationLogic(Data data, Gui gui) {
         mData = data;
         mGui = gui;
+        mDatabaseEntityManager = mData.getDatabaseEntityManager();
         initGui();
         initListener();
     }
@@ -37,6 +40,10 @@ public class ApplicationLogic {
 
     }
 
+    /**
+     * If called, it creates a new quantity unit of the selected grocery entity.
+     * The added new quantity unit will also be saved in the personal database.
+     */
     public void onAddNewQuantityClicked() {
         if (validation.checkNumberValue(mData.getSelectedAmount())) {
             /* generiere neue Mengeneinheit im Layout */
@@ -47,14 +54,24 @@ public class ApplicationLogic {
         }
     }
 
+    /**
+     * If called, deletes the selected quantity unit.
+     * It also deletes the selected quantity unit from the selected grocery entity.
+     */
     public void onDeleteQuantityClicked() {
         /* Lösche aus der DB! */
     }
 
+    /**
+     * If called, checks if grocery name, quantity unit(s) and KCAL-amount of the selected grocery entity are valid.
+     * It also checks if the specific grocery entity is already saved in the personal database.
+     * Otherwise saves a new grocery entity (with corresponding attributes) in the personal database.
+     */
     public void onSaveGroceryClicked() {
+
         //prüfen ob es diese einheit schon gibt (Datenbankabfrage) -- toast message "Einheit ist bereits vorhanden"
         if (validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getGroceryName())
-                && false /* Ist bereits in der DB vorhanden? */) {
+                && mDatabaseEntityManager.isGroceryNameAvailable(mData.getGroceryName())) {
             if (validation.checkNumberValue(mData.getKiloCalories())) {
                 //abspeichern in der DB }
             } else {
