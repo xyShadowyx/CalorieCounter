@@ -1,6 +1,7 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,12 +51,13 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
 
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.menumanagement_listrow, parent, false);
-            listViewHolder = new ListViewHolder(convertView, mApplicationLogic, fixGroceryEntity);
+            listViewHolder = new ListViewHolder(convertView, mApplicationLogic);
             convertView.setTag(listViewHolder);
         } else {
             listViewHolder = (ListViewHolder) convertView.getTag();
         }
 
+        listViewHolder.setFixGroceryEntity(fixGroceryEntity);
         listViewHolder.getNameText().setText(
                 String.format("%s (%.2f %s)", fixGroceryEntity.getName(), fixGroceryEntity.getAmount(), fixGroceryEntity.getUnit().getName())
         );

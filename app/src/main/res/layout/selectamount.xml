@@ -18,6 +18,7 @@
         android:gravity="center"/>
 
     <TextView
+        android:id="@+id/idSelectAmountPickedGrocery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/selectamount_default_pickedgrocery"
@@ -35,7 +36,6 @@
 
 
         <TextView
-            android:id="@+id/idSelectAmountPickedGrocery"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
 
-        />
+            android:layout_weight="41.30"/>
             <!--android:prompt="@string/amountstring"-->
     </LinearLayout>
 

@@ -8,33 +8,35 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Grocery;
 
 public class ListViewHolder {
-
-    private FixGrocery mFixGrocery;
     private ApplicationLogic mApplicationLogic;
+
+    private ListButtonClickListener mListButtonClickListener;
 
     private TextView mNameText;
     private ImageView mDeleteImage;
 
-    public ListViewHolder(View view, ApplicationLogic applicationLogic, FixGrocery fixGrocery) {
+    private FixGrocery mFixGrocery;
+
+    public ListViewHolder(View view, ApplicationLogic applicationLogic) {
         mApplicationLogic = applicationLogic;
-        mFixGrocery = fixGrocery;
+        mFixGrocery = null;
 
         mNameText = (TextView) view.findViewById(R.id.idMenuManagementLastAdd);
         mDeleteImage = (ImageView) view.findViewById(R.id.idMenuManagementDeleteGrocery);
 
-        initListener();
+        mListButtonClickListener = new ListButtonClickListener(mApplicationLogic, mFixGrocery);
+        mDeleteImage.setOnClickListener(mListButtonClickListener);
     }
 
-    private void initListener(){
-        ListButtonClickListener lbcl = new ListButtonClickListener(mApplicationLogic, mFixGrocery);
-        mDeleteImage.setOnClickListener(lbcl);
-    }
-
-    public FixGrocery getFixGrocery() {
-        return mFixGrocery;
+    public void setFixGroceryEntity(FixGrocery fixGrocery) {
+        mListButtonClickListener.setFixGrocery(fixGrocery);
     }
 
     public TextView getNameText() {
         return mNameText;
+    }
+
+    public ImageView getDeleteImage() {
+        return mDeleteImage;
     }
 }

@@ -14,6 +14,10 @@ public class ListButtonClickListener implements View.OnClickListener {
         mFixGrocery = fixGrocery;
     }
 
+    public void setFixGrocery(FixGrocery fixGrocery) {
+        mFixGrocery = fixGrocery;
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
