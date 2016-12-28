@@ -339,11 +339,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public List<DatabaseGrocery> getGroceriesContains(String name) {
-        return getGroceries(GROCERY_NAME + " LIKE '%" + DatabaseUtils.sqlEscapeString(name) + "%'");
+        return getGroceries(GROCERY_NAME + " LIKE " + DatabaseUtils.sqlEscapeString("%" + name + "%"));
     }
 
     public boolean isGroceryNameAvailable(String name) {
-        return getGroceries(GROCERY_NAME + " = '" + DatabaseUtils.sqlEscapeString(name) + "'").size() > 0;
+        return getGroceries(GROCERY_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() > 0;
     }
 
     /* GroceryEntry Methods */
@@ -640,11 +640,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public List<DatabaseMenu> getMenusContains(String name) {
-        return getMenus(MENU_NAME + " = '" + DatabaseUtils.sqlEscapeString(name) + "'");
+        return getMenus(MENU_NAME + " = " + DatabaseUtils.sqlEscapeString(name));
     }
 
     public boolean isMenuNameAvailable(String name) {
-        return getMenus(MENU_NAME + " = '" + DatabaseUtils.sqlEscapeString(name) + "'").size() > 0;
+        return getMenus(MENU_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() > 0;
     }
 
     /* MenuEntry Methods */
@@ -936,6 +936,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean isUnitNameAvailable(String name) {
-        return getUnits(UNIT_NAME + " = '" + DatabaseUtils.sqlEscapeString(name) + "'").size() > 0;
+        return getUnits(UNIT_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() == 0;
     }
 }

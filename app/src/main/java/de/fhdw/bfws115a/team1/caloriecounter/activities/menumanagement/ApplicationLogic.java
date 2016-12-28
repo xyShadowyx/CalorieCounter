@@ -7,8 +7,7 @@ import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Menu;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
-import de.fhdw.bfws115a.team1.caloriecounter.utilities.validation;
+import de.fhdw.bfws115a.team1.caloriecounter.utilities.Validation;
 
 public class ApplicationLogic {
 
@@ -16,7 +15,7 @@ public class ApplicationLogic {
     private Gui mGui;
     private DatabaseEntityManager mDatabaseEntityManager;
 
-    private ListAdapter mla;
+    private ListAdapter mListAdapter;
 
     public ApplicationLogic(Data data, Gui gui) {
         mData = data;
@@ -43,9 +42,8 @@ public class ApplicationLogic {
     }
 
     private void initAdapter() {
-        mla = new ListAdapter(mData, this);
-
-        mGui.getListView().setAdapter(mla);
+        mListAdapter = new ListAdapter(mData, this);
+        mGui.getListView().setAdapter(mListAdapter);
     }
 
     /**
@@ -57,7 +55,7 @@ public class ApplicationLogic {
     }
 
     /**
-     * If called, the validation checker checks the input length respectively the portion size value and
+     * If called, the Validation checker checks the input length respectively the portion size value and
      * if the menu name is not already saved in the personal database.
      */
     public void onAddMenuClicked() {
@@ -66,7 +64,7 @@ public class ApplicationLogic {
 
     public void onDeleteGroceryClicked(FixGrocery fixGrocery) {
         mData.getMenuFixGroceries().remove(fixGrocery);
-        mla.notifyDataSetChanged();
+        mListAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -74,10 +72,10 @@ public class ApplicationLogic {
      */
     public void createNewMenu() {
         /* Neues Menü anlegen und in der Datenbank speichern */
-        if (validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getSelectMenuName())
+        if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getSelectMenuName())
                 && mDatabaseEntityManager.isMenuNameAvailable(mData.getSelectMenuName())) {
 
-            if (validation.checkNumberValue(mData.getSelectPortionSize())) {
+            if (Validation.checkNumberValue(mData.getSelectPortionSize())) {
                 Menu newMenu = new Menu(mData.getSelectMenuName(), mData.getSelectPortionSize());
                 for (FixGrocery fg : mData.getMenuFixGroceries()) {
                     newMenu.addGrocery(new FixGrocery(fg));
@@ -97,10 +95,10 @@ public class ApplicationLogic {
     }
 
     public void editMenu() {
-        if (validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getSelectMenuName()) &&
+        if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getSelectMenuName()) &&
                 (mData.getInputMenu().getName() == mData.getSelectMenuName() || mDatabaseEntityManager.isMenuNameAvailable(mData.getSelectMenuName()))) {
 
-            if (validation.checkNumberValue(mData.getSelectPortionSize())) {
+            if (Validation.checkNumberValue(mData.getSelectPortionSize())) {
                 mData.getInputMenu().removeAllGrocery();
                 mData.getInputMenu().setName(mData.getSelectMenuName());
                 mData.getInputMenu().setAmount(mData.getSelectPortionSize());

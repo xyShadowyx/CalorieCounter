@@ -1,6 +1,9 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 
+import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
 /**
@@ -9,15 +12,17 @@ import de.fhdw.bfws115a.team1.caloriecounter.R;
 public class Gui {
 
     private ImageView mAddNewQuantityUnit;
-    private ImageView mDeleteQuantityUnit;
+    private ListView mListView;
+    private EditText mNewQuantityUnitName;
 
 
     public Gui(Init activity) {
         /* ID´s müssen noch vom Layout zugewiesen werden! */
-        activity.setContentView(R.layout.quantityunitmanagement);
+        activity.setContentView(R.layout.quantityunitmanagment1);
 
         mAddNewQuantityUnit = (ImageView) activity.findViewById(R.id.idQuantityUnitManagementAddNewQuantityUnit);
-        mDeleteQuantityUnit = (ImageView) activity.findViewById(R.id.idDQuantityUnitManagementSelectQuantityUnit);
+        mListView = (ListView) activity.findViewById(R.id.idListQuantityUnitManagement);
+        mNewQuantityUnitName = (EditText) activity.findViewById(R.id.idQuantityUnitManagementQuantityName);
     }
 
     /* Getter methods */
@@ -25,8 +30,12 @@ public class Gui {
         return mAddNewQuantityUnit;
     }
 
-    public ImageView getDeleteQuantityUnit() {
-        return mDeleteQuantityUnit;
+    public ListView getListView() {
+        return mListView;
+    }
+
+    public EditText getNewQuantityUnitName() {
+        return mNewQuantityUnitName;
     }
 
     /* Other methods */

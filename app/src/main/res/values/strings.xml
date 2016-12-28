@@ -86,6 +86,8 @@
     <string name="quantityunitmanagement_incorrectquantityunittoast">Diese Einheit ist bereits in Ihrer Datenbank
         vorhanden.
     </string>
+    <string name="quantityunitmanagement_incorrectquantityunitnamelengthtoast">Der Name dieser Einheit besitzt zu viele Buchstaben! Es sind maximal 16 Zeichen gestattet.
+    </string>
     <string name="quantityunitmanagement_existinggroceryindbtoast">Ein Lebensmittel mit diesem Namen ist bereits in
         Ihrer Datenbank vorhanden.
     </string>
