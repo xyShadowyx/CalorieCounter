@@ -9,7 +9,7 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 public class DatabaseGrocery extends Grocery implements DatabaseEntity {
     private long mId;
 
-    public DatabaseGrocery(String name, double kcal, long id) {
+    public DatabaseGrocery(String name, int kcal, long id) {
         super(name, kcal);
         mId = id;
     }

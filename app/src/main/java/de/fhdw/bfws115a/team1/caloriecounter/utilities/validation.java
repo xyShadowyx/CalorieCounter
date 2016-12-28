@@ -33,4 +33,12 @@ public class validation {
             return false;
         }
     }
+
+    public static boolean checkNumberValue(double numberValue) {
+        if (numberValue > 0.0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

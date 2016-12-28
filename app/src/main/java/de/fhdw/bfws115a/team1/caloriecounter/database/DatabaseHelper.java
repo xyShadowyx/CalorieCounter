@@ -84,7 +84,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + TABLE_GROCERY + "("
             + GROCERY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + GROCERY_NAME + " VARCHAR (" + MEDIUM_NAME_LENGTH + "),"
-            + GROCERY_KCAL + " DOUBLE"
+            + GROCERY_KCAL + " INTEGER"
             + ");";
 
     private static final String CREATE_TABLE_GROCERY_UNITS = "CREATE TABLE "
@@ -255,7 +255,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         databaseGrocery = new DatabaseGrocery(
                 cursor.getString(cursor.getColumnIndex(GROCERY_NAME)),
-                cursor.getDouble(cursor.getColumnIndex(GROCERY_KCAL)),
+                cursor.getInt(cursor.getColumnIndex(GROCERY_KCAL)),
                 cursor.getInt(cursor.getColumnIndex(GROCERY_ID))
         );
         cursor.close();
@@ -313,7 +313,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 databaseGrocery = new DatabaseGrocery(
                         cursor.getString(cursor.getColumnIndex(GROCERY_NAME)),
-                        cursor.getDouble(cursor.getColumnIndex(GROCERY_KCAL)),
+                        cursor.getInt(cursor.getColumnIndex(GROCERY_KCAL)),
                         cursor.getInt(cursor.getColumnIndex(GROCERY_ID)));
 
                 selectQuery = "SELECT * FROM " + TABLE_GROCERY_UNITS + " WHERE " + GROCERY_UNITS_GROCERY_ID + " = " + databaseGrocery.getId();

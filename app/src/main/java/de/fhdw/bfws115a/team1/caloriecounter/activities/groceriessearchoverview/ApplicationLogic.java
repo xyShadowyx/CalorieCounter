@@ -2,6 +2,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
@@ -34,7 +35,16 @@ public class ApplicationLogic {
 
     private void initListener() {
         TextListener tl = new TextListener(this);
+
+        Log.d("Debug3: ", "Set Click Listener!");
+        mGui.getListView().setOnItemClickListener(mListAdapter);
+        mGui.getListView().setOnItemSelectedListener(mListAdapter);
         mGui.getSearchView().setOnQueryTextListener(tl);
+    }
+
+    public void reload() {
+        mData.getActivity().finish();
+        mData.getActivity().startActivity(mData.getActivity().getIntent());
     }
 
     public void filterListByName(String name) {
@@ -45,8 +55,8 @@ public class ApplicationLogic {
         mData.setSelectedEntity(groceriesEntity);
 
         Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount.Init.class);
-        intent.putExtra("groceries", mData.getSelectedEntity());
-        mData.getActivity().startActivityForResult(intent, 0);
+        intent.putExtra("groceriesEntity", mData.getSelectedEntity());
+        mData.getActivity().startActivityForResult(intent, ResultCodes.SELECT_AMOUNT);
     }
 
     public void onSelectAmountResult(Intent data) {
@@ -71,7 +81,7 @@ public class ApplicationLogic {
                         mData.getSelectedEntity().getName(),
                         groceryUnit.getUnit(),
                         selectedAmount,
-                        (int) Math.round(selectedAmount * groceryUnit.getAmount() * selectedGrocery.getKcal())
+                        (int) Math.round((selectedGrocery.getKcal() / groceryUnit.getAmount()) * selectedAmount)
                 );
             }
         } else if (mData.getSelectedEntity() instanceof Menu) {
@@ -80,6 +90,8 @@ public class ApplicationLogic {
             selectedMenu.setAmount(selectedAmount);
             groceriesEntity = selectedMenu;
         }
+
+        Log.d("Debug 1", groceriesEntity.toString());
 
         Intent resultIntent = new Intent();
         resultIntent.putExtra("groceriesEntity", groceriesEntity);

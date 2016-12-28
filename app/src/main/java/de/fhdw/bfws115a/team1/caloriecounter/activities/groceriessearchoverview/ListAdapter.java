@@ -1,6 +1,7 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by xySha on 22.11.2016.
  */
-public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.OnItemClickListener {
+public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
     private Data mData;
     private ApplicationLogic mApplicationLogic;
     private final Context mContext;
@@ -72,8 +73,21 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Log.d("Debug2: ", "ItemClicked!!!");
         GroceriesEntity clickedItem = (GroceriesEntity) getItem(i);
         mApplicationLogic.onItemSelected(clickedItem);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Log.d("onItemSelected: ", "onItemSelected!!!");
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        Log.d("onNothingSelected: ", "onNothingSelected!!!");
+
     }
 
     private class GroceriesEntityFilter extends Filter {

@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class Grocery extends GroceriesEntity {
     private ArrayList<GroceryUnit> mGroceryUnits;
-    private double mKcal;
+    private int mKcal;
 
-    public Grocery(String name, double kcal) {
+    public Grocery(String name, int kcal) {
         super(name);
         mGroceryUnits = new ArrayList<GroceryUnit>();
         mKcal = kcal;
@@ -50,11 +50,11 @@ public class Grocery extends GroceriesEntity {
         return false;*/
     }
 
-    public double getKcal() {
+    public int getKcal() {
         return mKcal;
     }
 
-    public void setKcal(double mKcal) {
+    public void setKcal(int mKcal) {
         this.mKcal = mKcal;
     }
 

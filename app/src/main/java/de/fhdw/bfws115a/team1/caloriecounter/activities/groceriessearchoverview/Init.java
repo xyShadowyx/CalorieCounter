@@ -39,7 +39,14 @@ public class Init extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-            mApplicationLogic.onSelectAmountResult(data);
+            switch (requestCode) {
+                case ResultCodes.SELECT_AMOUNT:
+                    mApplicationLogic.onSelectAmountResult(data);
+                    break;
+                case ResultCodes.RELOAD:
+                    mApplicationLogic.reload();
+                    break;
+            }
         }
     }
 }
