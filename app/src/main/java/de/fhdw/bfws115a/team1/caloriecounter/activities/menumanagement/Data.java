@@ -5,8 +5,6 @@ import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseMenu;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.Menu;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 
 import java.util.ArrayList;
@@ -15,8 +13,8 @@ public class Data {
 
     /* Data variables */
     private Init mActivity;
-    private String mSelectMenuName;
-    private int mSelectPortionSize;
+    private String mMenuName;
+    private int mPortionSize;
     private String mAddedGroceries;
     private ArrayList<FixGrocery> mMenuFixGroceries;
     private DatabaseMenu mInputMenu;
@@ -25,15 +23,15 @@ public class Data {
     private DatabaseEntityManager mDatabaseEntityManager;
 
     /* Default values */
-    private final String DEFAULT_SELECTMENUNAME = "";
-    private final int DEFAULT_SELECTPORTIONSIZE = 0;
+    private final String DEFAULT_MENUNAME = "";
+    private final int DEFAULT_PORTIONSIZE = 0;
     private final String DEFAULT_ADDEDGROCERIES = "";
 
     /* Keys */
     private final String KEY_INPUTMENU = "menumanagement1";
     private final String KEY_MENUFIXGROCERIES = "menumanagement2";
-    private final String KEY_SELECTMENUNAME = "menumanagement3";
-    private final String KEY_SELECTPORTIONSIZE = "menumanagement4";
+    private final String KEY_MENUNAME = "menumanagement3";
+    private final String KEY_PORTIONSIZE = "menumanagement4";
     private final String KEY_ADDEDGROCERIES = "menumanagement5";
 
     public Data(Bundle savedInstanceState, Init activity) {
@@ -58,8 +56,8 @@ public class Data {
                 mInputMenu = null;
             }
 
-            mSelectMenuName = DEFAULT_SELECTMENUNAME;
-            mSelectPortionSize = DEFAULT_SELECTPORTIONSIZE;
+            mMenuName = DEFAULT_MENUNAME;
+            mPortionSize = DEFAULT_PORTIONSIZE;
             mAddedGroceries = DEFAULT_ADDEDGROCERIES;
         } else {
             restoreDataFromBundle(savedInstanceState);
@@ -69,16 +67,16 @@ public class Data {
     public void saveDataInBundle(Bundle b) {
         b.putSerializable(KEY_INPUTMENU, mInputMenu);
         b.putSerializable(KEY_MENUFIXGROCERIES, mMenuFixGroceries);
-        b.putString(KEY_SELECTMENUNAME, mSelectMenuName);
-        b.putInt(KEY_SELECTPORTIONSIZE, mSelectPortionSize);
+        b.putString(KEY_MENUNAME, mMenuName);
+        b.putInt(KEY_PORTIONSIZE, mPortionSize);
         b.putString(KEY_ADDEDGROCERIES, mAddedGroceries);
     }
 
     private void restoreDataFromBundle(Bundle b) {
         mInputMenu = (DatabaseMenu) b.getSerializable(KEY_INPUTMENU);
         mMenuFixGroceries = (ArrayList<FixGrocery>) b.getSerializable(KEY_MENUFIXGROCERIES);
-        mSelectMenuName = b.getString(KEY_SELECTMENUNAME);
-        mSelectPortionSize = b.getInt(KEY_SELECTPORTIONSIZE);
+        mMenuName = b.getString(KEY_MENUNAME);
+        mPortionSize = b.getInt(KEY_PORTIONSIZE);
         mAddedGroceries = b.getString(KEY_ADDEDGROCERIES);
     }
 
@@ -87,12 +85,12 @@ public class Data {
         return mActivity;
     }
 
-    public String getSelectMenuName() {
-        return mSelectMenuName;
+    public String getMenuName() {
+        return mMenuName;
     }
 
-    public int getSelectPortionSize() {
-        return mSelectPortionSize;
+    public int getPortionSize() {
+        return mPortionSize;
     }
 
     public String getAddedGroceries() {
@@ -116,12 +114,12 @@ public class Data {
         this.mActivity = mActivity;
     }
 
-    public void setSelectMenuName(String mSelectMenuName) {
-        this.mSelectMenuName = mSelectMenuName;
+    public void setMenuName(String mMenuName) {
+        this.mMenuName = mMenuName;
     }
 
-    public void setSelectPortionSize(int mSelectPortionSize) {
-        this.mSelectPortionSize = mSelectPortionSize;
+    public void setPortionSize(int mPortionSize) {
+        this.mPortionSize = mPortionSize;
     }
 
     public void setAddedGroceries(String mAddedGroceries) {

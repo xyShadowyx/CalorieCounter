@@ -20,11 +20,9 @@ public class ClickListener implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.idMenuManagementAddNewGrocery:
                 mApplicationLogic.onAddNewGroceryClicked();
-                //magic
                 break;
             case R.id.idMenuManagementAddMenu:
                 mApplicationLogic.onAddMenuClicked();
-                //magic
                 break;
         }
     }
