@@ -99,20 +99,18 @@
                       android:layout_margin="@dimen/margin"/>
 
             <ListView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
+                      android:layout_height="271dp"
                       android:id="@+id/idMenuMangementList">
             </ListView>
 
         </LinearLayout>
 
 
-
-        <Button android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/menumanagement_addMenu"
-                android:layout_gravity="end"
-                android:id="@+id/idMenuManagementAddMenu"/>
     </LinearLayout>
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menumanagement_addMenu"
+            android:id="@+id/idMenuManagementAddMenu" android:layout_gravity="right"/>
 </LinearLayout>
 
 
