@@ -3,16 +3,12 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.renderscript.Double2;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
-import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
-import de.fhdw.bfws115a.team1.caloriecounter.utilities.validation;
-
-import java.security.spec.MGF1ParameterSpec;
+import de.fhdw.bfws115a.team1.caloriecounter.utilities.Validation;
 
 public class ApplicationLogic {
 
@@ -50,10 +46,10 @@ public class ApplicationLogic {
 
     /**
      * If called, it adds an amount with the right quantity unit to a grocery or menu entity.
-     * A validation checker controls if the input has a valid value.
+     * A Validation checker controls if the input has a valid value.
      */
     public void onAddAmountClicked() {
-        if (validation.checkNumberValue(mData.getSelectedAmount())) {
+        if (Validation.checkNumberValue(mData.getSelectedAmount())) {
             /* Return of values to the activity which triggered 'selectamount' */
             Intent resultIntent = new Intent();
             resultIntent.putExtra("amount", mData.getSelectedAmount());
