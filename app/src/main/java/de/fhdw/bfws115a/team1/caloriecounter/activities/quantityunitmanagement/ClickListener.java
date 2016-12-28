@@ -2,6 +2,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 
 import android.view.View;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
 
 /**
  * Created by Florian on 08.11.2016.
@@ -23,10 +24,6 @@ public class ClickListener implements View.OnClickListener {
             //case für + Button
             case R.id.idQuantityUnitManagementAddNewQuantityUnit:
                 mApplicationLogic.onAddNewQuantityUnitClicked();
-                break;
-            //case für - Button
-            case R.id.idDQuantityUnitManagementSelectQuantityUnit:
-                mApplicationLogic.onDeleteQuantityUnitClicked();
                 break;
         }
     }

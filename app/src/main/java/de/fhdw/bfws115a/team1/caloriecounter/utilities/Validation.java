@@ -3,7 +3,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.utilities;
 /**
  * Created by Niklas on 18.11.2016.
  */
-public class validation {
+public class Validation {
 
     /**
      * Checks if a string is larger than a defined integer value.
@@ -13,7 +13,7 @@ public class validation {
      * @return 'False' if the string is larger than the maximum value. Returns 'true' if this is not.
      */
     public static boolean checkLenght(int maxLength, String string) {
-        if (string.length() >= maxLength) {
+        if (string.length() > maxLength) {
             return false;
         } else {
             return true;

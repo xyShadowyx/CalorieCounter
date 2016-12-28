@@ -1,14 +1,17 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
+import de.fhdw.bfws115a.team1.caloriecounter.constants.SearchSettings;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Menu;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
-import de.fhdw.bfws115a.team1.caloriecounter.utilities.validation;
+import de.fhdw.bfws115a.team1.caloriecounter.utilities.Validation;
 
 public class ApplicationLogic {
 
@@ -16,7 +19,7 @@ public class ApplicationLogic {
     private Gui mGui;
     private DatabaseEntityManager mDatabaseEntityManager;
 
-    private ListAdapter mla;
+    private ListAdapter mListAdapter;
 
     public ApplicationLogic(Data data, Gui gui) {
         mData = data;
@@ -32,41 +35,60 @@ public class ApplicationLogic {
     }
 
     private void initListener() {
-        /*ClickListener cl;
+        ClickListener cl;
 
         cl = new ClickListener(this);
-        mGui.getSelectMenuName().setOnClickListener(cl);
-        mGui.getSelectPortionSize().setOnClickListener(cl);
-        mGui.getDeleteGrocery().setOnClickListener(cl);
         mGui.getAddNewGrocery().setOnClickListener(cl);
-        mGui.getAddMenu().setOnClickListener(cl);*/
+        mGui.getAddMenu().setOnClickListener(cl);
+        mGui.getMenuName().addTextChangedListener(new TextChangeListener(this, mGui.getMenuName()));
+        mGui.getPortionSize().addTextChangedListener(new TextChangeListener(this, mGui.getPortionSize()));
     }
 
     private void initAdapter() {
-        mla = new ListAdapter(mData, this);
-
-        mGui.getListView().setAdapter(mla);
+        mListAdapter = new ListAdapter(mData, this);
+        mGui.getListView().setAdapter(mListAdapter);
     }
 
     /**
      * If called, it invokes 'groceriessearchoverview'.
      */
     public void onAddNewGroceryClicked() {
-        /* Öffnet/Verweist die Activity 'groceriessearchoverview', um dem Menü neue Lebensmittel hinzuzufügen! */
+        Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview.Init.class);
+        intent.putExtra("searchSettings", SearchSettings.DISPLAY_ONLY_GROCERY);
+        mData.getActivity().startActivityForResult(intent, ResultCodes.SELECT_GROCERY);
+    }
 
+    public void onFixGrocerySelected(Intent data) {
+        GroceriesEntity groceriesEntity = (GroceriesEntity) data.getSerializableExtra("groceriesEntity");
+        if (groceriesEntity instanceof FixGrocery) {
+            mData.getMenuFixGroceries().add((FixGrocery) groceriesEntity);
+            mListAdapter.notifyDataSetChanged();
+        }
+    }
+
+    public void onMenuNameChanged(String newName) {
+        mData.setMenuName(newName);
+    }
+
+    public void onPortionSizeChanged(String newPortion) {
+        try {
+            int newPortionSize = Integer.valueOf(newPortion);
+            mData.setPortionSize(newPortionSize);
+        } catch (Exception e) {
+        }
     }
 
     /**
-     * If called, the validation checker checks the input length respectively the portion size value and
+     * If called, the Validation checker checks the input length respectively the portion size value and
      * if the menu name is not already saved in the personal database.
      */
     public void onAddMenuClicked() {
-
+        Log.d("Debug", "Click Detected!");
     }
 
     public void onDeleteGroceryClicked(FixGrocery fixGrocery) {
         mData.getMenuFixGroceries().remove(fixGrocery);
-        mla.notifyDataSetChanged();
+        mListAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -74,11 +96,11 @@ public class ApplicationLogic {
      */
     public void createNewMenu() {
         /* Neues Menü anlegen und in der Datenbank speichern */
-        if (validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getSelectMenuName())
-                && mDatabaseEntityManager.isMenuNameAvailable(mData.getSelectMenuName())) {
+        if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getMenuName())
+                && mDatabaseEntityManager.isMenuNameAvailable(mData.getMenuName())) {
 
-            if (validation.checkNumberValue(mData.getSelectPortionSize())) {
-                Menu newMenu = new Menu(mData.getSelectMenuName(), mData.getSelectPortionSize());
+            if (Validation.checkNumberValue(mData.getPortionSize())) {
+                Menu newMenu = new Menu(mData.getMenuName(), mData.getPortionSize());
                 for (FixGrocery fg : mData.getMenuFixGroceries()) {
                     newMenu.addGrocery(new FixGrocery(fg));
                 }
@@ -97,13 +119,13 @@ public class ApplicationLogic {
     }
 
     public void editMenu() {
-        if (validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getSelectMenuName()) &&
-                (mData.getInputMenu().getName() == mData.getSelectMenuName() || mDatabaseEntityManager.isMenuNameAvailable(mData.getSelectMenuName()))) {
+        if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getMenuName()) &&
+                (mData.getInputMenu().getName() == mData.getMenuName() || mDatabaseEntityManager.isMenuNameAvailable(mData.getMenuName()))) {
 
-            if (validation.checkNumberValue(mData.getSelectPortionSize())) {
+            if (Validation.checkNumberValue(mData.getPortionSize())) {
                 mData.getInputMenu().removeAllGrocery();
-                mData.getInputMenu().setName(mData.getSelectMenuName());
-                mData.getInputMenu().setAmount(mData.getSelectPortionSize());
+                mData.getInputMenu().setName(mData.getMenuName());
+                mData.getInputMenu().setAmount(mData.getPortionSize());
 
                 for (FixGrocery fg : mData.getMenuFixGroceries()) {
                     mData.getInputMenu().addGrocery(new FixGrocery(fg));

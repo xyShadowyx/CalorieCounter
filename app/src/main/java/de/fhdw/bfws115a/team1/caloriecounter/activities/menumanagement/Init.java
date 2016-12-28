@@ -1,7 +1,9 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview.*;
 
 public class Init extends Activity {
 
@@ -33,6 +35,17 @@ public class Init extends Activity {
     protected void onSaveInstanceState(Bundle outState) {
         mData.saveDataInBundle(outState);
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case ResultCodes.SELECT_GROCERY:
+                    mApplicationLogic.onFixGrocerySelected(data);
+                    break;
+            }
+        }
     }
 }
 

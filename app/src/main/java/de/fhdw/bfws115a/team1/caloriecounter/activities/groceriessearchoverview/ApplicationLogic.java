@@ -91,8 +91,6 @@ public class ApplicationLogic {
             groceriesEntity = selectedMenu;
         }
 
-        Log.d("Debug 1", groceriesEntity.toString());
-
         Intent resultIntent = new Intent();
         resultIntent.putExtra("groceriesEntity", groceriesEntity);
         mData.getActivity().setResult(Activity.RESULT_OK, resultIntent);

@@ -30,19 +30,22 @@
                   android:layout_height="wrap_content"
                   android:orientation="horizontal">
 
-        <ImageView android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:id="@+id/idQuantityUnitManagementAddNewQuantityUnit"
-                   android:src="@drawable/plus_32"
-                   android:layout_margin="@dimen/margin"/>
-
         <ListView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+                  android:layout_height="260dp"
                   android:id="@+id/idListQuantityUnitManagement">
 
         </ListView>
 
 
     </LinearLayout>
+    <ImageView android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/idQuantityUnitManagementAddNewQuantityUnit"
+               android:src="@drawable/plus_32"
+               android:layout_margin="@dimen/margin"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/idQuantityUnitManagementQuantityName" android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
