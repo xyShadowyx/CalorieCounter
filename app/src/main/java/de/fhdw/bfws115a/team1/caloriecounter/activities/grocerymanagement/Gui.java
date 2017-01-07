@@ -21,7 +21,7 @@ public class Gui {
 
 
     public Gui(Init activity) {
-        activity.setContentView(R.layout.quantityunitmanagement);
+        activity.setContentView(R.layout.grocerymanagemant);
 
         mGroceryName = (EditText) activity.findViewById(R.id.idGroceryManagementGroceryName);
         mSelectedAmount = (EditText) activity.findViewById(R.id.idGroceryManagementSelectedAmount);
