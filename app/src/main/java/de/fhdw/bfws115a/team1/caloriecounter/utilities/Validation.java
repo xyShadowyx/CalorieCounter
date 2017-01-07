@@ -41,4 +41,12 @@ public class Validation {
             return false;
         }
     }
+
+    public static boolean checkIfEmpty(String string) {
+        if(string.length() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -78,10 +78,8 @@
             android:id="@+id/idGroceryManagementGroceryName"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginRight="@dimen/margin"
-            android:text="@string/grocerymanagement_name"
+            android:hint="@string/grocerymanagement_name"
             android:textSize="@dimen/inputTextSize"
-            android:textColor="@color/gray"
-            android:background="@color/gray2"
             />
         <TextView
             android:layout_width="match_parent"
@@ -124,10 +122,8 @@
             android:layout_weight="1"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginRight="@dimen/margin"
-            android:text="@string/grocerymanagement_amount"
+            android:hint="@string/grocerymanagement_amount"
             android:textSize="@dimen/inputTextSize"
-            android:textColor="@color/gray"
-            android:background="@color/gray2"
             />
 
         <Spinner
@@ -138,8 +134,6 @@
             android:prompt="@string/grocerymanagement_default_spinnerstatus"
             android:layout_marginTop="@dimen/margin"
             />
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -147,8 +141,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/idGroceryManagementLinearAmount"
-        >
+        android:layout_below="@id/idGroceryManagementLinearAmount">
+
         <ListView
             android:id="@+id/idGroceryManagementListView"
             android:layout_width="wrap_content"
@@ -156,19 +150,14 @@
             android:paddingBottom="@dimen/padding">
 
         </ListView>
-
-
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/idGroceryManagementLinearListView"
-        android:layout_toRightOf="@id/idGroceryManagementAddAmount"
-        >
-
+        android:layout_toRightOf="@id/idGroceryManagementAddAmount">
 
         <TextView android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -179,7 +168,6 @@
             android:layout_marginTop="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
             android:textSize="@dimen/inputTextSize"
-
             />
 
         <EditText
@@ -204,7 +192,5 @@
             android:layout_marginTop="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
             android:layout_marginRight="@dimen/margin"/>
-
     </LinearLayout>
-
 </RelativeLayout>

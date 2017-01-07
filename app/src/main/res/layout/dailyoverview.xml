@@ -63,7 +63,7 @@
                   android:layout_margin="@dimen/margin"
                   android:maxLength="5"
                   android:textSize="@dimen/textsize"
-                  android:text="@string/dailyoverview_caloriesmax"
+                  android:hint="@string/dailyoverview_caloriesmax"
                   android:textColor="@color/black"/>
 
         <TextView android:layout_width="wrap_content"
@@ -103,7 +103,6 @@
                   android:textSize="@dimen/textsize"
                   android:text="@string/dailyoverview_caloriesleft"
                   android:textColor="@color/black"/>
-
     </LinearLayout>
 
     <LinearLayout android:id="@+id/idDailyoverviewEntryList"
@@ -117,13 +116,11 @@
         <ListView
                 android:id="@+id/idDailyoverviewList"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="278dp"
                 android:paddingBottom="@dimen/padding">
-
         </ListView>
 
     </LinearLayout>
-
 
     <LinearLayout android:id="@+id/idDailyoverviewNewEntry"
                   android:layout_width="match_parent"
@@ -172,5 +169,4 @@
                android:layout_marginRight="@dimen/padding_2"
                android:layout_alignParentBottom="true"
                android:layout_toLeftOf="@id/idDailyoverviewSpoonButton"/>
-
 </RelativeLayout>

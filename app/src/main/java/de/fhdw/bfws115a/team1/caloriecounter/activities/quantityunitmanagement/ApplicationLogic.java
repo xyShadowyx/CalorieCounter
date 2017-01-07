@@ -59,29 +59,36 @@ public class ApplicationLogic {
         DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
 
         /* --- First validation --- */
-        if (Validation.checkLenght(DatabaseHelper.SHORT_NAME_LENGTH, mData.getNewQuantityUnitName())) {
-
+        if (!Validation.checkIfEmpty(mData.getNewQuantityUnitName())) {
             /* --- Second validation --- */
-            if (databaseEntityManager.isUnitNameAvailable(mData.getNewQuantityUnitName())) {
+            if (Validation.checkLenght(DatabaseHelper.SHORT_NAME_LENGTH, mData.getNewQuantityUnitName())) {
+
+            /* --- Third validation --- */
+                if (databaseEntityManager.isUnitNameAvailable(mData.getNewQuantityUnitName())) {
             /* Creates a new quantity unit and writes it in personal database. */
-                Unit newQuantity = new Unit(mData.getNewQuantityUnitName());
-                DatabaseUnit databaseUnit = databaseEntityManager.createUnit(newQuantity);
+                    Unit newQuantity = new Unit(mData.getNewQuantityUnitName());
+                    DatabaseUnit databaseUnit = databaseEntityManager.createUnit(newQuantity);
 
             /* Update list */
-                mData.getQuantityUnits().add(databaseUnit);
-                mListAdapter.notifyDataSetChanged();
+                    mData.getQuantityUnits().add(databaseUnit);
+                    mListAdapter.notifyDataSetChanged();
 
             /* Clears the input edit text for a new quantity unit. */
-                mData.setNewQuantityUnitName("");
-                mGui.getNewQuantityUnitName().setText("");
+                    mData.setNewQuantityUnitName("");
+                    mGui.getNewQuantityUnitName().setText("");
+                } else {
+                    Context context = mData.getActivity().getApplicationContext();
+                    Toast toast = Toast.makeText(context, R.string.quantityunitmanagement_incorrectquantityunittoast, Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             } else {
                 Context context = mData.getActivity().getApplicationContext();
-                Toast toast = Toast.makeText(context, R.string.quantityunitmanagement_incorrectquantityunittoast, Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(context, R.string.quantityunitmanagement_incorrectquantityunitnamelengthtoast, Toast.LENGTH_SHORT);
                 toast.show();
             }
         } else {
             Context context = mData.getActivity().getApplicationContext();
-            Toast toast = Toast.makeText(context, R.string.quantityunitmanagement_incorrectquantityunitnamelengthtoast, Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(context, R.string.quantityunitmanagement_emptyfield, Toast.LENGTH_SHORT);
             toast.show();
         }
     }
