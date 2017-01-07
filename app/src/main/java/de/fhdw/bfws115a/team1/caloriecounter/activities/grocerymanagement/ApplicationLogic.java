@@ -4,7 +4,9 @@ import android.content.Context;
 import android.widget.Toast;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGrocery;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.Grocery;
 import de.fhdw.bfws115a.team1.caloriecounter.utilities.Validation;
 
 /**
@@ -32,8 +34,6 @@ public class ApplicationLogic {
         mGui.getDeleteQuantity().setOnClickListener(cl);
         mGui.getSaveGrocery().setOnClickListener(cl);
 
-        //dropdown??
-        mGui.getSpinner().setOnClickListener(cl);
     }
 
     private void initGui() {
@@ -68,12 +68,53 @@ public class ApplicationLogic {
      * Otherwise saves a new grocery entity (with corresponding attributes) in the personal database.
      */
     public void onSaveGroceryClicked() {
-
         //prüfen ob es diese einheit schon gibt (Datenbankabfrage) -- toast message "Einheit ist bereits vorhanden"
         if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getGroceryName())
                 && mDatabaseEntityManager.isGroceryNameAvailable(mData.getGroceryName())) {
             if (Validation.checkNumberValue(mData.getKiloCalories())) {
                 //abspeichern in der DB }
+            } else {
+                Context context = mData.getActivity().getApplicationContext();
+                Toast toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        } else {
+            Context context = mData.getActivity().getApplicationContext();
+            Toast toast = Toast.makeText(context, R.string.quantityunitmanagement_existinggroceryindbtoast, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+
+    public void createNewGrocery() {
+        DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
+
+        if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getGroceryName())
+                && mDatabaseEntityManager.isGroceryNameAvailable(mData.getGroceryName())) {
+            if (Validation.checkNumberValue(mData.getKiloCalories())) {
+                /* Creates a new grocery and writes it in personal database. */
+                Grocery newGrocery = new Grocery(mData.getGroceryName(),mData.getKiloCalories());
+                DatabaseGrocery databaseGrocery = databaseEntityManager.createGrocery(newGrocery);
+            } else {
+                Context context = mData.getActivity().getApplicationContext();
+                Toast toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        } else {
+            Context context = mData.getActivity().getApplicationContext();
+            Toast toast = Toast.makeText(context, R.string.quantityunitmanagement_existinggroceryindbtoast, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+
+    public void editGrocery() {
+        if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getGroceryName())
+                && (mData.getInputGrocery().getName() == mData.getGroceryName()
+                || mDatabaseEntityManager.isGroceryNameAvailable(mData.getGroceryName()))) {
+            if (Validation.checkNumberValue(mData.getKiloCalories())) {
+                /* Updates an existing grocery in personal database. */
+                mData.getInputGrocery().setName(mData.getGroceryName());
+                mData.getInputGrocery().setKcal(mData.getKiloCalories());
+                mDatabaseEntityManager.saveGrocery(mData.getInputGrocery());
             } else {
                 Context context = mData.getActivity().getApplicationContext();
                 Toast toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
