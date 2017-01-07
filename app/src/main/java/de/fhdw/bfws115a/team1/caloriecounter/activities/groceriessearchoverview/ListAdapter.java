@@ -73,7 +73,6 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Log.d("Debug2: ", "ItemClicked!!!");
         GroceriesEntity clickedItem = (GroceriesEntity) getItem(i);
         mApplicationLogic.onItemSelected(clickedItem);
     }

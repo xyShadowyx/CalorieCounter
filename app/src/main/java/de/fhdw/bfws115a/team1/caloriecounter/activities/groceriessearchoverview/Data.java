@@ -42,12 +42,6 @@ public class Data {
             if(SearchSettings.DISPLAY_ONLY_MENU == searchSettings || SearchSettings.DISPLAY_ALL == searchSettings) {
                 mGroceriesEntityList.addAll(mDatabaseEntityManager.getAllMenus());
             }
-            Grocery gr = new Grocery("Zucker", 200);
-            gr.addGroceryUnit(new GroceryUnit(new Unit("g"), 200));
-            gr.addGroceryUnit(new GroceryUnit(new Unit("el"), 10));
-            gr.addGroceryUnit(new GroceryUnit(new Unit("tl"), 20));
-
-            mGroceriesEntityList.add(gr);
         } else {
             restoreDataFromBundle(savedInstanceState);
         }

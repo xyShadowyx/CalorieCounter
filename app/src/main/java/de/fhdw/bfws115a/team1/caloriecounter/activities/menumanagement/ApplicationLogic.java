@@ -54,7 +54,7 @@ public class ApplicationLogic {
      */
     public void onAddNewGroceryClicked() {
         Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview.Init.class);
-        intent.putExtra("searchSettings", SearchSettings.DISPLAY_ONLY_GROCERY);
+        intent.putExtra("searchSettings", SearchSettings.DISPLAY_ONLY_GROCERY.ordinal());
         mData.getActivity().startActivityForResult(intent, ResultCodes.SELECT_GROCERY);
     }
 
@@ -83,7 +83,11 @@ public class ApplicationLogic {
      * if the menu name is not already saved in the personal database.
      */
     public void onAddMenuClicked() {
-        Log.d("Debug", "Click Detected!");
+        if (mData.getInputMenu() != null) {
+            editMenu();
+        } else {
+            createNewMenu();
+        }
     }
 
     public void onDeleteGroceryClicked(FixGrocery fixGrocery) {
