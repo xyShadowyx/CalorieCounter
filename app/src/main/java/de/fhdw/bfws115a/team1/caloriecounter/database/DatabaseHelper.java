@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import de.fhdw.bfws115a.team1.caloriecounter.activities.calendar.Init;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
@@ -34,9 +33,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final static String TABLE_GROCERY = "grocery";
     private final static String GROCERY_ID = "id";
     private final static String GROCERY_NAME = "name";
-    private final static String GROCERY_UNIT = "unit";
-    private final static String GROCERY_AMOUNT = "amount";
     private final static String GROCERY_KCAL = "kcal";
+
+    private final static String TABLE_GROCERY_UNITS = "grocery_units";
+    private final static String GROCERY_UNITS_GROCERY_ID = "grocery_id";
+    private final static String GROCERY_UNITS_UNIT = "unit";
+    private final static String GROCERY_UNITS_AMOUNT = "amount";
 
     private final static String TABLE_GROCERY_ENTRY = "grocery_entry";
     private final static String GROCERY_ENTRY_ID = "id";
@@ -81,10 +83,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + TABLE_GROCERY + "("
             + GROCERY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + GROCERY_NAME + " VARCHAR (" + MEDIUM_NAME_LENGTH + "),"
-            + GROCERY_UNIT + " VARCHAR (" + SHORT_NAME_LENGTH + "),"
-            + GROCERY_AMOUNT + " DOUBLE,"
             + GROCERY_KCAL + " INTEGER"
             + ");";
+
+    private static final String CREATE_TABLE_GROCERY_UNITS = "CREATE TABLE "
+            + TABLE_GROCERY_UNITS + "("
+            + GROCERY_UNITS_GROCERY_ID + " INTEGER,"
+            + GROCERY_UNITS_UNIT + " VARCHAR (" + SHORT_NAME_LENGTH + "),"
+            + GROCERY_UNITS_AMOUNT + " DOUBLE,"
+            + "PRIMARY KEY (" + GROCERY_UNITS_GROCERY_ID
+            + "," + GROCERY_UNITS_UNIT
+            + "," + GROCERY_UNITS_AMOUNT
+            + "));";
 
     private static final String CREATE_TABLE_GROCERY_ENTRY = "CREATE TABLE "
             + TABLE_GROCERY_ENTRY + "("
@@ -155,6 +165,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_GROCERY);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_GROCERY_UNITS);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_GROCERY_ENTRY);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_MENU);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_MENU_GROCERY);
@@ -170,23 +181,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase database;
         ContentValues values;
         long groceryId;
+        DatabaseGrocery databaseGrocery;
 
         database = this.getWritableDatabase();
 
         values = new ContentValues();
         values.put(GROCERY_NAME, grocery.getName());
-        values.put(GROCERY_UNIT, grocery.getUnit().getName());
-        values.put(GROCERY_AMOUNT, grocery.getAmount());
         values.put(GROCERY_KCAL, grocery.getKcal());
 
         groceryId = database.insert(TABLE_GROCERY, null, values);
-        return new DatabaseGrocery(
+
+        databaseGrocery = new DatabaseGrocery(
                 grocery.getName(),
-                new Unit(grocery.getUnit().getName()),
-                grocery.getAmount(),
                 grocery.getKcal(),
                 groceryId
         );
+
+        for (GroceryUnit gu : grocery.getGroceryUnits()) {
+            values = new ContentValues();
+            values.put(GROCERY_UNITS_GROCERY_ID, databaseGrocery.getId());
+            values.put(GROCERY_UNITS_UNIT, gu.getUnit().getName());
+            values.put(GROCERY_UNITS_AMOUNT, gu.getAmount());
+
+            database.insert(TABLE_GROCERY_UNITS, null, values);
+            databaseGrocery.addGroceryUnit(new GroceryUnit(gu));
+        }
+
+        return databaseGrocery;
     }
 
     public boolean saveGrocery(DatabaseGrocery databaseGrocery) {
@@ -194,13 +215,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values;
 
         database = this.getWritableDatabase();
+        database.delete(
+                TABLE_GROCERY_UNITS,
+                GROCERY_UNITS_GROCERY_ID + " = ?",
+                new String[]{String.valueOf(databaseGrocery.getId())}
+        );
+
+        for (GroceryUnit gu : databaseGrocery.getGroceryUnits()) {
+            values = new ContentValues();
+            values.put(GROCERY_UNITS_GROCERY_ID, databaseGrocery.getId());
+            values.put(GROCERY_UNITS_UNIT, gu.getUnit().getName());
+            values.put(GROCERY_UNITS_AMOUNT, gu.getAmount());
+
+            database.insert(TABLE_GROCERY_UNITS, null, values);
+        }
 
         values = new ContentValues();
         values.put(GROCERY_NAME, databaseGrocery.getName());
-        values.put(GROCERY_UNIT, databaseGrocery.getUnit().getName());
-        values.put(GROCERY_AMOUNT, databaseGrocery.getAmount());
         values.put(GROCERY_KCAL, databaseGrocery.getKcal());
-
         return database.update(TABLE_GROCERY, values, GROCERY_ID + "=" + databaseGrocery.getId(), null) > 0;
     }
 
@@ -222,18 +254,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         databaseGrocery = new DatabaseGrocery(
                 cursor.getString(cursor.getColumnIndex(GROCERY_NAME)),
-                new Unit(cursor.getString(cursor.getColumnIndex(GROCERY_UNIT))),
-                cursor.getInt(cursor.getColumnIndex(GROCERY_AMOUNT)),
                 cursor.getInt(cursor.getColumnIndex(GROCERY_KCAL)),
                 cursor.getInt(cursor.getColumnIndex(GROCERY_ID))
         );
-
         cursor.close();
+
+        selectQuery = "SELECT * FROM " + TABLE_GROCERY_UNITS + " WHERE " + GROCERY_UNITS_GROCERY_ID + " = " + databaseGrocery.getId();
+        cursor = database.rawQuery(selectQuery, null);
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    databaseGrocery.addGroceryUnit(
+                            new GroceryUnit(
+                                    new Unit(cursor.getString(cursor.getColumnIndex(GROCERY_UNITS_UNIT))),
+                                    cursor.getDouble(cursor.getColumnIndex(GROCERY_UNITS_AMOUNT))
+                            )
+                    );
+                } while (cursor.moveToNext());
+            }
+        }
         return databaseGrocery;
     }
 
     public boolean deleteGrocery(DatabaseGrocery databaseGrocery) {
         SQLiteDatabase database = this.getWritableDatabase();
+        database.delete(
+                TABLE_GROCERY_UNITS,
+                GROCERY_UNITS_GROCERY_ID + " = ?",
+                new String[]{String.valueOf(databaseGrocery.getId())});
+
         return database.delete(
                 TABLE_GROCERY,
                 GROCERY_ID + " = ?",
@@ -246,6 +296,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String selectQuery;
         SQLiteDatabase database;
         Cursor cursor;
+        Cursor cursorGroceryUnits;
+
+        DatabaseGrocery databaseGrocery;
 
         databaseGroceries = new ArrayList<DatabaseGrocery>();
         selectQuery = "SELECT  * FROM " + TABLE_GROCERY;
@@ -257,14 +310,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                databaseGroceries.add(
-                        new DatabaseGrocery(
-                                cursor.getString(cursor.getColumnIndex(GROCERY_NAME)),
-                                new Unit(cursor.getString(cursor.getColumnIndex(GROCERY_UNIT))),
-                                cursor.getInt(cursor.getColumnIndex(GROCERY_AMOUNT)),
-                                cursor.getInt(cursor.getColumnIndex(GROCERY_KCAL)),
-                                cursor.getInt(cursor.getColumnIndex(GROCERY_ID)))
-                );
+                databaseGrocery = new DatabaseGrocery(
+                        cursor.getString(cursor.getColumnIndex(GROCERY_NAME)),
+                        cursor.getInt(cursor.getColumnIndex(GROCERY_KCAL)),
+                        cursor.getInt(cursor.getColumnIndex(GROCERY_ID)));
+
+                selectQuery = "SELECT * FROM " + TABLE_GROCERY_UNITS + " WHERE " + GROCERY_UNITS_GROCERY_ID + " = " + databaseGrocery.getId();
+                cursorGroceryUnits = database.rawQuery(selectQuery, null);
+
+                if (cursorGroceryUnits.moveToFirst()) {
+                    do {
+                        databaseGrocery.addGroceryUnit(new GroceryUnit(
+                                new Unit(cursor.getString(cursor.getColumnIndex(GROCERY_UNITS_UNIT))),
+                                cursor.getDouble(cursor.getColumnIndex(GROCERY_UNITS_AMOUNT))
+                        ));
+                    }while (cursorGroceryUnits.moveToNext());
+                }
+                databaseGroceries.add(databaseGrocery);
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -276,7 +338,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public List<DatabaseGrocery> getGroceriesContains(String name) {
-        return getGroceries(GROCERY_NAME + " LIKE '%" + DatabaseUtils.sqlEscapeString(name) + "%'");
+        return getGroceries(GROCERY_NAME + " LIKE " + DatabaseUtils.sqlEscapeString("%" + name + "%"));
+    }
+
+    public boolean isGroceryNameAvailable(String name) {
+        return getGroceries(GROCERY_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() == 0;
     }
 
     /* GroceryEntry Methods */
@@ -288,18 +354,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database = this.getWritableDatabase();
 
         values = new ContentValues();
-        values.put(GROCERY_ENTRY_NAME, groceryEntry.getGrocery().getName());
+        values.put(GROCERY_ENTRY_NAME, groceryEntry.getFixGrocery().getName());
         values.put(GROCERY_ENTRY_DATE, groceryEntry.getYear() + "-" + groceryEntry.getMonth() + "-" + groceryEntry.getDay());
-        values.put(GROCERY_ENTRY_UNIT, groceryEntry.getGrocery().getUnit().getName());
-        values.put(GROCERY_ENTRY_AMOUNT, groceryEntry.getGrocery().getAmount());
-        values.put(GROCERY_ENTRY_KCAL, groceryEntry.getGrocery().getKcal());
+        values.put(GROCERY_ENTRY_UNIT, groceryEntry.getFixGrocery().getUnit().getName());
+        values.put(GROCERY_ENTRY_AMOUNT, groceryEntry.getFixGrocery().getAmount());
+        values.put(GROCERY_ENTRY_KCAL, groceryEntry.getFixGrocery().getKcal());
 
         groceryEntryId = database.insert(TABLE_GROCERY_ENTRY, null, values);
         return new DatabaseGroceryEntry(
                 groceryEntry.getYear(),
                 groceryEntry.getMonth(),
                 groceryEntry.getDay(),
-                new Grocery(groceryEntry.getGrocery()),
+                new FixGrocery(groceryEntry.getFixGrocery()),
                 groceryEntryId
         );
     }
@@ -311,11 +377,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database = this.getWritableDatabase();
         values = new ContentValues();
 
-        values.put(GROCERY_ENTRY_NAME, databaseGroceryEntry.getGrocery().getName());
+        values.put(GROCERY_ENTRY_NAME, databaseGroceryEntry.getFixGrocery().getName());
         values.put(GROCERY_ENTRY_DATE, databaseGroceryEntry.getYear() + "-" + databaseGroceryEntry.getMonth() + "-" + databaseGroceryEntry.getDay());
-        values.put(GROCERY_ENTRY_UNIT, databaseGroceryEntry.getGrocery().getUnit().getName());
-        values.put(GROCERY_ENTRY_AMOUNT, databaseGroceryEntry.getGrocery().getAmount());
-        values.put(GROCERY_ENTRY_KCAL, databaseGroceryEntry.getGrocery().getKcal());
+        values.put(GROCERY_ENTRY_UNIT, databaseGroceryEntry.getFixGrocery().getUnit().getName());
+        values.put(GROCERY_ENTRY_AMOUNT, databaseGroceryEntry.getFixGrocery().getAmount());
+        values.put(GROCERY_ENTRY_KCAL, databaseGroceryEntry.getFixGrocery().getKcal());
 
         return database.update(TABLE_GROCERY_ENTRY, values, GROCERY_ENTRY_ID + "=" + databaseGroceryEntry.getId(), null) > 0;
     }
@@ -342,13 +408,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         month = Integer.parseInt(dateSplit[1]);
         day = Integer.parseInt(dateSplit[2]);
 
-        cursor.getString(cursor.getColumnIndex(GROCERY_NAME));
-
         databaseGroceryEntry = new DatabaseGroceryEntry(
                 year,
                 month,
                 day,
-                new Grocery(
+                new FixGrocery(
                         cursor.getString(cursor.getColumnIndex(GROCERY_ENTRY_NAME)),
                         new Unit(cursor.getString(cursor.getColumnIndex(GROCERY_ENTRY_UNIT))),
                         cursor.getDouble(cursor.getColumnIndex(GROCERY_ENTRY_AMOUNT)),
@@ -396,7 +460,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                 year,
                                 month,
                                 day,
-                                new Grocery(
+                                new FixGrocery(
                                         cursor.getString(cursor.getColumnIndex(GROCERY_ENTRY_NAME)),
                                         new Unit(cursor.getString(cursor.getColumnIndex(GROCERY_ENTRY_UNIT))),
                                         cursor.getDouble(cursor.getColumnIndex(GROCERY_ENTRY_AMOUNT)),
@@ -436,16 +500,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         menuId = database.insert(TABLE_MENU, null, values);
 
         databaseMenu = new DatabaseMenu(menu.getName(), menu.getAmount(), menuId);
-        for (Grocery g : menu.getGroceries()) {
+        for (FixGrocery fg : menu.getFixGroceries()) {
             values = new ContentValues();
             values.put(MENU_GROCERY_MENU_ID, menuId);
-            values.put(MENU_GROCERY_NAME, g.getName());
-            values.put(MENU_GROCERY_UNIT, g.getUnit().getName());
-            values.put(MENU_GROCERY_AMOUNT, g.getAmount());
-            values.put(MENU_GROCERY_KCAL, g.getKcal());
+            values.put(MENU_GROCERY_NAME, fg.getName());
+            values.put(MENU_GROCERY_UNIT, fg.getUnit().getName());
+            values.put(MENU_GROCERY_AMOUNT, fg.getAmount());
+            values.put(MENU_GROCERY_KCAL, fg.getKcal());
 
             database.insert(TABLE_MENU_GROCERY, null, values);
-            databaseMenu.addGrocery(new Grocery(g));
+            databaseMenu.addGrocery(new FixGrocery(fg));
         }
         return databaseMenu;
     }
@@ -478,7 +542,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 databaseMenu.addGrocery(
-                        new Grocery(
+                        new FixGrocery(
                                 cursor.getString(cursor.getColumnIndex(MENU_GROCERY_NAME)),
                                 new Unit(cursor.getString(cursor.getColumnIndex(MENU_GROCERY_UNIT))),
                                 cursor.getInt(cursor.getColumnIndex(MENU_GROCERY_AMOUNT)),
@@ -506,13 +570,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (result == 0) return false;
 
         database.delete(TABLE_MENU_GROCERY, MENU_GROCERY_MENU_ID + " = ?", new String[]{String.valueOf(databaseMenu.getId())});
-        for (Grocery g : databaseMenu.getGroceries()) {
+        for (FixGrocery fg : databaseMenu.getFixGroceries()) {
             values = new ContentValues();
             values.put(MENU_GROCERY_MENU_ID, databaseMenu.getId());
-            values.put(MENU_GROCERY_NAME, g.getName());
-            values.put(MENU_GROCERY_UNIT, g.getUnit().getName());
-            values.put(MENU_GROCERY_AMOUNT, g.getAmount());
-            values.put(MENU_GROCERY_KCAL, g.getKcal());
+            values.put(MENU_GROCERY_NAME, fg.getName());
+            values.put(MENU_GROCERY_UNIT, fg.getUnit().getName());
+            values.put(MENU_GROCERY_AMOUNT, fg.getAmount());
+            values.put(MENU_GROCERY_KCAL, fg.getKcal());
 
             database.insert(TABLE_MENU_GROCERY, null, values);
         }
@@ -553,7 +617,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 if (menuGroceriesCursor.moveToFirst()) {
                     do {
                         databaseMenu.addGrocery(
-                                new Grocery(
+                                new FixGrocery(
                                         menuGroceriesCursor.getString(menuGroceriesCursor.getColumnIndex(MENU_GROCERY_NAME)),
                                         new Unit(menuGroceriesCursor.getString(menuGroceriesCursor.getColumnIndex(MENU_GROCERY_UNIT))),
                                         menuGroceriesCursor.getInt(menuGroceriesCursor.getColumnIndex(MENU_GROCERY_AMOUNT)),
@@ -575,7 +639,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public List<DatabaseMenu> getMenusContains(String name) {
-        return getMenus(MENU_NAME + " = '" + DatabaseUtils.sqlEscapeString(name) + "'");
+        return getMenus(MENU_NAME + " = " + DatabaseUtils.sqlEscapeString(name));
+    }
+
+    public boolean isMenuNameAvailable(String name) {
+        return getMenus(MENU_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() == 0;
     }
 
     /* MenuEntry Methods */
@@ -594,16 +662,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         menuEntryId = database.insert(TABLE_MENU_ENTRY, null, values);
         databaseMenuEntry = new DatabaseMenuEntry(menuEntry.getYear(), menuEntry.getMonth(), menuEntry.getDay(), new Menu(menuEntry.getMenu()), menuEntryId);
-        for (Grocery g : menuEntry.getMenu().getGroceries()) {
+        for (FixGrocery fg : menuEntry.getMenu().getFixGroceries()) {
             values = new ContentValues();
             values.put(MENU_ENTRY_GROCERY_MENU_ENTRY_ID, menuEntryId);
-            values.put(MENU_ENTRY_GROCERY_NAME, g.getName());
-            values.put(MENU_ENTRY_GROCERY_UNIT, g.getUnit().getName());
-            values.put(MENU_ENTRY_GROCERY_AMOUNT, g.getAmount());
-            values.put(MENU_ENTRY_GROCERY_KCAL, g.getKcal());
+            values.put(MENU_ENTRY_GROCERY_NAME, fg.getName());
+            values.put(MENU_ENTRY_GROCERY_UNIT, fg.getUnit().getName());
+            values.put(MENU_ENTRY_GROCERY_AMOUNT, fg.getAmount());
+            values.put(MENU_ENTRY_GROCERY_KCAL, fg.getKcal());
 
             database.insert(TABLE_MENU_ENTRY_GROCERY, null, values);
-            databaseMenuEntry.getMenu().addGrocery(new Grocery(g));
+            databaseMenuEntry.getMenu().addGrocery(new FixGrocery(fg));
         }
         return databaseMenuEntry;
     }
@@ -628,13 +696,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MENU_ENTRY_GROCERY_MENU_ENTRY_ID + " = ?",
                 new String[]{String.valueOf(databaseMenuEntry.getId())}
         );
-        for (Grocery g : databaseMenuEntry.getMenu().getGroceries()) {
+        for (FixGrocery fg : databaseMenuEntry.getMenu().getFixGroceries()) {
             values = new ContentValues();
             values.put(MENU_ENTRY_GROCERY_MENU_ENTRY_ID, databaseMenuEntry.getId());
-            values.put(MENU_ENTRY_GROCERY_NAME, g.getName());
-            values.put(MENU_ENTRY_GROCERY_UNIT, g.getUnit().getName());
-            values.put(MENU_ENTRY_GROCERY_AMOUNT, g.getAmount());
-            values.put(MENU_ENTRY_GROCERY_KCAL, g.getKcal());
+            values.put(MENU_ENTRY_GROCERY_NAME, fg.getName());
+            values.put(MENU_ENTRY_GROCERY_UNIT, fg.getUnit().getName());
+            values.put(MENU_ENTRY_GROCERY_AMOUNT, fg.getAmount());
+            values.put(MENU_ENTRY_GROCERY_KCAL, fg.getKcal());
 
             database.insert(TABLE_MENU_ENTRY_GROCERY, null, values);
         }
@@ -692,7 +760,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 databaseMenuEntry.getMenu().addGrocery(
-                        new Grocery(
+                        new FixGrocery(
                                 cursor.getString(cursor.getColumnIndex(MENU_ENTRY_GROCERY_NAME)),
                                 new Unit(cursor.getString(cursor.getColumnIndex(MENU_ENTRY_GROCERY_UNIT))),
                                 cursor.getInt(cursor.getColumnIndex(MENU_ENTRY_GROCERY_AMOUNT)),
@@ -748,7 +816,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 if (menuEntryGroceriesCursor.moveToFirst()) {
                     do {
                         databaseMenuEntry.getMenu().addGrocery(
-                                new Grocery(
+                                new FixGrocery(
                                         menuEntryGroceriesCursor.getString(menuEntryGroceriesCursor.getColumnIndex(MENU_GROCERY_NAME)),
                                         new Unit(menuEntryGroceriesCursor.getString(menuEntryGroceriesCursor.getColumnIndex(MENU_GROCERY_UNIT))),
                                         menuEntryGroceriesCursor.getInt(menuEntryGroceriesCursor.getColumnIndex(MENU_GROCERY_AMOUNT)),
@@ -838,7 +906,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         databaseUnits = new ArrayList<DatabaseUnit>();
         selectQuery = "SELECT  * FROM " + TABLE_UNIT;
-        if(whereClause.length() > 0) selectQuery += " WHERE " + whereClause;
+        if (whereClause.length() > 0) selectQuery += " WHERE " + whereClause;
 
         database = this.getReadableDatabase();
         cursor = database.rawQuery(selectQuery, null);
@@ -864,5 +932,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 UNIT_ID + " = ?",
                 new String[]{String.valueOf(databaseUnit.getId())}
         ) > 0;
+    }
+
+    public boolean isUnitNameAvailable(String name) {
+        return getUnits(UNIT_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() == 0;
     }
 }

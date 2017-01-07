@@ -1,5 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.database;
 
+import android.content.Context;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.List;
@@ -10,8 +11,8 @@ import java.util.List;
 public class DatabaseEntityManager {
     private DatabaseHelper mDatabaseHelper;
 
-    public DatabaseEntityManager(DatabaseHelper databaseHelper) {
-        mDatabaseHelper = databaseHelper;
+    public DatabaseEntityManager(Context context) {
+        mDatabaseHelper = new DatabaseHelper(context);
     }
 
     /* Manage Groceries */
@@ -37,6 +38,10 @@ public class DatabaseEntityManager {
 
     public List<DatabaseGrocery> getGroceriesContains(String name) {
         return mDatabaseHelper.getGroceriesContains(name);
+    }
+
+    public boolean isGroceryNameAvailable(String name) {
+        return mDatabaseHelper.isGroceryNameAvailable(name);
     }
 
 
@@ -90,6 +95,10 @@ public class DatabaseEntityManager {
         return mDatabaseHelper.getMenusContains(name);
     }
 
+    public boolean isMenuNameAvailable(String name) {
+        return mDatabaseHelper.isMenuNameAvailable(name);
+    }
+
     /* Manage MenuEntries */
     public DatabaseMenuEntry createMenuEntry(MenuEntry menuEntry) {
         return mDatabaseHelper.createMenuEntry(menuEntry);
@@ -135,4 +144,9 @@ public class DatabaseEntityManager {
     public List<DatabaseUnit> getAllUnits() {
         return mDatabaseHelper.getAllUnits();
     }
+
+    public boolean isUnitNameAvailable(String name) {
+        return mDatabaseHelper.isUnitNameAvailable(name);
+    }
+
 }

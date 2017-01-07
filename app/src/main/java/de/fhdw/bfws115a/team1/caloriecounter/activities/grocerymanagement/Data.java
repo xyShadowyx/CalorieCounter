@@ -1,7 +1,12 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
+import android.content.Intent;
 import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGrocery;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseMenu;
 
 /**
  * Created by Florian on 08.11.2016.
@@ -14,6 +19,10 @@ public class Data {
     private int mSelectedAmount;
     private String mSpinnerStatus;
     private int mKiloCalories;
+    private DatabaseGrocery mInputGrocery;
+
+    /* Database Entity Manager */
+    private DatabaseEntityManager mDatabaseEntityManager;
 
     /* Default values */
     private final String DEFAULT_GROCERYNAME = "";
@@ -28,8 +37,12 @@ public class Data {
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
+        Intent intent = mActivity.getIntent();
+
+        mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
 
         if (savedInstanceState == null) {
+            mInputGrocery = (DatabaseGrocery) intent.getSerializableExtra("databaseMenu");
             mGroceryName = DEFAULT_GROCERYNAME;
             mSelectedAmount = DEFAULT_SELECTEDAMOUNT;
             mKiloCalories = DEFAULt_KILOCALORIES;
@@ -72,6 +85,14 @@ public class Data {
 
     public String getSpinnerStatus() {
         return mSpinnerStatus;
+    }
+
+    public DatabaseEntityManager getDatabaseEntityManager() {
+        return mDatabaseEntityManager;
+    }
+
+    public DatabaseGrocery getInputGrocery() {
+        return mInputGrocery;
     }
 
     /* Setter methods */

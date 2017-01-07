@@ -27,7 +27,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_toRightOf="@id/AddGrocery"
             >
 
             <TextView
@@ -46,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/NameInput"
+                android:id="@+id/idGroceryManagementGroceryName"
                 android:layout_marginTop="@dimen/margin"
                 android:layout_marginRight="@dimen/margin"
                 android:text="Namensangabe"
@@ -72,12 +71,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_toRightOf="@id/AddGrocery"
             android:layout_below="@id/Linear1"
             >
 
             <TextView
-                android:id="@+id/Amount"
+                android:id="@+id/idAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -93,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/AmountInput"
+                android:id="@+id/idGroceryManagementSelectedAmount"
                 android:layout_marginTop="@dimen/margin"
                 android:layout_marginRight="@dimen/margin"
                 android:text="Mengenangabe"
@@ -103,7 +101,7 @@
                 />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/idGroceryManagementSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -119,7 +117,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_toRightOf="@id/AddGrocery"
             android:layout_below="@id/Linear2"
             >
             <ListView
@@ -136,7 +133,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_toRightOf="@id/AddGrocery"
             android:layout_below="@id/Linear3"
             >
 
@@ -156,7 +152,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/KcalInput"
+                android:id="@+id/idGroceryManagementKiloCalories"
                 android:layout_weight="1"
                 android:layout_marginTop="@dimen/margin"
                 android:layout_marginRight="@dimen/margin"
@@ -189,7 +185,7 @@
 
         <ImageView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/AddGrocery"
+            android:id="@+id/idAddGrocery"
             android:src="@drawable/plus_32"
             android:layout_marginLeft="@dimen/margin"
             android:layout_marginRight="@dimen/margin"

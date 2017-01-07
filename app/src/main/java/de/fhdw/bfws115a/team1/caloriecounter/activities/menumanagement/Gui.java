@@ -6,55 +6,45 @@ import de.fhdw.bfws115a.team1.caloriecounter.R;
 
 public class Gui {
 
-    private EditText mSelectMenuName;
-    private EditText mSelectPortionSize;
+    private EditText mMenuName;
+    private EditText mPortionSize;
 
-    private ImageView mDeleteGrocery;
     private ImageView mAddNewGrocery;
-
-    private TextView mAddedGrocery;
-
     private Button mAddMenu;
 
+    private ListView mListView;
+
     public Gui(Init activity) {
-        activity.setContentView(R.layout.activity_main);
+        activity.setContentView(R.layout.menumanagement);
 
-        /* IDs müssen noch auf das passende Layout referenziert werden! */
-        mSelectMenuName = (EditText) activity.findViewById(R.id.idSelectMenuName);
-        mSelectPortionSize = (EditText) activity.findViewById(R.id.idSelectPortionSize);
+        mMenuName = (EditText) activity.findViewById(R.id.idMenuManagementSelectMenuName);
+        mPortionSize = (EditText) activity.findViewById(R.id.idMenuManagementSelectPortionSize);
 
-        mDeleteGrocery = (ImageView) activity.findViewById(R.id.idDeleteGrocery);
-        mAddNewGrocery = (ImageView) activity.findViewById(R.id.idAddNewGrocery);
+        mAddNewGrocery = (ImageView) activity.findViewById(R.id.idMenuManagementAddNewGrocery);
 
-        mAddedGrocery = (TextView) activity.findViewById(R.id.idAddedGrocery);
+        mAddMenu = (Button) activity.findViewById(R.id.idMenuManagementAddMenu);
 
-        mAddMenu = (Button) activity.findViewById(R.id.idAddMenu);
+        mListView = (ListView) activity.findViewById(R.id.idMenuMangementList);
     }
 
     /* Getter methods */
-    public EditText getSelectMenuName() {
-        return mSelectMenuName;
+    public EditText getMenuName() {
+        return mMenuName;
     }
 
-    public EditText getSelectPortionSize() {
-        return mSelectPortionSize;
-    }
-
-    public ImageView getDeleteGrocery() {
-        return mDeleteGrocery;
+    public EditText getPortionSize() {
+        return mPortionSize;
     }
 
     public ImageView getAddNewGrocery() {
         return mAddNewGrocery;
     }
 
-    public TextView getAddedGroceries() {
-        return mAddedGrocery;
-    }
-
     public Button getAddMenu() {
         return mAddMenu;
     }
 
-    /* Methods to change view attributes */
+    public ListView getListView() {
+        return mListView;
+    }
 }

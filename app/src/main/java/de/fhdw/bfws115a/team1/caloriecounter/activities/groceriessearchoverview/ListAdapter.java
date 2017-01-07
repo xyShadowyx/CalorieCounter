@@ -1,11 +1,13 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
+import de.fhdw.bfws115a.team1.caloriecounter.activities.calendar.*;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
 import java.util.ArrayList;
@@ -13,15 +15,21 @@ import java.util.ArrayList;
 /**
  * Created by xySha on 22.11.2016.
  */
-public class ListAdapter extends BaseAdapter implements Filterable {
+public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+    private Data mData;
+    private ApplicationLogic mApplicationLogic;
     private final Context mContext;
     private final ArrayList<GroceriesEntity> mGroceriesEntities;
     private ArrayList<GroceriesEntity> mFilteredGroceriesEntities;
     private Filter mFilter;
 
-    public ListAdapter(Init activity, ArrayList<GroceriesEntity> groceriesEntities) {
-        mContext = activity.getApplicationContext();
-        mGroceriesEntities = groceriesEntities;
+    public ListAdapter(Data data, ApplicationLogic applicationLogic) {
+        mData = data;
+        mApplicationLogic = applicationLogic;
+
+        mContext = mData.getActivity().getApplicationContext();
+        mGroceriesEntities = mData.getGroceriesEntityList();
+
         mFilter = new GroceriesEntityFilter();
         mFilteredGroceriesEntities = mGroceriesEntities;
     }
@@ -54,13 +62,31 @@ public class ListAdapter extends BaseAdapter implements Filterable {
         }
 
         GroceriesEntity groceryEnity = (GroceriesEntity) getItem(position);
-        viewHolder.nameText.setText(String.format("%s (%s %s, %d KCal)", groceryEnity.getName(), groceryEnity.getAmount(), groceryEnity.getUnit().getName(), groceryEnity.getKcal()));
+        viewHolder.nameText.setText(String.format("%s", groceryEnity.getName()));
         return convertView;
     }
 
     @Override
     public Filter getFilter() {
         return mFilter;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        GroceriesEntity clickedItem = (GroceriesEntity) getItem(i);
+        mApplicationLogic.onItemSelected(clickedItem);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Log.d("onItemSelected: ", "onItemSelected!!!");
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        Log.d("onNothingSelected: ", "onNothingSelected!!!");
+
     }
 
     private class GroceriesEntityFilter extends Filter {

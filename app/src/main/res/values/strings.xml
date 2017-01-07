@@ -4,30 +4,30 @@
 
 
     <!-- ### ACTIVITIES STRING DEFAULT VALUES ARE DEFINED HERE ### -->
-    <!-- Default values 'selectamount'-activity-->
+    <!-- Default values 'selectamount'-activity -->
     <string name="selectamount_default_pickedgrocery">Error</string>
     <string name="selectamount_default_spinnerstatus">Einheit</string>
 
-    <!-- Default values 'quantityunitmanagement'-activity-->
+    <!-- Default values 'quantityunitmanagement'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
-    <!-- Default values 'menumanagement'-activity-->
+    <!-- Default values 'menumanagement'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
     <string name="grocerymanagement_default_spinnerstatus">Einheit</string>
 
-    <!-- Default values 'grocerymanagement'-activity-->
+    <!-- Default values 'grocerymanagement'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
-    <!-- Default values 'groceriessearchoverview'-activity-->
+    <!-- Default values 'groceriessearchoverview'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
-    <!-- Default values 'dailyoverview'-activity-->
+    <!-- Default values 'dailyoverview'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
-    <!-- Default values 'calendar'-activity-->
+    <!-- Default values 'calendar'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
-    <!-- Default values 'spinner'-activity-->
+    <!-- Default values 'spinner'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
 
@@ -56,14 +56,19 @@
     <!-- Values 'menumanagement'-layout -->
     <string name="menumanagement_menumanagement">Menü-Management</string>
     <string name="menumanagement_name">Name:</string>
+    <string name="menumanagement_newNameInput">Bitte Bezeichnung angeben...</string>
     <string name="menumanagement_portion">Portion:</string>
+    <string name="menumanagement_newPortionInput">Bitte Portionsgröße angeben...</string>
     <string name="menumanagement_lastadd">Zuletzt hinzugefügtes Lebensmittel</string>
+    <string name="menumanagement_newGroceryInput">Hier neues Lebensmittel eintragen</string>
+    <string name="menumanagement_addMenu">Hinzufügen</string>
+
 
     <!-- Values 'quantityunitmanagement'-layout -->
     <string name="quantityunitmanagement_quantityunitmanagement">Mengeneinheiten</string>
     <string name="quantityunitmanagement_exit">Fertig</string>
-    <string name="add">Hinzufügen</string>
-
+    <string name="quantityunitmanagement_add">Hinzufügen</string>
+    <string name="quantityunitmanagement_dummy">Platzhalter</string>
 
     <!-- Values 'grocerymanagement'-layout -->
     <string name="grocerymanagement_grocerymanagement">Lebensmittel-Management</string>
@@ -81,11 +86,13 @@
     <string name="quantityunitmanagement_incorrectquantityunittoast">Diese Einheit ist bereits in Ihrer Datenbank
         vorhanden.
     </string>
+    <string name="quantityunitmanagement_incorrectquantityunitnamelengthtoast">Der Name dieser Einheit besitzt zu viele Buchstaben! Es sind maximal 16 Zeichen gestattet.
+    </string>
     <string name="quantityunitmanagement_existinggroceryindbtoast">Ein Lebensmittel mit diesem Namen ist bereits in
         Ihrer Datenbank vorhanden.
     </string>
     <string name="menumanagement_existingmenuindbtoast">Ein Menü mit diesem Namen ist bereits in Ihrer Datenbank
-        vorhanden
+        vorhanden.
     </string>
 
 </resources>

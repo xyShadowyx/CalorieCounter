@@ -1,44 +1,57 @@
 package de.fhdw.bfws115a.team1.caloriecounter.entities;
 
+import java.util.ArrayList;
+
 /**
  * Created by Viktor on 15.11.2016.
  */
 
 public class Grocery extends GroceriesEntity {
-    private Unit mUnit;
-    private double mAmount;
+    private ArrayList<GroceryUnit> mGroceryUnits;
     private int mKcal;
 
-    public Grocery(String name, Unit unit, double amount, int kcal) {
+    public Grocery(String name, int kcal) {
         super(name);
-
-        mUnit = unit;
-        mAmount = amount;
+        mGroceryUnits = new ArrayList<GroceryUnit>();
         mKcal = kcal;
     }
 
     public Grocery(Grocery grocery) {
-        this(grocery.getName(), grocery.getUnit(), grocery.getAmount(), grocery.getKcal());
+        this(grocery.getName(), grocery.getKcal());
+        for(GroceryUnit gu : grocery.getGroceryUnits()) {
+            addGroceryUnit(new GroceryUnit(gu));
+        }
     }
 
-    public Unit getUnit() {
-        return mUnit;
+    public ArrayList<GroceryUnit> getGroceryUnits() {
+        return mGroceryUnits;
     }
 
-    public double getAmount() {
-        return mAmount;
+    public boolean addGroceryUnit(GroceryUnit groceryUnit) {
+        for(GroceryUnit gu : mGroceryUnits) {
+            if(gu.equals(groceryUnit)) return false;
+        }
+        mGroceryUnits.add(new GroceryUnit(groceryUnit));
+        return true;
+    }
+
+    public boolean removeGroceryUnit(GroceryUnit groceryUnit) {
+        return mGroceryUnits.remove(groceryUnit);
+        /*GroceryUnit removeGroceryUnit = null;
+        for(GroceryUnit gu : mGroceryUnits) {
+            if(gu.equals(groceryUnit)) {
+                removeGroceryUnit = gu;
+                break;
+            }
+        }
+        if(removeGroceryUnit != null) {
+            mGroceryUnits.remove(removeGroceryUnit);
+        }
+        return false;*/
     }
 
     public int getKcal() {
         return mKcal;
-    }
-
-    public void setUnit(Unit mUnit) {
-        this.mUnit = mUnit;
-    }
-
-    public void setAmount(double mAmount) {
-        this.mAmount = mAmount;
     }
 
     public void setKcal(int mKcal) {
@@ -46,6 +59,7 @@ public class Grocery extends GroceriesEntity {
     }
 
     public String toString() {
-        return "Grocery(Name: " + getName() + ", Unit: " + getUnit().toString() + ", Amount: " + getAmount() + ", KCal: " + getKcal() + ")";
+        //TODO: add GroceryUnits to string
+        return "Grocery(Name: " + getName() + ")";
     }
 }

@@ -18,17 +18,11 @@ public class ClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.idDeleteGrocery:
-                mApplicationLogic.onDeleteGroceryClicked();
-                //magic
-                break;
-            case R.id.idAddNewGrocery:
+            case R.id.idMenuManagementAddNewGrocery:
                 mApplicationLogic.onAddNewGroceryClicked();
-                //magic
                 break;
-            case R.id.idAddMenu:
+            case R.id.idMenuManagementAddMenu:
                 mApplicationLogic.onAddMenuClicked();
-                //magic
                 break;
         }
     }

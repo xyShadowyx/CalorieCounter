@@ -15,16 +15,15 @@ public class Gui {
     private Button mAddAmount;
 
     public Gui(Init activity) {
-        activity.setContentView(R.layout.activity_main);
+        activity.setContentView(R.layout.selectamount);
 
-        /* IDs müssen noch auf das passende Layout referenziert werden!
         mPickedGrocery = (TextView) activity.findViewById(R.id.idSelectAmountPickedGrocery);
 
         mSelectedAmount = (EditText) activity.findViewById(R.id.idSelectAmountSelectAmount);
 
-        mSpinner = activity.findViewById(R.id.idSelectAmountSpinner);
+        mSpinner = (Spinner) activity.findViewById(R.id.idSelectAmountSpinner);
 
-        mAddAmount = activity.findViewById(R.id.idSelectAmountAddAmount); */
+        mAddAmount = (Button) activity.findViewById(R.id.idSelectAmountAddAmount);
     }
 
     /* Getter methods */
