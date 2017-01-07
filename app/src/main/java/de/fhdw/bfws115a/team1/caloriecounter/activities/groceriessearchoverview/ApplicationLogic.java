@@ -2,7 +2,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview
 
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
+import de.fhdw.bfws115a.team1.caloriecounter.constants.SearchSettings;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
@@ -34,12 +34,14 @@ public class ApplicationLogic {
     }
 
     private void initListener() {
+        ClickListener cl = new ClickListener(this);
         TextListener tl = new TextListener(this);
 
-        Log.d("Debug3: ", "Set Click Listener!");
         mGui.getListView().setOnItemClickListener(mListAdapter);
         mGui.getListView().setOnItemSelectedListener(mListAdapter);
         mGui.getSearchView().setOnQueryTextListener(tl);
+        mGui.getAddGroceryButton().setOnClickListener(cl);
+        mGui.getAddMenuButton().setOnClickListener(cl);
     }
 
     public void reload() {
@@ -95,5 +97,15 @@ public class ApplicationLogic {
         resultIntent.putExtra("groceriesEntity", groceriesEntity);
         mData.getActivity().setResult(Activity.RESULT_OK, resultIntent);
         mData.getActivity().finish();
+    }
+
+    public void onCreateNewGroceryClicked() {
+        Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement.Init.class);
+        mData.getActivity().startActivityForResult(intent, ResultCodes.RELOAD);
+    }
+
+    public void onCreateNewMenuClicked() {
+        Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement.Init.class);
+        mData.getActivity().startActivityForResult(intent, ResultCodes.RELOAD);
     }
 }

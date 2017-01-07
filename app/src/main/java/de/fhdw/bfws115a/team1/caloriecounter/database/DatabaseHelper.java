@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import de.fhdw.bfws115a.team1.caloriecounter.activities.calendar.Init;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
@@ -343,7 +342,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean isGroceryNameAvailable(String name) {
-        return getGroceries(GROCERY_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() > 0;
+        return getGroceries(GROCERY_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() == 0;
     }
 
     /* GroceryEntry Methods */
@@ -644,7 +643,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean isMenuNameAvailable(String name) {
-        return getMenus(MENU_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() > 0;
+        return getMenus(MENU_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() == 0;
     }
 
     /* MenuEntry Methods */

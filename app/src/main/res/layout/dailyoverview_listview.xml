@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/margin"
-        android:background="@color/white" >
+        android:background="@color/white">
 
     <TextView android:id="@+id/titel"
               android:layout_width="match_parent"
@@ -107,9 +107,9 @@
                   android:layout_below="@id/calorieSum">
 
             <ListView
-                    android:id="@android:id/list"
+                    android:id="@+id/list"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="340dp"
                     android:paddingBottom="@dimen/padding">
 
             </ListView>

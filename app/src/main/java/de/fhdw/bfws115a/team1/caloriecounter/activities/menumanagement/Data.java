@@ -42,11 +42,6 @@ public class Data {
             Intent intent = mActivity.getIntent();
 
             mMenuFixGroceries = new ArrayList<FixGrocery>();
-            mMenuFixGroceries.add(new FixGrocery("Test1", new Unit("test2"), 0.2, 2));
-            mMenuFixGroceries.add(new FixGrocery("Test2", new Unit("test2"), 0.2, 2));
-            mMenuFixGroceries.add(new FixGrocery("Test3", new Unit("test2"), 0.2, 2));
-            mMenuFixGroceries.add(new FixGrocery("Test4", new Unit("test2"), 0.2, 2));
-            mMenuFixGroceries.add(new FixGrocery("Test5", new Unit("test2"), 0.2, 2));
             if (intent.hasExtra("databaseMenu")) {
                 mInputMenu = (DatabaseMenu) intent.getSerializableExtra("databaseMenu");
                 for(FixGrocery fg : mInputMenu.getFixGroceries()){
