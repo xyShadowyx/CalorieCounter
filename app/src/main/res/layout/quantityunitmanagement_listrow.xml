@@ -16,7 +16,6 @@
                   android:text="@string/menumanagement_lastadd"
                   android:layout_marginLeft="@dimen/margin"
                   android:id="@+id/idMenuManagementLastAdd"
-
                   android:textColor="@color/black"
                   android:textSize="@dimen/textsize"/>
 

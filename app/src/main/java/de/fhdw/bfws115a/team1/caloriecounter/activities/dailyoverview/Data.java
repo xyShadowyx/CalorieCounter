@@ -2,11 +2,13 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.dailyoverview;
 
 import android.content.Intent;
 import android.os.Bundle;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 
 import java.util.Calendar;
 
 public class Data {
     private Init mActivity;
+    private DatabaseEntityManager mDatabaseEntityManager;
 
     /* Data variables */
     private int mSelectedYear;
@@ -22,6 +24,7 @@ public class Data {
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
+        mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
 
         if (savedInstanceState == null) {
             Intent intent = mActivity.getIntent();
@@ -62,6 +65,10 @@ public class Data {
 
     public int getSelectedDay() {
         return mSelectedDay;
+    }
+
+    public DatabaseEntityManager getDatabaseEntityManager() {
+        return mDatabaseEntityManager;
     }
 
     /* Setter methods */

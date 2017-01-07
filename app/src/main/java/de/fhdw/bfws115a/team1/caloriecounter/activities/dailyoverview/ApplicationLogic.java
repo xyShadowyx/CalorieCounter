@@ -1,8 +1,9 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.dailyoverview;
 
-import android.app.Activity;
 import android.content.Intent;
 import de.fhdw.bfws115a.team1.caloriecounter.constants.SearchSettings;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 public class ApplicationLogic {
 
@@ -63,6 +64,34 @@ public class ApplicationLogic {
         changedIntent.putExtra("day", day);
         changedIntent.putExtra("month", month);
         changedIntent.putExtra("year", year);
+        mData.getActivity().finish();
+        mData.getActivity().startActivity(mData.getActivity().getIntent());
+    }
+
+    public void onClickAddEntry() {
+        Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview.Init.class);
+        intent.putExtra("searchSettings", SearchSettings.DISPLAY_ALL.ordinal());
+        mData.getActivity().startActivityForResult(intent, ResultCodes.NEWENTRY_RESULT);
+    }
+
+    public void onEntrySelected(Intent data) {
+        GroceriesEntity groceriesEntity = (GroceriesEntity) data.getSerializableExtra("groceriesEntity");
+        DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
+
+        if (groceriesEntity instanceof FixGrocery) {
+            FixGrocery fixGrocery = (FixGrocery) groceriesEntity;
+            GroceryEntry groceryEntry = new GroceryEntry(mData.getSelectedYear(), mData.getSelectedMonth(), mData.getSelectedDay(), fixGrocery);
+            databaseEntityManager.createGroceryEntry(groceryEntry);
+
+        } else if (groceriesEntity instanceof Menu) {
+            Menu menu = (Menu) groceriesEntity;
+            MenuEntry menuEntry = new MenuEntry(mData.getSelectedYear(), mData.getSelectedMonth(), mData.getSelectedDay(), menu);
+            databaseEntityManager.createMenuEntry(menuEntry);
+        }
+        reload();
+    }
+
+    public void reload() {
         mData.getActivity().finish();
         mData.getActivity().startActivity(mData.getActivity().getIntent());
     }

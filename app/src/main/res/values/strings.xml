@@ -7,7 +7,6 @@
     <!-- Default values 'selectamount'-activity -->
     <string name="selectamount_default_pickedgrocery">Error</string>
     <string name="selectamount_default_spinnerstatus">Einheit</string>
-
     <!-- Default values 'quantityunitmanagement'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
@@ -42,6 +41,7 @@
     <!-- Values 'groceriesearchoverview'-layout -->
     <string name="groceriesearchoverview_search">Suche</string>
     <string name="groceriesearchoverview_newGrocery">Neues Lebensmittel</string>
+    <string name="groceriesearchoverview_grocery">Lebensmittel</string>
     <string name="groceriesearchoverview_newMenu">Neues Menü</string>
 
     <!-- Values 'dailyoverview'-layout -->
@@ -72,14 +72,18 @@
 
     <!-- Values 'grocerymanagement'-layout -->
     <string name="grocerymanagement_grocerymanagement">Lebensmittel-Management</string>
-    <string name="grocerymanagement_name">Name:</string>
-    <string name="grocerymanagement_amount">Menge:</string>
-    <string name="grocerymanagement_kcal">Kalorien:</string>
+    <string name="grocerymanagement_name_name">Name:</string>
+    <string name="grocerymanagement_amount_name">Menge:</string>
+    <string name="grocerymanagement_kcal_name">Kalorien:</string>
+    <string name="grocerymanagement_name">Namensangabe</string>
+    <string name="grocerymanagement_amount">Mengenangabe</string>
+    <string name="grocerymanagement_kcal">Kalorienangabe</string>
     <string name="grocerymanagement_add">Hinzufügen</string>
 
     <!-- Values 'selectamount'-layout -->
-    <string name="selectamount_amount">Menge:</string>
     <string name="selectamount_accept">Übernehmen</string>
+    <string name="selectamount_amount">Mengenangabe</string>
+    <string name="selectamount_amount_name">Menge:</string>
 
     <!-- ### TOAST STRING VALUES ARE DEFINED HERE #### -->
     <string name="selectamount_emptyamounttoast">Bitte geben Sie einen gültigen Wert ein.</string>
@@ -94,5 +98,4 @@
     <string name="menumanagement_existingmenuindbtoast">Ein Menü mit diesem Namen ist bereits in Ihrer Datenbank
         vorhanden.
     </string>
-
 </resources>

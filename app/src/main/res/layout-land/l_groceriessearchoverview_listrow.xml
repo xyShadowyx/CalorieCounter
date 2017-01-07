@@ -1,40 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/row_dailyoverview"
+                android:id="@+id/idGroceriesSearchOverviewRow"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:background="@color/white"
                 android:focusableInTouchMode="true">
 
-    <TextView android:id="@+id/grocery"
+    <TextView android:id="@+id/idGroceriesSearchOverviewGrocery"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:textSize="@dimen/textsize"
+              android:text="@string/groceriesearchoverview_grocery"
               android:layout_centerVertical="true"
               android:paddingTop="@dimen/padding"
+              android:layout_marginLeft="@dimen/margin_2"
               android:textColor="@color/black"/>
 
-    <ImageView android:id="@+id/copyButton"
+    <ImageView android:id="@+id/idGroceriesSearchOverviewSettingButton"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:paddingTop="@dimen/padding"
-               android:layout_toLeftOf="@+id/settingButton"
+               android:layout_marginRight="@dimen/margin_2"
                android:layout_centerVertical="true"
-               android:scaleType="centerCrop"
-               android:src="@drawable/copy_32"/>
-
-    <ImageView android:id="@+id/settingButton"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:paddingTop="@dimen/padding"
-               android:layout_centerVertical="true"
-               android:layout_toLeftOf="@+id/deleteButton"
+               android:layout_toLeftOf="@+id/idGroceriesSearchOverviewDeleteButton"
                android:src="@drawable/settings_32"/>
 
-    <ImageView android:id="@+id/deleteButton"
+    <ImageView android:id="@+id/idGroceriesSearchOverviewDeleteButton"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:paddingTop="@dimen/padding"
+               android:layout_marginRight="@dimen/margin_2"
                android:layout_centerVertical="true"
                android:layout_alignParentRight="true"
                android:src="@drawable/xmark_32"/>

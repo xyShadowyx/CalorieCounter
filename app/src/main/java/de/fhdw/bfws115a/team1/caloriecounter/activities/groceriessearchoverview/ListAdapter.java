@@ -128,9 +128,9 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
         ImageView deleteImage;
 
         public ViewHolder(View view) {
-            nameText = (TextView) view.findViewById(R.id.idGroceryName);
-            editImage = (ImageView) view.findViewById(R.id.idSettingButton);
-            deleteImage = (ImageView) view.findViewById(R.id.idDeleteButton);
+            nameText = (TextView) view.findViewById(R.id.idGroceriesSearchOverviewGrocery);
+            editImage = (ImageView) view.findViewById(R.id.idGroceriesSearchOverviewSettingButton);
+            deleteImage = (ImageView) view.findViewById(R.id.idGroceriesSearchOverviewDeleteButton);
         }
     }
 }

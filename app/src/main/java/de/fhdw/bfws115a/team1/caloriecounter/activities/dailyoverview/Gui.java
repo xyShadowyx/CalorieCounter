@@ -18,17 +18,17 @@ public class Gui {
     private ListView mEntryListView;
 
     public Gui(Init activity) {
-        activity.setContentView(R.layout.dailyoverview_listview);
+        activity.setContentView(R.layout.dailyoverview);
 
-        mTodayDateText = (TextView) activity.findViewById(R.id.date);
-        mPrevDayButton = (ImageView) activity.findViewById(R.id.previousDay);
-        mNextDayButton = (ImageView) activity.findViewById(R.id.nextDay);
+        mTodayDateText = (TextView) activity.findViewById(R.id.idDailyoverviewDate);
+        mPrevDayButton = (ImageView) activity.findViewById(R.id.idDailyOverviewPreviousday);
+        mNextDayButton = (ImageView) activity.findViewById(R.id.idDailyoverviewNextday);
 
-        mUnitQuantityButton = (ImageView) activity.findViewById(R.id.spoonButton);
-        mMenuButton = (ImageView) activity.findViewById(R.id.menuButton);
-        mGroceryButton = (ImageView) activity.findViewById(R.id.groceryButton);
+        mUnitQuantityButton = (ImageView) activity.findViewById(R.id.idDailyoverviewSpoonButton);
+        mMenuButton = (ImageView) activity.findViewById(R.id.idDailyoverviewMenuButton);
+        mGroceryButton = (ImageView) activity.findViewById(R.id.idDailyoverviewGroceryButton);
 
-        mEntryListView = (ListView) activity.findViewById(R.id.list);
+        mEntryListView = (ListView) activity.findViewById(R.id.idDailyoverviewList);
     }
 
     public TextView getTodayDateText() {
@@ -60,6 +60,6 @@ public class Gui {
     }
 
     public void setDate(int day, int month, int year) {
-        mTodayDateText.setText(day+"."+(month+1)+"."+year);
+        mTodayDateText.setText(day + "." + (month + 1) + "." + year);
     }
 }

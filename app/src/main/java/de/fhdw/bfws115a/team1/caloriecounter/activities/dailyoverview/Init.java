@@ -44,6 +44,9 @@ public class Init extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
+                case ResultCodes.NEWENTRY_RESULT:
+                    mApplicationLogic.onEntrySelected(data);
+                    break;
                 case ResultCodes.CALENDAR_RESULT:
                     mApplicationLogic.onDateChanged(data);
                     break;

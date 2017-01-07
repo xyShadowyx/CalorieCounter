@@ -54,7 +54,7 @@
 
     </LinearLayout>
 
-    <LinearLayout android:id="@+id/idGroceriesSearchOverviewEntryList"
+    <LinearLayout android:id="@+id/idGroceriesSearchOverviewInputList"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
@@ -67,12 +67,6 @@
                 android:paddingBottom="@dimen/padding">
 
         </ListView>
-
-        <TextView android:id="@+id/idGrocerySearchoverviewEmptyListText"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-        />
 
     </LinearLayout>
 

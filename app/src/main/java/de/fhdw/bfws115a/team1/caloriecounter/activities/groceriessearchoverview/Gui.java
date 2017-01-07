@@ -16,11 +16,11 @@ public class Gui {
     public Gui(Init activity) {
         activity.setContentView(R.layout.groceriessearchoverview);
 
-        mSearchView = (SearchView) activity.findViewById(R.id.idSearchView);
-        mListView = (ListView) activity.findViewById(R.id.idListView);
+        mSearchView = (SearchView) activity.findViewById(R.id.idGroceriesSearchOverviewSearchView);
+        mListView = (ListView) activity.findViewById(R.id.idGroceriesSearchOverviewListView);
 
-        mAddGroceryButton = (ImageView) activity.findViewById(R.id.idAddGroceryButton);
-        mAddMenuButton = (ImageView) activity.findViewById(R.id.idAddMenuButton);
+        mAddGroceryButton = (ImageView) activity.findViewById(R.id.idGroceriesSearchOverviewAddGroceryButton);
+        mAddMenuButton = (ImageView) activity.findViewById(R.id.idGroceriesSearchOverviewAddMenuButton);
         mEmptyListTextView = (TextView) activity.findViewById(R.id.idGrocerySearchoverviewEmptyListText);
     }
 

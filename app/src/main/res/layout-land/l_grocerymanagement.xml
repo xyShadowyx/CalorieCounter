@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/idGroceryManagement"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_margin="@dimen/margin"
+    >
+
+    <TextView
+        android:id="@+id/idGroceryManagementTitel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:padding="@dimen/headline"
+        android:text="@string/titel"
+        android:textSize="@dimen/headline"
+        android:textColor="@color/white"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/idGroceryManagementGroceryManagement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/grocerymanagement_grocerymanagement"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textsize"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:layout_margin="@dimen/headlinespace"
+        android:layout_below="@id/idGroceryManagementTitel"
+        />
+
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idGroceryManagementSaveGrocery"
+        android:text="@string/grocerymanagement_add"
+        android:layout_margin="@dimen/margin"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        />
+
+    <ImageView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idGroceryManagementAddAmount"
+        android:src="@drawable/plus_32"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_below="@+id/idGroceryManagementLinearName"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:id="@+id/idGroceryManagementLinearName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@id/idGroceryManagementAddAmount"
+        android:layout_below="@id/idGroceryManagementGroceryManagement"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/grocerymanagement_name_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/inputTextSize"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/idGroceryManagementGroceryName"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:text="@string/grocerymanagement_name"
+            android:textSize="@dimen/inputTextSize"
+            android:textColor="@color/gray"
+            android:background="@color/gray2"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/inputTextSize"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/idGroceryManagementLinearAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/idGroceryManagementLinearName"
+        android:layout_toRightOf="@id/idGroceryManagementAddAmount"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/grocerymanagement_amount_name"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:textSize="@dimen/inputTextSize"
+            android:gravity="center_vertical"
+            />
+
+        <EditText
+            android:id="@+id/idGroceryManagementSelectedAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:text="@string/grocerymanagement_amount"
+            android:textSize="@dimen/inputTextSize"
+            android:textColor="@color/gray"
+            android:background="@color/gray2"
+            />
+
+        <Spinner
+            android:id="@+id/idGroceryManagementSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:prompt="@string/grocerymanagement_default_spinnerstatus"
+            android:layout_marginTop="@dimen/margin"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/idGroceryManagementLinearListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/idGroceryManagementLinearAmount"
+        >
+        <ListView
+            android:id="@+id/idGroceryManagementListView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding">
+
+        </ListView>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/idGroceryManagementLinearListView"
+        android:layout_toRightOf="@id/idGroceryManagementAddAmount"
+        >
+
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/grocerymanagement_kcal_name"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:textSize="@dimen/inputTextSize"
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/idGroceryManagementKiloCalories"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:text="@string/grocerymanagement_kcal"
+            android:textSize="@dimen/inputTextSize"
+            android:textColor="@color/gray"
+            android:background="@color/gray2"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/inputTextSize"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

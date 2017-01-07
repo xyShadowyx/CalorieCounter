@@ -18,7 +18,7 @@ public class Gui {
 
     public Gui(Init activity) {
         /* ID´s müssen noch vom Layout zugewiesen werden! */
-        activity.setContentView(R.layout.quantityunitmanagment1);
+        activity.setContentView(R.layout.quantityunitmanagment);
 
         mAddNewQuantityUnit = (ImageView) activity.findViewById(R.id.idQuantityUnitManagementAddNewQuantityUnit);
         mListView = (ListView) activity.findViewById(R.id.idListQuantityUnitManagement);

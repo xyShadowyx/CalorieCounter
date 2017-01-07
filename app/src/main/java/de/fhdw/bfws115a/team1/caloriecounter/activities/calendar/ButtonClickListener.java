@@ -17,7 +17,7 @@ public class ButtonClickListener implements Button.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.idTodayButton: {
+            case R.id.idCalendarTodayButton: {
                 mApplicationLogic.selectToday();
                 break;
             }

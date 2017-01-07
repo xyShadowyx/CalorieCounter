@@ -19,7 +19,7 @@ public class Gui {
 
         mPickedGrocery = (TextView) activity.findViewById(R.id.idSelectAmountPickedGrocery);
 
-        mSelectedAmount = (EditText) activity.findViewById(R.id.idSelectAmountSelectAmount);
+        mSelectedAmount = (EditText) activity.findViewById(R.id.idSelectAmountSelectedAmount);
 
         mSpinner = (Spinner) activity.findViewById(R.id.idSelectAmountSpinner);
 

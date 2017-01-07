@@ -1,4 +1,5 @@
 <resources>
+    <!-- General -->
     <dimen name="headline">18sp</dimen>
     <dimen name="textsize">15sp</dimen>
     <dimen name="inputTextSize">12sp</dimen>
@@ -7,4 +8,11 @@
     <dimen name="inputSize">100dp</dimen>
     <dimen name="marginDistance">200dp</dimen>
     <dimen name="padding">5dp</dimen>
+
+    <!-- Extra -->
+    <dimen name="headline2">25sp</dimen>
+    <dimen name="margin_2">15dp</dimen>
+    <dimen name="padding_2">20dp</dimen>
+    <dimen name="padding_l">80dp</dimen>
+    <dimen name="textsize2">20sp</dimen>
 </resources>
