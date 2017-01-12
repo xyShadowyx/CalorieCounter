@@ -101,4 +101,5 @@
     </string>
     <string name="quantityunitmanagement_emptyfield">Bitte füllen Sie das Textfeld.
     </string>
+    <string name="quantityunitmanagement_edittexthint">Mengeneinheit eingeben...</string>
 </resources>

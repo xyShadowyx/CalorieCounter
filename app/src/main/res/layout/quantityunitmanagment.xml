@@ -50,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/idQuantityUnitManagementQuantityName"
+                android:hint="@string/quantityunitmanagement_edittexthint"
                 android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 </LinearLayout>

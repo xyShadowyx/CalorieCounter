@@ -7,15 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
-import de.fhdw.bfws115a.team1.caloriecounter.activities.calendar.*;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
 import java.util.ArrayList;
 
-/**
- * Created by xySha on 22.11.2016.
- */
 public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+
+    /* Member variables */
     private Data mData;
     private ApplicationLogic mApplicationLogic;
     private final Context mContext;
@@ -34,21 +32,39 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
         mFilteredGroceriesEntities = mGroceriesEntities;
     }
 
+    /**
+     * Counts the quantity of filtered groceries.
+     *
+     * @return The quantity of filtered groceries entities.
+     */
     @Override
     public int getCount() {
         return mFilteredGroceriesEntities.size();
     }
 
+    /**
+     * Gets the selected grocery entity from an ArrayList.
+     *
+     * @param i The position of the grocery entity which should be retrieved.
+     * @return The grocery entity.
+     */
     @Override
     public Object getItem(int i) {
         return mFilteredGroceriesEntities.get(i);
     }
 
+    /**
+     * Gets a specific grocery entity item ID.
+     *
+     * @param i The position of the grocery unit entity which ID should be retrieved.
+     * @return The ID.
+     */
     @Override
     public long getItemId(int i) {
         return i;
     }
 
+    //TODO Was ist das für eine Methode?
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
@@ -71,24 +87,26 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
         return mFilter;
     }
 
+    //TODO Was macht diese Methode?
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         GroceriesEntity clickedItem = (GroceriesEntity) getItem(i);
         mApplicationLogic.onItemSelected(clickedItem);
     }
 
+    //TODO Löschen?
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         Log.d("onItemSelected: ", "onItemSelected!!!");
-
     }
 
+    //TODO Löschen?
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
         Log.d("onNothingSelected: ", "onNothingSelected!!!");
-
     }
 
+    //TODO Neue Klasse? Doc muss noch eingerichtet werden!
     private class GroceriesEntityFilter extends Filter {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {

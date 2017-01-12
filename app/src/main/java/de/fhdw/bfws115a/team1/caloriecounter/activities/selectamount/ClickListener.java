@@ -4,11 +4,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
-/**
- * Created by Niklas on 17.11.2016.
- */
 public class ClickListener implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
+    /* Member variables */
     private ApplicationLogic mApplicationLogic;
     private Gui mGui;
 
@@ -16,10 +14,13 @@ public class ClickListener implements View.OnClickListener, AdapterView.OnItemSe
         mApplicationLogic = applicationLogic;
     }
 
-    /* IDs müssen noch auf das passende Layout referenziert werden! */
+    /**
+     * Assign layout components to backend functionality if triggered by user.
+     *
+     * @param view The specific view which should be assigned with functionality.
+     */
     @Override
     public void onClick(View view) {
-        /* Creating a switch-case due to easier adding of clickable buttons later on. */
         switch (view.getId()) {
             case R.id.idSelectAmountAddAmount:
                 mApplicationLogic.onAddAmountClicked();
@@ -27,11 +28,13 @@ public class ClickListener implements View.OnClickListener, AdapterView.OnItemSe
         }
     }
 
+    //TODO Löschen?
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
     }
 
+    //TODO Löschen?
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 

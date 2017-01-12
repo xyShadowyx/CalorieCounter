@@ -1,8 +1,5 @@
 package de.fhdw.bfws115a.team1.caloriecounter.utilities;
 
-/**
- * Created by Niklas on 18.11.2016.
- */
 public class Validation {
 
     /**
@@ -26,6 +23,7 @@ public class Validation {
      * @param numberValue The value of a number field.
      * @return 'True' if the number value is higher than 0. Returns 'false' if this is not true.
      */
+
     public static boolean checkNumberValue(int numberValue) {
         if (numberValue > 0) {
             return true;
@@ -43,7 +41,7 @@ public class Validation {
     }
 
     public static boolean checkIfEmpty(String string) {
-        if(string.length() == 0) {
+        if (string.length() == 0) {
             return true;
         } else {
             return false;
