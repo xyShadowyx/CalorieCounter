@@ -1,5 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.dailyoverview;
 
+import android.app.Activity;
 import android.content.Intent;
 import de.fhdw.bfws115a.team1.caloriecounter.constants.SearchSettings;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
@@ -53,8 +54,7 @@ public class ApplicationLogic {
     public void onClickMenuButton() {
         Intent intent;
         intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview.Init.class);
-        //TODO DISPLAY_ONLY_GROCERY????
-        intent.putExtra("searchSettings", SearchSettings.DISPLAY_ONLY_GROCERY.ordinal());
+        intent.putExtra("searchSettings", SearchSettings.DISPLAY_ONLY_MENU.ordinal());
         mData.getActivity().startActivityForResult(intent, ResultCodes.NO_RETURN);
     }
 

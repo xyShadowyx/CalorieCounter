@@ -64,7 +64,8 @@
                 android:id="@+id/idGroceriesSearchOverviewListView"
                 android:layout_width="wrap_content"
                 android:layout_height="291dp"
-                android:paddingBottom="@dimen/padding">
+                android:paddingBottom="@dimen/padding"
+                android:focusable="false">
 
         </ListView>
 
