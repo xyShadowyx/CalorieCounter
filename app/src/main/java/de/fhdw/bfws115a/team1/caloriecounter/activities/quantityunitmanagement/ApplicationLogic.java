@@ -70,44 +70,42 @@ public class ApplicationLogic {
         DatabaseEntityManager databaseEntityManager;
 
         databaseEntityManager = mData.getDatabaseEntityManager();
-        /* --- First validation --- */
+
         if (!Validation.checkIfEmpty(mData.getNewQuantityUnitName())) {
-            /* --- Second validation --- */
+
             if (Validation.checkLenght(DatabaseHelper.SHORT_NAME_LENGTH, mData.getNewQuantityUnitName())) {
-                /* --- Third validation --- */
+
                 if (databaseEntityManager.isUnitNameAvailable(mData.getNewQuantityUnitName())) {
-                    /* Creates a new quantity unit and writes it in personal database. */
                     Unit newQuantity;
                     DatabaseUnit databaseUnit;
 
                     newQuantity = new Unit(mData.getNewQuantityUnitName());
                     databaseUnit = databaseEntityManager.createUnit(newQuantity);
-                    /* Update list */
+
                     mData.getQuantityUnits().add(databaseUnit);
                     mListAdapter.notifyDataSetChanged();
-                    /* Clears the input edit text for a new quantity unit. */
+
                     mData.setNewQuantityUnitName("");
                     mGui.getNewQuantityUnitName().setText("");
                 } else {
                     Context context;
                     Toast toast;
-
                     context = mData.getActivity().getApplicationContext();
                     toast = Toast.makeText(context, R.string.quantityunitmanagement_incorrectquantityunittoast, Toast.LENGTH_SHORT);
                     toast.show();
                 }
+
             } else {
                 Context context;
                 Toast toast;
-
                 context = mData.getActivity().getApplicationContext();
                 toast = Toast.makeText(context, R.string.quantityunitmanagement_incorrectquantityunitnamelengthtoast, Toast.LENGTH_SHORT);
                 toast.show();
             }
+
         } else {
             Context context;
             Toast toast;
-
             context = mData.getActivity().getApplicationContext();
             toast = Toast.makeText(context, R.string.quantityunitmanagement_emptyfield, Toast.LENGTH_SHORT);
             toast.show();

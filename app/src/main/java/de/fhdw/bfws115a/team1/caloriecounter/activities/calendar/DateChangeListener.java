@@ -4,7 +4,7 @@ import android.widget.CalendarView;
 
 public class DateChangeListener implements CalendarView.OnDateChangeListener {
 
-    /* Member variables */
+    /* Member variable */
     private ApplicationLogic mApplicationLogic;
 
     public DateChangeListener(ApplicationLogic applicationLogic) {

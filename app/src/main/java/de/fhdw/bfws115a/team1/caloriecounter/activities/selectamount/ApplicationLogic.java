@@ -28,7 +28,6 @@ public class ApplicationLogic {
      */
     private void initGui() {
         ArrayAdapter<String> arrayAdapter;
-
         arrayAdapter = new ArrayAdapter<String>(mData.getActivity(), android.R.layout.simple_spinner_item, mData.getUnitList());
         mGui.getSpinnerStatus().setAdapter(arrayAdapter);
         mGui.getSelectedAmount().setText(String.valueOf(mData.getSelectedAmount()));
@@ -48,7 +47,6 @@ public class ApplicationLogic {
         mGui.getSelectedAmount().setOnClickListener(cl);
         mGui.getSpinnerStatus().setOnItemSelectedListener(cl);
         mGui.getAddAmount().setOnClickListener(cl);
-
         mGui.getSelectedAmount().addTextChangedListener(tcl);
     }
 
@@ -59,7 +57,6 @@ public class ApplicationLogic {
     public void onAddAmountClicked() {
         if (Validation.checkNumberValue(mData.getSelectedAmount())) {
             Intent resultIntent;
-
             resultIntent = new Intent();
             resultIntent.putExtra("amount", mData.getSelectedAmount());
             resultIntent.putExtra("unit", new Unit(mGui.getSpinnerStatus().getSelectedItem().toString()));
@@ -68,7 +65,6 @@ public class ApplicationLogic {
         } else {
             Context context;
             Toast toast;
-
             context = mData.getActivity().getApplicationContext();
             toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
             toast.show();

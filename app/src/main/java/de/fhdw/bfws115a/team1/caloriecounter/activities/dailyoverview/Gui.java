@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
-import java.util.List;
-
 public class Gui {
+
+    /* Member variables */
     private TextView mTodayDateText;
     private ImageView mPrevDayButton;
     private ImageView mNextDayButton;
@@ -17,20 +17,24 @@ public class Gui {
     private ImageView mGroceryButton;
     private ListView mEntryListView;
 
+    /**
+     * Assign layout components to member variables so that they can be changed in backend.
+     *
+     * @param activity The current initialised activity.
+     */
     public Gui(Init activity) {
         activity.setContentView(R.layout.dailyoverview);
 
         mTodayDateText = (TextView) activity.findViewById(R.id.idDailyoverviewDate);
         mPrevDayButton = (ImageView) activity.findViewById(R.id.idDailyOverviewPreviousday);
         mNextDayButton = (ImageView) activity.findViewById(R.id.idDailyoverviewNextday);
-
         mUnitQuantityButton = (ImageView) activity.findViewById(R.id.idDailyoverviewSpoonButton);
         mMenuButton = (ImageView) activity.findViewById(R.id.idDailyoverviewMenuButton);
         mGroceryButton = (ImageView) activity.findViewById(R.id.idDailyoverviewGroceryButton);
-
         mEntryListView = (ListView) activity.findViewById(R.id.idDailyoverviewList);
     }
 
+    /* Getter methods*/
     public TextView getTodayDateText() {
         return mTodayDateText;
     }
@@ -59,6 +63,7 @@ public class Gui {
         return mEntryListView;
     }
 
+    /* Setter methods */
     public void setDate(int day, int month, int year) {
         mTodayDateText.setText(day + "." + (month + 1) + "." + year);
     }

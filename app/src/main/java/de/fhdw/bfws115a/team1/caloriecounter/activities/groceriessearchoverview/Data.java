@@ -34,11 +34,13 @@ public class Data {
         mActivity = activity;
         mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
         SearchSettings searchSettings;
+
         if (savedInstanceState == null) {
             Intent intent = mActivity.getIntent();
             searchSettings = SearchSettings.values()[intent.getIntExtra("searchSettings", DEFAULT_SEARCH_SETTINGS)];
             mGroceriesEntityList = new ArrayList<GroceriesEntity>();
             mSelectedEntity = null;
+
             if (SearchSettings.DISPLAY_ONLY_GROCERY == searchSettings || SearchSettings.DISPLAY_ALL == searchSettings) {
                 mGroceriesEntityList.addAll(mDatabaseEntityManager.getAllGroceries());
             }

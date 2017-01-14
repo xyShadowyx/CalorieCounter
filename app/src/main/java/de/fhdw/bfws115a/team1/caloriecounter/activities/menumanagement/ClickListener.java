@@ -3,9 +3,6 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement;
 import android.view.View;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
-/**
- * Created by Niklas on 17.11.2016.
- */
 public class ClickListener implements View.OnClickListener {
 
     private ApplicationLogic mApplicationLogic;
@@ -14,7 +11,11 @@ public class ClickListener implements View.OnClickListener {
         mApplicationLogic = applicationLogic;
     }
 
-    /* IDs müssen noch auf das passende Layout referenziert werden! */
+    /**
+     * Assign layout components to backend functionality if triggered by user.
+     *
+     * @param view The specific view which should be assigned with functionality.
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

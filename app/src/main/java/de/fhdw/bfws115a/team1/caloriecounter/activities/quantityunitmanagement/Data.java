@@ -35,9 +35,11 @@ public class Data {
         mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
         allDbUnits = mDatabaseEntityManager.getAllUnits();
         mQuantityUnit = new ArrayList<DatabaseUnit>();
+
         for (DatabaseUnit dbu : allDbUnits) {
             mQuantityUnit.add(dbu);
         }
+
         if (savedInstanceState == null) {
             mNewQuantityUnitName = DEFAULT_NEWQUANTITYUNITNAME;
         } else {

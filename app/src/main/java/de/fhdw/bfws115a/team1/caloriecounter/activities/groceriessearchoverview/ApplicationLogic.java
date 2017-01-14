@@ -27,7 +27,6 @@ public class ApplicationLogic {
      */
     private void initGui() {
         ArrayList<GroceriesEntity> mGroceriesEntityList;
-
         mGroceriesEntityList = mData.getGroceriesEntityList();
         mGui.getListView().setEmptyView(mGui.getEmptyListTextView());
     }
@@ -46,7 +45,6 @@ public class ApplicationLogic {
     private void initListener() {
         ClickListener cl = new ClickListener(this);
         TextListener tl = new TextListener(this);
-
         mGui.getListView().setOnItemClickListener(mListAdapter);
         mGui.getListView().setOnItemSelectedListener(mListAdapter);
         mGui.getSearchView().setOnQueryTextListener(tl);
@@ -72,17 +70,23 @@ public class ApplicationLogic {
     }
 
     /**
-     * @param groceriesEntity
+     * Redirects to 'selectamount'-activity after an item is selected.
+     *
+     * @param groceriesEntity The selected item (GroceryEntity).
      */
     public void onItemSelected(GroceriesEntity groceriesEntity) {
         mData.setSelectedEntity(groceriesEntity);
         Intent intent;
-
         intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount.Init.class);
         intent.putExtra("groceriesEntity", mData.getSelectedEntity());
         mData.getActivity().startActivityForResult(intent, ResultCodes.SELECT_AMOUNT);
     }
 
+    /**
+     * Returns a GroceryEntity after it was selected and added with an additional amount.
+     *
+     * @param data The current data containing information about the selected unit and amount.
+     */
     public void onSelectAmountResult(Intent data) {
         Unit selectedUnit;
         GroceriesEntity groceriesEntity;
@@ -92,12 +96,13 @@ public class ApplicationLogic {
         selectedUnit = (Unit) data.getSerializableExtra("unit");
         selectedAmount = data.getDoubleExtra("amount", 0.0);
         groceriesEntity = null;
+
         if (mData.getSelectedEntity() instanceof Grocery) {
             Grocery selectedGrocery;
             GroceryUnit groceryUnit;
-
             selectedGrocery = (Grocery) mData.getSelectedEntity();
             groceryUnit = null;
+
             for (GroceryUnit gu : selectedGrocery.getGroceryUnits()) {
                 if (gu.getUnit().getName().equals(selectedUnit.getName())) {
                     groceryUnit = gu;
@@ -124,16 +129,20 @@ public class ApplicationLogic {
         mData.getActivity().finish();
     }
 
+    /**
+     * Redirects to 'grocerymanagement'-activity.
+     */
     public void onCreateNewGroceryClicked() {
         Intent intent;
-
         intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement.Init.class);
         mData.getActivity().startActivityForResult(intent, ResultCodes.RELOAD);
     }
 
+    /**
+     * Redirects to 'menumanagement'-activity.
+     */
     public void onCreateNewMenuClicked() {
         Intent intent;
-
         intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement.Init.class);
         mData.getActivity().startActivityForResult(intent, ResultCodes.RELOAD);
     }

@@ -39,22 +39,22 @@ public class Data {
 
         if (savedInstanceState == null) {
             Intent intent;
-
             intent = mActivity.getIntent();
             mPickedGrocery = mActivity.getResources().getString(R.string.selectamount_default_pickedgrocery);
             mSelectedAmount = DEFAULT_SELECTEDAMOUNT;
             mSpinnerStatus = mActivity.getResources().getString(R.string.selectamount_default_spinnerstatus);
             mUnitList = new ArrayList<String>();
             GroceriesEntity groceriesEntity = (GroceriesEntity) intent.getSerializableExtra("groceriesEntity");
+
             if (groceriesEntity instanceof Grocery) {
                 Grocery grocery;
-
                 grocery = (Grocery) groceriesEntity;
                 mPickedGrocery = grocery.getName();
                 for (GroceryUnit gu : grocery.getGroceryUnits()) {
                     mUnitList.add(gu.getUnit().getName());
                 }
             }
+
             if (groceriesEntity instanceof Menu) {
                 Menu menu;
 
@@ -62,6 +62,7 @@ public class Data {
                 mPickedGrocery = menu.getName();
                 mUnitList.add("Portion");
             }
+
         } else {
             restoreDataFromBundle(savedInstanceState);
         }

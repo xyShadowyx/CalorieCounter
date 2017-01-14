@@ -27,16 +27,17 @@ public class Data {
      */
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
+
         if (savedInstanceState == null) {
             Intent intent;
             Calendar calendarToday;
-
             intent = mActivity.getIntent();
             calendarToday = Calendar.getInstance();
 
             mSelectedYear = intent.getIntExtra("year", calendarToday.get(Calendar.YEAR));
             mSelectedMonth = intent.getIntExtra("month", calendarToday.get(Calendar.MONTH));
             mSelectedDay = intent.getIntExtra("day", calendarToday.get(Calendar.DAY_OF_MONTH));
+
         } else {
             restoreDataFromBundle(savedInstanceState);
         }

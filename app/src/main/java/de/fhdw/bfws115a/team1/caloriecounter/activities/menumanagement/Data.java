@@ -5,21 +5,18 @@ import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseMenu;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 
 import java.util.ArrayList;
 
 public class Data {
 
-    /* Data variables */
+    /* Member variables */
     private Init mActivity;
     private String mMenuName;
     private int mPortionSize;
     private String mAddedGroceries;
     private ArrayList<FixGrocery> mMenuFixGroceries;
     private DatabaseMenu mInputMenu;
-
-    /* Database Entity Manager */
     private DatabaseEntityManager mDatabaseEntityManager;
 
     /* Default values */
@@ -34,31 +31,44 @@ public class Data {
     private final String KEY_PORTIONSIZE = "menumanagement4";
     private final String KEY_ADDEDGROCERIES = "menumanagement5";
 
+    /**
+     * Method which gets the current layout attributes and put them into an Intent object.
+     * The reasons are possible saving and retrieving options of the data stored.
+     *
+     * @param savedInstanceState A bundle where data can be stored.
+     * @param activity           The current initialised activity.
+     */
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
         mDatabaseEntityManager = new DatabaseEntityManager(activity.getApplicationContext());
 
         if (savedInstanceState == null) {
-            Intent intent = mActivity.getIntent();
-
+            Intent intent;
+            intent = mActivity.getIntent();
             mMenuFixGroceries = new ArrayList<FixGrocery>();
+
             if (intent.hasExtra("databaseMenu")) {
                 mInputMenu = (DatabaseMenu) intent.getSerializableExtra("databaseMenu");
-                for(FixGrocery fg : mInputMenu.getFixGroceries()){
+                for (FixGrocery fg : mInputMenu.getFixGroceries()) {
                     mMenuFixGroceries.add(fg);
                 }
             } else {
                 mInputMenu = null;
             }
-
             mMenuName = DEFAULT_MENUNAME;
             mPortionSize = DEFAULT_PORTIONSIZE;
             mAddedGroceries = DEFAULT_ADDEDGROCERIES;
+
         } else {
             restoreDataFromBundle(savedInstanceState);
         }
     }
 
+    /**
+     * Provides the possibility of saving the non-persistent data in a bundle.
+     *
+     * @param b The bundle where the data will be saved.
+     */
     public void saveDataInBundle(Bundle b) {
         b.putSerializable(KEY_INPUTMENU, mInputMenu);
         b.putSerializable(KEY_MENUFIXGROCERIES, mMenuFixGroceries);
@@ -67,6 +77,11 @@ public class Data {
         b.putString(KEY_ADDEDGROCERIES, mAddedGroceries);
     }
 
+    /**
+     * Provides the possibility of retrieving the saved non-persistent data.
+     *
+     * @param b The bundle where the data is saved in.
+     */
     private void restoreDataFromBundle(Bundle b) {
         mInputMenu = (DatabaseMenu) b.getSerializable(KEY_INPUTMENU);
         mMenuFixGroceries = (ArrayList<FixGrocery>) b.getSerializable(KEY_MENUFIXGROCERIES);
@@ -120,6 +135,4 @@ public class Data {
     public void setAddedGroceries(String mAddedGroceries) {
         this.mAddedGroceries = mAddedGroceries;
     }
-
-
 }

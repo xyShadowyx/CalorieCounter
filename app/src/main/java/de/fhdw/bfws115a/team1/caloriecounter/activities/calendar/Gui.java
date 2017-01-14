@@ -37,7 +37,6 @@ public class Gui {
     /* Setter methods */
     public void setSelectedDate(int year, int month, int day) {
         Calendar date;
-
         date = Calendar.getInstance();
         date.set(year, month, day);
         mCalendarView.setDate(date.getTimeInMillis(), true, true);

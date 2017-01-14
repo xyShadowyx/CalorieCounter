@@ -69,8 +69,8 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
     public View getView(int position, View convertView, ViewGroup parent) {
         ListViewHolder listViewHolder;
         DatabaseUnit databaseUnit;
-
         databaseUnit = (DatabaseUnit) getItem(position);
+
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.quantityunitmanagement_listrow, parent, false);
             listViewHolder = new ListViewHolder(convertView, mApplicationLogic);
@@ -80,8 +80,7 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
         }
 
         listViewHolder.setDatabaseUnit(databaseUnit);
-        listViewHolder.getNameText().setText(
-                String.format("%s", databaseUnit.getName())
+        listViewHolder.getNameText().setText(String.format("%s", databaseUnit.getName())
         );
         return convertView;
     }

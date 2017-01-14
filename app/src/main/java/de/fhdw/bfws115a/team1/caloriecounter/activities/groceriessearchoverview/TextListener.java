@@ -2,8 +2,6 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview
 
 import android.widget.SearchView.OnQueryTextListener;
 
-import org.w3c.dom.Text;
-
 public class TextListener implements OnQueryTextListener {
 
     /* Member variables */
