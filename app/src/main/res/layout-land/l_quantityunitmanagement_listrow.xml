@@ -18,5 +18,4 @@
                android:id="@+id/idDQuantityUnitManagementSelectQuantityUnit"
                android:layout_weight="2"
                android:src="@drawable/xmark_32"/>
-
 </LinearLayout>

@@ -55,8 +55,10 @@
             android:layout_weight="1"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginRight="@dimen/margin"
-            android:hint="@string/selectamount_amount"
+            android:text="@string/selectamount_amount"
             android:textSize="@dimen/inputTextSize"
+            android:textColor="@color/gray"
+            android:background="@color/gray2"
             />
 
         <Spinner

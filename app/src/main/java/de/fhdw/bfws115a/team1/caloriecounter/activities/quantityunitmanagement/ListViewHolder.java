@@ -5,16 +5,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
 
 public class ListViewHolder {
+
+    /* Member variables */
     private ApplicationLogic mApplicationLogic;
-
     private ListButtonClickListener mListButtonClickListener;
-
     private TextView mNameText;
     private ImageView mDeleteImage;
-
     private DatabaseUnit mDatabaseUnit;
 
     public ListViewHolder(View view, ApplicationLogic applicationLogic) {
@@ -28,10 +26,12 @@ public class ListViewHolder {
         mDeleteImage.setOnClickListener(mListButtonClickListener);
     }
 
-    public void setDatabaseUnit(DatabaseUnit databseUnit) {
-        mListButtonClickListener.setDatabaseUnit(databseUnit);
+    /* Setter methods */
+    public void setDatabaseUnit(DatabaseUnit databaseUnit) {
+        mListButtonClickListener.setDatabaseUnit(databaseUnit);
     }
 
+    /* Getter methods */
     public TextView getNameText() {
         return mNameText;
     }

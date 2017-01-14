@@ -1,24 +1,24 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
-/**
- * Created by Florian on 08.11.2016.
- */
 public class Gui {
 
+    /* Member Variables */
     private ImageView mAddNewQuantityUnit;
     private ListView mListView;
     private EditText mNewQuantityUnitName;
 
-
+    /**
+     * Assign layout components to member variables so that they can be changed in backend.
+     *
+     * @param activity The current initialised activity.
+     */
     public Gui(Init activity) {
-        /* ID´s müssen noch vom Layout zugewiesen werden! */
-        activity.setContentView(R.layout.quantityunitmanagment1);
+        activity.setContentView(R.layout.quantityunitmanagment);
 
         mAddNewQuantityUnit = (ImageView) activity.findViewById(R.id.idQuantityUnitManagementAddNewQuantityUnit);
         mListView = (ListView) activity.findViewById(R.id.idListQuantityUnitManagement);
@@ -37,8 +37,4 @@ public class Gui {
     public EditText getNewQuantityUnitName() {
         return mNewQuantityUnitName;
     }
-
-    /* Other methods */
 }
-
-

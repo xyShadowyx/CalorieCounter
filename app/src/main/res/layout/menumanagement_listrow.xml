@@ -6,7 +6,6 @@
               android:background="@color/white"
               android:id="@+id/rowNewGrocery">
 
-
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:orientation="horizontal">
@@ -16,7 +15,6 @@
                   android:text="@string/menumanagement_lastadd"
                   android:layout_marginLeft="@dimen/margin"
                   android:id="@+id/idMenuManagementLastAdd"
-
                   android:textColor="@color/black"
                   android:textSize="@dimen/textsize"/>
 
@@ -24,14 +22,11 @@
                    android:layout_height="match_parent"
                    android:src="@drawable/settings_32"
                    android:id="@+id/idEditAmountOfGrocery"
-                   android:layout_marginLeft="@dimen/margin"
-        />
+                   android:layout_marginLeft="@dimen/margin"/>
 
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="match_parent"
                    android:id="@+id/idMenuManagementDeleteGrocery"
                    android:src="@drawable/xmark_32"/>
-
     </LinearLayout>
-
 </LinearLayout>

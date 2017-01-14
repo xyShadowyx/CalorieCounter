@@ -35,7 +35,7 @@
         <SearchView android:id="@+id/idGroceriesSearchOverviewSearchView"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:hint="Search..."
+                    android:text="Search..."
                     android:layout_weight="1"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/textsize"
@@ -54,7 +54,7 @@
 
     </LinearLayout>
 
-    <LinearLayout android:id="@+id/idGroceriesSearchOverviewEntryList"
+    <LinearLayout android:id="@+id/idGroceriesSearchOverviewInputList"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
@@ -63,17 +63,13 @@
         <ListView
                 android:id="@+id/idGroceriesSearchOverviewListView"
                 android:layout_width="wrap_content"
-                android:layout_height="291dp"
+                android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/padding">
 
         </ListView>
 
-        <TextView android:id="@+id/idGrocerySearchoverviewEmptyListText"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-        />
     </LinearLayout>
+
 
     <LinearLayout android:id="@+id/idGroceriesSearchOverviewNewGrocery"
                   android:layout_width="match_parent"
@@ -92,6 +88,8 @@
                   android:text="@string/groceriesearchoverview_newGrocery"
                   android:paddingLeft="@dimen/margin"
                   android:textColor="@color/black"/>
+
+
     </LinearLayout>
 
     <LinearLayout android:id="@+id/idGroceriesSearchOverviewNewMenu"
@@ -112,5 +110,8 @@
                   android:text="@string/groceriesearchoverview_newMenu"
                   android:paddingLeft="@dimen/margin"
                   android:textColor="@color/black"/>
+
+
     </LinearLayout>
+
 </LinearLayout>

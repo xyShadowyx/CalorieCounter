@@ -21,7 +21,7 @@ public class Gui {
 
 
     public Gui(Init activity) {
-        activity.setContentView(R.layout.grocerymanagemant);
+        activity.setContentView(R.layout.grocerymanagement);
 
         mGroceryName = (EditText) activity.findViewById(R.id.idGroceryManagementGroceryName);
         mSelectedAmount = (EditText) activity.findViewById(R.id.idGroceryManagementSelectedAmount);
@@ -29,10 +29,10 @@ public class Gui {
 
         mSpinner = (Spinner) activity.findViewById(R.id.idGroceryManagementSpinner);
 
-        mAddNewQuantity = (ImageView) activity.findViewById(R.id.idAddNewQuantity);
-        mDeleteQuantity = (ImageView) activity.findViewById(R.id.idDeleteQuantity);
+        mAddNewQuantity = (ImageView) activity.findViewById(R.id.idGroceryManagementAddAmount);
+        mDeleteQuantity = (ImageView) activity.findViewById(R.id.idGroceryManagementDeleteAmount);
 
-        mSaveGrocery = (Button) activity.findViewById(R.id.idSaveGrocery);
+        mSaveGrocery = (Button) activity.findViewById(R.id.idGroceryManagementSaveGrocery);
     }
 
     /* Getter methods */

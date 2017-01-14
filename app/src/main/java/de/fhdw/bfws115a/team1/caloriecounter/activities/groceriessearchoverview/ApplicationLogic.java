@@ -2,16 +2,15 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview
 
 import android.app.Activity;
 import android.content.Intent;
-import de.fhdw.bfws115a.team1.caloriecounter.constants.SearchSettings;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
 
 public class ApplicationLogic {
 
+    /* Member variables */
     private Data mData;
     private Gui mGui;
-
     private ListAdapter mListAdapter;
 
     public ApplicationLogic(Data data, Gui gui) {
@@ -23,20 +22,29 @@ public class ApplicationLogic {
         initListener();
     }
 
+    /**
+     * Initialization.
+     */
     private void initGui() {
-        ArrayList<GroceriesEntity> mGroceriesEntityList = mData.getGroceriesEntityList();
+        ArrayList<GroceriesEntity> mGroceriesEntityList;
+        mGroceriesEntityList = mData.getGroceriesEntityList();
         mGui.getListView().setEmptyView(mGui.getEmptyListTextView());
     }
 
+    /**
+     * Initialization.
+     */
     private void initAdapter() {
         mListAdapter = new ListAdapter(mData, this);
         mGui.getListView().setAdapter(mListAdapter);
     }
 
+    /**
+     * Initialization.
+     */
     private void initListener() {
         ClickListener cl = new ClickListener(this);
         TextListener tl = new TextListener(this);
-
         mGui.getListView().setOnItemClickListener(mListAdapter);
         mGui.getListView().setOnItemSelectedListener(mListAdapter);
         mGui.getSearchView().setOnQueryTextListener(tl);
@@ -44,32 +52,56 @@ public class ApplicationLogic {
         mGui.getAddMenuButton().setOnClickListener(cl);
     }
 
+    /**
+     * Reloads the activity.
+     */
     public void reload() {
         mData.getActivity().finish();
         mData.getActivity().startActivity(mData.getActivity().getIntent());
     }
 
+    /**
+     * Filters a list according to a name.
+     *
+     * @param name A name to filter the list.
+     */
     public void filterListByName(String name) {
         mListAdapter.getFilter().filter(name);
     }
 
+    /**
+     * Redirects to 'selectamount'-activity after an item is selected.
+     *
+     * @param groceriesEntity The selected item (GroceryEntity).
+     */
     public void onItemSelected(GroceriesEntity groceriesEntity) {
         mData.setSelectedEntity(groceriesEntity);
-
-        Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount.Init.class);
+        Intent intent;
+        intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount.Init.class);
         intent.putExtra("groceriesEntity", mData.getSelectedEntity());
         mData.getActivity().startActivityForResult(intent, ResultCodes.SELECT_AMOUNT);
     }
 
+    /**
+     * Returns a GroceryEntity after it was selected and added with an additional amount.
+     *
+     * @param data The current data containing information about the selected unit and amount.
+     */
     public void onSelectAmountResult(Intent data) {
-        Unit selectedUnit = (Unit) data.getSerializableExtra("unit");
-        double selectedAmount = data.getDoubleExtra("amount", 0.0);
+        Unit selectedUnit;
+        GroceriesEntity groceriesEntity;
+        Intent resultIntent;
+        double selectedAmount;
 
-        GroceriesEntity groceriesEntity = null;
+        selectedUnit = (Unit) data.getSerializableExtra("unit");
+        selectedAmount = data.getDoubleExtra("amount", 0.0);
+        groceriesEntity = null;
 
         if (mData.getSelectedEntity() instanceof Grocery) {
-            Grocery selectedGrocery = (Grocery) mData.getSelectedEntity();
-            GroceryUnit groceryUnit = null;
+            Grocery selectedGrocery;
+            GroceryUnit groceryUnit;
+            selectedGrocery = (Grocery) mData.getSelectedEntity();
+            groceryUnit = null;
 
             for (GroceryUnit gu : selectedGrocery.getGroceryUnits()) {
                 if (gu.getUnit().getName().equals(selectedUnit.getName())) {
@@ -77,7 +109,6 @@ public class ApplicationLogic {
                     break;
                 }
             }
-
             if (groceryUnit != null) {
                 groceriesEntity = new FixGrocery(
                         mData.getSelectedEntity().getName(),
@@ -92,20 +123,27 @@ public class ApplicationLogic {
             selectedMenu.setAmount(selectedAmount);
             groceriesEntity = selectedMenu;
         }
-
-        Intent resultIntent = new Intent();
+        resultIntent = new Intent();
         resultIntent.putExtra("groceriesEntity", groceriesEntity);
         mData.getActivity().setResult(Activity.RESULT_OK, resultIntent);
         mData.getActivity().finish();
     }
 
+    /**
+     * Redirects to 'grocerymanagement'-activity.
+     */
     public void onCreateNewGroceryClicked() {
-        Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement.Init.class);
+        Intent intent;
+        intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement.Init.class);
         mData.getActivity().startActivityForResult(intent, ResultCodes.RELOAD);
     }
 
+    /**
+     * Redirects to 'menumanagement'-activity.
+     */
     public void onCreateNewMenuClicked() {
-        Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement.Init.class);
+        Intent intent;
+        intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement.Init.class);
         mData.getActivity().startActivityForResult(intent, ResultCodes.RELOAD);
     }
 }

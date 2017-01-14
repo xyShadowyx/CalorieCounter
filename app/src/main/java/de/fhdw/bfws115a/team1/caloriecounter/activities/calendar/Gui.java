@@ -9,16 +9,23 @@ import de.fhdw.bfws115a.team1.caloriecounter.R;
 
 public class Gui {
 
+    /* Member variables */
     private CalendarView mCalendarView;
     private Button mTodayButton;
 
+    /**
+     * Assign layout components to member variables so that they can be changed in backend.
+     *
+     * @param activity The current initialised activity.
+     */
     public Gui(Init activity) {
         activity.setContentView(R.layout.calendar);
 
-        mCalendarView = (CalendarView) activity.findViewById(R.id.idCalendarView);
-        mTodayButton = (Button) activity.findViewById(R.id.idTodayButton);
+        mCalendarView = (CalendarView) activity.findViewById(R.id.idCalendarCalendarView);
+        mTodayButton = (Button) activity.findViewById(R.id.idCalendarTodayButton);
     }
 
+    /* Getter methods */
     public CalendarView getCalendarView() {
         return mCalendarView;
     }
@@ -27,10 +34,10 @@ public class Gui {
         return mTodayButton;
     }
 
-    /* Methods to apply changes */
+    /* Setter methods */
     public void setSelectedDate(int year, int month, int day) {
-        Calendar date = Calendar.getInstance();
-
+        Calendar date;
+        date = Calendar.getInstance();
         date.set(year, month, day);
         mCalendarView.setDate(date.getTimeInMillis(), true, true);
     }

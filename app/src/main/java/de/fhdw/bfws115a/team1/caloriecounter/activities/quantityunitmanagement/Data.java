@@ -7,19 +7,13 @@ import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Florian on 08.11.2016.
- */
 public class Data {
 
-    /* Data variables */
+    /* Member variables */
     private Init mActivity;
     private String mNewQuantityUnitName;
     private ArrayList<DatabaseUnit> mQuantityUnit;
-
-    /* Database Entity Manager */
     private DatabaseEntityManager mDatabaseEntityManager;
-
 
     /* Default values */
     private final String DEFAULT_NEWQUANTITYUNITNAME = "";
@@ -27,13 +21,21 @@ public class Data {
     /* Keys */
     private final String KEY_NEWQUANTITYUNITNAME = "quantityunitmanagement1";
 
+    /**
+     * Method which gets the current layout attributes and put them into an 'Intent' object.
+     * The reasons are possible saving and retrieving options of the data stored.
+     *
+     * @param savedInstanceState A bundle where data can be stored.
+     * @param activity           The current initialised activity.
+     */
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
+        List<DatabaseUnit> allDbUnits;
+
         mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
-
-        List<DatabaseUnit> allDbUnits = mDatabaseEntityManager.getAllUnits();
-
+        allDbUnits = mDatabaseEntityManager.getAllUnits();
         mQuantityUnit = new ArrayList<DatabaseUnit>();
+
         for (DatabaseUnit dbu : allDbUnits) {
             mQuantityUnit.add(dbu);
         }
@@ -45,10 +47,20 @@ public class Data {
         }
     }
 
+    /**
+     * Provides the possibility of saving the non-persistent data in a bundle.
+     *
+     * @param b The bundle where the data will be saved.
+     */
     public void saveDataInBundle(Bundle b) {
         b.putString(KEY_NEWQUANTITYUNITNAME, mNewQuantityUnitName);
     }
 
+    /**
+     * Provides the possibility of retrieving the saved non-persistent data.
+     *
+     * @param b The bundle where the data is saved in.
+     */
     private void restoreDataFromBundle(Bundle b) {
         mNewQuantityUnitName = b.getString(KEY_NEWQUANTITYUNITNAME);
     }
