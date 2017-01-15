@@ -48,4 +48,13 @@ public class Gui {
     public ListView getListView() {
         return mListView;
     }
+
+    /* Setter methods */
+    public void setMenuNameText(String name) {
+        mMenuName.setText(name);
+    }
+
+    public void setPortionSizeAmount(double amount) {
+        mPortionSize.setText(String.valueOf(amount));
+    }
 }

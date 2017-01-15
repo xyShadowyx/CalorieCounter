@@ -1,6 +1,8 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview;
 
 import android.widget.Filter;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntity;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceriesEntity;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
 import java.util.ArrayList;
@@ -9,11 +11,11 @@ import java.util.ArrayList;
  * Created by xySha on 14.01.2017.
  */
 public class GroceriesEntityFilter extends Filter {
-    private ArrayList<GroceriesEntity> mGroceriesEntities;
+    private ArrayList<DatabaseGroceriesEntity> mDatabaseGroceriesEntities;
     private ListAdapter mListAdapter;
 
-    public GroceriesEntityFilter(ArrayList<GroceriesEntity> groceriesEntities, ListAdapter listAdapter) {
-        mGroceriesEntities = groceriesEntities;
+    public GroceriesEntityFilter(ArrayList<DatabaseGroceriesEntity> databaseGroceriesEntities, ListAdapter listAdapter) {
+        mDatabaseGroceriesEntities = databaseGroceriesEntities;
         mListAdapter = listAdapter;
     }
 
@@ -21,20 +23,20 @@ public class GroceriesEntityFilter extends Filter {
     protected FilterResults performFiltering(CharSequence constraint) {
         String filterString;
         FilterResults results;
-        final ArrayList<GroceriesEntity> list;
-        final ArrayList<GroceriesEntity> nlist;
-        GroceriesEntity filterableGroceriesEntry;
+        final ArrayList<DatabaseGroceriesEntity> list;
+        final ArrayList<DatabaseGroceriesEntity> nlist;
+        DatabaseGroceriesEntity filterableDatabaseGroceriesEntity;
 
         filterString = constraint.toString().toLowerCase();
         results = new FilterResults();
-        list = mGroceriesEntities;
+        list = mDatabaseGroceriesEntities;
         int count = list.size();
-        nlist = new ArrayList<GroceriesEntity>(count);
+        nlist = new ArrayList<DatabaseGroceriesEntity>(count);
 
         for (int i = 0; i < count; i++) {
-            filterableGroceriesEntry = list.get(i);
-            if (filterableGroceriesEntry.getName().toLowerCase().contains(filterString)) {
-                nlist.add(filterableGroceriesEntry);
+            filterableDatabaseGroceriesEntity = list.get(i);
+            if (filterableDatabaseGroceriesEntity.getName().toLowerCase().contains(filterString)) {
+                nlist.add(filterableDatabaseGroceriesEntity);
             }
         }
         results.values = nlist;
@@ -44,6 +46,6 @@ public class GroceriesEntityFilter extends Filter {
 
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
-        mListAdapter.setFilteredGroceriesEntities((ArrayList<GroceriesEntity>) results.values);
+        mListAdapter.setFilteredDatabaseGroceriesEntities((ArrayList<DatabaseGroceriesEntity>) results.values);
     }
 }

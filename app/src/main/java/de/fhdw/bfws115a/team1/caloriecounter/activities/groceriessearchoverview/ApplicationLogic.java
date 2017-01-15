@@ -2,6 +2,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview
 
 import android.app.Activity;
 import android.content.Intent;
+import de.fhdw.bfws115a.team1.caloriecounter.database.*;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
@@ -27,8 +28,8 @@ public class ApplicationLogic {
      * Initialization.
      */
     private void initGui() {
-        ArrayList<GroceriesEntity> mGroceriesEntityList;
-        mGroceriesEntityList = mData.getGroceriesEntityList();
+        ArrayList<DatabaseGroceriesEntity> mDatabaseGroceriesEntityList;
+        mDatabaseGroceriesEntityList = mData.getDatabaseGroceriesEntityList();
         mGui.getListView().setEmptyView(mGui.getEmptyListTextView());
     }
 
@@ -69,6 +70,17 @@ public class ApplicationLogic {
      */
     public void filterListByName(String name) {
         mListAdapter.getFilter().filter(name);
+    }
+
+    public void deleteItem(DatabaseGroceriesEntity databaseGroceriesEntity) {
+        DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
+        if(databaseGroceriesEntity instanceof DatabaseMenu) {
+            databaseEntityManager.deleteMenu((DatabaseMenu)databaseGroceriesEntity);
+        } else if (databaseGroceriesEntity instanceof DatabaseGrocery) {
+            databaseEntityManager.deleteGrocery((DatabaseGrocery)databaseGroceriesEntity);
+        }
+        mData.getDatabaseGroceriesEntityList().remove(databaseGroceriesEntity);
+        mListAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -147,6 +159,21 @@ public class ApplicationLogic {
     public void onCreateNewMenuClicked() {
         Intent intent;
         intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement.Init.class);
+        mData.getActivity().startActivityForResult(intent, ResultCodes.RELOAD);
+    }
+
+    public void editItem(DatabaseGroceriesEntity databaseGroceriesEntity) {
+        Intent intent;
+        if(databaseGroceriesEntity instanceof DatabaseMenu) {
+            intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement.Init.class);
+            intent.putExtra("databaseMenu", (DatabaseMenu) databaseGroceriesEntity);
+        }
+        else if(databaseGroceriesEntity instanceof DatabaseGrocery) {
+            intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement.Init.class);
+            intent.putExtra("databaseGrocery", (DatabaseGrocery) databaseGroceriesEntity);
+        } else {
+            return; // prevent crashes
+        }
         mData.getActivity().startActivityForResult(intent, ResultCodes.RELOAD);
     }
 }

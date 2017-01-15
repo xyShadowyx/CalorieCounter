@@ -75,6 +75,9 @@ public class Init extends Activity {
                 case ResultCodes.CALENDAR_RESULT:
                     mApplicationLogic.onDateChanged(data);
                     break;
+                case ResultCodes.COPYTODATE:
+                    mApplicationLogic.copyDateSelected(data);
+                    break;
             }
         }
     }

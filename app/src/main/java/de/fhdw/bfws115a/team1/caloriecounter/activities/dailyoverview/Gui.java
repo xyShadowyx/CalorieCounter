@@ -15,6 +15,7 @@ public class Gui {
     private ImageView mUnitQuantityButton;
     private ImageView mMenuButton;
     private ImageView mGroceryButton;
+    private ImageView mNewEntryButton;
     private ListView mEntryListView;
 
     /**
@@ -32,6 +33,8 @@ public class Gui {
         mMenuButton = (ImageView) activity.findViewById(R.id.idDailyoverviewMenuButton);
         mGroceryButton = (ImageView) activity.findViewById(R.id.idDailyoverviewGroceryButton);
         mEntryListView = (ListView) activity.findViewById(R.id.idDailyoverviewList);
+
+        mNewEntryButton = (ImageView) activity.findViewById(R.id.idDailyoverviewAddNewEntry);
     }
 
     /* Getter methods*/
@@ -61,6 +64,10 @@ public class Gui {
 
     public ListView getEntryListView() {
         return mEntryListView;
+    }
+
+    public ImageView getNewEntryButton() {
+        return mNewEntryButton;
     }
 
     /* Setter methods */

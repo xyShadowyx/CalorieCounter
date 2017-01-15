@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -444,7 +446,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         databaseGroceryEntries = new ArrayList<DatabaseGroceryEntry>();
         selectQuery = "SELECT  * FROM " + TABLE_GROCERY_ENTRY;
-        if (whereClause.length() > 0) selectQuery += " " + whereClause;
+        if (whereClause.length() > 0) selectQuery += " WHERE " + whereClause;
 
         database = this.getReadableDatabase();
         cursor = database.rawQuery(selectQuery, null);
@@ -564,10 +566,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database = this.getWritableDatabase();
 
         values = new ContentValues();
-        values.put(MENU_ENTRY_NAME, databaseMenu.getName());
-        values.put(MENU_ENTRY_PORTIONS, databaseMenu.getAmount());
+        values.put(MENU_NAME, databaseMenu.getName());
+        values.put(MENU_PORTIONS, databaseMenu.getAmount());
 
-        result = database.update(TABLE_MENU_ENTRY, values, MENU_ENTRY_ID + "=" + databaseMenu.getId(), null);
+        result = database.update(TABLE_MENU, values, MENU_ID + "=" + databaseMenu.getId(), null);
         if (result == 0) return false;
 
         database.delete(TABLE_MENU_GROCERY, MENU_GROCERY_MENU_ID + " = ?", new String[]{String.valueOf(databaseMenu.getId())});
@@ -581,7 +583,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             database.insert(TABLE_MENU_GROCERY, null, values);
         }
-        return true;
+        return result > 0;
     }
 
     public boolean deleteMenu(DatabaseMenu databaseMenu) {
@@ -937,5 +939,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean isUnitNameAvailable(String name) {
         return getUnits(UNIT_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() == 0;
+    }
+
+    /* Entries */
+    public ArrayList<DatabaseEntry> getEntriesOf(int year, int month, int day) {
+        ArrayList<DatabaseEntry> entries = new ArrayList<DatabaseEntry>();
+        entries.addAll(getMenuEntriesOf(year, month, day));
+        entries.addAll(getGroceryEntriesOf(year, month, day));
+        return entries;
     }
 }

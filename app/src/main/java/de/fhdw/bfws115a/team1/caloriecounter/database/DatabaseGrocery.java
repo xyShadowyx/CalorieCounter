@@ -5,7 +5,7 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.Grocery;
 /**
  * Created by xySha on 18.11.2016.
  */
-public class DatabaseGrocery extends Grocery implements DatabaseEntity {
+public class DatabaseGrocery extends Grocery implements DatabaseGroceriesEntity {
     private long mId;
 
     public DatabaseGrocery(String name, int kcal, long id) {
