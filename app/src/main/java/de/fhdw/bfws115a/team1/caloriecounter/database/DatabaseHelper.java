@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * TODO: comprimize getAll methods by adding where clause
      */
 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "database.db";
 
     public final static int SHORT_NAME_LENGTH = 16;
@@ -154,6 +154,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_TABLE_GROCERY);
+        sqLiteDatabase.execSQL(CREATE_TABLE_GROCERY_UNITS);
         sqLiteDatabase.execSQL(CREATE_TABLE_GROCERY_ENTRY);
         sqLiteDatabase.execSQL(CREATE_TABLE_MENU);
         sqLiteDatabase.execSQL(CREATE_TABLE_MENU_GROCERY);
@@ -164,14 +165,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_GROCERY);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_GROCERY_UNITS);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_GROCERY_ENTRY);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_MENU);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_MENU_GROCERY);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_MENU_ENTRY);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_MENU_ENTRY_GROCERY);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_UNIT);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_GROCERY);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_GROCERY_UNITS);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_GROCERY_ENTRY);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MENU);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MENU_GROCERY);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MENU_ENTRY);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MENU_ENTRY_GROCERY);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_UNIT);
 
         onCreate(sqLiteDatabase);
     }
@@ -321,8 +322,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 if (cursorGroceryUnits.moveToFirst()) {
                     do {
                         databaseGrocery.addGroceryUnit(new GroceryUnit(
-                                new Unit(cursor.getString(cursor.getColumnIndex(GROCERY_UNITS_UNIT))),
-                                cursor.getDouble(cursor.getColumnIndex(GROCERY_UNITS_AMOUNT))
+                                new Unit(cursorGroceryUnits.getString(cursorGroceryUnits.getColumnIndex(GROCERY_UNITS_UNIT))),
+                                cursorGroceryUnits.getDouble(cursorGroceryUnits.getColumnIndex(GROCERY_UNITS_AMOUNT))
                         ));
                     }while (cursorGroceryUnits.moveToNext());
                 }

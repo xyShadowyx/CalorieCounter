@@ -21,16 +21,10 @@ public class ClickListener implements View.OnClickListener {
             case R.id.idGroceryManagementAddAmount:
                 mApplicationLogic.onAddNewQuantityClicked();
                 break;
-            //case für - Button
-            case R.id.idGroceryManagementDeleteAmount:
-                mApplicationLogic.onDeleteQuantityClicked();
-                break;
             case R.id.idGroceryManagementSaveGrocery:
                 mApplicationLogic.onSaveGroceryClicked();
                 //speichern in der Datenbank
                 break;
-
-            //DropDown?
         }
     }
 

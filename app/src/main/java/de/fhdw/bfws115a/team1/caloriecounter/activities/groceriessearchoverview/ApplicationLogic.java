@@ -11,6 +11,7 @@ public class ApplicationLogic {
     /* Member variables */
     private Data mData;
     private Gui mGui;
+
     private ListAdapter mListAdapter;
 
     public ApplicationLogic(Data data, Gui gui) {
@@ -45,8 +46,9 @@ public class ApplicationLogic {
     private void initListener() {
         ClickListener cl = new ClickListener(this);
         TextListener tl = new TextListener(this);
+
         mGui.getListView().setOnItemClickListener(mListAdapter);
-        mGui.getListView().setOnItemSelectedListener(mListAdapter);
+
         mGui.getSearchView().setOnQueryTextListener(tl);
         mGui.getAddGroceryButton().setOnClickListener(cl);
         mGui.getAddMenuButton().setOnClickListener(cl);
@@ -109,6 +111,7 @@ public class ApplicationLogic {
                     break;
                 }
             }
+
             if (groceryUnit != null) {
                 groceriesEntity = new FixGrocery(
                         mData.getSelectedEntity().getName(),

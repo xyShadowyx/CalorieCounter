@@ -5,8 +5,10 @@ import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGrocery;
-import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
-import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseMenu;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceryUnit;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
+
+import java.util.ArrayList;
 
 /**
  * Created by Florian on 08.11.2016.
@@ -16,9 +18,14 @@ public class Data {
     /* Data variables */
     private Init mActivity;
     private String mGroceryName;
-    private int mSelectedAmount;
-    private String mSpinnerStatus;
-    private int mKiloCalories;
+    private int mGroceryCalories;
+
+    private String mNewUnitName;
+    private double mNewUnitAmount;
+
+    private ArrayList<String> mUnitList;
+    private ArrayList<GroceryUnit> mGroceryUnits;
+
     private DatabaseGrocery mInputGrocery;
 
     /* Database Entity Manager */
@@ -26,27 +33,35 @@ public class Data {
 
     /* Default values */
     private final String DEFAULT_GROCERYNAME = "";
-    private final int DEFAULT_SELECTEDAMOUNT = 0;
-    private final int DEFAULt_KILOCALORIES = 0;
+    private final int DEFAULT_GROCERYCALORIES = 0;
+    private final String DEFAULT_NEWUNITNAME = "";
+    private final double DEFAULT_NEWUNITAMOUNT = 0;
+    private final int DEFAULT_GROCERYUNITS = 0;
 
     /* Keys */
     private final String KEY_GROCERYNAME = "grocerymanagement1";
-    private final String KEY_NEWQUANTITY = "grocerymanagement2";
-    private final String KEY_KILOCALORIES = "grocerymanagement3";
-    private final String KEY_SPINNERSTATUS = "grocerymanagement4";
+    private final String KEY_GROCERYCALORIES = "grocerymanagement2";
+    private final String KEY_NEWUNITAMOUNT = "grocerymanagement3";
+    private final String KEY_GROCERYUNITS = "grocerymanagement4";
 
     public Data(Bundle savedInstanceState, Init activity) {
         mActivity = activity;
         Intent intent = mActivity.getIntent();
 
         mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
+        mGroceryUnits = new ArrayList<GroceryUnit>();
 
+        mUnitList = new ArrayList<String>();
         if (savedInstanceState == null) {
+            for (Unit u : mDatabaseEntityManager.getAllUnits()) {
+                mUnitList.add(u.getName());
+            }
+
             mInputGrocery = (DatabaseGrocery) intent.getSerializableExtra("databaseMenu");
             mGroceryName = DEFAULT_GROCERYNAME;
-            mSelectedAmount = DEFAULT_SELECTEDAMOUNT;
-            mKiloCalories = DEFAULt_KILOCALORIES;
-            mSpinnerStatus = mActivity.getResources().getString(R.string.selectamount_default_spinnerstatus);
+            mGroceryCalories = DEFAULT_GROCERYCALORIES;
+            mNewUnitName = mActivity.getResources().getString(R.string.selectamount_default_spinnerstatus);
+            mNewUnitAmount = DEFAULT_NEWUNITAMOUNT;
         } else {
             restoreDataFromBundle(savedInstanceState);
         }
@@ -54,16 +69,16 @@ public class Data {
 
     public void saveDataInBundle(Bundle b) {
         b.putString(KEY_GROCERYNAME, mGroceryName);
-        b.putInt(KEY_NEWQUANTITY, mSelectedAmount);
-        b.putInt(KEY_KILOCALORIES, mKiloCalories);
-        b.putString(KEY_SPINNERSTATUS, mSpinnerStatus);
+        b.putDouble(KEY_GROCERYCALORIES, mGroceryCalories);
+        b.putString(KEY_NEWUNITAMOUNT, mNewUnitName);
+        b.putDouble(KEY_GROCERYUNITS, mNewUnitAmount);
     }
 
     private void restoreDataFromBundle(Bundle b) {
         mGroceryName = b.getString(KEY_GROCERYNAME);
-        mSelectedAmount = b.getInt(KEY_NEWQUANTITY);
-        mKiloCalories = b.getInt(KEY_KILOCALORIES);
-        mSpinnerStatus = b.getString(KEY_SPINNERSTATUS);
+        mGroceryCalories = b.getInt(KEY_GROCERYCALORIES);
+        mNewUnitName = b.getString(KEY_NEWUNITAMOUNT);
+        mNewUnitAmount = b.getDouble(KEY_GROCERYUNITS);
     }
 
     /* Getter methods */
@@ -75,16 +90,16 @@ public class Data {
         return mGroceryName;
     }
 
-    public int getSelectedAmount() {
-        return mSelectedAmount;
+    public int getGroceryCalories() {
+        return mGroceryCalories;
     }
 
-    public int getKiloCalories() {
-        return mKiloCalories;
+    public String getNewUnitName() {
+        return mNewUnitName;
     }
 
-    public String getSpinnerStatus() {
-        return mSpinnerStatus;
+    public double getNewUnitAmount() {
+        return mNewUnitAmount;
     }
 
     public DatabaseEntityManager getDatabaseEntityManager() {
@@ -95,12 +110,28 @@ public class Data {
         return mInputGrocery;
     }
 
+    public ArrayList<String> getUnitList() {
+        return mUnitList;
+    }
+
+    public ArrayList<GroceryUnit> getGroceryUnits() {
+        return mGroceryUnits;
+    }
+
     /* Setter methods */
     public void setGroceryName(String mGroceryName) {
         this.mGroceryName = mGroceryName;
     }
 
-    public void setKiloCalories(int mKiloCalories) {
-        this.mKiloCalories = mKiloCalories;
+    public void setGroceryCalories(int mGroceryCalories) {
+        this.mGroceryCalories = mGroceryCalories;
+    }
+
+    public void setNewUnitAmount(double mNewUnitAmount) {
+        this.mNewUnitAmount = mNewUnitAmount;
+    }
+
+    public void setNewUnitName(String mNewUnitName) {
+        this.mNewUnitName = mNewUnitName;
     }
 }
