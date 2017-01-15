@@ -11,6 +11,8 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntity;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceriesEntity;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
 import java.util.ArrayList;
@@ -19,23 +21,23 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
     private Data mData;
     private ApplicationLogic mApplicationLogic;
     private final Context mContext;
-    private final ArrayList<GroceriesEntity> mGroceriesEntities;
-    private ArrayList<GroceriesEntity> mFilteredGroceriesEntities;
+    private final ArrayList<DatabaseGroceriesEntity> mDatabaseGroceriesEntities;
+    private ArrayList<DatabaseGroceriesEntity> mFilteredDatabaseGroceriesEntities;
     private Filter mFilter;
 
     public ListAdapter(Data data, ApplicationLogic applicationLogic) {
         mData = data;
         mApplicationLogic = applicationLogic;
         mContext = mData.getActivity().getApplicationContext();
-        mGroceriesEntities = mData.getGroceriesEntityList();
-        mFilter = new GroceriesEntityFilter(mGroceriesEntities, this);
-        mFilteredGroceriesEntities = mGroceriesEntities;
+        mDatabaseGroceriesEntities = mData.getDatabaseGroceriesEntityList();
+        mFilter = new GroceriesEntityFilter(mDatabaseGroceriesEntities, this);
+        mFilteredDatabaseGroceriesEntities = mDatabaseGroceriesEntities;
 
         Log.d("Dabug", "Init");
     }
 
-    public void setFilteredGroceriesEntities(ArrayList<GroceriesEntity> filteredGroceriesEntities) {
-        mFilteredGroceriesEntities = filteredGroceriesEntities;
+    public void setFilteredDatabaseGroceriesEntities(ArrayList<DatabaseGroceriesEntity> filteredDatabaseGroceriesEntities) {
+        mFilteredDatabaseGroceriesEntities = filteredDatabaseGroceriesEntities;
         notifyDataSetChanged();
     }
 
@@ -46,7 +48,7 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
      */
     @Override
     public int getCount() {
-        return mFilteredGroceriesEntities.size();
+        return mFilteredDatabaseGroceriesEntities.size();
     }
 
     /**
@@ -57,7 +59,7 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
      */
     @Override
     public Object getItem(int i) {
-        return mFilteredGroceriesEntities.get(i);
+        return mFilteredDatabaseGroceriesEntities.get(i);
     }
 
     /**
@@ -81,10 +83,8 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ListViewHolder listViewHolder;
-        GroceriesEntity groceriesEntity;
-        groceriesEntity = (GroceriesEntity) getItem(position);
-        Log.d("Dabug", "View: " + groceriesEntity.getName());
-
+        DatabaseGroceriesEntity databaseGroceriesEntity;
+        databaseGroceriesEntity = (DatabaseGroceriesEntity) getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.groceriessearchoverview_listrow, parent, false);
             listViewHolder = new ListViewHolder(convertView, mApplicationLogic);
@@ -92,8 +92,8 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
         } else {
             listViewHolder = (ListViewHolder) convertView.getTag();
         }
-        listViewHolder.setGroceriesEntity(groceriesEntity);
-        listViewHolder.getNameText().setText(String.format("%s", groceriesEntity.getName()));
+        listViewHolder.setDatabaseGroceriesEntity(databaseGroceriesEntity);
+        listViewHolder.getNameText().setText(String.format("%s", databaseGroceriesEntity.getName()));
         return convertView;
     }
 

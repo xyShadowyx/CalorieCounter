@@ -3,7 +3,9 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview
 import android.content.Intent;
 import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.constants.SearchSettings;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntity;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceriesEntity;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ public class Data {
 
     /* Member variable */
     private Init mActivity;
-    private ArrayList<GroceriesEntity> mGroceriesEntityList;
+    private ArrayList<DatabaseGroceriesEntity> mDatabaseGroceriesEntityList;
     private DatabaseEntityManager mDatabaseEntityManager;
     private GroceriesEntity mSelectedEntity;
 
@@ -38,14 +40,14 @@ public class Data {
         if (savedInstanceState == null) {
             Intent intent = mActivity.getIntent();
             searchSettings = SearchSettings.values()[intent.getIntExtra("searchSettings", DEFAULT_SEARCH_SETTINGS)];
-            mGroceriesEntityList = new ArrayList<GroceriesEntity>();
+            mDatabaseGroceriesEntityList = new ArrayList<DatabaseGroceriesEntity>();
             mSelectedEntity = null;
 
             if (SearchSettings.DISPLAY_ONLY_GROCERY == searchSettings || SearchSettings.DISPLAY_ALL == searchSettings) {
-                mGroceriesEntityList.addAll(mDatabaseEntityManager.getAllGroceries());
+                mDatabaseGroceriesEntityList.addAll(mDatabaseEntityManager.getAllGroceries());
             }
             if (SearchSettings.DISPLAY_ONLY_MENU == searchSettings || SearchSettings.DISPLAY_ALL == searchSettings) {
-                mGroceriesEntityList.addAll(mDatabaseEntityManager.getAllMenus());
+                mDatabaseGroceriesEntityList.addAll(mDatabaseEntityManager.getAllMenus());
             }
         } else {
             restoreDataFromBundle(savedInstanceState);
@@ -58,7 +60,7 @@ public class Data {
      * @param b The bundle where the data will be saved.
      */
     public void saveDataInBundle(Bundle b) {
-        b.putSerializable(KEY_GROCERIES_ENTITY_LIST, mGroceriesEntityList);
+        b.putSerializable(KEY_GROCERIES_ENTITY_LIST, mDatabaseGroceriesEntityList);
         b.putSerializable(KEY_SELECTED_ENTITY, mSelectedEntity);
     }
 
@@ -68,7 +70,7 @@ public class Data {
      * @param b The bundle where the data is saved in.
      */
     private void restoreDataFromBundle(Bundle b) {
-        mGroceriesEntityList = (ArrayList<GroceriesEntity>) b.getSerializable(KEY_GROCERIES_ENTITY_LIST);
+        mDatabaseGroceriesEntityList = (ArrayList<DatabaseGroceriesEntity>) b.getSerializable(KEY_GROCERIES_ENTITY_LIST);
         mSelectedEntity = (GroceriesEntity) b.getSerializable(KEY_SELECTED_ENTITY);
     }
 
@@ -77,12 +79,16 @@ public class Data {
         return mActivity;
     }
 
-    public ArrayList<GroceriesEntity> getGroceriesEntityList() {
-        return mGroceriesEntityList;
+    public ArrayList<DatabaseGroceriesEntity> getDatabaseGroceriesEntityList() {
+        return mDatabaseGroceriesEntityList;
     }
 
     public GroceriesEntity getSelectedEntity() {
         return mSelectedEntity;
+    }
+
+    public DatabaseEntityManager getDatabaseEntityManager() {
+        return mDatabaseEntityManager;
     }
 
     /* Setter methods */

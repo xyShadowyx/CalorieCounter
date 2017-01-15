@@ -45,7 +45,8 @@ public class ApplicationLogic {
     }
 
     private void initGui() {
-
+        mGui.setGroceryNameText(mData.getGroceryName());
+        mGui.setGroceryCaloriesAmount(mData.getGroceryCalories());
     }
 
     private void initAdapter() {
@@ -87,13 +88,23 @@ public class ApplicationLogic {
      * Otherwise saves a new grocery entity (with corresponding attributes) in the personal database.
      */
     public void onSaveGroceryClicked() {
-        Log.d("Save", "Try!");
+        if(mData.getInputGrocery() == null) {
+            createNewGrocery();
+        } else {
+            editGrocery();
+        }
+    }
+
+    public void createNewGrocery() {
         DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
-        //prüfen ob es diese einheit schon gibt (Datenbankabfrage) -- toast message "Einheit ist bereits vorhanden"
         if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getGroceryName())
                 && databaseEntityManager.isGroceryNameAvailable(mData.getGroceryName())) {
             if (Validation.checkNumberValue(mData.getGroceryCalories())) {
-                createNewGrocery();
+                Grocery newGrocery = new Grocery(mData.getGroceryName(),mData.getGroceryCalories());
+                for(GroceryUnit gu : mData.getGroceryUnits()) {
+                    newGrocery.addGroceryUnit(gu);
+                }
+                DatabaseGrocery databaseGrocery = databaseEntityManager.createGrocery(newGrocery);
             } else {
                 Context context = mData.getActivity().getApplicationContext();
                 Toast toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
@@ -106,26 +117,21 @@ public class ApplicationLogic {
         }
     }
 
-    public void createNewGrocery() {
-        Log.d("Save", "do!");
-        DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
-        Grocery newGrocery = new Grocery(mData.getGroceryName(),mData.getGroceryCalories());
-        for(GroceryUnit gu : mData.getGroceryUnits()) {
-            newGrocery.addGroceryUnit(gu);
-        }
-        DatabaseGrocery databaseGrocery = databaseEntityManager.createGrocery(newGrocery);
-        Log.d("Save", "done!");
-    }
-
     public void editGrocery() {
         DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
         if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getGroceryName())
                 && (mData.getInputGrocery().getName() == mData.getGroceryName()
-                || databaseEntityManager.isGroceryNameAvailable(mData.getGroceryName()))) {
+                || (databaseEntityManager.isGroceryNameAvailable(mData.getGroceryName()) && mData.getInputGrocery().getName() != mData.getGroceryName()))) {
             if (Validation.checkNumberValue(mData.getGroceryCalories())) {
                 /* Updates an existing grocery in personal database. */
                 mData.getInputGrocery().setName(mData.getGroceryName());
                 mData.getInputGrocery().setKcal(mData.getGroceryCalories());
+                for(GroceryUnit gu : mData.getInputGrocery().getGroceryUnits()) {
+                    mData.getInputGrocery().removeGroceryUnit(gu);
+                }
+                for(GroceryUnit gu : mData.getGroceryUnits()) {
+                    mData.getInputGrocery().addGroceryUnit(gu);
+                }
                 databaseEntityManager.saveGrocery(mData.getInputGrocery());
             } else {
                 Context context = mData.getActivity().getApplicationContext();

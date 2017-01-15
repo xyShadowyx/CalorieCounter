@@ -3,30 +3,29 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview
 import android.util.Log;
 import android.view.View;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceriesEntity;
 
 public class ListButtonClickListener implements View.OnClickListener {
-    private GroceriesEntity mGroceriesEntity;
+    private DatabaseGroceriesEntity mDatabaseGroceriesEntity;
     private ApplicationLogic mApplicationLogic;
 
-    public ListButtonClickListener(ApplicationLogic applicationLogic, GroceriesEntity groceriesEntity) {
+    public ListButtonClickListener(ApplicationLogic applicationLogic, DatabaseGroceriesEntity databaseGroceriesEntity) {
         mApplicationLogic = applicationLogic;
-        mGroceriesEntity = groceriesEntity;
+        mDatabaseGroceriesEntity = databaseGroceriesEntity;
     }
 
-    public void setGroceriesEntity(GroceriesEntity groceriesEntity) {
-        mGroceriesEntity = groceriesEntity;
+    public void setDatabaseGroceriesEntity(DatabaseGroceriesEntity databaseGroceriesEntity) {
+        mDatabaseGroceriesEntity = databaseGroceriesEntity;
     }
 
     @Override
     public void onClick(View view) {
-        Log.d("Dabug", "Clicked id: " + view.getId());
         switch (view.getId()) {
             case R.id.idGroceriesSearchOverviewDeleteButton:
-                // Delete Image clicked
+                mApplicationLogic.deleteItem(mDatabaseGroceriesEntity);
                 break;
             case R.id.idGroceriesSearchOverviewSettingButton:
-                // Edit Image clicked
+                mApplicationLogic.editItem(mDatabaseGroceriesEntity);
                 break;
         }
     }

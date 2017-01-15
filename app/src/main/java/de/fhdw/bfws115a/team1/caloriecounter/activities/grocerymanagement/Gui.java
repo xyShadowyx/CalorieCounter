@@ -1,5 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
+import android.util.Log;
 import android.widget.*;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement.ListViewHolder;
@@ -16,7 +17,6 @@ public class Gui {
     private ListView mGroceryUnitsList;
 
     private ImageView mAddNewQuantity;
-    private ImageView mDeleteQuantity;
 
     private Button mSaveGrocery;
 
@@ -66,4 +66,12 @@ public class Gui {
     }
 
     /* Setter methods */
+
+    public void setGroceryNameText(String groceryName) {
+        mGroceryName.setText(groceryName);
+    }
+
+    public void setGroceryCaloriesAmount(int groceryCalories) {
+        mGroceryCalories.setText(String.valueOf(groceryCalories));
+    }
 }

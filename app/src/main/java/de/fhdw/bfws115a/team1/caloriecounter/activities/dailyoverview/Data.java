@@ -3,7 +3,10 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.dailyoverview;
 import android.content.Intent;
 import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntry;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Data {
@@ -11,6 +14,8 @@ public class Data {
     /* Member variables */
     private Init mActivity;
     private DatabaseEntityManager mDatabaseEntityManager;
+    private ArrayList<DatabaseEntry> mDatabaseEntryList;
+    private DatabaseEntry mEntryToCopy;
     private int mSelectedYear;
     private int mSelectedMonth;
     private int mSelectedDay;
@@ -31,6 +36,7 @@ public class Data {
         mActivity = activity;
         mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
 
+        mDatabaseEntryList = new ArrayList<DatabaseEntry>();
         if (savedInstanceState == null) {
             Intent intent;
             intent = mActivity.getIntent();
@@ -39,6 +45,8 @@ public class Data {
             mSelectedYear = intent.getIntExtra("year", calendarToday.get(Calendar.YEAR));
             mSelectedMonth = intent.getIntExtra("month", calendarToday.get(Calendar.MONTH));
             mSelectedDay = intent.getIntExtra("day", calendarToday.get(Calendar.DAY_OF_MONTH));
+            mDatabaseEntryList.addAll(mDatabaseEntityManager.getEntriesOf(mSelectedYear, mSelectedMonth, mSelectedDay));
+            mEntryToCopy = null;
 
         } else {
             restoreDataFromBundle(savedInstanceState);
@@ -86,5 +94,17 @@ public class Data {
 
     public DatabaseEntityManager getDatabaseEntityManager() {
         return mDatabaseEntityManager;
+    }
+
+    public ArrayList<DatabaseEntry> getDatabaseEntryList() {
+        return mDatabaseEntryList;
+    }
+
+    public DatabaseEntry getEntryToCopy() {
+        return mEntryToCopy;
+    }
+    /* Setter Methods */
+    public void setEntryToCopy(DatabaseEntry entryToCopy) {
+        this.mEntryToCopy = entryToCopy;
     }
 }

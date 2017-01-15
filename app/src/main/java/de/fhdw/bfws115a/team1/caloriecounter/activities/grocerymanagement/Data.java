@@ -52,14 +52,22 @@ public class Data {
         mGroceryUnits = new ArrayList<GroceryUnit>();
 
         mUnitList = new ArrayList<String>();
+        for (Unit u : mDatabaseEntityManager.getAllUnits()) {
+            mUnitList.add(u.getName());
+        }
         if (savedInstanceState == null) {
-            for (Unit u : mDatabaseEntityManager.getAllUnits()) {
-                mUnitList.add(u.getName());
+            mInputGrocery = (DatabaseGrocery) intent.getSerializableExtra("databaseGrocery");
+            if (mInputGrocery != null) {
+                mGroceryName = mInputGrocery.getName();
+                mGroceryCalories = mInputGrocery.getKcal();
+                mGroceryCalories = mInputGrocery.getKcal();
+                for (GroceryUnit gu : mInputGrocery.getGroceryUnits()) {
+                    mGroceryUnits.add(gu);
+                }
+            } else {
+                mGroceryName = DEFAULT_GROCERYNAME;
+                mGroceryCalories = DEFAULT_GROCERYCALORIES;
             }
-
-            mInputGrocery = (DatabaseGrocery) intent.getSerializableExtra("databaseMenu");
-            mGroceryName = DEFAULT_GROCERYNAME;
-            mGroceryCalories = DEFAULT_GROCERYCALORIES;
             mNewUnitName = mActivity.getResources().getString(R.string.selectamount_default_spinnerstatus);
             mNewUnitAmount = DEFAULT_NEWUNITAMOUNT;
         } else {
@@ -134,4 +142,6 @@ public class Data {
     public void setNewUnitName(String mNewUnitName) {
         this.mNewUnitName = mNewUnitName;
     }
+
+
 }

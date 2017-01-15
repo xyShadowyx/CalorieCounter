@@ -5,7 +5,7 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.Menu;
 /**
  * Created by xySha on 18.11.2016.
  */
-public class DatabaseMenu extends Menu implements DatabaseEntity {
+public class DatabaseMenu extends Menu implements DatabaseGroceriesEntity {
     private long mId;
 
     public DatabaseMenu(String name, double portions, long id) {

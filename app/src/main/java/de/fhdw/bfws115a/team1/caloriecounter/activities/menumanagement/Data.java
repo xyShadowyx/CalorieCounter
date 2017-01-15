@@ -13,23 +13,20 @@ public class Data {
     /* Member variables */
     private Init mActivity;
     private String mMenuName;
-    private int mPortionSize;
-    private String mAddedGroceries;
+    private double mPortionSize;
     private ArrayList<FixGrocery> mMenuFixGroceries;
     private DatabaseMenu mInputMenu;
     private DatabaseEntityManager mDatabaseEntityManager;
 
     /* Default values */
     private final String DEFAULT_MENUNAME = "";
-    private final int DEFAULT_PORTIONSIZE = 0;
-    private final String DEFAULT_ADDEDGROCERIES = "";
+    private final double DEFAULT_PORTIONSIZE = 0.0;
 
     /* Keys */
     private final String KEY_INPUTMENU = "menumanagement1";
     private final String KEY_MENUFIXGROCERIES = "menumanagement2";
     private final String KEY_MENUNAME = "menumanagement3";
     private final String KEY_PORTIONSIZE = "menumanagement4";
-    private final String KEY_ADDEDGROCERIES = "menumanagement5";
 
     /**
      * Method which gets the current layout attributes and put them into an Intent object.
@@ -47,17 +44,18 @@ public class Data {
             intent = mActivity.getIntent();
             mMenuFixGroceries = new ArrayList<FixGrocery>();
 
-            if (intent.hasExtra("databaseMenu")) {
-                mInputMenu = (DatabaseMenu) intent.getSerializableExtra("databaseMenu");
+            mInputMenu = (DatabaseMenu) intent.getSerializableExtra("databaseMenu");
+            if (mInputMenu != null) {
+                mMenuName = mInputMenu.getName();
+                mPortionSize = mInputMenu.getAmount();
                 for (FixGrocery fg : mInputMenu.getFixGroceries()) {
                     mMenuFixGroceries.add(fg);
                 }
             } else {
                 mInputMenu = null;
+                mMenuName = DEFAULT_MENUNAME;
+                mPortionSize = DEFAULT_PORTIONSIZE;
             }
-            mMenuName = DEFAULT_MENUNAME;
-            mPortionSize = DEFAULT_PORTIONSIZE;
-            mAddedGroceries = DEFAULT_ADDEDGROCERIES;
 
         } else {
             restoreDataFromBundle(savedInstanceState);
@@ -73,8 +71,7 @@ public class Data {
         b.putSerializable(KEY_INPUTMENU, mInputMenu);
         b.putSerializable(KEY_MENUFIXGROCERIES, mMenuFixGroceries);
         b.putString(KEY_MENUNAME, mMenuName);
-        b.putInt(KEY_PORTIONSIZE, mPortionSize);
-        b.putString(KEY_ADDEDGROCERIES, mAddedGroceries);
+        b.putDouble(KEY_PORTIONSIZE, mPortionSize);
     }
 
     /**
@@ -87,7 +84,6 @@ public class Data {
         mMenuFixGroceries = (ArrayList<FixGrocery>) b.getSerializable(KEY_MENUFIXGROCERIES);
         mMenuName = b.getString(KEY_MENUNAME);
         mPortionSize = b.getInt(KEY_PORTIONSIZE);
-        mAddedGroceries = b.getString(KEY_ADDEDGROCERIES);
     }
 
     /* Getter methods */
@@ -99,12 +95,8 @@ public class Data {
         return mMenuName;
     }
 
-    public int getPortionSize() {
+    public double getPortionSize() {
         return mPortionSize;
-    }
-
-    public String getAddedGroceries() {
-        return mAddedGroceries;
     }
 
     public ArrayList<FixGrocery> getMenuFixGroceries() {
@@ -128,11 +120,7 @@ public class Data {
         this.mMenuName = mMenuName;
     }
 
-    public void setPortionSize(int mPortionSize) {
+    public void setPortionSize(double mPortionSize) {
         this.mPortionSize = mPortionSize;
-    }
-
-    public void setAddedGroceries(String mAddedGroceries) {
-        this.mAddedGroceries = mAddedGroceries;
     }
 }
