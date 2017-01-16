@@ -39,6 +39,11 @@ public class DatabaseGroceryEntry extends GroceryEntry implements DatabaseEntry 
     }
 
     @Override
+    public void setAmount(double amount) {
+        this.getFixGrocery().setAmount(amount);
+    }
+
+    @Override
     public int compareTo(DatabaseEntry databaseEntry) {
         return (int) databaseEntry.getId();
     }

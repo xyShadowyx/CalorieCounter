@@ -62,12 +62,17 @@
     <string name="menumanagement_lastadd">Zuletzt hinzugefügtes Lebensmittel</string>
     <string name="menumanagement_newGroceryInput">Hier neues Lebensmittel eintragen</string>
     <string name="menumanagement_addMenu">Hinzufügen</string>
+    <string name="menumanagement_describtion">Hinzugefügte Lebensmittel</string>
+    <string name="menumanagement_describtion_icons">Verwaltung</string>
 
 
     <!-- Values 'quantityunitmanagement'-layout -->
     <string name="quantityunitmanagement_quantityunitmanagement">Mengeneinheiten</string>
+    <string name="quantityunitmanagement_discribtion">Aktuelle Mengeneinheiten</string>
+    <string name="quantityunitmanagement_discribtion_icons">Verwaltung</string>
     <string name="quantityunitmanagement_exit">Fertig</string>
     <string name="quantityunitmanagement_add">Hinzufügen</string>
+    <string name="quantityunitmanagement_lastadd">Zuletzt hinzugefügte Mengeneinheit</string>
     <string name="quantityunitmanagement_dummy">Platzhalter</string>
 
     <!-- Values 'grocerymanagement'-layout -->

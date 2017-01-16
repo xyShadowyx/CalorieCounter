@@ -34,6 +34,11 @@ public class DatabaseMenuEntry extends MenuEntry implements DatabaseEntry {
     }
 
     @Override
+    public void setAmount(double amount) {
+        this.getMenu().setAmount(amount);
+    }
+
+    @Override
     public int getCalories() {
         return this.getMenu().getKcal();
     }

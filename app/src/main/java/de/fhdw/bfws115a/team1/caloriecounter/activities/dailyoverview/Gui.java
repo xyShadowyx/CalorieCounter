@@ -18,6 +18,8 @@ public class Gui {
     private ImageView mNewEntryButton;
     private ListView mEntryListView;
 
+    private TextView mUsedCalories;
+
     /**
      * Assign layout components to member variables so that they can be changed in backend.
      *
@@ -33,6 +35,8 @@ public class Gui {
         mMenuButton = (ImageView) activity.findViewById(R.id.idDailyoverviewMenuButton);
         mGroceryButton = (ImageView) activity.findViewById(R.id.idDailyoverviewGroceryButton);
         mEntryListView = (ListView) activity.findViewById(R.id.idDailyoverviewList);
+
+        mUsedCalories = (TextView) activity.findViewById(R.id.idDailyoverviewConsumedCalories);
 
         mNewEntryButton = (ImageView) activity.findViewById(R.id.idDailyoverviewAddNewEntry);
     }
@@ -70,8 +74,16 @@ public class Gui {
         return mNewEntryButton;
     }
 
+    public TextView getUsedCalories() {
+        return mUsedCalories;
+    }
+
     /* Setter methods */
     public void setDate(int day, int month, int year) {
         mTodayDateText.setText(day + "." + (month + 1) + "." + year);
+    }
+
+    public void setUsedCalories(int amount) {
+        mUsedCalories.setText(String.valueOf(amount));
     }
 }
