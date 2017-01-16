@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/idGroceriesSearchOverview"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/white"
-              android:weightSum="1">
+
+<RelativeLayout android:background="@color/white"
+                android:layout_marginBottom="@dimen/margin"
+                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
+                android:id="@+id/idGroceriesSearchOverview"
+                xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView android:id="@+id/idGroceriesSearchOverviewTitel"
               android:layout_width="match_parent"
@@ -18,24 +18,28 @@
               android:gravity="center"
               android:textStyle="bold"/>
 
-    <TextView android:layout_width="match_parent"
+    <TextView android:id="@+id/idGroceriesSearchOverviewSubTitel"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="@string/groceriesearchoverview_search"
               android:textColor="@color/black"
               android:textSize="@dimen/textsize"
               android:gravity="center"
               android:textStyle="italic"
-              android:layout_margin="@dimen/headlinespace"/>
+              android:layout_margin="@dimen/headlinespace"
+              android:layout_below="@+id/idGroceriesSearchOverviewTitel"/>
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal">
+    <LinearLayout android:id="@+id/idGroceriesSearchOverviewSearchViewLayout"
+                  android:layout_width="match_parent"
+                  android:layout_height="40dp"
+                  android:orientation="horizontal"
+                  android:layout_below="@+id/idGroceriesSearchOverviewSubTitel">
 
 
         <SearchView android:id="@+id/idGroceriesSearchOverviewSearchView"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:hint="Search..."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search..."
                     android:layout_weight="1"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/textsize"
@@ -44,29 +48,58 @@
                     android:textStyle="italic"
                     android:layout_margin="@dimen/margin"/>
 
-        <Button
-                android:id="@+id/idGroceriesSearchOverviewSearchButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Suchen"
-                android:layout_marginRight="@dimen/margin"
-                android:layout_gravity="right"/>
-
     </LinearLayout>
 
-    <LinearLayout android:id="@+id/idGroceriesSearchOverviewEntryList"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical"
-                  android:layout_margin="@dimen/margin_2">
+    <RelativeLayout android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:id="@+id/idGroceriesSearchOverviewEntryList"
+                    android:layout_below="@id/idGroceriesSearchOverviewSearchViewLayout"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/margin_2"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:layout_marginRight="@dimen/margin_2"
+                    android:paddingBottom="@dimen/padding" android:layout_above="@+id/linearLayout">
 
-        <ListView
-                android:id="@+id/idGroceriesSearchOverviewListView"
-                android:layout_width="wrap_content"
-                android:layout_height="291dp"
-                android:paddingBottom="@dimen/padding"
-                android:focusable="false">
 
+        <LinearLayout android:layout_height="wrap_content"
+                      android:layout_width="match_parent"
+                      android:id="@+id/idGroceriesSearchOverviewHeadline"
+                      android:orientation="horizontal"
+                      android:weightSum="1"
+                      android:layout_alignParentTop="true">
+
+            <TextView android:layout_height="wrap_content"
+                      android:layout_width="0dp"
+                      android:id="@+id/idGroceriesSearchOverviewName"
+                      android:text="Name"
+                      android:layout_weight="0.4"
+                      android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+
+            <TextView android:layout_height="wrap_content"
+                      android:layout_width="0dp"
+                      android:id="@+id/idGroceriesSearchOverviewCalories"
+                      android:text="Kalorien"
+                      android:layout_weight="0.3"
+                      android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+            <TextView android:layout_height="wrap_content"
+                      android:layout_width="0dp"
+                      android:id="@+id/idGroceriesSearchOverviewActions"
+                      android:gravity="center_horizontal"
+                      android:text="Aktionen"
+                      android:layout_weight="0.3"
+                      android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        </LinearLayout>
+
+        <ListView android:layout_height="match_parent"
+                  android:layout_width="wrap_content"
+                  android:id="@+id/idGroceriesSearchOverviewListView"
+                  android:layout_alignParentEnd="true"
+                  android:layout_alignParentStart="false"
+                  android:paddingBottom="@dimen/padding"
+                  android:layout_alignParentBottom="true" android:layout_below="@+id/idGroceriesSearchOverviewHeadline">
         </ListView>
 
         <TextView android:id="@+id/idGrocerySearchoverviewEmptyListText"
@@ -74,44 +107,61 @@
                   android:layout_height="wrap_content"
                   android:gravity="center"
         />
-    </LinearLayout>
 
-    <LinearLayout android:id="@+id/idGroceriesSearchOverviewNewGrocery"
+    </RelativeLayout>
+
+    <LinearLayout android:layout_height="wrap_content"
                   android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
+                  android:id="@+id/linearLayout"
+                  android:orientation="horizontal"
+                  android:layout_alignParentStart="true"
+                  android:layout_alignParentBottom="true">
 
-        <ImageView android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginLeft="@dimen/margin"
-                   android:id="@+id/idGroceriesSearchOverviewAddGroceryButton"
-                   android:src="@drawable/plus_32"/>
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_margin="@dimen/margin"
-                  android:textSize="@dimen/textsize"
-                  android:text="@string/groceriesearchoverview_newGrocery"
-                  android:paddingLeft="@dimen/margin"
-                  android:textColor="@color/black"/>
+        <LinearLayout android:layout_height="match_parent"
+                      android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:layout_weight="1">
+
+            <ImageView android:layout_height="wrap_content"
+                       android:layout_width="wrap_content"
+                       android:id="@+id/idGroceriesSearchOverviewAddMenuButton"
+                       android:src="@drawable/plus_48"
+                       android:layout_weight="1"
+                       android:layout_alignParentBottom="true"
+                       android:layout_gravity="center"
+                       android:layout_centerHorizontal="true"/>
+
+            <TextView android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:text="Neues Menü"
+                      android:textAppearance="?android:attr/textAppearanceSmall"
+                      android:layout_gravity="bottom|center"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout android:layout_height="match_parent"
+                      android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:layout_weight="1">
+
+            <ImageView android:layout_height="wrap_content"
+                       android:layout_width="wrap_content"
+                       android:id="@+id/idGroceriesSearchOverviewAddGroceryButton"
+                       android:src="@drawable/plus_48"
+                       android:layout_weight="1"
+                       android:layout_alignParentBottom="true"
+                       android:layout_gravity="center"/>
+
+            <TextView android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:text="Neues Lebensmittel"
+                      android:textAppearance="?android:attr/textAppearanceSmall"
+                      android:layout_gravity="bottom|center"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout android:id="@+id/idGroceriesSearchOverviewNewMenu"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:paddingTop="@dimen/padding">
-
-        <ImageView android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginLeft="@dimen/margin"
-                   android:id="@+id/idGroceriesSearchOverviewAddMenuButton"
-                   android:src="@drawable/plus_32"/>
-
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_margin="@dimen/margin"
-                  android:textSize="@dimen/textsize"
-                  android:text="@string/groceriesearchoverview_newMenu"
-                  android:paddingLeft="@dimen/margin"
-                  android:textColor="@color/black"/>
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
