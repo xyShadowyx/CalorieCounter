@@ -3,6 +3,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.dailyoverview;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
+import android.util.MonthDisplayHelper;
 import de.fhdw.bfws115a.team1.caloriecounter.constants.SearchSettings;
 import de.fhdw.bfws115a.team1.caloriecounter.database.*;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
@@ -28,6 +29,16 @@ public class ApplicationLogic {
      */
     private void initGui() {
         mGui.setDate(mData.getSelectedDay(), mData.getSelectedMonth(), mData.getSelectedYear());
+        mGui.setUsedCalories(mData.getUsedCalories());
+        calculateCalories();
+    }
+
+    private void calculateCalories() {
+        mData.setUsedCalories(0);
+        for(DatabaseEntry databaseEntry : mData.getDatabaseEntryList()) {
+            mData.setUsedCalories(databaseEntry.getCalories() + mData.getUsedCalories());
+        }
+        mGui.setUsedCalories(mData.getUsedCalories());
     }
 
     /**
@@ -167,6 +178,7 @@ public class ApplicationLogic {
         }
         mData.getDatabaseEntryList().remove(databaseEntry);
         mListAdapter.notifyDataSetChanged();
+        calculateCalories();
     }
 
     public void onSelectCopyItem(DatabaseEntry databaseEntry) {
@@ -190,7 +202,7 @@ public class ApplicationLogic {
         }
     }
 
-    public void copyDateSelected(Intent data) {
+    public void onCopyDateSelected(Intent data) {
         Intent changedIntent;
 
         int day = data.getIntExtra("day", mData.getSelectedDay());
@@ -208,7 +220,7 @@ public class ApplicationLogic {
     }
 
     public void onEditEntry(DatabaseEntry databaseEntry) {
-        /*Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount.Init.class);
+        Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount.Init.class);
 
         if(databaseEntry instanceof DatabaseMenuEntry) {
             DatabaseMenuEntry databaseMenuEntry = (DatabaseMenuEntry)databaseEntry;
@@ -216,7 +228,25 @@ public class ApplicationLogic {
         } else if(databaseEntry instanceof DatabaseGroceryEntry) {
             DatabaseGroceryEntry databaseGroceryEntry = (DatabaseGroceryEntry)databaseEntry;
             intent.putExtra("groceriesEntity", databaseGroceryEntry.getFixGrocery());
+        } else {
+            return;
         }
-        mData.getActivity().startActivityForResult(intent, ResultCodes.NO_RETURN);*/
+        mData.setEntryToEdit(databaseEntry);
+        mData.getActivity().startActivityForResult(intent, ResultCodes.EDITENTRY);
+    }
+
+    public void onEntryEdited(Intent data) {
+        DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
+        double selectedAmount = data.getDoubleExtra("amount", 0.0);
+        DatabaseEntry databaseEntry = mData.getEntryToEdit();
+
+        if (databaseEntry instanceof DatabaseMenuEntry) {
+            databaseEntry.setAmount(selectedAmount);
+            databaseEntityManager.saveMenuEntry((DatabaseMenuEntry) databaseEntry);
+        } else if (databaseEntry instanceof DatabaseGroceryEntry) {
+            databaseEntry.setAmount(selectedAmount);
+            databaseEntityManager.saveGroceryEntry((DatabaseGroceryEntry) databaseEntry);
+        }
+        calculateCalories();
     }
 }

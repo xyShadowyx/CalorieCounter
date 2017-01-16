@@ -3,10 +3,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount;
 import android.content.Intent;
 import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.Grocery;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceryUnit;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.Menu;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
 
@@ -50,19 +47,26 @@ public class Data {
                 Grocery grocery;
                 grocery = (Grocery) groceriesEntity;
                 mPickedGrocery = grocery.getName();
-                for (GroceryUnit gu : grocery.getGroceryUnits()) {
+                for (GroceryUnit gu : grocery.getGroceryUnits())
                     mUnitList.add(gu.getUnit().getName());
-                }
             }
-
             if (groceriesEntity instanceof Menu) {
                 Menu menu;
 
                 menu = (Menu) groceriesEntity;
                 mPickedGrocery = menu.getName();
                 mUnitList.add("Portion");
-            }
 
+                mSelectedAmount = menu.getAmount();
+            }
+            if (groceriesEntity instanceof FixGrocery) {
+                FixGrocery fixGrocery;
+
+                fixGrocery = (FixGrocery) groceriesEntity;
+                mPickedGrocery = fixGrocery.getName();
+                mUnitList.add(fixGrocery.getUnit().getName());
+                mSelectedAmount = fixGrocery.getAmount();
+            }
         } else {
             restoreDataFromBundle(savedInstanceState);
         }

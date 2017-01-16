@@ -14,7 +14,6 @@ public class ListViewHolder {
 
     private TextView mNameText;
     private ImageView mCopyImage;
-    private ImageView mMoveImage;
     private ImageView mDeleteImage;
     private ImageView mEditImage;
 
@@ -26,13 +25,13 @@ public class ListViewHolder {
 
         mNameText = (TextView) view.findViewById(R.id.idDailyoverviewGrocery);
         mCopyImage = (ImageView) view.findViewById(R.id.idDailyoverviewCopyButton);
-        mMoveImage = (ImageView) view.findViewById(R.id.idDailyoverviewCopyButton);
         mEditImage = (ImageView) view.findViewById(R.id.idDailyoverviewSettingButton);
         mDeleteImage = (ImageView) view.findViewById(R.id.idDailyoverviewDeleteButton);
 
         mListButtonClickListener = new ListButtonClickListener(mApplicationLogic, mDatabaseEntry);
         mDeleteImage.setOnClickListener(mListButtonClickListener);
         mEditImage.setOnClickListener(mListButtonClickListener);
+        mCopyImage.setOnClickListener(mListButtonClickListener);
     }
 
     public void setDatabaseEntry(DatabaseEntry databaseEntry) {

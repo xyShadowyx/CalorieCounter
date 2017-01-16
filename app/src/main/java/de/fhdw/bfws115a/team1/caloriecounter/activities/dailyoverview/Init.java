@@ -76,7 +76,10 @@ public class Init extends Activity {
                     mApplicationLogic.onDateChanged(data);
                     break;
                 case ResultCodes.COPYTODATE:
-                    mApplicationLogic.copyDateSelected(data);
+                    mApplicationLogic.onCopyDateSelected(data);
+                    break;
+                case ResultCodes.EDITENTRY:
+                    mApplicationLogic.onEntryEdited(data);
                     break;
             }
         }

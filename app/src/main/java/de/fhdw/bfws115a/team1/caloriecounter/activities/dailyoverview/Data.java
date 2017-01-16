@@ -16,9 +16,12 @@ public class Data {
     private DatabaseEntityManager mDatabaseEntityManager;
     private ArrayList<DatabaseEntry> mDatabaseEntryList;
     private DatabaseEntry mEntryToCopy;
+    private DatabaseEntry mEntryToEdit;
     private int mSelectedYear;
     private int mSelectedMonth;
     private int mSelectedDay;
+
+    private int mUsedCalories;
 
     /* Keys */
     private final String KEY_DAILYOVERVIEW_SELECTED_YEAR = "dailyoverview1";
@@ -46,7 +49,10 @@ public class Data {
             mSelectedMonth = intent.getIntExtra("month", calendarToday.get(Calendar.MONTH));
             mSelectedDay = intent.getIntExtra("day", calendarToday.get(Calendar.DAY_OF_MONTH));
             mDatabaseEntryList.addAll(mDatabaseEntityManager.getEntriesOf(mSelectedYear, mSelectedMonth, mSelectedDay));
+
+            mUsedCalories = 0;
             mEntryToCopy = null;
+            mEntryToEdit = null;
 
         } else {
             restoreDataFromBundle(savedInstanceState);
@@ -103,8 +109,24 @@ public class Data {
     public DatabaseEntry getEntryToCopy() {
         return mEntryToCopy;
     }
+
+    public DatabaseEntry getEntryToEdit() {
+        return mEntryToEdit;
+    }
+
+    public int getUsedCalories() {
+        return mUsedCalories;
+    }
     /* Setter Methods */
     public void setEntryToCopy(DatabaseEntry entryToCopy) {
         this.mEntryToCopy = entryToCopy;
+    }
+
+    public void setEntryToEdit(DatabaseEntry entryToEdit) {
+        this.mEntryToEdit = entryToEdit;
+    }
+
+    public void setUsedCalories(int amount) {
+        mUsedCalories = amount;
     }
 }

@@ -53,14 +53,14 @@ public class Menu extends GroceriesEntity {
         return mAmount;
     }
 
-    public void setAmount(double mAmount) {
+    public void setAmount(double amount) {
         mKcal = 0;
         for (FixGrocery fg : getFixGroceries()) {
-            fg.setAmount(fg.getAmount() * mAmount);
-            fg.setKcal((int) Math.round(fg.getAmount() * mAmount * fg.getKcal()));
+            fg.setAmount((fg.getAmount() / mAmount) * amount);
+            fg.setKcal((int) Math.round(((fg.getAmount() / mAmount) * amount) * fg.getKcal()));
             mKcal += fg.getKcal();
         }
-        this.mAmount = mAmount;
+        mAmount = amount;
     }
 
     public ArrayList<FixGrocery> getFixGroceries() {

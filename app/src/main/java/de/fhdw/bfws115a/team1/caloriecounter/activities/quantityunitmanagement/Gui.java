@@ -21,7 +21,7 @@ public class Gui {
         activity.setContentView(R.layout.quantityunitmanagment);
 
         mAddNewQuantityUnit = (ImageView) activity.findViewById(R.id.idQuantityUnitManagementAddNewQuantityUnit);
-        mListView = (ListView) activity.findViewById(R.id.idListQuantityUnitManagement);
+        mListView = (ListView) activity.findViewById(R.id.idQuantityUnitManagementList);
         mNewQuantityUnitName = (EditText) activity.findViewById(R.id.idQuantityUnitManagementQuantityName);
     }
 
