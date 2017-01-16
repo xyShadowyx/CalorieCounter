@@ -3,18 +3,16 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-
-/**
- * Created by Niklas on 17.11.2016.
- */
 public class TextChangeListener implements TextWatcher {
 
+    /* Member variable */
     private ApplicationLogic mApplicationLogic;
 
     public TextChangeListener(ApplicationLogic applicationLogic, Gui gui) {
         mApplicationLogic = applicationLogic;
     }
 
+    //TODO Löschen?
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -25,6 +23,7 @@ public class TextChangeListener implements TextWatcher {
         mApplicationLogic.onQuantityUnitNameChanged(charSequence.toString());
     }
 
+    //TODO Löschen?
     @Override
     public void afterTextChanged(Editable editable) {
 

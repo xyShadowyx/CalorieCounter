@@ -3,6 +3,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.database;
 import android.content.Context;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -149,4 +150,8 @@ public class DatabaseEntityManager {
         return mDatabaseHelper.isUnitNameAvailable(name);
     }
 
+    /* Get Entiries*/
+    public ArrayList<DatabaseEntry> getEntriesOf(int year, int month, int day)  {
+        return mDatabaseHelper.getEntriesOf(year, month, day);
+    }
 }

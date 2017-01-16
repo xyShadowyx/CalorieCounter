@@ -6,10 +6,11 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import de.fhdw.bfws115a.team1.caloriecounter.activities.calendar.Init;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * TODO: comprimize getAll methods by adding where clause
      */
 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "database.db";
 
     public final static int SHORT_NAME_LENGTH = 16;
@@ -155,6 +156,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_TABLE_GROCERY);
+        sqLiteDatabase.execSQL(CREATE_TABLE_GROCERY_UNITS);
         sqLiteDatabase.execSQL(CREATE_TABLE_GROCERY_ENTRY);
         sqLiteDatabase.execSQL(CREATE_TABLE_MENU);
         sqLiteDatabase.execSQL(CREATE_TABLE_MENU_GROCERY);
@@ -165,14 +167,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_GROCERY);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_GROCERY_UNITS);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_GROCERY_ENTRY);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_MENU);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_MENU_GROCERY);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_MENU_ENTRY);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_MENU_ENTRY_GROCERY);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_UNIT);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_GROCERY);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_GROCERY_UNITS);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_GROCERY_ENTRY);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MENU);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MENU_GROCERY);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MENU_ENTRY);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MENU_ENTRY_GROCERY);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_UNIT);
 
         onCreate(sqLiteDatabase);
     }
@@ -322,8 +324,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 if (cursorGroceryUnits.moveToFirst()) {
                     do {
                         databaseGrocery.addGroceryUnit(new GroceryUnit(
-                                new Unit(cursor.getString(cursor.getColumnIndex(GROCERY_UNITS_UNIT))),
-                                cursor.getDouble(cursor.getColumnIndex(GROCERY_UNITS_AMOUNT))
+                                new Unit(cursorGroceryUnits.getString(cursorGroceryUnits.getColumnIndex(GROCERY_UNITS_UNIT))),
+                                cursorGroceryUnits.getDouble(cursorGroceryUnits.getColumnIndex(GROCERY_UNITS_AMOUNT))
                         ));
                     }while (cursorGroceryUnits.moveToNext());
                 }
@@ -343,7 +345,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean isGroceryNameAvailable(String name) {
-        return getGroceries(GROCERY_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() > 0;
+        return getGroceries(GROCERY_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() == 0;
     }
 
     /* GroceryEntry Methods */
@@ -444,7 +446,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         databaseGroceryEntries = new ArrayList<DatabaseGroceryEntry>();
         selectQuery = "SELECT  * FROM " + TABLE_GROCERY_ENTRY;
-        if (whereClause.length() > 0) selectQuery += " " + whereClause;
+        if (whereClause.length() > 0) selectQuery += " WHERE " + whereClause;
 
         database = this.getReadableDatabase();
         cursor = database.rawQuery(selectQuery, null);
@@ -564,10 +566,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database = this.getWritableDatabase();
 
         values = new ContentValues();
-        values.put(MENU_ENTRY_NAME, databaseMenu.getName());
-        values.put(MENU_ENTRY_PORTIONS, databaseMenu.getAmount());
+        values.put(MENU_NAME, databaseMenu.getName());
+        values.put(MENU_PORTIONS, databaseMenu.getAmount());
 
-        result = database.update(TABLE_MENU_ENTRY, values, MENU_ENTRY_ID + "=" + databaseMenu.getId(), null);
+        result = database.update(TABLE_MENU, values, MENU_ID + "=" + databaseMenu.getId(), null);
         if (result == 0) return false;
 
         database.delete(TABLE_MENU_GROCERY, MENU_GROCERY_MENU_ID + " = ?", new String[]{String.valueOf(databaseMenu.getId())});
@@ -581,7 +583,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             database.insert(TABLE_MENU_GROCERY, null, values);
         }
-        return true;
+        return result > 0;
     }
 
     public boolean deleteMenu(DatabaseMenu databaseMenu) {
@@ -644,7 +646,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean isMenuNameAvailable(String name) {
-        return getMenus(MENU_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() > 0;
+        return getMenus(MENU_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() == 0;
     }
 
     /* MenuEntry Methods */
@@ -937,5 +939,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean isUnitNameAvailable(String name) {
         return getUnits(UNIT_NAME + " = " + DatabaseUtils.sqlEscapeString(name)).size() == 0;
+    }
+
+    /* Entries */
+    public ArrayList<DatabaseEntry> getEntriesOf(int year, int month, int day) {
+        ArrayList<DatabaseEntry> entries = new ArrayList<DatabaseEntry>();
+        entries.addAll(getMenuEntriesOf(year, month, day));
+        entries.addAll(getGroceryEntriesOf(year, month, day));
+        return entries;
     }
 }

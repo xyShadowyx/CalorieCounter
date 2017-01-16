@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/idDailyoverviewRow"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/white"
+                android:focusableInTouchMode="true">
+
+    <TextView android:id="@+id/idDailyoverviewGrocery"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/textsize"
+              android:text="@string/dailyoverview_grocery"
+              android:layout_centerVertical="true"
+              android:paddingTop="@dimen/padding"
+              android:layout_marginLeft="@dimen/margin_2"
+              android:textColor="@color/black"/>
+
+    <ImageView android:id="@+id/idDailyoverviewCopyButton"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:paddingTop="@dimen/padding"
+               android:layout_marginRight="@dimen/margin_2"
+               android:layout_toLeftOf="@+id/idDailyoverviewSettingButton"
+               android:layout_centerVertical="true"
+               android:scaleType="centerCrop"
+               android:src="@drawable/copy_32"/>
+
+    <ImageView android:id="@+id/idDailyoverviewSettingButton"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:paddingTop="@dimen/padding"
+               android:layout_marginRight="@dimen/margin_2"
+               android:layout_centerVertical="true"
+               android:layout_toLeftOf="@+id/idDailyoverviewDeleteButton"
+               android:src="@drawable/settings_32"/>
+
+    <ImageView android:id="@+id/idDailyoverviewDeleteButton"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:paddingTop="@dimen/padding"
+               android:layout_marginRight="@dimen/margin_2"
+               android:layout_centerVertical="true"
+               android:layout_alignParentRight="true"
+               android:src="@drawable/xmark_32"/>
+
+</RelativeLayout>

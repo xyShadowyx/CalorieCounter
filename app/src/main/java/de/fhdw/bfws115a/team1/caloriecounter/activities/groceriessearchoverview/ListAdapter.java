@@ -1,137 +1,104 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
-import de.fhdw.bfws115a.team1.caloriecounter.activities.calendar.*;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntity;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceriesEntity;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
 import java.util.ArrayList;
 
-/**
- * Created by xySha on 22.11.2016.
- */
-public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.OnItemClickListener {
     private Data mData;
     private ApplicationLogic mApplicationLogic;
     private final Context mContext;
-    private final ArrayList<GroceriesEntity> mGroceriesEntities;
-    private ArrayList<GroceriesEntity> mFilteredGroceriesEntities;
+    private final ArrayList<DatabaseGroceriesEntity> mDatabaseGroceriesEntities;
+    private ArrayList<DatabaseGroceriesEntity> mFilteredDatabaseGroceriesEntities;
     private Filter mFilter;
 
     public ListAdapter(Data data, ApplicationLogic applicationLogic) {
         mData = data;
         mApplicationLogic = applicationLogic;
-
         mContext = mData.getActivity().getApplicationContext();
-        mGroceriesEntities = mData.getGroceriesEntityList();
+        mDatabaseGroceriesEntities = mData.getDatabaseGroceriesEntityList();
+        mFilter = new GroceriesEntityFilter(mDatabaseGroceriesEntities, this);
+        mFilteredDatabaseGroceriesEntities = mDatabaseGroceriesEntities;
 
-        mFilter = new GroceriesEntityFilter();
-        mFilteredGroceriesEntities = mGroceriesEntities;
+        Log.d("Dabug", "Init");
     }
 
+    public void setFilteredDatabaseGroceriesEntities(ArrayList<DatabaseGroceriesEntity> filteredDatabaseGroceriesEntities) {
+        mFilteredDatabaseGroceriesEntities = filteredDatabaseGroceriesEntities;
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Counts the quantity of filtered groceries in a list.
+     *
+     * @return The quantity of filtered groceries entities.
+     */
     @Override
     public int getCount() {
-        return mFilteredGroceriesEntities.size();
+        return mFilteredDatabaseGroceriesEntities.size();
     }
 
+    /**
+     * Gets the selected grocery entity from an ArrayList.
+     *
+     * @param i The position of the grocery entity which should be retrieved.
+     * @return The grocery entity.
+     */
     @Override
     public Object getItem(int i) {
-        return mFilteredGroceriesEntities.get(i);
+        return mFilteredDatabaseGroceriesEntities.get(i);
     }
 
+    /**
+     * Gets a specific grocery entity item ID.
+     *
+     * @param i The position of the grocery entity which ID should be retrieved.
+     * @return The ID.
+     */
     @Override
     public long getItemId(int i) {
         return i;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Log.d("Dabug", "Click");
+        GroceriesEntity clickedItem = (GroceriesEntity) getItem(i);
+        mApplicationLogic.onItemSelected(clickedItem);
+    }
 
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ListViewHolder listViewHolder;
+        DatabaseGroceriesEntity databaseGroceriesEntity;
+        databaseGroceriesEntity = (DatabaseGroceriesEntity) getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.groceriessearchoverview_listrow, parent, false);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
+            listViewHolder = new ListViewHolder(convertView, mApplicationLogic);
+            convertView.setTag(listViewHolder);
         } else {
-            viewHolder = (ViewHolder) convertView.getTag();
+            listViewHolder = (ListViewHolder) convertView.getTag();
         }
-
-        GroceriesEntity groceryEnity = (GroceriesEntity) getItem(position);
-        viewHolder.nameText.setText(String.format("%s", groceryEnity.getName()));
+        listViewHolder.setDatabaseGroceriesEntity(databaseGroceriesEntity);
+        listViewHolder.getNameText().setText(String.format("%s", databaseGroceriesEntity.getName()));
         return convertView;
     }
 
     @Override
     public Filter getFilter() {
         return mFilter;
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Log.d("Debug2: ", "ItemClicked!!!");
-        GroceriesEntity clickedItem = (GroceriesEntity) getItem(i);
-        mApplicationLogic.onItemSelected(clickedItem);
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Log.d("onItemSelected: ", "onItemSelected!!!");
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-        Log.d("onNothingSelected: ", "onNothingSelected!!!");
-
-    }
-
-    private class GroceriesEntityFilter extends Filter {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            String filterString = constraint.toString().toLowerCase();
-            FilterResults results = new FilterResults();
-
-            final ArrayList<GroceriesEntity> list = mGroceriesEntities;
-
-            int count = list.size();
-            final ArrayList<GroceriesEntity> nlist = new ArrayList<GroceriesEntity>(count);
-
-            GroceriesEntity filterableGroceriesEntry;
-
-            for (int i = 0; i < count; i++) {
-                filterableGroceriesEntry = list.get(i);
-                if (filterableGroceriesEntry.getName().toLowerCase().contains(filterString)) {
-                    nlist.add(filterableGroceriesEntry);
-                }
-            }
-
-            results.values = nlist;
-            results.count = nlist.size();
-
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            mFilteredGroceriesEntities = (ArrayList<GroceriesEntity>) results.values;
-            notifyDataSetChanged();
-        }
-    }
-
-    private class ViewHolder {
-        TextView nameText;
-        ImageView editImage;
-        ImageView deleteImage;
-
-        public ViewHolder(View view) {
-            nameText = (TextView) view.findViewById(R.id.idGroceryName);
-            editImage = (ImageView) view.findViewById(R.id.idSettingButton);
-            deleteImage = (ImageView) view.findViewById(R.id.idDeleteButton);
-        }
     }
 }

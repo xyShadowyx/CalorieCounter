@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/groceriessearchoverview"
+              android:id="@+id/idGroceriesSearchOverview"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/white" android:weightSum="1">
+              android:background="@color/white"
+              android:weightSum="1">
 
-    <TextView android:id="@+id/titel"
+    <TextView android:id="@+id/idGroceriesSearchOverviewTitel"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:background="@color/blue"
@@ -31,55 +32,58 @@
                   android:orientation="horizontal">
 
 
-        <SearchView android:id="@+id/idSearchView"
+        <SearchView android:id="@+id/idGroceriesSearchOverviewSearchView"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="Search..."
+                    android:hint="Search..."
                     android:layout_weight="1"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/textsize"
                     android:gravity="left"
+                    android:maxLength="32"
                     android:textStyle="italic"
                     android:layout_margin="@dimen/margin"/>
 
+        <Button
+                android:id="@+id/idGroceriesSearchOverviewSearchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Suchen"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_gravity="right"/>
+
     </LinearLayout>
 
-    <LinearLayout android:id="@+id/inputList"
+    <LinearLayout android:id="@+id/idGroceriesSearchOverviewEntryList"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
-                  android:layout_margin="@dimen/margin">
+                  android:layout_margin="@dimen/margin_2">
 
         <ListView
-                android:id="@+id/idListView"
+                android:id="@+id/idGroceriesSearchOverviewListView"
                 android:layout_width="wrap_content"
-                android:layout_height="312dp"
-                android:paddingBottom="@dimen/margin"
-                android:descendantFocusability="blocksDescendants"
-                android:clickable="true"
-        >
+                android:layout_height="291dp"
+                android:paddingBottom="@dimen/padding"
+                android:focusable="false">
 
         </ListView>
 
-        <TextView
-                android:id="@+id/idGrocerySearchoverviewEmptyListText"
-                android:text="Keine Einträge gefunden"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
+        <TextView android:id="@+id/idGrocerySearchoverviewEmptyListText"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
         />
-
     </LinearLayout>
 
-
-    <LinearLayout android:id="@+id/newGrocery"
+    <LinearLayout android:id="@+id/idGroceriesSearchOverviewNewGrocery"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content">
 
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_marginLeft="@dimen/margin"
-                   android:id="@+id/idAddGroceryButton"
+                   android:id="@+id/idGroceriesSearchOverviewAddGroceryButton"
                    android:src="@drawable/plus_32"/>
 
         <TextView android:layout_width="wrap_content"
@@ -89,18 +93,17 @@
                   android:text="@string/groceriesearchoverview_newGrocery"
                   android:paddingLeft="@dimen/margin"
                   android:textColor="@color/black"/>
-
     </LinearLayout>
 
-    <LinearLayout android:id="@+id/newMenu"
+    <LinearLayout android:id="@+id/idGroceriesSearchOverviewNewMenu"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:paddingTop="@dimen/margin">
+                  android:paddingTop="@dimen/padding">
 
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_marginLeft="@dimen/margin"
-                   android:id="@+id/idAddMenuButton"
+                   android:id="@+id/idGroceriesSearchOverviewAddMenuButton"
                    android:src="@drawable/plus_32"/>
 
         <TextView android:layout_width="wrap_content"
@@ -110,7 +113,5 @@
                   android:text="@string/groceriesearchoverview_newMenu"
                   android:paddingLeft="@dimen/margin"
                   android:textColor="@color/black"/>
-
     </LinearLayout>
-
 </LinearLayout>

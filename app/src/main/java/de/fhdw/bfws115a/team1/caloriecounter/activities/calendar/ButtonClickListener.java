@@ -4,9 +4,6 @@ import android.view.View;
 import android.widget.Button;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
-/**
- * Created by xySha on 22.11.2016.
- */
 public class ButtonClickListener implements Button.OnClickListener {
     private ApplicationLogic mApplicationLogic;
 
@@ -14,10 +11,15 @@ public class ButtonClickListener implements Button.OnClickListener {
         mApplicationLogic = applicationLogic;
     }
 
+    /**
+     * Assign layout components to backend functionality if triggered by user.
+     *
+     * @param view The specific view which should be assigned with functionality.
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.idTodayButton: {
+            case R.id.idCalendarTodayButton: {
                 mApplicationLogic.selectToday();
                 break;
             }

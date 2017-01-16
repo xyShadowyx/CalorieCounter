@@ -7,6 +7,7 @@ import java.util.Calendar;
 
 public class ApplicationLogic {
 
+    /* Member variables */
     private Data mData;
     private Gui mGui;
 
@@ -17,18 +18,30 @@ public class ApplicationLogic {
         initListener();
     }
 
+    /**
+     * Initialization.
+     */
     private void initGui() {
         mGui.setSelectedDate(mData.getSelectedYear(), mData.getSelectedMonth(), mData.getSelectedDay());
     }
 
+    /**
+     * Initialization.
+     */
     private void initListener() {
-        DateChangeListener dcl = new DateChangeListener(this);
-        ButtonClickListener bcl = new ButtonClickListener(this);
+        DateChangeListener dcl;
+        ButtonClickListener bcl;
+
+        dcl = new DateChangeListener(this);
+        bcl = new ButtonClickListener(this);
 
         mGui.getCalendarView().setOnDateChangeListener(dcl);
         mGui.getTodayButton().setOnClickListener(bcl);
     }
 
+    /**
+     * Leads to the present day.
+     */
     public void selectToday() {
         Calendar calendarToday;
         int year, month, day;
@@ -41,17 +54,25 @@ public class ApplicationLogic {
         mData.setSelectedYear(year);
         mData.setSelectedMonth(month);
         mData.setSelectedDay(day);
-
         mGui.setSelectedDate(year, month, day);
     }
 
+    /**
+     * Leads to the selected date.
+     *
+     * @param year  The selected year.
+     * @param month The selected month.
+     * @param day   The selected day.
+     */
     public void onDateSelect(int year, int month, int day) {
+        Intent resultIntent;
+
         mGui.setSelectedDate(year, month, day);
         mData.setSelectedYear(year);
         mData.setSelectedMonth(month);
         mData.setSelectedDay(day);
 
-        Intent resultIntent = new Intent();
+        resultIntent = new Intent();
         resultIntent.putExtra("year", year);
         resultIntent.putExtra("month", month);
         resultIntent.putExtra("day", day);

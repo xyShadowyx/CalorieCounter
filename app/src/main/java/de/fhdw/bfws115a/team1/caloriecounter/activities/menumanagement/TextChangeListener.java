@@ -5,11 +5,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
-/**
- * Created by Niklas on 17.11.2016.
- */
 public class TextChangeListener implements TextWatcher {
 
+    /* Member variables */
     private ApplicationLogic mApplicationLogic;
     private View mView;
 
@@ -18,11 +16,27 @@ public class TextChangeListener implements TextWatcher {
         mView = view;
     }
 
+    /**
+     * //TODO Was macht diese Methode?
+     *
+     * @param charSequence
+     * @param i
+     * @param i1
+     * @param i2
+     */
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
     }
 
+    /**
+     * //TODO Was macht diese Methode???
+     *
+     * @param charSequence
+     * @param i
+     * @param i1
+     * @param i2
+     */
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         switch (mView.getId()) {
@@ -37,6 +51,11 @@ public class TextChangeListener implements TextWatcher {
         }
     }
 
+    /**
+     * //TODO Löschen?
+     *
+     * @param editable
+     */
     @Override
     public void afterTextChanged(Editable editable) {
 

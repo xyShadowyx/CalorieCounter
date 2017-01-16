@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/SelectAmount"
+    android:id="@+id/idSelectAmount"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,41 +29,44 @@
         android:layout_margin="@dimen/headlinespace"
         />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        android:orientation="horizontal"
+        >
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="@string/selectamount_amount"
-            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
+            android:text="@string/selectamount_amount_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/inputTextSize"
             android:gravity="center_vertical"
             />
 
         <EditText
-            android:id="@+id/idSelectAmountSelectAmount"
-            android:layout_width="@dimen/inputSize"
+            android:id="@+id/idSelectAmountSelectedAmount"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="5"
+            android:layout_weight="1"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginRight="@dimen/margin"
-            android:text="Bitte Mengenanzahl angeben..."
+            android:hint="@string/selectamount_amount"
             android:textSize="@dimen/inputTextSize"
-            android:textColor="@color/gray"/>
+            />
 
         <Spinner
             android:id="@+id/idSelectAmountSpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-
-            android:layout_weight="41.30"/>
-            <!--android:prompt="@string/amountstring"-->
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:prompt="@string/selectamount_default_spinnerstatus"
+            android:layout_marginTop="@dimen/margin"
+            />
     </LinearLayout>
 
     <Button
