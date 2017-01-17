@@ -4,12 +4,11 @@
               android:paddingTop="5sp"
               android:weightSum="1"
               android:orientation="horizontal"
-              android:focusableInTouchMode="true"
               android:background="@color/white"
               android:layout_height="wrap_content"
               android:layout_width="fill_parent"
               android:id="@+id/idGroceriesSearchOverviewRow"
-              xmlns:android="http://schemas.android.com/apk/res/android">
+              xmlns:android="http://schemas.android.com/apk/res/android" android:focusable="false">
 
     <TextView android:layout_height="match_parent"
               android:layout_width="0dp"

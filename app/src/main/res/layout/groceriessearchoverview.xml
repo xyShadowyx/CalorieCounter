@@ -99,13 +99,16 @@
                   android:layout_alignParentEnd="true"
                   android:layout_alignParentStart="false"
                   android:paddingBottom="@dimen/padding"
-                  android:layout_alignParentBottom="true" android:layout_below="@+id/idGroceriesSearchOverviewHeadline">
+                  android:layout_alignParentBottom="true"
+                  android:layout_below="@+id/idGroceriesSearchOverviewHeadline" android:focusable="true"
+                  android:focusableInTouchMode="true">
         </ListView>
 
         <TextView android:id="@+id/idGrocerySearchoverviewEmptyListText"
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:gravity="center"
+                  android:text="Keine Einträge gefunden"
         />
 
     </RelativeLayout>

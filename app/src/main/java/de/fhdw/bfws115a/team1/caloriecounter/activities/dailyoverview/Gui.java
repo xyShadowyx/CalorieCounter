@@ -31,7 +31,7 @@ public class Gui {
         mTodayDateText = (TextView) activity.findViewById(R.id.idDailyoverviewDate);
         mPrevDayButton = (ImageView) activity.findViewById(R.id.idDailyOverviewPreviousday);
         mNextDayButton = (ImageView) activity.findViewById(R.id.idDailyoverviewNextday);
-        mUnitQuantityButton = (ImageView) activity.findViewById(R.id.idDailyoverviewAddNewEntry);
+        mUnitQuantityButton = (ImageView) activity.findViewById(R.id.idDailyoverviewSpoonButton);
         mMenuButton = (ImageView) activity.findViewById(R.id.idDailyoverviewMenuButton);
         mGroceryButton = (ImageView) activity.findViewById(R.id.idDailyoverviewGroceryButton);
         mEntryListView = (ListView) activity.findViewById(R.id.idDailyoverviewList);
