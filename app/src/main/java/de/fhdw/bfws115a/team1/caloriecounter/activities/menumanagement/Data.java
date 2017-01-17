@@ -8,6 +8,9 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
 
 import java.util.ArrayList;
 
+/**
+ * @author Niklas Lammers and Florian Obladen.
+ */
 public class Data {
 
     /* Member variables */

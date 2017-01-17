@@ -1,37 +1,35 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
-import android.util.Log;
 import android.widget.*;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
-import de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement.ListViewHolder;
 
 /**
- * Created by Florian on 08.11.2016.
+ * @author Niklas Lammers.
  */
 public class Gui {
 
+    /* Member variables */
     private EditText mGroceryName;
     private EditText mNewUnitAmount;
     private Spinner mUnitSpinner;
     private EditText mGroceryCalories;
     private ListView mGroceryUnitsList;
-
     private ImageView mAddNewQuantity;
-
     private Button mSaveGrocery;
 
-
+    /**
+     * Assign layout components to member variables so that they can be changed in backend.
+     *
+     * @param activity The current initialised activity.
+     */
     public Gui(Init activity) {
         activity.setContentView(R.layout.grocerymanagement);
 
         mGroceryName = (EditText) activity.findViewById(R.id.idGroceryManagementGroceryName);
         mNewUnitAmount = (EditText) activity.findViewById(R.id.idGroceryManagementSelectedAmount);
         mGroceryCalories = (EditText) activity.findViewById(R.id.idGroceryManagementKiloCalories);
-
         mUnitSpinner = (Spinner) activity.findViewById(R.id.idGroceryManagementSpinner);
-
         mGroceryUnitsList = (ListView) activity.findViewById(R.id.idGroceryManagementListView);
-
         mAddNewQuantity = (ImageView) activity.findViewById(R.id.idGroceryManagementAddAmount);
         mSaveGrocery = (Button) activity.findViewById(R.id.idGroceryManagementSaveGrocery);
     }
@@ -66,7 +64,6 @@ public class Gui {
     }
 
     /* Setter methods */
-
     public void setGroceryNameText(String groceryName) {
         mGroceryName.setText(groceryName);
     }

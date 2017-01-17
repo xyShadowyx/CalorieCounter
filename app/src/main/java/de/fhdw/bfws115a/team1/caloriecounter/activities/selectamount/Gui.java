@@ -4,6 +4,9 @@ import android.widget.*;
 
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
+/**
+ * @author Niklas Lammers.
+ */
 public class Gui {
 
     /* Member variables */

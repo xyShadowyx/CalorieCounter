@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+/**
+ * @author Niklas Lammers and Florian Obladen.
+ */
 public class Init extends Activity {
 
     /* Member variables */
@@ -58,7 +61,15 @@ public class Init extends Activity {
         super.onSaveInstanceState(outState);
     }
 
-    //TODO Was macht dise Methode?
+    /**
+     * See activity´s onActivityResult.
+     * E.g. you start a specific activity and get a result as an Intent-object back.
+     * In this case the result will be a FixGrocery entity which will be retrieved and ultimately added to a menu.
+     *
+     * @param requestCode The request code.
+     * @param resultCode  The result code.
+     * @param data        The intent-object.
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {

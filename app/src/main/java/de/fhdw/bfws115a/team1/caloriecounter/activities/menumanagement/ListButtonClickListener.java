@@ -4,6 +4,9 @@ import android.view.View;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
 
+/**
+ * @author Niklas Lammers and Florian Obladen.
+ */
 public class ListButtonClickListener implements View.OnClickListener {
 
     /* Member variables */
@@ -18,7 +21,7 @@ public class ListButtonClickListener implements View.OnClickListener {
     /**
      * Sets a FixGrocery.
      *
-     * @param fixGrocery The FixGrocery which sould be set.
+     * @param fixGrocery The FixGrocery which should be set.
      */
     public void setFixGrocery(FixGrocery fixGrocery) {
         mFixGrocery = fixGrocery;

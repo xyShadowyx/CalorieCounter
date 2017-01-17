@@ -7,6 +7,9 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
 
+/**
+ * @author Niklas Lammers.
+ */
 public class Data {
 
     /* Member variables */
@@ -67,6 +70,7 @@ public class Data {
                 mUnitList.add(fixGrocery.getUnit().getName());
                 mSelectedAmount = fixGrocery.getAmount();
             }
+            
         } else {
             restoreDataFromBundle(savedInstanceState);
         }
