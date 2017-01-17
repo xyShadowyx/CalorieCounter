@@ -13,6 +13,9 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Menu;
 import de.fhdw.bfws115a.team1.caloriecounter.utilities.Validation;
 
+/**
+ * @author Niklas Lammers and Florian Obladen.
+ */
 public class ApplicationLogic {
 
     /* Member variables */
@@ -70,7 +73,7 @@ public class ApplicationLogic {
     }
 
     /**
-     * Adds a GroceryEntity to a list of FixGrocery-Items.
+     * Adds a GroceryEntity to a list of FixGrocery items.
      *
      * @param data Information about the specific GroceryEntity.
      */
@@ -145,7 +148,6 @@ public class ApplicationLogic {
                 context = mData.getActivity().getApplicationContext();
                 toast = Toast.makeText(context, R.string.menumanagement_addedtodb, Toast.LENGTH_SHORT);
                 toast.show();
-
             } else {
                 Context context;
                 Toast toast;
@@ -184,7 +186,6 @@ public class ApplicationLogic {
                 context = mData.getActivity().getApplicationContext();
                 toast = Toast.makeText(context, R.string.menumanagement_updatedindb, Toast.LENGTH_SHORT);
                 toast.show();
-
             } else {
                 Context context;
                 Toast toast;

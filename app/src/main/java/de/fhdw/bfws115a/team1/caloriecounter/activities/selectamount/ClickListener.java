@@ -4,6 +4,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
+/**
+ * @author Niklas Lammers.
+ */
 public class ClickListener implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     /* Member variables */
@@ -28,15 +31,25 @@ public class ClickListener implements View.OnClickListener, AdapterView.OnItemSe
         }
     }
 
-    //TODO Löschen?
+    /**
+     * Never used in our application.
+     *
+     * @param adapterView
+     * @param view
+     * @param i
+     * @param l
+     */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
     }
 
-    //TODO Löschen?
+    /**
+     * Case if spinner element is empty and therefore nothing is selected.
+     * Annotation: The spinner wont be empty at any circumstances.
+     *
+     * @param adapterView
+     */
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }

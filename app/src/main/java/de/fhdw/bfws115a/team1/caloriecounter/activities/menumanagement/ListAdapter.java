@@ -10,6 +10,9 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
 
 import java.util.ArrayList;
 
+/**
+ * @author Niklas Lammers and Florian Obladen.
+ */
 public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
 
     /* Member variables */
@@ -58,7 +61,7 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
     }
 
     /**
-     * //TODO Löschen?
+     * Never used in our application.
      *
      * @param adapterView
      * @param view
@@ -70,11 +73,12 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
     }
 
     /**
-     * //TODO Was macht diese Methode?
+     * Gets the layout of one list entry and fills it with additional list items.
+     * If it´s not issued yet, it creates one.
      *
-     * @param position
-     * @param convertView
-     * @param parent
+     * @param position    The position of the item within the adapter´s data set of the item whose view is wanted.
+     * @param convertView The view which should be get.
+     * @param parent      The parent view.
      * @return
      */
     @Override
@@ -90,7 +94,6 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
         } else {
             listViewHolder = (ListViewHolder) convertView.getTag();
         }
-
         listViewHolder.setFixGroceryEntity(fixGroceryEntity);
         listViewHolder.getNameText().setText(
                 String.format("%s (%.2f %s)", fixGroceryEntity.getName(), fixGroceryEntity.getAmount(), fixGroceryEntity.getUnit().getName()));

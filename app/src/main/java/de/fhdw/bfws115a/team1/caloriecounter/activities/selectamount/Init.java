@@ -3,6 +3,9 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount;
 import android.app.Activity;
 import android.os.Bundle;
 
+/**
+ * @author Niklas Lammers.
+ */
 public class Init extends Activity {
 
     /* Member variables */
