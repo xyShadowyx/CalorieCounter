@@ -50,6 +50,7 @@ public class ApplicationLogic {
      * Initialization.
      */
     private void initGui() {
+        mGui.getListView().setEmptyView(mGui.getEmptyListTextView());
     }
 
     /**

@@ -28,8 +28,8 @@ public class ListViewHolder {
     public ListViewHolder(View view, ApplicationLogic applicationLogic) {
         mApplicationLogic = applicationLogic;
         mGroceryUnit = null;
-        mNameText = (TextView) view.findViewById(R.id.idGroceryManagementListrowAmount);
-        mDeleteImage = (ImageView) view.findViewById(R.id.idGroceryManagementDeleteAmount);
+        mNameText = (TextView) view.findViewById(R.id.idGroceryManagementRowAmount);
+        mDeleteImage = (ImageView) view.findViewById(R.id.idGroceryManagementRowDeleteAmount);
         mListButtonClickListener = new ListButtonClickListener(mApplicationLogic, mGroceryUnit);
         mDeleteImage.setOnClickListener(mListButtonClickListener);
     }

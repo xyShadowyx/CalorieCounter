@@ -1,5 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
+import android.view.View;
 import android.widget.*;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
@@ -15,8 +16,8 @@ public class Gui {
     private EditText mGroceryCalories;
     private ListView mGroceryUnitsList;
     private ImageView mAddNewQuantity;
-    private Button mSaveGrocery;
-
+    private ImageView mSaveGrocery;
+    private TextView mEmptyListTextView;
     /**
      * Assign layout components to member variables so that they can be changed in backend.
      *
@@ -27,11 +28,12 @@ public class Gui {
 
         mGroceryName = (EditText) activity.findViewById(R.id.idGroceryManagementGroceryName);
         mNewUnitAmount = (EditText) activity.findViewById(R.id.idGroceryManagementSelectedAmount);
-        mGroceryCalories = (EditText) activity.findViewById(R.id.idGroceryManagementKiloCalories);
+        mGroceryCalories = (EditText) activity.findViewById(R.id.idGroceryManagementCalories);
         mUnitSpinner = (Spinner) activity.findViewById(R.id.idGroceryManagementSpinner);
         mGroceryUnitsList = (ListView) activity.findViewById(R.id.idGroceryManagementListView);
         mAddNewQuantity = (ImageView) activity.findViewById(R.id.idGroceryManagementAddAmount);
-        mSaveGrocery = (Button) activity.findViewById(R.id.idGroceryManagementSaveGrocery);
+        mSaveGrocery = (ImageView) activity.findViewById(R.id.idGroceryManagementSaveGrocery);
+        mEmptyListTextView = (TextView) activity.findViewById(R.id.idGroceryManagementNoResults);
     }
 
     /* Getter methods */
@@ -55,7 +57,7 @@ public class Gui {
         return mGroceryCalories;
     }
 
-    public Button getSaveGrocery() {
+    public ImageView getSaveGrocery() {
         return mSaveGrocery;
     }
 
@@ -70,5 +72,9 @@ public class Gui {
 
     public void setGroceryCaloriesAmount(int groceryCalories) {
         mGroceryCalories.setText(String.valueOf(groceryCalories));
+    }
+
+    public TextView getEmptyListTextView() {
+        return mEmptyListTextView;
     }
 }

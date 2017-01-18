@@ -1,5 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement;
 
+import android.view.View;
 import android.widget.*;
 
 import de.fhdw.bfws115a.team1.caloriecounter.R;
@@ -13,8 +14,9 @@ public class Gui {
     private EditText mMenuName;
     private EditText mPortionSize;
     private ImageView mAddNewGrocery;
-    private Button mAddMenu;
+    private ImageView mAddMenu;
     private ListView mListView;
+    private TextView mEmptyListTextView;
 
     /**
      * Assign layout components to member variables so that they can be changed in backend.
@@ -24,11 +26,12 @@ public class Gui {
     public Gui(Init activity) {
         activity.setContentView(R.layout.menumanagement);
 
-        mMenuName = (EditText) activity.findViewById(R.id.idMenuManagementSelectMenuName);
+        mMenuName = (EditText) activity.findViewById(R.id.idMenuManagementMenuName);
         mPortionSize = (EditText) activity.findViewById(R.id.idMenuManagementSelectPortionSize);
         mAddNewGrocery = (ImageView) activity.findViewById(R.id.idMenuManagementAddNewGrocery);
-        mAddMenu = (Button) activity.findViewById(R.id.idMenuManagementAddMenu);
-        mListView = (ListView) activity.findViewById(R.id.idMenuMangementList);
+        mAddMenu = (ImageView) activity.findViewById(R.id.idMenuManagementAddMenu);
+        mListView = (ListView) activity.findViewById(R.id.idMenuMangementListView);
+        mEmptyListTextView = (TextView) activity.findViewById(R.id.idMenuManagementNoResults);
     }
 
     /* Getter methods */
@@ -44,7 +47,7 @@ public class Gui {
         return mAddNewGrocery;
     }
 
-    public Button getAddMenu() {
+    public ImageView getAddMenu() {
         return mAddMenu;
     }
 
@@ -59,5 +62,9 @@ public class Gui {
 
     public void setPortionSizeAmount(double amount) {
         mPortionSize.setText(String.valueOf(amount));
+    }
+
+    public TextView getEmptyListTextView() {
+        return mEmptyListTextView;
     }
 }

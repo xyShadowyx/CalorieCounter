@@ -31,7 +31,7 @@ public class TextChangeListener implements TextWatcher {
     @Override
     public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
         switch (mView.getId()) {
-            case R.id.idMenuManagementSelectMenuName: {
+            case R.id.idMenuManagementMenuName: {
                 mApplicationLogic.onMenuNameChanged(charSequence.toString());
                 break;
             }

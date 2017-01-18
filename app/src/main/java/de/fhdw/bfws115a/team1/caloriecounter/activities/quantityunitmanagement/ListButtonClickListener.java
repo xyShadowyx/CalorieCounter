@@ -27,7 +27,7 @@ public class ListButtonClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.idQuantityUnitManagementDeleteQuantityUnit:
+            case R.id.idQuantityUnitManagementRowDeleteQuantityUnit:
                 mApplicationLogic.onDeleteQuantityUnitClicked(mDatabaseUnit);
                 break;
         }

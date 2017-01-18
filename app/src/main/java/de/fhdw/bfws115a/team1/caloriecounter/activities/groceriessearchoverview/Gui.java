@@ -25,7 +25,7 @@ public class Gui {
         mListView = (ListView) activity.findViewById(R.id.idGroceriesSearchOverviewListView);
         mAddGroceryButton = (ImageView) activity.findViewById(R.id.idGroceriesSearchOverviewAddGroceryButton);
         mAddMenuButton = (ImageView) activity.findViewById(R.id.idGroceriesSearchOverviewAddMenuButton);
-        mEmptyListTextView = (TextView) activity.findViewById(R.id.idGrocerySearchoverviewEmptyListText);
+        mEmptyListTextView = (TextView) activity.findViewById(R.id.idGrocerySearchoverviewNoResults);
     }
 
     /* Getter methods */

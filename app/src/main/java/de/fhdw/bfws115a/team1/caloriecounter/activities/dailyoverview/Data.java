@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntry;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -22,11 +20,20 @@ public class Data {
     private int mSelectedDay;
 
     private int mUsedCalories;
+    private int mMaxCalories;
+    private int mLeftCalories;
 
     /* Keys */
     private final String KEY_DAILYOVERVIEW_SELECTED_YEAR = "dailyoverview1";
     private final String KEY_DAILYOVERVIEW_SELECTED_MONTH = "dailyoverview2";
     private final String KEY_DAILYOVERVIEW_SELECTED_DAY = "dailyoverview3";
+
+    private final String KEY_DAILYOVERVIEW_USED_CALORIES = "dailyoverview4";
+    private final String KEY_DAILYOVERVIEW_MAX_CALORIES = "dailyoverview5";
+    private final String KEY_DAILYOVERVIEW_LEFT_CALORIES = "dailyoverview6";
+
+    private final String KEY_DAILYOVERVIEW_ENTRY_TO_COPY = "dailyoverview7";
+    private final String KEY_DAILYOVERVIEW_ENTRY_TO_EDIT = "dailyoverview8";
 
     /**
      * Method which gets the current layout attributes and put them into an 'Intent' object.
@@ -48,9 +55,12 @@ public class Data {
             mSelectedYear = intent.getIntExtra("year", calendarToday.get(Calendar.YEAR));
             mSelectedMonth = intent.getIntExtra("month", calendarToday.get(Calendar.MONTH));
             mSelectedDay = intent.getIntExtra("day", calendarToday.get(Calendar.DAY_OF_MONTH));
+
             mDatabaseEntryList.addAll(mDatabaseEntityManager.getEntriesOf(mSelectedYear, mSelectedMonth, mSelectedDay));
 
             mUsedCalories = 0;
+            mMaxCalories = Globals.CALORIES_LIMIT;
+            mLeftCalories = 0;
             mEntryToCopy = null;
             mEntryToEdit = null;
 
@@ -68,6 +78,13 @@ public class Data {
         b.putInt(KEY_DAILYOVERVIEW_SELECTED_YEAR, mSelectedYear);
         b.putInt(KEY_DAILYOVERVIEW_SELECTED_MONTH, mSelectedMonth);
         b.putInt(KEY_DAILYOVERVIEW_SELECTED_DAY, mSelectedDay);
+
+        b.putInt(KEY_DAILYOVERVIEW_USED_CALORIES, mUsedCalories);
+        b.putInt(KEY_DAILYOVERVIEW_LEFT_CALORIES, mLeftCalories);
+        b.putInt(KEY_DAILYOVERVIEW_MAX_CALORIES, mMaxCalories);
+
+        b.putSerializable(KEY_DAILYOVERVIEW_ENTRY_TO_COPY, mEntryToCopy);
+        b.putSerializable(KEY_DAILYOVERVIEW_ENTRY_TO_EDIT, mEntryToEdit);
     }
 
     /**
@@ -79,6 +96,13 @@ public class Data {
         mSelectedYear = b.getInt(KEY_DAILYOVERVIEW_SELECTED_YEAR);
         mSelectedMonth = b.getInt(KEY_DAILYOVERVIEW_SELECTED_MONTH);
         mSelectedDay = b.getInt(KEY_DAILYOVERVIEW_SELECTED_DAY);
+
+        mUsedCalories = b.getInt(KEY_DAILYOVERVIEW_USED_CALORIES);
+        mLeftCalories = b.getInt(KEY_DAILYOVERVIEW_LEFT_CALORIES);
+        mMaxCalories = b.getInt(KEY_DAILYOVERVIEW_MAX_CALORIES);
+
+        mEntryToCopy = (DatabaseEntry) b.getSerializable(KEY_DAILYOVERVIEW_ENTRY_TO_COPY);
+        mEntryToEdit = (DatabaseEntry) b.getSerializable(KEY_DAILYOVERVIEW_ENTRY_TO_EDIT);
     }
 
     /* Getter methods */
@@ -117,6 +141,15 @@ public class Data {
     public int getUsedCalories() {
         return mUsedCalories;
     }
+
+    public int getMaxCalories() {
+        return mMaxCalories;
+    }
+
+    public int getLeftCalories() {
+        return mLeftCalories;
+    }
+
     /* Setter Methods */
     public void setEntryToCopy(DatabaseEntry entryToCopy) {
         this.mEntryToCopy = entryToCopy;
@@ -128,5 +161,14 @@ public class Data {
 
     public void setUsedCalories(int amount) {
         mUsedCalories = amount;
+    }
+
+    public void setLeftCalories(int amount) {
+        mLeftCalories = amount;
+    }
+
+    public void setMaxCalories(int amount) {
+        mMaxCalories = amount;
+        Globals.CALORIES_LIMIT = amount;
     }
 }

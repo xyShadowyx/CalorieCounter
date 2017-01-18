@@ -22,13 +22,13 @@ public class ListButtonClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.idDailyoverviewDeleteButton:
+            case R.id.idDailyoverviewRowDeleteButton:
                 mApplicationLogic.deleteItem(mDatabaseEntry);
                 break;
-            case R.id.idDailyoverviewCopyButton:
+            case R.id.idDailyoverviewRowCopyButton:
                 mApplicationLogic.onSelectCopyItem(mDatabaseEntry);
                 break;
-            case R.id.idDailyoverviewSettingButton:
+            case R.id.idDailyoverviewRowSettingButton:
                 mApplicationLogic.onEditEntry(mDatabaseEntry);
                 break;
         }

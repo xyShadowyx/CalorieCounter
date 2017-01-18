@@ -13,7 +13,7 @@ public class Gui {
     private TextView mPickedGrocery;
     private EditText mSelectedAmount;
     private Spinner mSpinner;
-    private Button mAddAmount;
+    private ImageView mAddAmount;
 
     /**
      * Assign layout components to member variables so that they can be changed in backend.
@@ -26,7 +26,7 @@ public class Gui {
         mPickedGrocery = (TextView) activity.findViewById(R.id.idSelectAmountPickedGrocery);
         mSelectedAmount = (EditText) activity.findViewById(R.id.idSelectAmountSelectedAmount);
         mSpinner = (Spinner) activity.findViewById(R.id.idSelectAmountSpinner);
-        mAddAmount = (Button) activity.findViewById(R.id.idSelectAmountAddAmount);
+        mAddAmount = (ImageView) activity.findViewById(R.id.idSelectAmountAddAmount);
     }
 
     /* Getter methods */
@@ -42,7 +42,7 @@ public class Gui {
         return mSpinner;
     }
 
-    public Button getAddAmount() {
+    public ImageView getAddAmount() {
         return mAddAmount;
     }
 }

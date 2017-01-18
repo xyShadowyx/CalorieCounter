@@ -34,6 +34,11 @@ public class DatabaseMenuEntry extends MenuEntry implements DatabaseEntry {
     }
 
     @Override
+    public String getUnitName() {
+        return "Port.";
+    }
+
+    @Override
     public void setAmount(double amount) {
         this.getMenu().setAmount(amount);
     }

@@ -1,218 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/idDailyoverview"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginBottom="@dimen/margin"
-        android:background="@color/white" >
-
-    <TextView android:id="@+id/idDailyoverviewTitel"
+        android:clickable="false">
+    <TextView android:id="@+id/idDailyoverviewTitle"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:background="@color/blue"
-              android:padding="@dimen/headline"
-              android:text="@string/titel"
-              android:textSize="@dimen/headline"
-              android:textColor="@color/white"
+              android:background="@color/headline_color"
+              android:padding="@dimen/headline_padding"
+              android:text="@string/dailyoverview_title"
+              android:textSize="@dimen/headline_textsize"
+              android:textColor="@color/headline_textcolor"
               android:gravity="center"
               android:textStyle="bold"/>
-
-    <LinearLayout android:id="@+id/idDailyoverviewToday"
+    <LinearLayout android:id="@+id/idDailyoverviewDateHolder"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:layout_marginTop="@dimen/margin"
                   android:gravity="center"
                   android:orientation="horizontal"
-                  android:layout_below="@+id/idDailyoverviewTitel">
-
+                  android:layout_marginRight="@dimen/outer_border_space"
+                  android:layout_marginLeft="@dimen/outer_border_space"
+                  android:layout_below="@+id/idDailyoverviewTitle"
+                  android:layout_alignParentStart="true">
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:id="@+id/idDailyOverviewPreviousday"
                    android:src="@drawable/arrow_left16"/>
-
         <TextView android:id="@+id/idDailyoverviewDate"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="@string/dailyoverview_date"
                   android:textColor="@color/black"
-                  android:textSize="@dimen/textsize2"
+                  android:textSize="@dimen/medium_text"
                   android:textStyle="bold"
-                  android:layout_margin="@dimen/margin"/>
-
+                  android:layout_marginLeft="@dimen/medium_space"
+                  android:layout_marginRight="@dimen/medium_space"/>
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:id="@+id/idDailyoverviewNextday"
                    android:src="@drawable/arrow_right16"/>
-
     </LinearLayout>
-
-
-    <LinearLayout android:id="@+id/idDailyoverviewCalorieSum"
+    <LinearLayout android:id="@+id/idDailyoverviewCaloriesHolder"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:layout_marginRight="@dimen/margin_2"
-                  android:layout_marginLeft="@dimen/margin_2"
-                  android:layout_below="@+id/idDailyoverviewToday"
-                  android:layout_alignParentStart="true" android:layout_alignParentEnd="true">
-
+                  android:layout_marginRight="@dimen/outer_border_space"
+                  android:layout_marginLeft="@dimen/outer_border_space"
+                  android:layout_below="@+id/idDailyoverviewDateHolder"
+                  android:layout_alignParentStart="true"
+                  android:layout_alignParentEnd="true">
         <EditText android:id="@+id/idDailyoverviewCaloriesMax"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+                  android:layout_width="0dp"
+                  android:layout_height="fill_parent"
                   android:gravity="center"
                   android:layout_weight="1"
-                  android:layout_margin="@dimen/margin"
                   android:maxLength="5"
-                  android:textSize="@dimen/textsize"
+                  android:textSize="@dimen/small_text"
                   android:hint="@string/dailyoverview_caloriesmax"
-                  android:textColor="@color/black"/>
-
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+                  android:textColor="@color/black"
+                  android:inputType="number"/>
+        <TextView android:layout_width="0dp"
+                  android:layout_height="fill_parent"
                   android:gravity="center"
                   android:layout_weight="1"
-                  android:layout_margin="@dimen/margin"
-                  android:textSize="@dimen/textsize"
+                  android:textSize="@dimen/small_text"
                   android:text="@string/dailyoverview_minus"
                   android:textColor="@color/black"/>
-
-        <TextView android:id="@+id/idDailyoverviewConsumedCalories"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+        <TextView android:id="@+id/idDailyoverviewCaloriesConsumed"
+                  android:layout_width="0dp"
+                  android:layout_height="fill_parent"
                   android:gravity="center"
                   android:layout_weight="1"
-                  android:layout_margin="@dimen/margin"
-                  android:textSize="@dimen/textsize"
-                  android:text="@string/dailyoverview_caloriesconsumed"
+                  android:textSize="@dimen/small_text"
+                  android:text=""
                   android:textColor="@color/black"/>
-
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+        <TextView android:layout_width="0dp"
+                  android:layout_height="fill_parent"
                   android:gravity="center"
                   android:layout_weight="1"
-                  android:layout_margin="@dimen/margin"
-                  android:textSize="@dimen/textsize"
+                  android:textSize="@dimen/small_text"
                   android:text="="
                   android:textColor="@color/black"/>
-
-        <TextView android:id="@+id/idDailyoverviewLeftCalories"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+        <TextView android:id="@+id/idDailyoverviewCaloriesLeft"
+                  android:layout_width="0dp"
+                  android:layout_height="fill_parent"
                   android:gravity="center"
                   android:layout_weight="1"
-                  android:layout_margin="@dimen/margin"
-                  android:textSize="@dimen/textsize"
-                  android:text="@string/dailyoverview_caloriesleft"
+                  android:textSize="@dimen/small_text"
+                  android:text=""
                   android:textColor="@color/black"/>
     </LinearLayout>
-
     <RelativeLayout android:id="@+id/idDailyoverviewEntryList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@id/idDailyoverviewCaloriesHolder"
+                    android:layout_marginLeft="@dimen/outer_border_space"
+                    android:layout_marginRight="@dimen/outer_border_space"
+                    android:layout_marginTop="@dimen/outer_border_space"
+                    android:layout_above="@+id/idDailyoverviewNavHolder">
+        <LinearLayout android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentTop="true"
+                      android:id="@+id/idDailyoverviewListHeadline"
+                      android:weightSum="1">
+            <TextView android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.4"
+                      android:textSize="@dimen/list_headline_textsize"
+                      android:textColor="@color/list_headline_textcolor"
+                      android:text="@string/dailyoverview_listhead_name"/>
+            <TextView android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:text="@string/dailyoverview_listhead_amount"
+                      android:layout_weight="0.15"
+                      android:textSize="@dimen/list_headline_textsize"
+                      android:textColor="@color/list_headline_textcolor"/>
+            <TextView android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:text="@string/dailyoverview_listhead_calories"
+                      android:layout_weight="0.15"
+                      android:textSize="@dimen/list_headline_textsize"
+                      android:textColor="@color/list_headline_textcolor"/>
+            <TextView android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:text="@string/dailyoverview_listhead_actions"
+                      android:layout_weight="0.3"
+                      android:gravity="center|end|center_horizontal"
+                      android:textSize="@dimen/list_headline_textsize"
+                      android:textColor="@color/list_headline_textcolor"/>
+        </LinearLayout>
+        <TextView android:id="@+id/idDailyoverviewNoResults"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:text="@string/dailyoverview_no_results"
+                  android:layout_below="@+id/idDailyoverviewListHeadline"
+                  android:layout_alignParentStart="true"/>
+        <ListView android:id="@+id/idDailyoverviewListView"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentBottom="true"
+                  android:layout_below="@+id/idDailyoverviewListHeadline"
+                  android:layout_alignParentStart="true"
+                  android:layout_alignParentEnd="true">
+        </ListView>
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:orientation="vertical"
-                  android:paddingBottom="@dimen/padding"
-                  android:layout_below="@id/idDailyoverviewCalorieSum" android:layout_marginLeft="@dimen/margin_2"
-                  android:layout_marginRight="@dimen/margin_2" android:layout_marginTop="@dimen/margin_2"
-                  android:layout_above="@+id/linearLayout">
-
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:layout_alignParentTop="true"
-                android:id="@+id/linearLayout2" android:weightSum="1">
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Name"
-                    android:id="@+id/textView4" android:layout_weight="0.4"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="Menge"
-                      android:id="@+id/textView5" android:layout_weight="0.15"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="Kalorien"
-                      android:id="@+id/textView6" android:layout_weight="0.15"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="Aktionen"
-                      android:id="@+id/textView7" android:layout_weight="0.3"
-                      android:gravity="center_horizontal"/>
-        </LinearLayout>
-        <ListView
-                android:id="@+id/idDailyoverviewList"
-                android:layout_width="wrap_content"
-                android:layout_height="216dp"
-                android:paddingBottom="@dimen/padding"
-                android:layout_alignParentBottom="true"
-                android:layout_below="@+id/linearLayout2" android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true">
-        </ListView>
-
-    </RelativeLayout>
-
-
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true" android:layout_alignParentStart="true"
-            android:id="@+id/linearLayout">
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" android:layout_weight="1">
+                  android:layout_alignParentBottom="true"
+                  android:layout_alignParentStart="true"
+                  android:id="@+id/idDailyoverviewNavHolder">
+        <LinearLayout android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1">
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:id="@+id/idDailyoverviewAddNewEntry"
                        android:src="@drawable/plus_48"
-                       android:layout_centerHorizontal="true"
-                       android:layout_alignParentBottom="true" android:layout_weight="1"
                        android:layout_gravity="center"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Neuer Eintrag"
-                    android:id="@+id/textView" android:layout_gravity="bottom|center"/>
+                    android:text="@string/dailyoverview_newentry"
+                    android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:layout_weight="1">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:id="@+id/idDailyoverviewGroceryButton"
                        android:src="@drawable/cheese_48"
-                       android:layout_alignParentBottom="true"
-                       android:layout_toLeftOf="@id/idDailyoverviewAddNewEntry" android:layout_weight="1"
                        android:layout_gravity="center"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:textAppearance="?android:attr/textAppearanceSmall" android:text="Lebensmittel"
-                      android:id="@+id/textView2" android:layout_gravity="bottom|center"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/dailyoverview_groceries"
+                      android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:layout_weight="1">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:id="@+id/idDailyoverviewMenuButton"
                        android:src="@drawable/hamburger_48"
-                       android:layout_alignParentBottom="true"
-                       android:layout_toRightOf="@+id/idDailyoverviewAddNewEntry" android:layout_weight="1"
                        android:layout_gravity="center"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:textAppearance="?android:attr/textAppearanceSmall" android:text="Menüs"
-                      android:id="@+id/textView3" android:layout_gravity="bottom|center"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/dailyoverview_menus"
+                      android:layout_gravity="center"/>
         </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:layout_width="match_parent"
-                      android:layout_height="match_parent" android:layout_weight="1">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                       android:id="@+id/idDailyoverviewSpoonButton" android:src="@drawable/spoon_48"
-                       android:layout_centerHorizontal="true" android:layout_alignParentBottom="true"
-                       android:layout_weight="1" android:layout_gravity="center" android:focusableInTouchMode="false"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:textAppearance="?android:attr/textAppearanceSmall" android:text="Einheiten"
-                      android:id="@+id/textView8" android:layout_gravity="bottom|center"/>
+        <LinearLayout android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/idDailyoverviewSpoonButton"
+                       android:src="@drawable/spoon_48"
+                       android:layout_gravity="center"
+                       android:focusableInTouchMode="false"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/dailyoverview_units"
+                      android:layout_gravity="center"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

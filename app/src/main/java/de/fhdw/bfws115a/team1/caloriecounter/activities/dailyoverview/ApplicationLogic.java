@@ -1,11 +1,12 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.dailyoverview;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
-import android.util.MonthDisplayHelper;
 import de.fhdw.bfws115a.team1.caloriecounter.constants.SearchSettings;
-import de.fhdw.bfws115a.team1.caloriecounter.database.*;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntry;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceryEntry;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseMenuEntry;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 public class ApplicationLogic {
@@ -30,15 +31,19 @@ public class ApplicationLogic {
     private void initGui() {
         mGui.setDate(mData.getSelectedDay(), mData.getSelectedMonth(), mData.getSelectedYear());
         mGui.setUsedCalories(mData.getUsedCalories());
+        mGui.setMaxCalories(mData.getMaxCalories());
+        mGui.getEntryListView().setEmptyView(mGui.getEmptyListTextView());
         calculateCalories();
     }
 
     private void calculateCalories() {
         mData.setUsedCalories(0);
-        for(DatabaseEntry databaseEntry : mData.getDatabaseEntryList()) {
+        for (DatabaseEntry databaseEntry : mData.getDatabaseEntryList()) {
             mData.setUsedCalories(databaseEntry.getCalories() + mData.getUsedCalories());
         }
         mGui.setUsedCalories(mData.getUsedCalories());
+        mData.setLeftCalories(mData.getMaxCalories() - mData.getUsedCalories());
+        mGui.setLeftCalories(mData.getLeftCalories());
     }
 
     /**
@@ -53,6 +58,7 @@ public class ApplicationLogic {
         mGui.getMenuButton().setOnClickListener(bcl);
         mGui.getNewEntryButton().setOnClickListener(bcl);
         mGui.getUnitQuantityButton().setOnClickListener(bcl);
+        mGui.getMaxCalories().addTextChangedListener(new TextChangeListener(this, mGui.getMaxCalories()));
     }
 
     private void initAdapter() {
@@ -171,9 +177,9 @@ public class ApplicationLogic {
 
     public void deleteItem(DatabaseEntry databaseEntry) {
         DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
-        if(databaseEntry instanceof DatabaseGroceryEntry) {
+        if (databaseEntry instanceof DatabaseGroceryEntry) {
             mData.getDatabaseEntityManager().deleteGroceryEntry((DatabaseGroceryEntry) databaseEntry);
-        } else if(databaseEntry instanceof DatabaseMenuEntry) {
+        } else if (databaseEntry instanceof DatabaseMenuEntry) {
             mData.getDatabaseEntityManager().deleteMenuEntry((DatabaseMenuEntry) databaseEntry);
         }
         mData.getDatabaseEntryList().remove(databaseEntry);
@@ -195,10 +201,10 @@ public class ApplicationLogic {
         DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
         DatabaseEntry databaseEntry = mData.getEntryToCopy();
         databaseEntry.setDate(year, month, day);
-        if(databaseEntry instanceof  DatabaseMenuEntry) {
-            databaseEntityManager.createMenuEntry(new MenuEntry((MenuEntry)databaseEntry));
-        } else if(databaseEntry instanceof  DatabaseGroceryEntry) {
-            databaseEntityManager.createGroceryEntry(new GroceryEntry((GroceryEntry)databaseEntry));
+        if (databaseEntry instanceof DatabaseMenuEntry) {
+            databaseEntityManager.createMenuEntry(new MenuEntry((MenuEntry) databaseEntry));
+        } else if (databaseEntry instanceof DatabaseGroceryEntry) {
+            databaseEntityManager.createGroceryEntry(new GroceryEntry((GroceryEntry) databaseEntry));
         }
     }
 
@@ -222,11 +228,11 @@ public class ApplicationLogic {
     public void onEditEntry(DatabaseEntry databaseEntry) {
         Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount.Init.class);
 
-        if(databaseEntry instanceof DatabaseMenuEntry) {
-            DatabaseMenuEntry databaseMenuEntry = (DatabaseMenuEntry)databaseEntry;
+        if (databaseEntry instanceof DatabaseMenuEntry) {
+            DatabaseMenuEntry databaseMenuEntry = (DatabaseMenuEntry) databaseEntry;
             intent.putExtra("groceriesEntity", databaseMenuEntry.getMenu());
-        } else if(databaseEntry instanceof DatabaseGroceryEntry) {
-            DatabaseGroceryEntry databaseGroceryEntry = (DatabaseGroceryEntry)databaseEntry;
+        } else if (databaseEntry instanceof DatabaseGroceryEntry) {
+            DatabaseGroceryEntry databaseGroceryEntry = (DatabaseGroceryEntry) databaseEntry;
             intent.putExtra("groceriesEntity", databaseGroceryEntry.getFixGrocery());
         } else {
             return;
@@ -246,6 +252,15 @@ public class ApplicationLogic {
         } else if (databaseEntry instanceof DatabaseGroceryEntry) {
             databaseEntry.setAmount(selectedAmount);
             databaseEntityManager.saveGroceryEntry((DatabaseGroceryEntry) databaseEntry);
+        }
+        reload();
+    }
+
+    public void onCaloriesLimitChanged(String s) {
+        try {
+            mData.setMaxCalories(Integer.valueOf(s));
+        } catch (Exception e) {
+            mData.setMaxCalories(0);
         }
         calculateCalories();
     }

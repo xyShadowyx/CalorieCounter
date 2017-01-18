@@ -1,32 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/gray2"
-                android:id="@+id/rowNewGrocery">
-
-    <TextView android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:text="@string/quantityunitmanagement_lastadd"
-              android:layout_margin="@dimen/margin"
-              android:layout_marginLeft="@dimen/margin_2"
-              android:id="@+id/idQuantityUnitManagementAddNewQuantityUnit"
+              android:clickable="false"
+              android:paddingTop="@dimen/listrow_padding"
+              android:paddingBottom="@dimen/listrow_padding">
+    <TextView android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:id="@+id/idQuantityUnitManagementRowAddNewQuantityUnit"
               android:textColor="@color/black"
-              android:textSize="@dimen/inputTextSize"/>
-
-    <ImageView android:layout_width="wrap_content"
-               android:layout_height="match_parent"
-               android:src="@drawable/settings_32"
-               android:layout_marginStart="@dimen/distance"
-               android:layout_marginLeft="@dimen/margin"
-               android:layout_toRightOf="@+id/idQuantityUnitManagementAddNewQuantityUnit"
-               android:id="@+id/idEditAmountOfUnit"/>
-
-    <ImageView android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="@dimen/margin"
-               android:id="@+id/idQuantityUnitManagementDeleteQuantityUnit"
-               android:src="@drawable/xmark_32"
-               android:layout_toRightOf="@+id/idEditAmountOfUnit"/>
-</RelativeLayout>
+              android:layout_weight="0.85"
+              android:gravity="center_vertical"/>
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="0dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="0.15"
+                  android:gravity="end">
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:id="@+id/idQuantityUnitManagementRowDeleteQuantityUnit"
+                   android:src="@drawable/xmark_32"/>
+    </LinearLayout>
+</LinearLayout>

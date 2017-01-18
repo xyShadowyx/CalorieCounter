@@ -1,25 +1,22 @@
 <resources>
-    <!-- General -->
-    <dimen name="headline">18sp</dimen>
-    <dimen name="textsize">15sp</dimen>
-    <dimen name="inputTextSize">20sp</dimen>
-    <dimen name="headlinespace">10dp</dimen>
-    <dimen name="margin">5dp</dimen>
-    <dimen name="inputSize">100dp</dimen>
-    <dimen name="marginDistance">200dp</dimen>
-    <dimen name="padding">5dp</dimen>
-    <dimen name="title_headline">30sp</dimen>
-    <dimen name="layout_headline">25sp</dimen>
-
-    <!-- Extra -->
-    <dimen name="headline2">25sp</dimen>
-    <dimen name="margin_2">15dp</dimen>
-    <dimen name="padding_2">20dp</dimen>
-    <dimen name="padding_l">80dp</dimen>
-    <dimen name="textsize2">20sp</dimen>
-    <dimen name="distance">140dp</dimen>
-    <dimen name="distance_landscape">250dp</dimen>
-
+    <dimen name="headline_textsize">18sp</dimen>
+    <dimen name="headline_padding">18dp</dimen>
 
     <dimen name="button_long_textsize">20sp</dimen>
+
+    <dimen name="outer_border_space">15dp</dimen>
+
+    <dimen name="list_headline_textsize">17sp</dimen>
+
+    <dimen name="listrow_padding">5dp</dimen>
+    <dimen name="listrow_textsize">15sp</dimen>
+    <dimen name="listrow_button_distance">5dp</dimen>
+
+    <dimen name="small_space">5dp</dimen>
+    <dimen name="medium_space">10dp</dimen>
+    <dimen name="huge_space">15dp</dimen>
+
+    <dimen name="small_text">15sp</dimen>
+    <dimen name="medium_text">20sp</dimen>
+    <dimen name="huge_text">25sp</dimen>
 </resources>

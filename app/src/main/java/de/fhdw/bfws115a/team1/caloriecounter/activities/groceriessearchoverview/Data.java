@@ -2,6 +2,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import de.fhdw.bfws115a.team1.caloriecounter.constants.SearchSettings;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntity;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
@@ -22,7 +23,7 @@ public class Data {
     private final int DEFAULT_SEARCH_SETTINGS = SearchSettings.DISPLAY_ALL.ordinal();
 
     /* Keys */
-    private final String KEY_GROCERIES_ENTITY_LIST = "groceriessearchoverview1";
+    private final String KEY_DATABASE_GROCERIES_ENTITY_LIST = "groceriessearchoverview1";
     private final String KEY_SELECTED_ENTITY = "groceriessearchoverview2";
 
     /**
@@ -36,8 +37,9 @@ public class Data {
         mActivity = activity;
         mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
         SearchSettings searchSettings;
-
+        Log.d("Data", "Loading!");
         if (savedInstanceState == null) {
+            Log.d("Data", "savedInstanceState is null!");
             Intent intent = mActivity.getIntent();
             searchSettings = SearchSettings.values()[intent.getIntExtra("searchSettings", DEFAULT_SEARCH_SETTINGS)];
             mDatabaseGroceriesEntityList = new ArrayList<DatabaseGroceriesEntity>();
@@ -50,6 +52,7 @@ public class Data {
                 mDatabaseGroceriesEntityList.addAll(mDatabaseEntityManager.getAllMenus());
             }
         } else {
+            Log.d("Data", "savedInstanceState is not null!");
             restoreDataFromBundle(savedInstanceState);
         }
     }
@@ -60,7 +63,7 @@ public class Data {
      * @param b The bundle where the data will be saved.
      */
     public void saveDataInBundle(Bundle b) {
-        b.putSerializable(KEY_GROCERIES_ENTITY_LIST, mDatabaseGroceriesEntityList);
+        b.putSerializable(KEY_DATABASE_GROCERIES_ENTITY_LIST, mDatabaseGroceriesEntityList);
         b.putSerializable(KEY_SELECTED_ENTITY, mSelectedEntity);
     }
 
@@ -70,7 +73,7 @@ public class Data {
      * @param b The bundle where the data is saved in.
      */
     private void restoreDataFromBundle(Bundle b) {
-        mDatabaseGroceriesEntityList = (ArrayList<DatabaseGroceriesEntity>) b.getSerializable(KEY_GROCERIES_ENTITY_LIST);
+        mDatabaseGroceriesEntityList = (ArrayList<DatabaseGroceriesEntity>) b.getSerializable(KEY_DATABASE_GROCERIES_ENTITY_LIST);
         mSelectedEntity = (GroceriesEntity) b.getSerializable(KEY_SELECTED_ENTITY);
     }
 
