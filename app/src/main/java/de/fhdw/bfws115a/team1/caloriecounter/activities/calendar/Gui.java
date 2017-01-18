@@ -4,6 +4,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 

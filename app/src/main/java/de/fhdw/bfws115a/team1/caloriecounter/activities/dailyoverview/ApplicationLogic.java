@@ -253,7 +253,7 @@ public class ApplicationLogic {
             databaseEntry.setAmount(selectedAmount);
             databaseEntityManager.saveGroceryEntry((DatabaseGroceryEntry) databaseEntry);
         }
-        calculateCalories();
+        reload();
     }
 
     public void onCaloriesLimitChanged(String s) {

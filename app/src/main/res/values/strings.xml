@@ -119,4 +119,6 @@
     <string name="quantityunitmanagement_edittexthint">Mengeneinheit eingeben...</string>
     <string name="menumanagement_addedtodb">Ihr Menü wurde erfolgreich in der Datenbank gespeichert.</string>
     <string name="menumanagement_updatedindb">Ihr Menü wurde erfolgreich geändert.</string>
+    <string name="grocerymanagement_addedtodb">Ihr Lebensmittel wurde erfolgreich in der Datenbank gespeichert.</string>
+    <string name="grocerymanagement_updatedindb">Ihr Lebensmittel wurde erfolgreich geändert.</string>
 </resources>

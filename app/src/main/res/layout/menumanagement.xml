@@ -54,9 +54,8 @@
                       android:id="@+id/idMenuManagementSelectPortionSize"
                       android:layout_weight="0.8"
                       android:text="@string/menumanagement_new_portion_input"
-                      android:maxLength="16"
                       android:textColor="@color/black"
-                      android:inputType="number"/>
+                      android:inputType="numberDecimal"/>
         </LinearLayout>
         <LinearLayout android:layout_width="fill_parent"
                       android:layout_height="match_parent"

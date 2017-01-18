@@ -1,5 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -21,13 +22,11 @@ public class ApplicationLogic {
     /* Member variables */
     private Data mData;
     private Gui mGui;
-    private DatabaseEntityManager mDatabaseEntityManager;
     private ListAdapter mListAdapter;
 
     public ApplicationLogic(Data data, Gui gui) {
         mData = data;
         mGui = gui;
-        mDatabaseEntityManager = mData.getDatabaseEntityManager();
         initGui();
         initListener();
         initAdapter();
@@ -134,8 +133,14 @@ public class ApplicationLogic {
      * Creates an new menu and saves it in the personal database.
      */
     public void createNewMenu() {
+        DatabaseEntityManager databaseEntityManager;
+        Context context;
+
+        databaseEntityManager = mData.getDatabaseEntityManager();
+        context = mData.getActivity().getApplicationContext();
+
         if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getMenuName())
-                && mDatabaseEntityManager.isMenuNameAvailable(mData.getMenuName())) {
+                && databaseEntityManager.isMenuNameAvailable(mData.getMenuName())) {
 
             if (Validation.checkNumberValue(mData.getPortionSize())) {
                 Menu newMenu;
@@ -143,26 +148,17 @@ public class ApplicationLogic {
                 for (FixGrocery fg : mData.getMenuFixGroceries()) {
                     newMenu.addGrocery(new FixGrocery(fg));
                 }
-                mDatabaseEntityManager.createMenu(newMenu);
-                Context context;
-                Toast toast;
-                context = mData.getActivity().getApplicationContext();
-                toast = Toast.makeText(context, R.string.menumanagement_addedtodb, Toast.LENGTH_SHORT);
-                toast.show();
+                databaseEntityManager.createMenu(newMenu);
+                Toast.makeText(context, R.string.menumanagement_addedtodb, Toast.LENGTH_SHORT).show();
+
+                mData.getActivity().setResult(Activity.RESULT_OK);
+                mData.getActivity().finish();
             } else {
-                Context context;
-                Toast toast;
-                context = mData.getActivity().getApplicationContext();
-                toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
-                toast.show();
+                Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT).show();
             }
 
         } else {
-            Context context;
-            Toast toast;
-            context = mData.getActivity().getApplicationContext();
-            toast = Toast.makeText(context, R.string.menumanagement_existingmenuindbtoast, Toast.LENGTH_SHORT);
-            toast.show();
+            Toast.makeText(context, R.string.menumanagement_existingmenuindbtoast, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -170,8 +166,14 @@ public class ApplicationLogic {
      * Edits a menu which is already stored in the personal database.
      */
     public void editMenu() {
+        DatabaseEntityManager databaseEntityManager;
+        Context context;
+
+        databaseEntityManager = mData.getDatabaseEntityManager();
+        context = mData.getActivity().getApplicationContext();
+
         if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getMenuName()) &&
-                (mData.getInputMenu().getName() == mData.getMenuName() || mDatabaseEntityManager.isMenuNameAvailable(mData.getMenuName()))) {
+                (mData.getInputMenu().getName() == mData.getMenuName() || databaseEntityManager.isMenuNameAvailable(mData.getMenuName()))) {
 
             if (Validation.checkNumberValue(mData.getPortionSize()) && !Validation.checkIfEmpty(Double.toString(mData.getPortionSize()))) {
                 mData.getInputMenu().removeAllGrocery();
@@ -180,26 +182,17 @@ public class ApplicationLogic {
                 for (FixGrocery fg : mData.getMenuFixGroceries()) {
                     mData.getInputMenu().addGrocery(new FixGrocery(fg));
                 }
-                mDatabaseEntityManager.saveMenu(mData.getInputMenu());
-                Context context;
-                Toast toast;
-                context = mData.getActivity().getApplicationContext();
-                toast = Toast.makeText(context, R.string.menumanagement_updatedindb, Toast.LENGTH_SHORT);
-                toast.show();
+                databaseEntityManager.saveMenu(mData.getInputMenu());
+                Toast.makeText(context, R.string.menumanagement_updatedindb, Toast.LENGTH_SHORT).show();
+
+                mData.getActivity().setResult(Activity.RESULT_OK);
+                mData.getActivity().finish();
             } else {
-                Context context;
-                Toast toast;
-                context = mData.getActivity().getApplicationContext();
-                toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
-                toast.show();
+                Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT).show();
             }
 
         } else {
-            Context context;
-            Toast toast;
-            context = mData.getActivity().getApplicationContext();
-            toast = Toast.makeText(context, R.string.menumanagement_existingmenuindbtoast, Toast.LENGTH_SHORT);
-            toast.show();
+            Toast.makeText(context, R.string.menumanagement_existingmenuindbtoast, Toast.LENGTH_SHORT).show();
         }
     }
 }

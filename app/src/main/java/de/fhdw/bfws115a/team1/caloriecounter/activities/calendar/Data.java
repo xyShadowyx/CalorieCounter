@@ -2,11 +2,11 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.Calendar;
 
 public class Data {
-
     /* Member variable */
     private Init mActivity;
     private int mSelectedYear;
@@ -37,7 +37,6 @@ public class Data {
             mSelectedYear = intent.getIntExtra("year", calendarToday.get(Calendar.YEAR));
             mSelectedMonth = intent.getIntExtra("month", calendarToday.get(Calendar.MONTH));
             mSelectedDay = intent.getIntExtra("day", calendarToday.get(Calendar.DAY_OF_MONTH));
-
         } else {
             restoreDataFromBundle(savedInstanceState);
         }

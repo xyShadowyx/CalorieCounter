@@ -56,7 +56,8 @@
                   android:maxLength="5"
                   android:textSize="@dimen/small_text"
                   android:hint="@string/dailyoverview_caloriesmax"
-                  android:textColor="@color/black"/>
+                  android:textColor="@color/black"
+                  android:inputType="number"/>
         <TextView android:layout_width="0dp"
                   android:layout_height="fill_parent"
                   android:gravity="center"
