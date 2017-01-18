@@ -7,5 +7,8 @@
     <color name="gray2">#cccccc</color>
     <color name="light_gray">#e5e5e5</color>
 
+    <color name="headline_color">#3f51b5</color>
+    <color name="headline_textcolor">#ffffff</color>
+    <color name="list_headline_textcolor">#999999</color>
 </resources>
 

@@ -1,10 +1,14 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.dailyoverview;
 
+import android.graphics.Color;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import de.fhdw.bfws115a.team1.caloriecounter.R;
+import org.w3c.dom.Text;
 
 public class Gui {
 
@@ -17,8 +21,11 @@ public class Gui {
     private ImageView mGroceryButton;
     private ImageView mNewEntryButton;
     private ListView mEntryListView;
+    private TextView mEmptyListTextView;
 
+    private EditText mMaxCalories;
     private TextView mUsedCalories;
+    private TextView mLeftCalories;
 
     /**
      * Assign layout components to member variables so that they can be changed in backend.
@@ -34,11 +41,15 @@ public class Gui {
         mUnitQuantityButton = (ImageView) activity.findViewById(R.id.idDailyoverviewSpoonButton);
         mMenuButton = (ImageView) activity.findViewById(R.id.idDailyoverviewMenuButton);
         mGroceryButton = (ImageView) activity.findViewById(R.id.idDailyoverviewGroceryButton);
-        mEntryListView = (ListView) activity.findViewById(R.id.idDailyoverviewList);
+        mEntryListView = (ListView) activity.findViewById(R.id.idDailyoverviewListView);
 
-        mUsedCalories = (TextView) activity.findViewById(R.id.idDailyoverviewConsumedCalories);
+        mMaxCalories = (EditText) activity.findViewById(R.id.idDailyoverviewCaloriesMax);
+        mUsedCalories = (TextView) activity.findViewById(R.id.idDailyoverviewCaloriesConsumed);
+        mLeftCalories = (TextView) activity.findViewById(R.id.idDailyoverviewCaloriesLeft);
 
         mNewEntryButton = (ImageView) activity.findViewById(R.id.idDailyoverviewAddNewEntry);
+
+        mEmptyListTextView = (TextView) activity.findViewById(R.id.idDailyoverviewNoResults);
     }
 
     /* Getter methods*/
@@ -78,6 +89,14 @@ public class Gui {
         return mUsedCalories;
     }
 
+    public TextView getMaxCalories() {
+        return mMaxCalories;
+    }
+
+    public TextView getLeftCalories() {
+        return mLeftCalories;
+    }
+
     /* Setter methods */
     public void setDate(int day, int month, int year) {
         mTodayDateText.setText(day + "." + (month + 1) + "." + year);
@@ -85,5 +104,21 @@ public class Gui {
 
     public void setUsedCalories(int amount) {
         mUsedCalories.setText(String.valueOf(amount));
+    }
+
+    public void setMaxCalories(int amount) {
+        mMaxCalories.setText(String.valueOf(amount));
+    }
+
+    public void setLeftCalories(int amount) {
+        mLeftCalories.setText(String.valueOf(amount));
+        if(amount < 0)
+            mLeftCalories.setTextColor(Color.RED);
+        else
+            mLeftCalories.setTextColor(Color.GREEN);
+    }
+
+    public TextView getEmptyListTextView() {
+        return mEmptyListTextView;
     }
 }

@@ -15,14 +15,18 @@ public class ListViewHolder {
     private ApplicationLogic mApplicationLogic;
     private ListButtonClickListener mListButtonClickListener;
     private TextView mNameText;
+    private TextView mAmountText;
+    private TextView mCaloriesText;
     private ImageView mDeleteImage;
     private FixGrocery mFixGrocery;
 
     public ListViewHolder(View view, ApplicationLogic applicationLogic) {
         mApplicationLogic = applicationLogic;
         mFixGrocery = null;
-        mNameText = (TextView) view.findViewById(R.id.idMenuManagementLastAdd);
-        mDeleteImage = (ImageView) view.findViewById(R.id.idMenuManagementDeleteGrocery);
+        mNameText = (TextView) view.findViewById(R.id.idMenuManagementRowGrocery);
+        mAmountText = (TextView) view.findViewById(R.id.idMenuManagementRowAmount);
+        mCaloriesText = (TextView) view.findViewById(R.id.idMenuManagementRowCalories);
+        mDeleteImage = (ImageView) view.findViewById(R.id.idMenuManagementRowDeleteGrocery);
         mListButtonClickListener = new ListButtonClickListener(mApplicationLogic, mFixGrocery);
         mDeleteImage.setOnClickListener(mListButtonClickListener);
     }
@@ -39,6 +43,14 @@ public class ListViewHolder {
     /* Getter methods */
     public TextView getNameText() {
         return mNameText;
+    }
+
+    public TextView getCaloriesText() {
+        return mCaloriesText;
+    }
+
+    public TextView getAmountText() {
+        return mAmountText;
     }
 
     public ImageView getDeleteImage() {

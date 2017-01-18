@@ -1,118 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/menumanagement"
-              android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+    <TextView android:id="@+id/idMenuManagementTitle"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/white">
-
-    <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:background="@color/blue"
-              android:padding="@dimen/title_headline"
-              android:text="@string/titel"
-              android:textSize="@dimen/title_headline"
-              android:textColor="@color/white"
-              android:gravity="center"/>
-
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:text="@string/menumanagement_menumanagement"
-              android:textColor="@color/black"
-              android:textSize="@dimen/layout_headline"
+              android:background="@color/headline_color"
+              android:padding="@dimen/headline_padding"
+              android:text="Menü verwalten"
+              android:textSize="@dimen/headline_textsize"
+              android:textColor="@color/headline_textcolor"
               android:gravity="center"
-              android:textStyle="italic"
-              android:layout_margin="@dimen/headlinespace"/>
+              android:textStyle="bold" android:textAlignment="inherit"/>
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal">
-
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="match_parent"
-                  android:layout_weight="1"
-                  android:text="@string/menumanagement_name"
-                  android:textSize="@dimen/inputTextSize"
-                  android:textColor="@color/black"
-                  android:layout_margin="@dimen/margin"/>
-
-        <EditText android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_weight="2"
-                  android:id="@+id/idMenuManagementSelectMenuName"
-                  android:layout_margin="@dimen/margin"
-                  android:hint="@string/menumanagement_newNameInput"
-                  android:maxLength="32"
-                  android:textSize="@dimen/inputTextSize"
-                  android:textColor="@color/black"/>
-    </LinearLayout>
-
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="95dp"
-                  android:orientation="horizontal">
-
-
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_weight="1"
-                  android:text="@string/menumanagement_portion"
-                  android:textSize="@dimen/inputTextSize"
-                  android:textColor="@color/black"
-                  android:layout_margin="@dimen/margin"/>
-
-        <EditText android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/idMenuManagementSelectPortionSize"
-                  android:layout_weight="2"
-                  android:layout_margin="@dimen/margin"
-                  android:text="@string/menumanagement_newPortionInput"
-                  android:maxLength="16"
-                  android:textSize="@dimen/inputTextSize"
-                  android:textColor="@color/black"/>
-    </LinearLayout>
-
-
-    <LinearLayout android:layout_width="wrap_content"
-                  android:layout_height="wrap_content">
-
-        <ImageView android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:id="@+id/idMenuManagementAddNewGrocery"
-                   android:src="@drawable/plus_32"
-                   android:layout_margin="@dimen/margin"/>
-
-        <LinearLayout android:layout_width="wrap_content"
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/outer_border_space"
+            android:layout_marginRight="@dimen/outer_border_space"
+            android:layout_below="@+id/idMenuManagementTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/idMenuMangementNavHolder" android:layout_alignParentEnd="false">
+        <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:orientation="vertical">
-
-
-            <EditText android:layout_width="match_parent"
+                      android:orientation="horizontal"
+                      android:gravity="center_vertical">
+            <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
-                      android:text="@string/menumanagement_newGroceryInput"
-                      android:textSize="@dimen/layout_headline"
-                      android:id="@+id/idMenuManagementAddedGrocery"
+                      android:layout_weight="0.2"
+                      android:text="@string/menumanagement_name"
+                      android:textColor="@color/black"/>
+            <EditText android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.8"
+                      android:id="@+id/idMenuManagementMenuName"
+                      android:hint="@string/menumanagement_newNameInput"
                       android:maxLength="32"
+                      android:textColor="@color/black"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:gravity="center_vertical">
+            <TextView android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.2"
+                      android:text="@string/menumanagement_portion"
+                      android:textColor="@color/black"/>
+            <EditText android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/idMenuManagementSelectPortionSize"
+                      android:layout_weight="0.8"
+                      android:text="@string/menumanagement_newPortionInput"
+                      android:maxLength="16"
                       android:textColor="@color/black"
-                      android:layout_margin="@dimen/margin"/>
-
-            <ListView android:layout_width="wrap_content"
-                      android:layout_height="392dp"
-                      android:background="@color/gray2"
-                      android:layout_margin="@dimen/margin_2"
-                      android:id="@+id/idMenuMangementList">
+                      android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="fill_parent"
+                      android:layout_height="match_parent"
+                      android:id="@+id/idMenuManagementListHeadline"
+                      android:orientation="vertical">
+            <LinearLayout android:orientation="horizontal"
+                          android:layout_width="fill_parent"
+                          android:layout_height="wrap_content"
+                          android:weightSum="1">
+                <TextView android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:text="Name"
+                          android:layout_weight="0.4"
+                          android:textSize="@dimen/list_headline_textsize"
+                          android:textColor="@color/list_headline_textcolor"/>
+                <TextView android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:text="Menge"
+                          android:layout_weight="0.15"
+                          android:textSize="@dimen/list_headline_textsize"
+                          android:textColor="@color/list_headline_textcolor"/>
+                <TextView android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:text="Kalorien"
+                          android:layout_weight="0.15"
+                          android:textSize="@dimen/list_headline_textsize"
+                          android:textColor="@color/list_headline_textcolor"/>
+                <TextView android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:text="Aktionen"
+                          android:layout_weight="0.3"
+                          android:gravity="end|center_horizontal"
+                          android:textSize="@dimen/list_headline_textsize"
+                          android:textColor="@color/list_headline_textcolor"/>
+            </LinearLayout>
+            <TextView android:id="@+id/idMenuManagementNoResults"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center"
+                      android:text="Keine Einträge gefunden"/>
+            <ListView android:layout_width="fill_parent"
+                      android:layout_height="match_parent"
+                      android:id="@+id/idMenuMangementListView">
             </ListView>
         </LinearLayout>
-
     </LinearLayout>
-
-    <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/menumanagement_addMenu"
-            android:id="@+id/idMenuManagementAddMenu"
-            android:textSize="@dimen/inputTextSize"
-            android:layout_marginRight="@dimen/margin_2"
-            android:background="@color/blue"
-            android:textColor="@color/black"
-            android:layout_gravity="right"
-    />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/idMenuMangementNavHolder"
+                  android:layout_gravity="center_horizontal" android:layout_alignParentBottom="true"
+                  android:layout_alignParentStart="true" android:layout_alignParentEnd="true">
+        <LinearLayout android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/idMenuManagementAddNewGrocery"
+                       android:src="@drawable/plus_48"
+                       android:layout_gravity="center"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Lebensmittel hinzufügen"
+                      android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/idMenuManagementAddMenu"
+                       android:src="@drawable/save_48"
+                       android:layout_gravity="center"
+                       android:focusableInTouchMode="false"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Speichern"
+                      android:layout_gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

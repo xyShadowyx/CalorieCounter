@@ -1,34 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/gray2"
-                android:id="@+id/rowNewGrocery">
-
-
-    <TextView android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="@string/menumanagement_lastadd"
-              android:layout_margin="@dimen/margin"
-              android:layout_marginLeft="@dimen/margin_2"
-              android:id="@+id/idMenuManagementLastAdd"
+              android:focusableInTouchMode="true"
+              android:orientation="horizontal"
+              android:weightSum="1"
+              android:paddingTop="@dimen/listrow_padding"
+              android:paddingBottom="@dimen/listrow_padding">
+    <TextView android:id="@+id/idMenuManagementRowGrocery"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:textSize="@dimen/listrow_textsize"
+              android:text=""
               android:textColor="@color/black"
-              android:textSize="@dimen/inputTextSize"/>
+              android:layout_weight="0.4"
+              android:gravity="center_vertical"/>
+    <TextView android:id="@+id/idMenuManagementRowAmount"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:textSize="@dimen/listrow_textsize"
+              android:text=""
+              android:textColor="@color/black"
+              android:layout_weight="0.15"
+              android:gravity="center_vertical"/>
+    <TextView android:id="@+id/idMenuManagementRowCalories"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:textSize="@dimen/listrow_textsize"
+              android:text=""
+              android:textColor="@color/black"
+              android:layout_weight="0.15"
+              android:gravity="center_vertical"/>
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0.3"
+                  android:gravity="end">
+        <ImageView android:id="@+id/idMenuManagementRowDeleteGrocery"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/xmark_32"
+                   android:layout_marginEnd="@dimen/listrow_button_distance"/>
+    </LinearLayout>
 
-
-    <ImageView android:layout_width="wrap_content"
-               android:layout_height="match_parent"
-               android:src="@drawable/settings_32"
-               android:layout_marginStart="@dimen/distance"
-               android:layout_marginLeft="@dimen/margin"
-               android:layout_toRightOf="@+id/idMenuManagementLastAdd"
-               android:id="@+id/idEditAmountOfGrocery"/>
-
-    <ImageView android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="@dimen/margin"
-               android:id="@+id/idMenuManagementDeleteGrocery"
-               android:src="@drawable/xmark_32"
-               android:layout_toRightOf="@+id/idEditAmountOfGrocery"/>
-</RelativeLayout>
+</LinearLayout>

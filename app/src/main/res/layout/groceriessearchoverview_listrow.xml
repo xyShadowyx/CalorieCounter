@@ -1,60 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<LinearLayout android:paddingBottom="5sp"
-              android:paddingTop="5sp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:paddingBottom="@dimen/listrow_padding"
+              android:paddingTop="@dimen/listrow_padding"
               android:weightSum="1"
               android:orientation="horizontal"
-              android:background="@color/white"
               android:layout_height="wrap_content"
               android:layout_width="fill_parent"
-              android:id="@+id/idGroceriesSearchOverviewRow"
-              xmlns:android="http://schemas.android.com/apk/res/android" android:focusable="false">
-
+              android:focusable="false">
     <TextView android:layout_height="match_parent"
               android:layout_width="0dp"
-              android:id="@+id/idGroceriesSearchOverviewGrocery"
+              android:id="@+id/idGroceriesSearchOverviewRowGrocery"
               android:gravity="center_vertical"
-              android:layout_weight="0.4"
-              android:layout_alignParentStart="true"
-              android:layout_centerVertical="true"
+              android:layout_weight="0.7"
               android:textColor="@color/black"
-              android:text="@string/dailyoverview_grocery"
-              android:textSize="@dimen/textsize"/>
-
-
-    <TextView android:layout_height="match_parent"
-              android:layout_width="0dp"
-              android:id="@+id/idGroceriesSearchOverviewCalories"
-              android:gravity="center_vertical"
-              android:layout_weight="0.3"
-              android:layout_alignParentStart="true"
-              android:layout_centerVertical="true"
-              android:textColor="@color/black"
-              android:text="30 kcal"
-              android:textSize="@dimen/textsize"/>
-
-
+              android:text=""
+              android:textSize="@dimen/listrow_textsize"/>
     <LinearLayout android:orientation="horizontal"
                   android:layout_height="wrap_content"
                   android:layout_width="0dp"
-                  android:gravity="center_horizontal"
+                  android:gravity="center_horizontal|end"
                   android:layout_weight="0.3">
-
         <ImageView android:layout_height="wrap_content"
                    android:layout_width="wrap_content"
-                   android:id="@+id/idGroceriesSearchOverviewSettingButton"
-                   android:layout_centerVertical="true"
-                   android:layout_marginRight="@dimen/margin_2"
-                   android:src="@drawable/settings_32"
-                   android:layout_toLeftOf="@+id/idDailyoverviewDeleteButton"/>
-
+                   android:id="@+id/idGroceriesSearchOverviewRowSettingButton"
+                   android:layout_marginEnd="@dimen/listrow_button_distance"
+                   android:src="@drawable/settings_32"/>
         <ImageView android:layout_height="wrap_content"
                    android:layout_width="wrap_content"
-                   android:id="@+id/idGroceriesSearchOverviewDeleteButton"
-                   android:layout_centerVertical="true"
+                   android:id="@+id/idGroceriesSearchOverviewRowDeleteButton"
                    android:src="@drawable/xmark_32"
-                   android:layout_alignParentRight="true"/>
-
+                   android:layout_marginEnd="@dimen/listrow_button_distance"/>
     </LinearLayout>
-
 </LinearLayout>

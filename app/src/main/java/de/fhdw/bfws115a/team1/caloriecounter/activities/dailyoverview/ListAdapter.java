@@ -11,6 +11,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntry;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceryEntry;
+import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseMenuEntry;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
 import java.util.ArrayList;
@@ -74,6 +76,8 @@ public class ListAdapter extends BaseAdapter {
         }
         listViewHolder.setDatabaseEntry(databaseEntry);
         listViewHolder.getNameText().setText(String.format("%s", databaseEntry.getName()));
+        listViewHolder.getAmountText().setText(String.format("%.2f %s", databaseEntry.getAmount(), databaseEntry.getUnitName()));
+        listViewHolder.getCaloriesText().setText(String.format("%d", databaseEntry.getCalories()));
         return convertView;
     }
 }

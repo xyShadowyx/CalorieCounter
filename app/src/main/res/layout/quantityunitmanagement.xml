@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+    <TextView android:id="@+id/idQuantityUnitManagementTitle"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/headline_color"
+              android:padding="@dimen/headline_padding"
+              android:text="Einheiten verwalten"
+              android:textSize="@dimen/headline_textsize"
+              android:textColor="@color/headline_textcolor"
+              android:gravity="center"
+              android:textStyle="bold"/>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:layout_marginLeft="@dimen/outer_border_space"
+                  android:layout_marginRight="@dimen/outer_border_space"
+                  android:id="@+id/linearLayout9"
+                  android:layout_below="@+id/idQuantityUnitManagementTitle"
+                  android:layout_centerHorizontal="true"
+                  android:layout_alignParentBottom="true">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+            <EditText android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/idQuantityUnitManagementQuantityName"
+                      android:hint="@string/quantityunitmanagement_edittexthint"
+                      android:layout_gravity="center_horizontal"
+                      android:layout_weight="1"/>
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/idQuantityUnitManagementAddNewQuantityUnit"
+                       android:src="@drawable/plus_32"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:weightSum="1">
+            <TextView android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:text="Name"
+                      android:layout_weight="0.85"
+                      android:textSize="@dimen/list_headline_textsize"
+                      android:textColor="@color/list_headline_textcolor"/>
+            <TextView android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:text="Löschen"
+                      android:layout_weight="0.15"
+                      android:gravity="end|center_horizontal"
+                      android:textSize="@dimen/list_headline_textsize"
+                      android:textColor="@color/list_headline_textcolor"/>
+        </LinearLayout>
+        <TextView android:id="@+id/idQuantityUnitManagementNoResults" android:layout_width="fill_parent"
+                  android:layout_height="wrap_content" android:gravity="center" android:text="Keine Einträge gefunden"/>
+        <ListView android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/idQuantityUnitManagementList">
+        </ListView>
+    </LinearLayout>
+</RelativeLayout>

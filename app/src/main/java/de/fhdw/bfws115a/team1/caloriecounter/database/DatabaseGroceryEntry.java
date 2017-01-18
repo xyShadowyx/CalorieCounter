@@ -34,6 +34,11 @@ public class DatabaseGroceryEntry extends GroceryEntry implements DatabaseEntry 
     }
 
     @Override
+    public String getUnitName() {
+        return this.getFixGrocery().getUnit().getName();
+    }
+
+    @Override
     public int getCalories() {
         return this.getFixGrocery().getKcal();
     }

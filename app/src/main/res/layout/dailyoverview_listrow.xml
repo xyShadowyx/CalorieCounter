@@ -1,54 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/idDailyoverviewRow"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:background="@color/white"
-              android:focusableInTouchMode="true" android:orientation="horizontal" android:weightSum="1"
-              android:paddingTop="5sp" android:paddingBottom="5sp">
-
-    <TextView android:id="@+id/idDailyoverviewGrocery"
+              android:focusableInTouchMode="true"
+              android:orientation="horizontal"
+              android:weightSum="1"
+              android:paddingTop="@dimen/listrow_padding"
+              android:paddingBottom="@dimen/listrow_padding">
+    <TextView android:id="@+id/idDailyoverviewRowGrocery"
               android:layout_width="0dp"
               android:layout_height="match_parent"
-              android:textSize="@dimen/textsize"
-              android:text="@string/dailyoverview_grocery"
+              android:textSize="@dimen/listrow_textsize"
+              android:text=""
               android:textColor="@color/black"
-              android:layout_centerVertical="true" android:layout_alignParentStart="true" android:layout_weight="0.4"
+              android:layout_weight="0.4"
               android:gravity="center_vertical"/>
 
-    <TextView android:id="@+id/textView9" android:layout_width="0dp"
-              android:layout_height="match_parent" android:textSize="@dimen/textsize"
-              android:text="30"
-              android:textColor="@color/black" android:layout_centerVertical="true"
-              android:layout_alignParentStart="true" android:layout_weight="0.15" android:gravity="center_vertical"/>
-    <TextView android:id="@+id/textView10" android:layout_width="0dp" android:layout_height="match_parent"
-              android:textSize="@dimen/textsize" android:text="30 kcal"
-              android:textColor="@color/black" android:layout_centerVertical="true"
-              android:layout_alignParentStart="true" android:layout_weight="0.15" android:gravity="center_vertical"/>
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" android:layout_weight="0.3" android:gravity="center_horizontal">
-        <ImageView android:id="@+id/idDailyoverviewCopyButton"
+    <TextView android:id="@+id/idDailyoverviewRowAmount"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:textSize="@dimen/listrow_textsize"
+              android:text=""
+              android:textColor="@color/black"
+              android:layout_weight="0.15"
+              android:gravity="center_vertical"/>
+    <TextView android:id="@+id/idDailyoverviewRowCalories"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:textSize="@dimen/listrow_textsize"
+              android:text=""
+              android:textColor="@color/black"
+              android:layout_weight="0.15"
+              android:gravity="center_vertical"/>
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0.3"
+                  android:gravity="center_horizontal|end">
+        <ImageView android:id="@+id/idDailyoverviewRowCopyButton"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:layout_toLeftOf="@+id/idDailyoverviewSettingButton"
-                   android:layout_centerVertical="true"
                    android:scaleType="centerCrop"
-                   android:src="@drawable/copy_32" android:layout_marginRight="@dimen/margin_2"
-        />
-        <ImageView android:id="@+id/idDailyoverviewSettingButton"
+                   android:src="@drawable/copy_32"
+                   android:layout_marginEnd="@dimen/listrow_button_distance"/>
+        <ImageView android:id="@+id/idDailyoverviewRowSettingButton"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:layout_centerVertical="true"
-                   android:layout_toLeftOf="@+id/idDailyoverviewDeleteButton"
-                   android:src="@drawable/settings_32" android:layout_marginRight="@dimen/margin_2"/>
-        <ImageView android:id="@+id/idDailyoverviewDeleteButton"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                   android:layout_centerVertical="true"
-                       android:layout_alignParentRight="true"
-                       android:src="@drawable/xmark_32"/>
+                   android:src="@drawable/settings_32"
+                   android:layout_marginEnd="@dimen/listrow_button_distance"/>
+        <ImageView android:id="@+id/idDailyoverviewRowDeleteButton"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/xmark_32"
+                   android:layout_marginEnd="@dimen/listrow_button_distance"/>
     </LinearLayout>
-
 </LinearLayout>

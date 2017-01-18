@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * Created by Viktor on 15.11.2016.
- *
+ * <p>
  * DatabaseHelper handles the database
  */
 
@@ -327,7 +327,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                 new Unit(cursorGroceryUnits.getString(cursorGroceryUnits.getColumnIndex(GROCERY_UNITS_UNIT))),
                                 cursorGroceryUnits.getDouble(cursorGroceryUnits.getColumnIndex(GROCERY_UNITS_AMOUNT))
                         ));
-                    }while (cursorGroceryUnits.moveToNext());
+                    } while (cursorGroceryUnits.moveToNext());
                 }
                 databaseGroceries.add(databaseGrocery);
             } while (cursor.moveToNext());

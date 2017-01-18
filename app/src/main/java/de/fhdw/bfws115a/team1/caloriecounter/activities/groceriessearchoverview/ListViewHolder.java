@@ -21,9 +21,9 @@ public class ListViewHolder {
         mApplicationLogic = applicationLogic;
         mDatabaseGroceriesEntity = null;
 
-        mNameText = (TextView) view.findViewById(R.id.idGroceriesSearchOverviewGrocery);
-        mDeleteImage = (ImageView) view.findViewById(R.id.idGroceriesSearchOverviewDeleteButton);
-        mEditImage = (ImageView) view.findViewById(R.id.idGroceriesSearchOverviewSettingButton);
+        mNameText = (TextView) view.findViewById(R.id.idGroceriesSearchOverviewRowGrocery);
+        mDeleteImage = (ImageView) view.findViewById(R.id.idGroceriesSearchOverviewRowDeleteButton);
+        mEditImage = (ImageView) view.findViewById(R.id.idGroceriesSearchOverviewRowSettingButton);
 
         mListButtonClickListener = new ListButtonClickListener(mApplicationLogic, mDatabaseGroceriesEntity);
         mDeleteImage.setOnClickListener(mListButtonClickListener);
