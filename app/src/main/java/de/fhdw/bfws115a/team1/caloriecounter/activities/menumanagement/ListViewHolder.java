@@ -6,6 +6,9 @@ import android.widget.TextView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
 
+/**
+ * @author Niklas Lammers and Florian Obladen.
+ */
 public class ListViewHolder {
 
     /* Member variables */

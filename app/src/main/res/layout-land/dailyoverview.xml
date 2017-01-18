@@ -130,7 +130,7 @@
                   android:layout_height="wrap_content"
                   android:paddingTop="@dimen/padding"
                   android:layout_below="@+id/idDailyoverviewInputList"
-                  android:layout_above="@+id/idDailyoverviewSpoonButton">
+                  android:layout_above="@+id/idDailyoverviewAddNewEntry">
 
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
 
     <ImageView android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:id="@+id/idDailyoverviewSpoonButton"
+               android:id="@+id/idDailyoverviewAddNewEntry"
                android:src="@drawable/spoon_48"
                android:paddingRight="@dimen/padding_2"
                android:paddingLeft="@dimen/padding_2"
@@ -163,7 +163,7 @@
                android:src="@drawable/hamburger_48"
                android:layout_marginLeft="@dimen/padding_2"
                android:layout_alignParentBottom="true"
-               android:layout_toRightOf="@+id/idDailyoverviewSpoonButton"/>
+               android:layout_toRightOf="@+id/idDailyoverviewAddNewEntry"/>
 
     <ImageView android:layout_width="wrap_content"
                android:layout_height="wrap_content"
@@ -171,6 +171,6 @@
                android:src="@drawable/cheese_48"
                android:layout_marginRight="@dimen/padding_2"
                android:layout_alignParentBottom="true"
-               android:layout_toLeftOf="@id/idDailyoverviewSpoonButton"/>
+               android:layout_toLeftOf="@id/idDailyoverviewAddNewEntry"/>
 
 </RelativeLayout>
