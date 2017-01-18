@@ -8,11 +8,11 @@
               android:layout_height="wrap_content"
               android:background="@color/headline_color"
               android:padding="@dimen/headline_padding"
-              android:text="Menü verwalten"
+              android:text="@string/menumanagement_title"
               android:textSize="@dimen/headline_textsize"
               android:textColor="@color/headline_textcolor"
               android:gravity="center"
-              android:textStyle="bold" android:textAlignment="inherit"/>
+              android:textStyle="bold"/>
 
     <LinearLayout
             android:orientation="vertical"
@@ -36,7 +36,7 @@
                       android:layout_height="wrap_content"
                       android:layout_weight="0.8"
                       android:id="@+id/idMenuManagementMenuName"
-                      android:hint="@string/menumanagement_newNameInput"
+                      android:hint="@string/menumanagement_new_name_input"
                       android:maxLength="32"
                       android:textColor="@color/black"/>
         </LinearLayout>
@@ -53,10 +53,9 @@
                       android:layout_height="wrap_content"
                       android:id="@+id/idMenuManagementSelectPortionSize"
                       android:layout_weight="0.8"
-                      android:text="@string/menumanagement_newPortionInput"
-                      android:maxLength="16"
+                      android:text="@string/menumanagement_new_portion_input"
                       android:textColor="@color/black"
-                      android:inputType="number"/>
+                      android:inputType="numberDecimal"/>
         </LinearLayout>
         <LinearLayout android:layout_width="fill_parent"
                       android:layout_height="match_parent"
@@ -68,25 +67,25 @@
                           android:weightSum="1">
                 <TextView android:layout_width="0dp"
                           android:layout_height="wrap_content"
-                          android:text="Name"
+                          android:text="@string/menumanagement_listhead_name"
                           android:layout_weight="0.4"
                           android:textSize="@dimen/list_headline_textsize"
                           android:textColor="@color/list_headline_textcolor"/>
                 <TextView android:layout_width="0dp"
                           android:layout_height="wrap_content"
-                          android:text="Menge"
+                          android:text="@string/menumanagement_listhead_amount"
                           android:layout_weight="0.15"
                           android:textSize="@dimen/list_headline_textsize"
                           android:textColor="@color/list_headline_textcolor"/>
                 <TextView android:layout_width="0dp"
                           android:layout_height="wrap_content"
-                          android:text="Kalorien"
+                          android:text="@string/menumanagement_listhead_calories"
                           android:layout_weight="0.15"
                           android:textSize="@dimen/list_headline_textsize"
                           android:textColor="@color/list_headline_textcolor"/>
                 <TextView android:layout_width="0dp"
                           android:layout_height="wrap_content"
-                          android:text="Aktionen"
+                          android:text="@string/menumanagement_listhead_delete"
                           android:layout_weight="0.3"
                           android:gravity="end|center_horizontal"
                           android:textSize="@dimen/list_headline_textsize"
@@ -96,7 +95,7 @@
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       android:gravity="center"
-                      android:text="Keine Einträge gefunden"/>
+                      android:text="@string/menumanagement_no_results"/>
             <ListView android:layout_width="fill_parent"
                       android:layout_height="match_parent"
                       android:id="@+id/idMenuMangementListView">
@@ -120,7 +119,7 @@
                        android:layout_gravity="center"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Lebensmittel hinzufügen"
+                      android:text="@string/menumanagement_add_grocery"
                       android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout android:orientation="vertical"
@@ -135,7 +134,7 @@
                        android:focusableInTouchMode="false"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Speichern"
+                      android:text="@string/menumanagement_save_menu"
                       android:layout_gravity="center"/>
         </LinearLayout>
     </LinearLayout>

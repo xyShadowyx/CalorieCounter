@@ -2,6 +2,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 
 import java.util.Calendar;
 
@@ -10,9 +11,7 @@ import java.util.Calendar;
  */
 
 public class ApplicationLogic {
-
-    /*Member Variables*/
-
+    /*Member variable*/
     private Data mData;
     private Gui mGui;
 
@@ -27,6 +26,7 @@ public class ApplicationLogic {
      * Initialization.
      */
     private void initGui() {
+        Log.d("Test:", mData.getSelectedYear() + " - " + mData.getSelectedMonth() + " - " + mData.getSelectedDay());
         mGui.setSelectedDate(mData.getSelectedYear(), mData.getSelectedMonth(), mData.getSelectedDay());
     }
 
@@ -48,6 +48,7 @@ public class ApplicationLogic {
      * Leads to the present day.
      */
     public void selectToday() {
+        Intent resultIntent;
         Calendar calendarToday;
         int year, month, day;
 
@@ -56,10 +57,7 @@ public class ApplicationLogic {
         month = calendarToday.get(Calendar.MONTH);
         day = calendarToday.get(Calendar.DAY_OF_MONTH);
 
-        mData.setSelectedYear(year);
-        mData.setSelectedMonth(month);
-        mData.setSelectedDay(day);
-        mGui.setSelectedDate(year, month, day);
+        onDateSelect(year, month, day);
     }
 
     /**
@@ -71,11 +69,6 @@ public class ApplicationLogic {
      */
     public void onDateSelect(int year, int month, int day) {
         Intent resultIntent;
-
-        mGui.setSelectedDate(year, month, day);
-        mData.setSelectedYear(year);
-        mData.setSelectedMonth(month);
-        mData.setSelectedDay(day);
 
         resultIntent = new Intent();
         resultIntent.putExtra("year", year);

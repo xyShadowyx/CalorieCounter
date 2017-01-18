@@ -2,11 +2,11 @@
     <string name="app_name">CalorieCounter</string>
     <string name="action_settings">Settings</string>
 
-
     <!-- ### ACTIVITIES STRING DEFAULT VALUES ARE DEFINED HERE ### -->
     <!-- Default values 'selectamount'-activity -->
     <string name="selectamount_default_pickedgrocery">Error</string>
     <string name="selectamount_default_spinnerstatus">Einheit</string>
+
     <!-- Default values 'quantityunitmanagement'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
@@ -31,64 +31,74 @@
 
 
     <!-- ### LAYOUT STRING VALUES ARE DEFINED HERE ### -->
-    <!-- Value for every layouthead -->
-    <string name="titel">Kalorienzähler</string>
-
     <!-- Values 'calender'-layout -->
+    <string name="calender_title">Kalender</string>
     <string name="calender_today">Heute</string>
-    <string name="calender_calendar">Kalender</string>
 
     <!-- Values 'groceriesearchoverview'-layout -->
-    <string name="groceriesearchoverview_search">Suche</string>
-    <string name="groceriesearchoverview_newGrocery">Neues Lebensmittel</string>
+    <string name="groceriesearchoverview_title">Übersicht</string>
+    <string name="groceriesearchoverview_new_grocery">Neues Lebensmittel</string>
+    <string name="groceriesearchoverview_new_menu">Neues Menü</string>
     <string name="groceriesearchoverview_grocery">Lebensmittel</string>
-    <string name="groceriesearchoverview_newMenu">Neues Menü</string>
+    <string name="groceriesearchoverview_no_results">Keine Einträge vorhanden</string>
+    <string name="groceriesearchoverview_listhead_name">Name</string>
+    <string name="groceriesearchoverview_listhead_actions">Aktionen</string>
 
     <!-- Values 'dailyoverview'-layout -->
-    <string name="dailyoverview_date">Datum</string>
+    <string name="dailyoverview_title">Tagesübersicht</string>
     <string name="dailyoverview_caloriesmax">Ziel</string>
     <string name="dailyoverview_minus">-</string>
-    <string name="dailyoverview_caloriesconsumed">Auf</string>
-    <string name="dailyoverview_caloriesleft">Übrig</string>
-    <string name="dailyoverview_newinput">Neuer Eintrag</string>
-    <string name="dailyoverview_grocery">Lebensmittel</string>
+    <string name="dailyoverview_newentry">Neuer Eintrag</string>
+    <string name="dailyoverview_groceries">Lebensmittel</string>
+    <string name="dailyoverview_menus">Menüs</string>
+    <string name="dailyoverview_units">Einheiten</string>
+    <string name="dailyoverview_listhead_name">Name</string>
+    <string name="dailyoverview_listhead_amount">Menge</string>
+    <string name="dailyoverview_listhead_calories">Kalorien</string>
+    <string name="dailyoverview_listhead_actions">Aktionen</string>
+    <string name="dailyoverview_no_results">Keine Einträge vorhanden</string>
 
     <!-- Values 'menumanagement'-layout -->
-    <string name="menumanagement_menumanagement">Menü-Management</string>
+    <string name="menumanagement_title">Menü verwalten</string>
     <string name="menumanagement_name">Name:</string>
-    <string name="menumanagement_newNameInput">Bitte Bezeichnung angeben...</string>
+    <string name="menumanagement_new_name_input">Bitte Bezeichnung angeben...</string>
     <string name="menumanagement_portion">Portion:</string>
-    <string name="menumanagement_newPortionInput">Bitte Portionsgröße angeben...</string>
-    <string name="menumanagement_lastadd">Zuletzt hinzugefügtes Lebensmittel</string>
-    <string name="menumanagement_newGroceryInput">Hier neues Lebensmittel eintragen</string>
-    <string name="menumanagement_addMenu">Hinzufügen</string>
-    <string name="menumanagement_describtion">Hinzugefügte Lebensmittel</string>
-    <string name="menumanagement_describtion_icons">Verwaltung</string>
+    <string name="menumanagement_new_portion_input">Bitte Portionsgröße angeben...</string>
+    <string name="menumanagement_save_menu">Speichern</string>
+    <string name="menumanagement_add_grocery">Lebensmittel hinzufügen</string>
+    <string name="menumanagement_listhead_name">Name</string>
+    <string name="menumanagement_listhead_amount">Menge</string>
+    <string name="menumanagement_listhead_calories">Kalorien</string>
+    <string name="menumanagement_listhead_delete">Löschen</string>
+    <string name="menumanagement_no_results">Keine Lebensmittel eingetragen</string>
 
 
     <!-- Values 'quantityunitmanagement'-layout -->
-    <string name="quantityunitmanagement_quantityunitmanagement">Mengeneinheiten</string>
-    <string name="quantityunitmanagement_discribtion">Aktuelle Mengeneinheiten</string>
-    <string name="quantityunitmanagement_discribtion_icons">Verwaltung</string>
-    <string name="quantityunitmanagement_exit">Fertig</string>
-    <string name="quantityunitmanagement_add">Hinzufügen</string>
+    <string name="quantityunitmanagement_title">Mengeneinheiten verwalten</string>
     <string name="quantityunitmanagement_lastadd">Zuletzt hinzugefügte Mengeneinheit</string>
-    <string name="quantityunitmanagement_dummy">Platzhalter</string>
+    <string name="quantityunitmanagement_listhead_name">Name</string>
+    <string name="quantityunitmanagement_listhead_delete">Löschen</string>
+    <string name="quantityunitmanagement_no_results">Keine Mengeneinheiten eingetragen</string>
 
     <!-- Values 'grocerymanagement'-layout -->
-    <string name="grocerymanagement_grocerymanagement">Lebensmittel-Management</string>
-    <string name="grocerymanagement_name_name">Name:</string>
-    <string name="grocerymanagement_amount_name">Menge:</string>
-    <string name="grocerymanagement_kcal_name">Kalorien:</string>
+    <string name="grocerymanagement_title">Lebensmittel verwalten</string>
+    <string name="grocerymanagement_name_text">Name:</string>
+    <string name="grocerymanagement_amount_text">Menge:</string>
+    <string name="grocerymanagement_cal_text">Kalorien:</string>
     <string name="grocerymanagement_name">Namensangabe</string>
     <string name="grocerymanagement_amount">Mengenangabe</string>
     <string name="grocerymanagement_kcal">Kalorienangabe</string>
-    <string name="grocerymanagement_add">Hinzufügen</string>
+    <string name="grocerymanagement_save">Speichern</string>
+    <string name="grocerymanagement_listhead_amount">Menge</string>
+    <string name="grocerymanagement_listhead_delete">Löschen</string>
+    <string name="grocerymanagement_no_results">Keine Mengen eingetragen</string>
 
     <!-- Values 'selectamount'-layout -->
-    <string name="selectamount_accept">Übernehmen</string>
+    <string name="selectamount_title_text">Menge auswählen</string>
+    <string name="selectamount_accept">Auswählen</string>
     <string name="selectamount_amount">Mengenangabe</string>
     <string name="selectamount_amount_name">Menge:</string>
+
 
     <!-- ### TOAST STRING VALUES ARE DEFINED HERE #### -->
     <string name="selectamount_emptyamounttoast">Bitte geben Sie einen gültigen Wert ein.</string>
@@ -109,4 +119,6 @@
     <string name="quantityunitmanagement_edittexthint">Mengeneinheit eingeben...</string>
     <string name="menumanagement_addedtodb">Ihr Menü wurde erfolgreich in der Datenbank gespeichert.</string>
     <string name="menumanagement_updatedindb">Ihr Menü wurde erfolgreich geändert.</string>
+    <string name="grocerymanagement_addedtodb">Ihr Lebensmittel wurde erfolgreich in der Datenbank gespeichert.</string>
+    <string name="grocerymanagement_updatedindb">Ihr Lebensmittel wurde erfolgreich geändert.</string>
 </resources>

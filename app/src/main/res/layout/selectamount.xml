@@ -8,7 +8,7 @@
               android:layout_height="wrap_content"
               android:background="@color/headline_color"
               android:padding="@dimen/headline_padding"
-              android:text="Menge auswählen"
+              android:text="@string/selectamount_title_text"
               android:textSize="@dimen/headline_textsize"
               android:textColor="@color/headline_textcolor"
               android:gravity="center"
@@ -20,7 +20,8 @@
               android:textColor="@color/black"
               android:gravity="center"
               android:layout_below="@+id/idSelectAmountTitle"
-              android:layout_alignEnd="@+id/idSelectAmountInputs" android:textStyle="bold"
+              android:layout_alignEnd="@+id/idSelectAmountInputs"
+              android:textStyle="bold"
               android:textSize="@dimen/huge_text"/>
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
@@ -40,7 +41,8 @@
                   android:layout_width="0dp"
                   android:layout_height="wrap_content"
                   android:layout_weight="0.50"
-                  android:hint="@string/selectamount_amount"/>
+                  android:hint="@string/selectamount_amount"
+                  android:inputType="numberDecimal"/>
         <Spinner android:id="@+id/idSelectAmountSpinner"
                  android:layout_width="0dp"
                  android:layout_height="match_parent"
@@ -66,7 +68,7 @@
                        android:longClickable="true"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Auswählen"
+                      android:text="@string/selectamount_accept"
                       android:layout_gravity="center"/>
         </LinearLayout>
     </LinearLayout>

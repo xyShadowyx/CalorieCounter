@@ -4,18 +4,16 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:clickable="false">
-
     <TextView android:id="@+id/idDailyoverviewTitle"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:background="@color/headline_color"
               android:padding="@dimen/headline_padding"
-              android:text="Tagesübersicht"
+              android:text="@string/dailyoverview_title"
               android:textSize="@dimen/headline_textsize"
               android:textColor="@color/headline_textcolor"
               android:gravity="center"
               android:textStyle="bold"/>
-
     <LinearLayout android:id="@+id/idDailyoverviewDateHolder"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
@@ -58,7 +56,8 @@
                   android:maxLength="5"
                   android:textSize="@dimen/small_text"
                   android:hint="@string/dailyoverview_caloriesmax"
-                  android:textColor="@color/black"/>
+                  android:textColor="@color/black"
+                  android:inputType="number"/>
         <TextView android:layout_width="0dp"
                   android:layout_height="fill_parent"
                   android:gravity="center"
@@ -72,7 +71,7 @@
                   android:gravity="center"
                   android:layout_weight="1"
                   android:textSize="@dimen/small_text"
-                  android:text="@string/dailyoverview_caloriesconsumed"
+                  android:text=""
                   android:textColor="@color/black"/>
         <TextView android:layout_width="0dp"
                   android:layout_height="fill_parent"
@@ -87,7 +86,7 @@
                   android:gravity="center"
                   android:layout_weight="1"
                   android:textSize="@dimen/small_text"
-                  android:text="@string/dailyoverview_caloriesleft"
+                  android:text=""
                   android:textColor="@color/black"/>
     </LinearLayout>
     <RelativeLayout android:id="@+id/idDailyoverviewEntryList"
@@ -107,24 +106,25 @@
                       android:weightSum="1">
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
-                      android:text="Name"
                       android:layout_weight="0.4"
                       android:textSize="@dimen/list_headline_textsize"
-                      android:textColor="@color/list_headline_textcolor"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                      android:text="Menge"
+                      android:textColor="@color/list_headline_textcolor"
+                      android:text="@string/dailyoverview_listhead_name"/>
+            <TextView android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:text="@string/dailyoverview_listhead_amount"
                       android:layout_weight="0.15"
                       android:textSize="@dimen/list_headline_textsize"
                       android:textColor="@color/list_headline_textcolor"/>
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
-                      android:text="Kalorien"
+                      android:text="@string/dailyoverview_listhead_calories"
                       android:layout_weight="0.15"
                       android:textSize="@dimen/list_headline_textsize"
                       android:textColor="@color/list_headline_textcolor"/>
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
-                      android:text="Aktionen"
+                      android:text="@string/dailyoverview_listhead_actions"
                       android:layout_weight="0.3"
                       android:gravity="center|end|center_horizontal"
                       android:textSize="@dimen/list_headline_textsize"
@@ -134,7 +134,7 @@
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:gravity="center"
-                  android:text="Keine Einträge gefunden"
+                  android:text="@string/dailyoverview_no_results"
                   android:layout_below="@+id/idDailyoverviewListHeadline"
                   android:layout_alignParentStart="true"/>
         <ListView android:id="@+id/idDailyoverviewListView"
@@ -164,7 +164,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Neuer Eintrag"
+                    android:text="@string/dailyoverview_newentry"
                     android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout
@@ -179,7 +179,7 @@
                        android:layout_gravity="center"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Lebensmittel"
+                      android:text="@string/dailyoverview_groceries"
                       android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout
@@ -194,7 +194,7 @@
                        android:layout_gravity="center"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Menüs"
+                      android:text="@string/dailyoverview_menus"
                       android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout android:orientation="vertical"
@@ -209,7 +209,7 @@
                        android:focusableInTouchMode="false"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Einheiten"
+                      android:text="@string/dailyoverview_units"
                       android:layout_gravity="center"/>
         </LinearLayout>
     </LinearLayout>

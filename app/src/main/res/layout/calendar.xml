@@ -3,18 +3,16 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:clickable="true">
-
     <TextView android:id="@+id/idCalendarTitel"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:background="@color/headline_color"
               android:padding="@dimen/headline_padding"
-              android:text="Kalendar"
+              android:text="@string/calender_title"
               android:textSize="@dimen/headline_textsize"
               android:textColor="@color/headline_textcolor"
               android:gravity="center"
               android:textStyle="bold"/>
-
     <Button android:id="@+id/idCalendarTodayButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

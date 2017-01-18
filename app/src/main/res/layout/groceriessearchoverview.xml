@@ -7,7 +7,7 @@
               android:layout_height="wrap_content"
               android:background="@color/headline_color"
               android:padding="@dimen/headline_padding"
-              android:text="@string/titel"
+              android:text="@string/groceriesearchoverview_title"
               android:textSize="@dimen/headline_textsize"
               android:textColor="@color/headline_textcolor"
               android:gravity="center"
@@ -23,7 +23,6 @@
         <SearchView android:id="@+id/idGroceriesSearchOverviewSearchView"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Search..."
                     android:maxLength="32"
                     android:layout_centerHorizontal="true"/>
         <LinearLayout android:layout_height="wrap_content"
@@ -35,14 +34,14 @@
                       android:layout_alignParentStart="false">
             <TextView android:layout_height="wrap_content"
                       android:layout_width="0dp"
-                      android:text="Name"
+                      android:text="@string/groceriesearchoverview_listhead_name"
                       android:layout_weight="0.7"
                       android:textColor="@color/list_headline_textcolor"
                       android:textSize="@dimen/list_headline_textsize"/>
             <TextView android:layout_height="wrap_content"
                       android:layout_width="0dp"
                       android:gravity="end|center_horizontal"
-                      android:text="Aktionen"
+                      android:text="@string/groceriesearchoverview_listhead_actions"
                       android:layout_weight="0.3"
                       android:textColor="@color/list_headline_textcolor"
                       android:textSize="@dimen/list_headline_textsize"/>
@@ -60,7 +59,7 @@
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:gravity="center"
-                  android:text="Keine Einträge gefunden"
+                  android:text="@string/groceriesearchoverview_no_results"
                   android:layout_below="@+id/idGroceriesSearchOverviewListHeadline"
                   android:layout_alignParentStart="true"/>
     </RelativeLayout>
@@ -81,7 +80,7 @@
                        android:layout_gravity="center"/>
             <TextView android:layout_height="wrap_content"
                       android:layout_width="wrap_content"
-                      android:text="Neues Menü"
+                      android:text="@string/groceriesearchoverview_new_menu"
                       android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout android:layout_height="match_parent"
@@ -95,7 +94,7 @@
                        android:layout_gravity="center"/>
             <TextView android:layout_height="wrap_content"
                       android:layout_width="wrap_content"
-                      android:text="Neues Lebensmittel"
+                      android:text="@string/groceriesearchoverview_new_grocery"
                       android:layout_gravity="center"/>
         </LinearLayout>
     </LinearLayout>

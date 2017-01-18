@@ -5,6 +5,7 @@ import android.widget.CalendarView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * @author Florian Obladen.

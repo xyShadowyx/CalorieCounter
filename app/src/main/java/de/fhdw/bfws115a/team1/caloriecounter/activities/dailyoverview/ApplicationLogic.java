@@ -31,6 +31,7 @@ public class ApplicationLogic {
     private void initGui() {
         mGui.setDate(mData.getSelectedDay(), mData.getSelectedMonth(), mData.getSelectedYear());
         mGui.setUsedCalories(mData.getUsedCalories());
+        mGui.setMaxCalories(mData.getMaxCalories());
         mGui.getEntryListView().setEmptyView(mGui.getEmptyListTextView());
         calculateCalories();
     }
@@ -252,7 +253,7 @@ public class ApplicationLogic {
             databaseEntry.setAmount(selectedAmount);
             databaseEntityManager.saveGroceryEntry((DatabaseGroceryEntry) databaseEntry);
         }
-        calculateCalories();
+        reload();
     }
 
     public void onCaloriesLimitChanged(String s) {

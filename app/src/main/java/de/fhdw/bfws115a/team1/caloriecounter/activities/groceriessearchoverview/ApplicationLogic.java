@@ -2,6 +2,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import de.fhdw.bfws115a.team1.caloriecounter.database.*;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
@@ -28,8 +29,6 @@ public class ApplicationLogic {
      * Initialization.
      */
     private void initGui() {
-        ArrayList<DatabaseGroceriesEntity> mDatabaseGroceriesEntityList;
-        mDatabaseGroceriesEntityList = mData.getDatabaseGroceriesEntityList();
         mGui.getListView().setEmptyView(mGui.getEmptyListTextView());
     }
 
@@ -59,6 +58,7 @@ public class ApplicationLogic {
      * Reloads the activity.
      */
     public void reload() {
+        Log.d("Reload!", "Now!");
         mData.getActivity().finish();
         mData.getActivity().startActivity(mData.getActivity().getIntent());
     }

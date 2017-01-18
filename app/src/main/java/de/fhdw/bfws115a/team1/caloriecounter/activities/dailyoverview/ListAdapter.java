@@ -77,7 +77,7 @@ public class ListAdapter extends BaseAdapter {
         listViewHolder.setDatabaseEntry(databaseEntry);
         listViewHolder.getNameText().setText(String.format("%s", databaseEntry.getName()));
         listViewHolder.getAmountText().setText(String.format("%.2f %s", databaseEntry.getAmount(), databaseEntry.getUnitName()));
-        listViewHolder.getCaloriesText().setText(String.format("%d", databaseEntry.getCalories()));
+        listViewHolder.getCaloriesText().setText(String.format("%d %s", databaseEntry.getCalories(), "kcal"));
         return convertView;
     }
 }

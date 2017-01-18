@@ -1,5 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -87,7 +88,9 @@ public class ApplicationLogic {
      * If called, deletes the selected quantity unit.
      * It also deletes the selected quantity unit from the selected grocery entity.
      */
-    public void onDeleteQuantityClicked() {
+    public void onDeleteQuantityClicked(GroceryUnit groceryUnit) {
+        mData.getGroceryUnits().remove(groceryUnit);
+        mListAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -108,7 +111,10 @@ public class ApplicationLogic {
      */
     public void createNewGrocery() {
         DatabaseEntityManager databaseEntityManager;
+        Context context;
+
         databaseEntityManager = mData.getDatabaseEntityManager();
+        context = mData.getActivity().getApplicationContext();
 
         if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getGroceryName())
                 && databaseEntityManager.isGroceryNameAvailable(mData.getGroceryName())) {
@@ -118,20 +124,16 @@ public class ApplicationLogic {
                 newGrocery = new Grocery(mData.getGroceryName(), mData.getGroceryCalories());
                 newGrocery.getGroceryUnits().addAll(mData.getGroceryUnits());
                 databaseEntityManager.createGrocery(newGrocery);
+
+                Toast.makeText(context, R.string.grocerymanagement_addedtodb, Toast.LENGTH_SHORT).show();
+                mData.getActivity().setResult(Activity.RESULT_OK);
+                mData.getActivity().finish();
             } else {
-                Context context;
-                Toast toast;
-                context = mData.getActivity().getApplicationContext();
-                toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
-                toast.show();
+                Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT).show();
             }
 
         } else {
-            Context context;
-            Toast toast;
-            context = mData.getActivity().getApplicationContext();
-            toast = Toast.makeText(context, R.string.quantityunitmanagement_existinggroceryindbtoast, Toast.LENGTH_SHORT);
-            toast.show();
+            Toast.makeText(context, R.string.quantityunitmanagement_existinggroceryindbtoast, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -140,7 +142,10 @@ public class ApplicationLogic {
      */
     public void editGrocery() {
         DatabaseEntityManager databaseEntityManager;
+        Context context;
+
         databaseEntityManager = mData.getDatabaseEntityManager();
+        context = mData.getActivity().getApplicationContext();
         if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getGroceryName())
                 && (mData.getInputGrocery().getName() == mData.getGroceryName()
                 || (databaseEntityManager.isGroceryNameAvailable(mData.getGroceryName()) && mData.getInputGrocery().getName() != mData.getGroceryName()))) {
@@ -150,23 +155,19 @@ public class ApplicationLogic {
                 mData.getInputGrocery().setKcal(mData.getGroceryCalories());
 
                 mData.getInputGrocery().getGroceryUnits().clear();
-                mData.getGroceryUnits().addAll(mData.getGroceryUnits());
+                mData.getInputGrocery().getGroceryUnits().addAll(mData.getGroceryUnits());
 
                 databaseEntityManager.saveGrocery(mData.getInputGrocery());
+                Toast.makeText(context, R.string.grocerymanagement_updatedindb, Toast.LENGTH_SHORT).show();
+
+                mData.getActivity().setResult(Activity.RESULT_OK);
+                mData.getActivity().finish();
             } else {
-                Context context;
-                Toast toast;
-                context = mData.getActivity().getApplicationContext();
-                toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
-                toast.show();
+                Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT).show();
             }
 
         } else {
-            Context context;
-            Toast toast;
-            context = mData.getActivity().getApplicationContext();
-            toast = Toast.makeText(context, R.string.quantityunitmanagement_existinggroceryindbtoast, Toast.LENGTH_SHORT);
-            toast.show();
+            Toast.makeText(context, R.string.quantityunitmanagement_existinggroceryindbtoast, Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -99,7 +99,7 @@ public class Gui {
 
     /* Setter methods */
     public void setDate(int day, int month, int year) {
-        mTodayDateText.setText(day + "." + (month + 1) + "." + year);
+        mTodayDateText.setText(String.format("%02d.%02d.%04d", day, (month + 1), year));
     }
 
     public void setUsedCalories(int amount) {
