@@ -4,6 +4,10 @@ import android.view.View;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class ListButtonClickListener implements View.OnClickListener {
 
     /* Member variables */
@@ -14,6 +18,12 @@ public class ListButtonClickListener implements View.OnClickListener {
         mApplicationLogic = applicationLogic;
         mDatabaseUnit = databaseUnit;
     }
+
+    /**
+     * Sets a DatabaseUnit.
+     *
+     * @param databaseUnit The DatabaseUnit which should be set.
+     */
 
     public void setDatabaseUnit(DatabaseUnit databaseUnit) {
         mDatabaseUnit = databaseUnit;

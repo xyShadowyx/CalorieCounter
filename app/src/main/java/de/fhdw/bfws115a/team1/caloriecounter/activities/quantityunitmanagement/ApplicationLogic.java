@@ -9,6 +9,10 @@ import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 import de.fhdw.bfws115a.team1.caloriecounter.utilities.Validation;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class ApplicationLogic {
 
     /* Member variables */

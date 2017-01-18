@@ -11,6 +11,10 @@ import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
 
 import java.util.ArrayList;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
 
     /* Member variables */

@@ -5,9 +5,14 @@ import android.content.Intent;
 
 import java.util.Calendar;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class ApplicationLogic {
 
-    /* Member variables */
+    /*Member Variables*/
+
     private Data mData;
     private Gui mGui;
 

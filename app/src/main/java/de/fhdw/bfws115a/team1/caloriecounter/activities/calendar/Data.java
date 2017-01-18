@@ -5,15 +5,20 @@ import android.os.Bundle;
 
 import java.util.Calendar;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class Data {
 
-    /* Member variable */
+    /*Member variable*/
     private Init mActivity;
     private int mSelectedYear;
     private int mSelectedMonth;
     private int mSelectedDay;
 
-    /* Keys */
+    /*Keys*/
+
     private final String KEYSELECTEDYEAR = "calendar1";
     private final String KEYSELECTEDMONTH = "calendar2";
     private final String KEYSELECTEDDAY = "calendar3";

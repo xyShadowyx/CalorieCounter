@@ -7,6 +7,10 @@ import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class Data {
 
     /* Member variables */
