@@ -4,6 +4,10 @@ import android.view.View;
 import android.widget.Button;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class ButtonClickListener implements Button.OnClickListener {
     private ApplicationLogic mApplicationLogic;
 
