@@ -1,5 +1,9 @@
 package de.fhdw.bfws115a.team1.caloriecounter.utilities;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class Validation {
 
     /**
