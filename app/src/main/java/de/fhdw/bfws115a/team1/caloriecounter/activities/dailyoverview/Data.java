@@ -22,6 +22,8 @@ public class Data {
     private int mSelectedDay;
 
     private int mUsedCalories;
+    private int mMaxCalories;
+    private int mLeftCalories;
 
     /* Keys */
     private final String KEY_DAILYOVERVIEW_SELECTED_YEAR = "dailyoverview1";
@@ -51,6 +53,8 @@ public class Data {
             mDatabaseEntryList.addAll(mDatabaseEntityManager.getEntriesOf(mSelectedYear, mSelectedMonth, mSelectedDay));
 
             mUsedCalories = 0;
+            mMaxCalories = 0;
+            mLeftCalories = 0;
             mEntryToCopy = null;
             mEntryToEdit = null;
 
@@ -117,6 +121,14 @@ public class Data {
     public int getUsedCalories() {
         return mUsedCalories;
     }
+
+    public int getMaxCalories() {
+        return mMaxCalories;
+    }
+
+    public int getLeftCalories() {
+        return mLeftCalories;
+    }
     /* Setter Methods */
     public void setEntryToCopy(DatabaseEntry entryToCopy) {
         this.mEntryToCopy = entryToCopy;
@@ -128,5 +140,13 @@ public class Data {
 
     public void setUsedCalories(int amount) {
         mUsedCalories = amount;
+    }
+
+    public void setLeftCalories(int amount) {
+        mLeftCalories = amount;
+    }
+
+    public void setMaxCalories(int amount) {
+        mMaxCalories = amount;
     }
 }

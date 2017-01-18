@@ -1,13 +1,12 @@
-package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
+package de.fhdw.bfws115a.team1.caloriecounter.activities.dailyoverview;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
 /**
- * @author Niklas Lammers.
+ * @author Niklas Lammers and Florian Obladen.
  */
 public class TextChangeListener implements TextWatcher {
 
@@ -31,25 +30,16 @@ public class TextChangeListener implements TextWatcher {
      */
     @Override
     public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-        Log.d("Debug", "OnChangeListener called: " + charSequence);
         switch (mView.getId()) {
-            case R.id.idGroceryManagementGroceryName: {
-                mApplicationLogic.onGroceryNameChanged(charSequence.toString());
-                break;
-            }
-            case R.id.idGroceryManagementCalories: {
-                mApplicationLogic.onGroceryCaloriesChanged(charSequence.toString());
-                break;
-            }
-            case R.id.idGroceryManagementSelectedAmount: {
-                mApplicationLogic.onNewUnitAmountChanged(charSequence.toString());
+            case R.id.idDailyoverviewCaloriesMax: {
+                mApplicationLogic.onCaloriesLimitChanged(charSequence.toString());
                 break;
             }
         }
     }
 
     /**
-     * Never used in out application.
+     * Never used in our application.
      *
      * @param charSequence
      * @param i

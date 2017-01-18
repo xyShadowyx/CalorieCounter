@@ -19,8 +19,8 @@ public class ListViewHolder {
         mApplicationLogic = applicationLogic;
         mDatabaseUnit = null;
 
-        mNameText = (TextView) view.findViewById(R.id.idQuantityUnitManagementAddNewQuantityUnit);
-        mDeleteImage = (ImageView) view.findViewById(R.id.idQuantityUnitManagementDeleteQuantityUnit);
+        mNameText = (TextView) view.findViewById(R.id.idQuantityUnitManagementRowAddNewQuantityUnit);
+        mDeleteImage = (ImageView) view.findViewById(R.id.idQuantityUnitManagementRowDeleteQuantityUnit);
 
         mListButtonClickListener = new ListButtonClickListener(mApplicationLogic, mDatabaseUnit);
         mDeleteImage.setOnClickListener(mListButtonClickListener);

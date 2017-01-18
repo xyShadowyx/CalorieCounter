@@ -95,8 +95,13 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
             listViewHolder = (ListViewHolder) convertView.getTag();
         }
         listViewHolder.setFixGroceryEntity(fixGroceryEntity);
-        listViewHolder.getNameText().setText(
-                String.format("%s (%.2f %s)", fixGroceryEntity.getName(), fixGroceryEntity.getAmount(), fixGroceryEntity.getUnit().getName()));
+        listViewHolder.getNameText().setText(fixGroceryEntity.getName());
+        listViewHolder.getAmountText().setText(
+                String.format("%.2f %s", fixGroceryEntity.getAmount(), fixGroceryEntity.getUnit().getName())
+        );
+        listViewHolder.getCaloriesText().setText(
+                String.format("%d %s", fixGroceryEntity.getKcal(), "kcal")
+        );
         return convertView;
     }
 }

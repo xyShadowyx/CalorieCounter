@@ -21,10 +21,10 @@ public class ListButtonClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.idGroceriesSearchOverviewDeleteButton:
+            case R.id.idGroceriesSearchOverviewRowDeleteButton:
                 mApplicationLogic.deleteItem(mDatabaseGroceriesEntity);
                 break;
-            case R.id.idGroceriesSearchOverviewSettingButton:
+            case R.id.idGroceriesSearchOverviewRowSettingButton:
                 mApplicationLogic.editItem(mDatabaseGroceriesEntity);
                 break;
         }

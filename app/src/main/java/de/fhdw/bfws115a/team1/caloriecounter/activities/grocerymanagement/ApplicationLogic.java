@@ -53,6 +53,7 @@ public class ApplicationLogic {
     private void initGui() {
         mGui.setGroceryNameText(mData.getGroceryName());
         mGui.setGroceryCaloriesAmount(mData.getGroceryCalories());
+        mGui.getGroceryUnitsList().setEmptyView(mGui.getEmptyListTextView());
     }
 
     /**
@@ -72,9 +73,7 @@ public class ApplicationLogic {
      * The added new quantity unit will also be saved in the personal database.
      */
     public void onAddNewQuantityClicked() {
-        Log.d("Debug", "onAdd Clicked: " + mData.getNewUnitAmount());
         if (Validation.checkNumberValue(mData.getNewUnitAmount())) {
-            Log.d("Debug", "onAdd Clicked2");
             mData.getGroceryUnits().add(new GroceryUnit(new Unit(mData.getNewUnitName()), mData.getNewUnitAmount()));
             mListAdapter.notifyDataSetChanged();
         } else {
@@ -117,10 +116,8 @@ public class ApplicationLogic {
             if (Validation.checkNumberValue(mData.getGroceryCalories())) {
                 Grocery newGrocery;
                 newGrocery = new Grocery(mData.getGroceryName(), mData.getGroceryCalories());
-                for (GroceryUnit gu : mData.getGroceryUnits()) {
-                    newGrocery.addGroceryUnit(gu);
-                }
-                DatabaseGrocery databaseGrocery = databaseEntityManager.createGrocery(newGrocery);
+                newGrocery.getGroceryUnits().addAll(mData.getGroceryUnits());
+                databaseEntityManager.createGrocery(newGrocery);
             } else {
                 Context context;
                 Toast toast;
@@ -151,12 +148,10 @@ public class ApplicationLogic {
             if (Validation.checkNumberValue(mData.getGroceryCalories())) {
                 mData.getInputGrocery().setName(mData.getGroceryName());
                 mData.getInputGrocery().setKcal(mData.getGroceryCalories());
-                for (GroceryUnit gu : mData.getInputGrocery().getGroceryUnits()) {
-                    mData.getInputGrocery().removeGroceryUnit(gu);
-                }
-                for (GroceryUnit gu : mData.getGroceryUnits()) {
-                    mData.getInputGrocery().addGroceryUnit(gu);
-                }
+
+                mData.getInputGrocery().getGroceryUnits().clear();
+                mData.getGroceryUnits().addAll(mData.getGroceryUnits());
+
                 databaseEntityManager.saveGrocery(mData.getInputGrocery());
             } else {
                 Context context;

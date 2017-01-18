@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="amount_array">
-        <item>Gramm</item>
-        <item>Tassen</item>
-        <item>Löffel</item>
-    </string-array>
 </resources>

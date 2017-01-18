@@ -39,6 +39,7 @@ public class ApplicationLogic {
     private void initGui() {
         mGui.setMenuNameText(mData.getMenuName());
         mGui.setPortionSizeAmount(mData.getPortionSize());
+        mGui.getListView().setEmptyView(mGui.getEmptyListTextView());
     }
 
     /**
@@ -179,7 +180,6 @@ public class ApplicationLogic {
                 for (FixGrocery fg : mData.getMenuFixGroceries()) {
                     mData.getInputMenu().addGrocery(new FixGrocery(fg));
                 }
-                Log.d("Test: ", mData.getInputMenu().toString());
                 mDatabaseEntityManager.saveMenu(mData.getInputMenu());
                 Context context;
                 Toast toast;
