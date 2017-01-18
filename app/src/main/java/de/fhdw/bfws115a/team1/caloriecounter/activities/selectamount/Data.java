@@ -55,16 +55,13 @@ public class Data {
             }
             if (groceriesEntity instanceof Menu) {
                 Menu menu;
-
                 menu = (Menu) groceriesEntity;
                 mPickedGrocery = menu.getName();
                 mUnitList.add("Portion");
-
                 mSelectedAmount = menu.getAmount();
             }
             if (groceriesEntity instanceof FixGrocery) {
                 FixGrocery fixGrocery;
-
                 fixGrocery = (FixGrocery) groceriesEntity;
                 mPickedGrocery = fixGrocery.getName();
                 mUnitList.add(fixGrocery.getUnit().getName());
