@@ -53,7 +53,7 @@ public class Data {
             mDatabaseEntryList.addAll(mDatabaseEntityManager.getEntriesOf(mSelectedYear, mSelectedMonth, mSelectedDay));
 
             mUsedCalories = 0;
-            mMaxCalories = 0;
+            mMaxCalories = Globals.CALORIES_LIMIT;
             mLeftCalories = 0;
             mEntryToCopy = null;
             mEntryToEdit = null;
@@ -148,5 +148,6 @@ public class Data {
 
     public void setMaxCalories(int amount) {
         mMaxCalories = amount;
+        Globals.CALORIES_LIMIT = amount;
     }
 }

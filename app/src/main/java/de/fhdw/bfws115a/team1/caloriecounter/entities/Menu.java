@@ -57,7 +57,7 @@ public class Menu extends GroceriesEntity {
         mKcal = 0;
         for (FixGrocery fg : getFixGroceries()) {
             fg.setAmount((fg.getAmount() / mAmount) * amount);
-            fg.setKcal((int) Math.round(((fg.getAmount() / mAmount) * amount) * fg.getKcal()));
+            fg.setKcal((int) Math.round((fg.getKcal() / mAmount) * amount));
             mKcal += fg.getKcal();
         }
         mAmount = amount;

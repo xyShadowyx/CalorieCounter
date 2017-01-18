@@ -9,7 +9,7 @@
               android:layout_height="wrap_content"
               android:background="@color/headline_color"
               android:padding="@dimen/headline_padding"
-              android:text="Lebensmittel verwalten"
+              android:text="@string/grocerymanagement_title"
               android:textSize="@dimen/headline_textsize"
               android:textColor="@color/headline_textcolor"
               android:gravity="center"
@@ -31,7 +31,7 @@
                 <TextView android:layout_width="0dp"
                           android:layout_height="match_parent"
                           android:layout_weight="0.15"
-                          android:text="@string/grocerymanagement_name_name"
+                          android:text="@string/grocerymanagement_name_text"
                           android:textColor="@color/black"
                           android:gravity="center_vertical"/>
                 <EditText android:layout_width="0dp"
@@ -46,7 +46,7 @@
                 <TextView android:layout_width="0dp"
                           android:layout_height="match_parent"
                           android:layout_weight="0.15"
-                          android:text="@string/grocerymanagement_kcal_name"
+                          android:text="@string/grocerymanagement_cal_text"
                           android:textColor="@color/black"
                           android:gravity="center_vertical"/>
                 <EditText android:layout_width="0dp"
@@ -61,7 +61,7 @@
                           android:layout_height="match_parent">
                 <TextView android:layout_width="0dp"
                           android:layout_height="match_parent"
-                          android:text="@string/grocerymanagement_amount_name"
+                          android:text="@string/grocerymanagement_amount_text"
                           android:textColor="@color/black"
                           android:gravity="center_vertical"
                           android:layout_weight="0.15"/>
@@ -82,8 +82,7 @@
                     <ImageView android:layout_width="wrap_content"
                                android:layout_height="match_parent"
                                android:id="@+id/idGroceryManagementAddAmount"
-                               android:src="@drawable/plus_32"
-                               android:layout_weight="0.1"/>
+                               android:src="@drawable/plus_32"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -100,13 +99,13 @@
                           android:weightSum="1">
                 <TextView android:layout_width="0dp"
                           android:layout_height="wrap_content"
-                          android:text="Menge"
+                          android:text="@string/grocerymanagement_listhead_amount"
                           android:layout_weight="0.85"
                           android:textSize="@dimen/list_headline_textsize"
                           android:textColor="@color/list_headline_textcolor"/>
                 <TextView android:layout_width="0dp"
                           android:layout_height="wrap_content"
-                          android:text="Löschen"
+                          android:text="@string/grocerymanagement_listhead_delete"
                           android:layout_weight="0.15"
                           android:gravity="end|center_horizontal"
                           android:textSize="@dimen/list_headline_textsize"
@@ -115,7 +114,7 @@
             <TextView android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       android:gravity="center"
-                      android:text="Keine Einträge gefunden"
+                      android:text="@string/grocerymanagement_no_results"
                       android:id="@+id/idGroceryManagementNoResults"/>
             <ListView android:id="@+id/idGroceryManagementListView"
                       android:layout_width="fill_parent"
@@ -143,7 +142,7 @@
                        android:focusableInTouchMode="false"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Speichern"
+                      android:text="@string/grocerymanagement_save"
                       android:layout_gravity="center"/>
         </LinearLayout>
     </LinearLayout>

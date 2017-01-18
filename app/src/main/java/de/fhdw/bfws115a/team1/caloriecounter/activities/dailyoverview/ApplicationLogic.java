@@ -31,6 +31,7 @@ public class ApplicationLogic {
     private void initGui() {
         mGui.setDate(mData.getSelectedDay(), mData.getSelectedMonth(), mData.getSelectedYear());
         mGui.setUsedCalories(mData.getUsedCalories());
+        mGui.setMaxCalories(mData.getMaxCalories());
         mGui.getEntryListView().setEmptyView(mGui.getEmptyListTextView());
         calculateCalories();
     }
