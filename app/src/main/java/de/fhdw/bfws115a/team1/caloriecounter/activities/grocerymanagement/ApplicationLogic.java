@@ -59,7 +59,8 @@ public class ApplicationLogic {
      * Initialization.
      */
     private void initAdapter() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(mData.getActivity(), android.R.layout.simple_list_item_1, mData.getUnitList());
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<String>(mData.getActivity(), android.R.layout.simple_list_item_1, mData.getUnitList());
         mGui.getUnitSpinner().setAdapter(adapter);
 
         mListAdapter = new ListAdapter(mData, this);
