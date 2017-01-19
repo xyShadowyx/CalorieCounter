@@ -62,7 +62,7 @@ public class Init extends Activity {
     }
 
     /**
-     * See activity´s onActivityResult.
+     * See activity's onActivityResult.
      * E.g. you start a specific activity and get a result as an Intent-object back.
      * In this case the result will be a FixGrocery entity which will be retrieved and
      * ultimately added to a menu.

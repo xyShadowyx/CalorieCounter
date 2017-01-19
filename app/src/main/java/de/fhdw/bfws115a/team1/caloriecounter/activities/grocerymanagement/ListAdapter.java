@@ -35,9 +35,9 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
 
     /**
      * Gets the layout of one list entry and fills it with additional list items.
-     * If it´s not issued yet, it creates one.
+     * If it's not issued yet, it creates one.
      *
-     * @param position    The position of the item within the adapter´s data set of the item whose view is wanted.
+     * @param position    The position of the item within the adapter's data set of the item whose view is wanted.
      * @param convertView The view which should be get.
      * @param parent      The parent view.
      * @return The Layout of one list entry.
