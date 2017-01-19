@@ -7,11 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Viktor on 18.11.2016.
+ * This class manages all entities.
+ *
+ * @author Viktor Schroeder
  */
 public class DatabaseEntityManager {
     private DatabaseHelper mDatabaseHelper;
 
+    /**
+     * Constructor
+     *
+     * @param context activity context
+     */
     public DatabaseEntityManager(Context context) {
         mDatabaseHelper = new DatabaseHelper(context);
     }
@@ -150,7 +157,7 @@ public class DatabaseEntityManager {
         return mDatabaseHelper.isUnitNameAvailable(name);
     }
 
-    /* Get Entiries*/
+    /* Get Entiries */
     public ArrayList<DatabaseEntry> getEntriesOf(int year, int month, int day)  {
         return mDatabaseHelper.getEntriesOf(year, month, day);
     }

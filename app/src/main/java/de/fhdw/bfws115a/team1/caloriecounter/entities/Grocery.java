@@ -3,19 +3,32 @@ package de.fhdw.bfws115a.team1.caloriecounter.entities;
 import java.util.ArrayList;
 
 /**
- * Created by Viktor on 15.11.2016.
+ * This class contains the structure of a grocery.
+ *
+ * @author Viktor Schroeder
  */
-
 public class Grocery extends GroceriesEntity {
+    /* Member variables */
     private ArrayList<GroceryUnit> mGroceryUnits;
-    private int mKcal;
+    private int mCalories;
 
+    /**
+     * Constructor
+     *
+     * @param name name of grocery
+     * @param kcal calories of grocery
+     */
     public Grocery(String name, int kcal) {
         super(name);
         mGroceryUnits = new ArrayList<GroceryUnit>();
-        mKcal = kcal;
+        mCalories = kcal;
     }
 
+    /**
+     * Constructor for copies.
+     *
+     * @param grocery to copy Grocery
+     */
     public Grocery(Grocery grocery) {
         this(grocery.getName(), grocery.getKcal());
         for(GroceryUnit gu : grocery.getGroceryUnits()) {
@@ -23,10 +36,21 @@ public class Grocery extends GroceriesEntity {
         }
     }
 
+    /**
+     * Get all added GroceryUnits.
+     *
+     * @return ArrayList of GroceryUnits
+     */
     public ArrayList<GroceryUnit> getGroceryUnits() {
         return mGroceryUnits;
     }
 
+    /**
+     * Add a GroceryUnit.
+     *
+     * @param groceryUnit fixed unit with amount to add to grocery
+     * @return true if add was successful
+     */
     public boolean addGroceryUnit(GroceryUnit groceryUnit) {
         for(GroceryUnit gu : mGroceryUnits) {
             if(gu.equals(groceryUnit)) return false;
@@ -35,31 +59,41 @@ public class Grocery extends GroceriesEntity {
         return true;
     }
 
+    /**
+     * Removes a GroceryUnit.
+     *
+     * @param groceryUnit GroceryUnit to remove
+     * @return true if remove was successful
+     */
     public boolean removeGroceryUnit(GroceryUnit groceryUnit) {
         return mGroceryUnits.remove(groceryUnit);
-        /*GroceryUnit removeGroceryUnit = null;
-        for(GroceryUnit gu : mGroceryUnits) {
-            if(gu.equals(groceryUnit)) {
-                removeGroceryUnit = gu;
-                break;
-            }
-        }
-        if(removeGroceryUnit != null) {
-            mGroceryUnits.remove(removeGroceryUnit);
-        }
-        return false;*/
     }
 
+    /**
+     * Get the calories of this grocery.
+     *
+     * @return number of calories
+     */
     public int getKcal() {
-        return mKcal;
+        return mCalories;
     }
 
+    /**
+     * Set the calories of this grocery.
+     *
+     * @param mKcal number of calories
+     */
     public void setKcal(int mKcal) {
-        this.mKcal = mKcal;
+        this.mCalories = mKcal;
     }
 
+    /**
+     * Converts this object to a readable output.
+     *
+     * @return this object as a text
+     */
     public String toString() {
-        //TODO: add GroceryUnits to string
+        /* TODO: add GroceryUnits to string */
         return "Grocery(Name: " + getName() + ")";
     }
 }

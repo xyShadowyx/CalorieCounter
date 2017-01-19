@@ -10,23 +10,19 @@ import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
- * Created by Viktor on 15.11.2016.
- * <p>
- * DatabaseHelper handles the database
+ * This class handles database actions.
+ *
+ * @author Viktor Schroeder
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    /**
-     * TODO: add close method after using cursor
-     * TODO: comprimize getAll methods by adding where clause
-     */
+    /* Member variables */
     public Context mContext;
 
+    /* Database structure variables */
     public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "database.db";
 
@@ -151,11 +147,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UNIT_NAME + " VARCHAR (" + SHORT_NAME_LENGTH + ")"
             + ");";
 
+    /**
+     * Constructor
+     *
+     * @param context activity context
+     */
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         mContext = context;
     }
 
+    /**
+     * Generate database on first start
+     *
+     * @param sqLiteDatabase database connection
+     */
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_TABLE_GROCERY);
@@ -169,13 +175,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues values;
         String[] undeletable = mContext.getResources().getStringArray(R.array.undeletable_units);
-        for(int i = 0; i < undeletable.length; i++) {
+        for (int i = 0; i < undeletable.length; i++) {
             values = new ContentValues();
             values.put(UNIT_NAME, undeletable[i]);
             sqLiteDatabase.insert(TABLE_UNIT, null, values);
         }
     }
 
+    /**
+     * Upgrades database on version change
+     *
+     * @param sqLiteDatabase
+     * @param i
+     * @param i1
+     */
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_GROCERY);

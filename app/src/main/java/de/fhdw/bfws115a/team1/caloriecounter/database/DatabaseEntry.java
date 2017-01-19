@@ -2,7 +2,9 @@ package de.fhdw.bfws115a.team1.caloriecounter.database;
 
 
 /**
- * Created by xySha on 23.11.2016.
+ * This is a interface for entries in database
+ *
+ * @author Viktor Schroeder
  */
 public interface DatabaseEntry extends DatabaseEntity, Comparable<DatabaseEntry> {
     String getName();
@@ -16,6 +18,4 @@ public interface DatabaseEntry extends DatabaseEntity, Comparable<DatabaseEntry>
     int getDay();
 
     void setDate(int year, int month, int day);
-
-    int compareTo(DatabaseEntry databaseEntry);
 }

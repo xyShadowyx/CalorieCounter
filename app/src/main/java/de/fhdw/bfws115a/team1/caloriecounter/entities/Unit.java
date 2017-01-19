@@ -8,31 +8,34 @@ import java.util.Comparator;
 
 /**
  * This class represents a QuantityUnit object.
+ *
+ * @author Viktor Schroeder
  */
 
-public class Unit implements Serializable, Comparator<Unit> {
+public class Unit implements Serializable {
+    /* Member variables */
     private String mName;
 
     /**
      * Constructor
      *
-     * @param name
+     * @param name the name of the unit
      */
     public Unit(String name) {
         mName = name;
     }
 
     /**
-     * Constructor for copies
+     * Constructor for copies.
      *
-     * @param unit
+     * @param unit the to copy unit
      */
     public Unit(Unit unit) {
         this(unit.getName());
     }
 
     /**
-     * Get name of this unit
+     * Get name of this unit.
      *
      * @return name of unit
      */
@@ -41,25 +44,20 @@ public class Unit implements Serializable, Comparator<Unit> {
     }
 
     /**
-     * Set name of this unit
+     * Set name of this unit.
      *
-     * @param name
+     * @param name new name for unit
      */
     public void setName(String name) {
         mName = name;
     }
 
     /**
-     * Converts this object to a readable output
+     * Converts this object to a readable output.
      *
      * @return this object as a text
      */
     public String toString() {
         return "Unit(Name: " + getName() + ")";
-    }
-
-    @Override
-    public int compare(Unit unit, Unit t1) {
-        return 0;
     }
 }

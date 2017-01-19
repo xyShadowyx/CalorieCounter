@@ -4,8 +4,11 @@ import java.util.ArrayList;
 
 /**
  * This class contains the structure of a menu.
+ *
+ * @author Viktor Schroeder
  */
 public class Menu extends GroceriesEntity {
+    /* Member variables */
     private double mAmount;
     private int mKcal;
     private ArrayList<FixGrocery> mFixGroceries;
@@ -13,8 +16,8 @@ public class Menu extends GroceriesEntity {
     /**
      * Constructor
      *
-     * @param name
-     * @param amount
+     * @param name menu name
+     * @param amount portion size of menu
      */
     public Menu(String name, double amount) {
         super(name);
@@ -24,9 +27,9 @@ public class Menu extends GroceriesEntity {
     }
 
     /**
-     * Constructor for copies
+     * Constructor for copies.
      *
-     * @param menu
+     * @param menu to copy menu
      */
     public Menu(Menu menu) {
         this(menu.getName(), menu.getAmount());
@@ -36,23 +39,28 @@ public class Menu extends GroceriesEntity {
     }
 
     /**
-     * Get calories of this menu
+     * Get calories of this menu.
      *
-     * @return amount of kilocalories
+     * @return amount of calories
      */
     public int getKcal() {
         return mKcal;
     }
 
     /**
-     * Get the
+     * Get the portion size of the menu.
      *
-     * @return
+     * @return portion size
      */
     public double getAmount() {
         return mAmount;
     }
 
+    /**
+     * Changes the amount of menu portion and recalculates the calories.
+     *
+     * @param amount portion size
+     */
     public void setAmount(double amount) {
         mKcal = 0;
         for (FixGrocery fg : getFixGroceries()) {
@@ -63,15 +71,32 @@ public class Menu extends GroceriesEntity {
         mAmount = amount;
     }
 
+    /**
+     * Get all groceries with fixed size and unit of the menu.
+     *
+     * @return ArrayList of FixGroceries
+     */
     public ArrayList<FixGrocery> getFixGroceries() {
         return mFixGroceries;
     }
 
+    /**
+     * Add grocery with fixed size and unit to the menu.
+     *
+     * @param fixGrocery FixGrocery to add into menu
+     */
     public void addGrocery(FixGrocery fixGrocery) {
         mFixGroceries.add(new FixGrocery(fixGrocery));
         mKcal += fixGrocery.getKcal();
     }
 
+    /**
+     * Removes a grocery with fixed size and unit from the menu
+     *
+     * @param fixGrocery FoxGrocery for remove
+     *
+     * @return grocery successfully removed.
+     */
     public boolean removeGrocery(FixGrocery fixGrocery) {
         if (mFixGroceries.remove(fixGrocery)) {
             mKcal -= fixGrocery.getKcal();
@@ -80,11 +105,19 @@ public class Menu extends GroceriesEntity {
         return false;
     }
 
+    /**
+     * Removes all groceries with fixed size and unit from menu.
+     */
     public void removeAllGrocery() {
         mFixGroceries.clear();
         mKcal = 0;
     }
 
+    /**
+     * Converts this object to a readable output.
+     *
+     * @return this object as a text
+     */
     public String toString() {
         String result = "Menu(Name: " + getName() + ", Portions: " + getAmount() + ", Groceries: ";
         ArrayList<FixGrocery> fixGroceries = getFixGroceries();

@@ -1,21 +1,21 @@
 package de.fhdw.bfws115a.team1.caloriecounter.entities;
 
-import android.view.MotionEvent;
-
 /**
- * This class represents a specific entry at a day.
+ * This class represents a specific menu entry at a day.
+ *
+ * @author Viktor Schroeder
  */
-
 public class MenuEntry extends Entry {
+    /* Member variables */
     private Menu mMenu;
 
     /**
      * Constructor
      *
-     * @param year
-     * @param month
-     * @param day
-     * @param menu
+     * @param year year of entry
+     * @param month month of entry
+     * @param day day of entry
+     * @param menu menu for entry
      */
     public MenuEntry(int year, int month, int day, Menu menu) {
         super(year, month, day);
@@ -23,36 +23,36 @@ public class MenuEntry extends Entry {
     }
 
     /**
-     * Constructor for copies
+     * Constructor for copies.
      *
-     * @param menuEntry
+     * @param menuEntry the to copy menu entry
      */
     public MenuEntry(MenuEntry menuEntry) {
         this(menuEntry.getYear(), menuEntry.getMonth(), menuEntry.getDay(), menuEntry.getMenu());
     }
 
     /**
-     * Get the menu of the entry
+     * Get the menu of the entry.
      *
-     * @return menu
+     * @return menu object
      */
     public Menu getMenu() {
         return mMenu;
     }
 
     /**
-     * Set the menu
+     * Set the menu.
      *
-     * @param menu
+     * @param menu menu object for entry
      */
     public void setMenu(Menu menu) {
         mMenu = new Menu(menu);
     }
 
     /**
-     * Converts this object to a readable output
+     * Converts this object to a readable output.
      *
-     * @return
+     * @return a string of this object content
      */
     public String toString() {
         return "MenuEntry(Year: " + getYear() + ", Month: " + getMonth() + ", Day: " + getDay() + ", Menu: " + getMenu().toString() + ")";
