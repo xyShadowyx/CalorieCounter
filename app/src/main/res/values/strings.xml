@@ -36,48 +36,48 @@
     <string name="calender_today">Heute</string>
 
     <!-- Values 'groceriesearchoverview'-layout -->
-    <string name="groceriesearchoverview_title">Übersicht</string>
+    <string name="groceriesearchoverview_title">Uebersicht</string>
     <string name="groceriesearchoverview_new_grocery">Neues Lebensmittel</string>
-    <string name="groceriesearchoverview_new_menu">Neues Menü</string>
+    <string name="groceriesearchoverview_new_menu">Neues Menue</string>
     <string name="groceriesearchoverview_grocery">Lebensmittel</string>
-    <string name="groceriesearchoverview_no_results">Keine Einträge vorhanden</string>
+    <string name="groceriesearchoverview_no_results">Keine Eintraege vorhanden</string>
     <string name="groceriesearchoverview_listhead_name">Name</string>
     <string name="groceriesearchoverview_listhead_actions">Aktionen</string>
 
     <!-- Values 'dailyoverview'-layout -->
-    <string name="dailyoverview_title">Tagesübersicht</string>
+    <string name="dailyoverview_title">Tagesuebersicht</string>
     <string name="dailyoverview_caloriesmax">Ziel</string>
     <string name="dailyoverview_minus">-</string>
     <string name="dailyoverview_newentry">Neuer Eintrag</string>
     <string name="dailyoverview_groceries">Lebensmittel</string>
-    <string name="dailyoverview_menus">Menüs</string>
+    <string name="dailyoverview_menus">Menues</string>
     <string name="dailyoverview_units">Einheiten</string>
     <string name="dailyoverview_listhead_name">Name</string>
     <string name="dailyoverview_listhead_amount">Menge</string>
     <string name="dailyoverview_listhead_calories">Kalorien</string>
     <string name="dailyoverview_listhead_actions">Aktionen</string>
-    <string name="dailyoverview_no_results">Keine Einträge vorhanden</string>
+    <string name="dailyoverview_no_results">Keine Eintraege vorhanden</string>
 
     <!-- Values 'menumanagement'-layout -->
-    <string name="menumanagement_title">Menü verwalten</string>
+    <string name="menumanagement_title">Menue verwalten</string>
     <string name="menumanagement_name">Name:</string>
     <string name="menumanagement_new_name_input">Bitte Bezeichnung angeben...</string>
     <string name="menumanagement_portion">Portion:</string>
-    <string name="menumanagement_new_portion_input">Bitte Portionsgröße angeben...</string>
+    <string name="menumanagement_new_portion_input">Bitte Portionsgroesse angeben...</string>
     <string name="menumanagement_save_menu">Speichern</string>
-    <string name="menumanagement_add_grocery">Lebensmittel hinzufügen</string>
+    <string name="menumanagement_add_grocery">Lebensmittel hinzufuegen</string>
     <string name="menumanagement_listhead_name">Name</string>
     <string name="menumanagement_listhead_amount">Menge</string>
     <string name="menumanagement_listhead_calories">Kalorien</string>
-    <string name="menumanagement_listhead_delete">Löschen</string>
+    <string name="menumanagement_listhead_delete">Loeschen</string>
     <string name="menumanagement_no_results">Keine Lebensmittel eingetragen</string>
 
 
     <!-- Values 'quantityunitmanagement'-layout -->
     <string name="quantityunitmanagement_title">Mengeneinheiten verwalten</string>
-    <string name="quantityunitmanagement_lastadd">Zuletzt hinzugefügte Mengeneinheit</string>
+    <string name="quantityunitmanagement_lastadd">Zuletzt hinzugefuegte Mengeneinheit</string>
     <string name="quantityunitmanagement_listhead_name">Name</string>
-    <string name="quantityunitmanagement_listhead_delete">Löschen</string>
+    <string name="quantityunitmanagement_listhead_delete">Loeschen</string>
     <string name="quantityunitmanagement_no_results">Keine Mengeneinheiten eingetragen</string>
 
     <!-- Values 'grocerymanagement'-layout -->
@@ -90,18 +90,18 @@
     <string name="grocerymanagement_kcal">Kalorienangabe</string>
     <string name="grocerymanagement_save">Speichern</string>
     <string name="grocerymanagement_listhead_amount">Menge</string>
-    <string name="grocerymanagement_listhead_delete">Löschen</string>
+    <string name="grocerymanagement_listhead_delete">Loeschen</string>
     <string name="grocerymanagement_no_results">Keine Mengen eingetragen</string>
 
     <!-- Values 'selectamount'-layout -->
-    <string name="selectamount_title_text">Menge auswählen</string>
-    <string name="selectamount_accept">Auswählen</string>
+    <string name="selectamount_title_text">Menge auswaehlen</string>
+    <string name="selectamount_accept">Auswaehlen</string>
     <string name="selectamount_amount">Mengenangabe</string>
     <string name="selectamount_amount_name">Menge:</string>
 
 
     <!-- ### TOAST STRING VALUES ARE DEFINED HERE #### -->
-    <string name="selectamount_emptyamounttoast">Bitte geben Sie einen gültigen Wert ein.</string>
+    <string name="selectamount_emptyamounttoast">Bitte geben Sie einen gueltigen Wert ein.</string>
     <string name="quantityunitmanagement_incorrectquantityunittoast">Diese Einheit ist bereits in Ihrer Datenbank
         vorhanden.
     </string>
@@ -111,14 +111,14 @@
     <string name="quantityunitmanagement_existinggroceryindbtoast">Ein Lebensmittel mit diesem Namen ist bereits in
         Ihrer Datenbank vorhanden.
     </string>
-    <string name="menumanagement_existingmenuindbtoast">Ein Menü mit diesem Namen ist bereits in Ihrer Datenbank
+    <string name="menumanagement_existingmenuindbtoast">Ein Menue mit diesem Namen ist bereits in Ihrer Datenbank
         vorhanden.
     </string>
-    <string name="quantityunitmanagement_emptyfield">Bitte füllen Sie das Textfeld.
+    <string name="quantityunitmanagement_emptyfield">Bitte fuellen Sie das Textfeld.
     </string>
     <string name="quantityunitmanagement_edittexthint">Mengeneinheit eingeben...</string>
-    <string name="menumanagement_addedtodb">Ihr Menü wurde erfolgreich in der Datenbank gespeichert.</string>
-    <string name="menumanagement_updatedindb">Ihr Menü wurde erfolgreich geändert.</string>
+    <string name="menumanagement_addedtodb">Ihr Menue wurde erfolgreich in der Datenbank gespeichert.</string>
+    <string name="menumanagement_updatedindb">Ihr Menue wurde erfolgreich geaendert.</string>
     <string name="grocerymanagement_addedtodb">Ihr Lebensmittel wurde erfolgreich in der Datenbank gespeichert.</string>
-    <string name="grocerymanagement_updatedindb">Ihr Lebensmittel wurde erfolgreich geändert.</string>
+    <string name="grocerymanagement_updatedindb">Ihr Lebensmittel wurde erfolgreich geaendert.</string>
 </resources>
