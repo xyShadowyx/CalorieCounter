@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:clickable="true">
     <TextView android:id="@+id/idCalendarTitel"
               android:layout_width="match_parent"
@@ -14,7 +14,7 @@
               android:gravity="center"
               android:textStyle="bold"/>
     <Button android:id="@+id/idCalendarTodayButton"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/calender_today"
             android:textColor="@color/black"
@@ -29,6 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:showWeekNumber="false"
+            android:minDate="1/1/1990"
+            android:maxDate="1/1/2027"
             android:layout_below="@+id/idCalendarTitel"
             android:layout_alignParentEnd="false"
             android:layout_above="@+id/idCalendarTodayButton"/>

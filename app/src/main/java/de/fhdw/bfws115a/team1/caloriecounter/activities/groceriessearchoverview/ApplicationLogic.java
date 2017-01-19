@@ -58,7 +58,6 @@ public class ApplicationLogic {
      * Reloads the activity.
      */
     public void reload() {
-        Log.d("Reload!", "Now!");
         mData.getActivity().finish();
         mData.getActivity().startActivity(mData.getActivity().getIntent());
     }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntry;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -24,16 +25,18 @@ public class Data {
     private int mLeftCalories;
 
     /* Keys */
-    private final String KEY_DAILYOVERVIEW_SELECTED_YEAR = "dailyoverview1";
-    private final String KEY_DAILYOVERVIEW_SELECTED_MONTH = "dailyoverview2";
-    private final String KEY_DAILYOVERVIEW_SELECTED_DAY = "dailyoverview3";
+    private final String KEY_DAILYOVERVIEW_DATABASE_ENTRY_LIST = "dailyoverview1";
 
-    private final String KEY_DAILYOVERVIEW_USED_CALORIES = "dailyoverview4";
-    private final String KEY_DAILYOVERVIEW_MAX_CALORIES = "dailyoverview5";
-    private final String KEY_DAILYOVERVIEW_LEFT_CALORIES = "dailyoverview6";
+    private final String KEY_DAILYOVERVIEW_SELECTED_YEAR = "dailyoverview2";
+    private final String KEY_DAILYOVERVIEW_SELECTED_MONTH = "dailyoverview3";
+    private final String KEY_DAILYOVERVIEW_SELECTED_DAY = "dailyoverview4";
 
-    private final String KEY_DAILYOVERVIEW_ENTRY_TO_COPY = "dailyoverview7";
-    private final String KEY_DAILYOVERVIEW_ENTRY_TO_EDIT = "dailyoverview8";
+    private final String KEY_DAILYOVERVIEW_USED_CALORIES = "dailyoverview5";
+    private final String KEY_DAILYOVERVIEW_MAX_CALORIES = "dailyoverview6";
+    private final String KEY_DAILYOVERVIEW_LEFT_CALORIES = "dailyoverview7";
+
+    private final String KEY_DAILYOVERVIEW_ENTRY_TO_COPY = "dailyoverview8";
+    private final String KEY_DAILYOVERVIEW_ENTRY_TO_EDIT = "dailyoverview9";
 
     /**
      * Method which gets the current layout attributes and put them into an 'Intent' object.
@@ -51,7 +54,7 @@ public class Data {
             Intent intent;
             intent = mActivity.getIntent();
             Calendar calendarToday = Calendar.getInstance();
-            
+
             mSelectedYear = intent.getIntExtra("year", calendarToday.get(Calendar.YEAR));
             mSelectedMonth = intent.getIntExtra("month", calendarToday.get(Calendar.MONTH));
             mSelectedDay = intent.getIntExtra("day", calendarToday.get(Calendar.DAY_OF_MONTH));
@@ -75,6 +78,8 @@ public class Data {
      * @param b The bundle where the data will be saved.
      */
     public void saveDataInBundle(Bundle b) {
+        b.putSerializable(KEY_DAILYOVERVIEW_DATABASE_ENTRY_LIST, mDatabaseEntryList);
+
         b.putInt(KEY_DAILYOVERVIEW_SELECTED_YEAR, mSelectedYear);
         b.putInt(KEY_DAILYOVERVIEW_SELECTED_MONTH, mSelectedMonth);
         b.putInt(KEY_DAILYOVERVIEW_SELECTED_DAY, mSelectedDay);
@@ -93,6 +98,8 @@ public class Data {
      * @param b The bundle where the data is saved in.
      */
     private void restoreDataFromBundle(Bundle b) {
+        mDatabaseEntryList = (ArrayList<DatabaseEntry>) b.getSerializable(KEY_DAILYOVERVIEW_DATABASE_ENTRY_LIST);
+
         mSelectedYear = b.getInt(KEY_DAILYOVERVIEW_SELECTED_YEAR);
         mSelectedMonth = b.getInt(KEY_DAILYOVERVIEW_SELECTED_MONTH);
         mSelectedDay = b.getInt(KEY_DAILYOVERVIEW_SELECTED_DAY);

@@ -57,8 +57,7 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
         }
         listViewHolder.setGroceryUnit(groceryUnit);
         listViewHolder.getNameText().setText(
-                String.format("%.2f %s", groceryUnit.getAmount(), groceryUnit.getUnit().getName())
-        );
+                String.format("%.2f %s", groceryUnit.getAmount(), groceryUnit.getUnit().getName()));
         return convertView;
     }
 

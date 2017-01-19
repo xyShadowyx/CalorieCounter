@@ -6,8 +6,12 @@ import android.util.Log;
 
 import java.util.Calendar;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class ApplicationLogic {
-    /* Member variables */
+    /*Member variable*/
     private Data mData;
     private Gui mGui;
 
@@ -22,7 +26,6 @@ public class ApplicationLogic {
      * Initialization.
      */
     private void initGui() {
-        Log.d("Test:", mData.getSelectedYear() + " - " + mData.getSelectedMonth() + " - " + mData.getSelectedDay());
         mGui.setSelectedDate(mData.getSelectedYear(), mData.getSelectedMonth(), mData.getSelectedDay());
     }
 
@@ -33,7 +36,7 @@ public class ApplicationLogic {
         DateChangeListener dcl;
         ButtonClickListener bcl;
 
-        dcl = new DateChangeListener(this);
+        dcl = new DateChangeListener(this, mData);
         bcl = new ButtonClickListener(this);
 
         mGui.getCalendarView().setOnDateChangeListener(dcl);

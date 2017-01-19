@@ -142,7 +142,7 @@ public class ApplicationLogic {
         if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getMenuName())
                 && databaseEntityManager.isMenuNameAvailable(mData.getMenuName())) {
 
-            if (Validation.checkNumberValue(mData.getPortionSize())) {
+            if (Validation.checkNumberValue(mData.getPortionSize()) && !Validation.checkIfEmpty(mData.getMenuName())) {
                 Menu newMenu;
                 newMenu = new Menu(mData.getMenuName(), mData.getPortionSize());
                 for (FixGrocery fg : mData.getMenuFixGroceries()) {
@@ -175,7 +175,7 @@ public class ApplicationLogic {
         if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getMenuName()) &&
                 (mData.getInputMenu().getName() == mData.getMenuName() || databaseEntityManager.isMenuNameAvailable(mData.getMenuName()))) {
 
-            if (Validation.checkNumberValue(mData.getPortionSize()) && !Validation.checkIfEmpty(Double.toString(mData.getPortionSize()))) {
+            if (Validation.checkNumberValue(mData.getPortionSize()) && !Validation.checkIfEmpty(mData.getMenuName())) {
                 mData.getInputMenu().removeAllGrocery();
                 mData.getInputMenu().setName(mData.getMenuName());
                 mData.getInputMenu().setAmount(mData.getPortionSize());

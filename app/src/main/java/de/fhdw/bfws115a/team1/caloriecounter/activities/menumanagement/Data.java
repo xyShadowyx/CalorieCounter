@@ -26,10 +26,10 @@ public class Data {
     private final double DEFAULT_PORTIONSIZE = 0.0;
 
     /* Keys */
-    private final String KEY_INPUTMENU = "menumanagement1";
-    private final String KEY_MENUFIXGROCERIES = "menumanagement2";
-    private final String KEY_MENUNAME = "menumanagement3";
-    private final String KEY_PORTIONSIZE = "menumanagement4";
+    private final String KEY_MENU_NAME = "menumanagement1";
+    private final String KEY_PORTION_SIZE = "menumanagement2";
+    private final String KEY_MENU_FIX_GROCERIES = "menumanagement3";
+    private final String KEY_INPUT_MENU = "menumanagement4";
 
     /**
      * Method which gets the current layout attributes and put them into an Intent object.
@@ -71,10 +71,10 @@ public class Data {
      * @param b The bundle where the data will be saved.
      */
     public void saveDataInBundle(Bundle b) {
-        b.putSerializable(KEY_INPUTMENU, mInputMenu);
-        b.putSerializable(KEY_MENUFIXGROCERIES, mMenuFixGroceries);
-        b.putString(KEY_MENUNAME, mMenuName);
-        b.putDouble(KEY_PORTIONSIZE, mPortionSize);
+        b.putString(KEY_MENU_NAME, mMenuName);
+        b.putDouble(KEY_PORTION_SIZE, mPortionSize);
+        b.putSerializable(KEY_MENU_FIX_GROCERIES, mMenuFixGroceries);
+        b.putSerializable(KEY_INPUT_MENU, mInputMenu);
     }
 
     /**
@@ -83,10 +83,10 @@ public class Data {
      * @param b The bundle where the data is saved in.
      */
     private void restoreDataFromBundle(Bundle b) {
-        mInputMenu = (DatabaseMenu) b.getSerializable(KEY_INPUTMENU);
-        mMenuFixGroceries = (ArrayList<FixGrocery>) b.getSerializable(KEY_MENUFIXGROCERIES);
-        mMenuName = b.getString(KEY_MENUNAME);
-        mPortionSize = b.getInt(KEY_PORTIONSIZE);
+        mMenuName = b.getString(KEY_MENU_NAME);
+        mPortionSize = b.getInt(KEY_PORTION_SIZE);
+        mMenuFixGroceries = (ArrayList<FixGrocery>) b.getSerializable(KEY_MENU_FIX_GROCERIES);
+        mInputMenu = (DatabaseMenu) b.getSerializable(KEY_INPUT_MENU);
     }
 
     /* Getter methods */

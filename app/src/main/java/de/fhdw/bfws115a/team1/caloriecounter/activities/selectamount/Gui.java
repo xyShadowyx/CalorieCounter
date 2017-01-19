@@ -38,7 +38,7 @@ public class Gui {
         return mSelectedAmount;
     }
 
-    public Spinner getSpinnerStatus() {
+    public Spinner getSpinner() {
         return mSpinner;
     }
 

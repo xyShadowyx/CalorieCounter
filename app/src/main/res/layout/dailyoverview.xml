@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:clickable="false">
     <TextView android:id="@+id/idDailyoverviewTitle"
               android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                   android:layout_alignParentStart="true">
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:id="@+id/idDailyOverviewPreviousday"
+                   android:id="@+id/idDailyOverviewPreviousDay"
                    android:src="@drawable/arrow_left16"/>
         <TextView android:id="@+id/idDailyoverviewDate"
                   android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
                   android:layout_marginRight="@dimen/medium_space"/>
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:id="@+id/idDailyoverviewNextday"
+                   android:id="@+id/idDailyoverviewNextDay"
                    android:src="@drawable/arrow_right16"/>
     </LinearLayout>
     <LinearLayout android:id="@+id/idDailyoverviewCaloriesHolder"
@@ -50,7 +50,7 @@
                   android:layout_alignParentEnd="true">
         <EditText android:id="@+id/idDailyoverviewCaloriesMax"
                   android:layout_width="0dp"
-                  android:layout_height="fill_parent"
+                  android:layout_height="match_parent"
                   android:gravity="center"
                   android:layout_weight="1"
                   android:maxLength="5"
@@ -59,7 +59,7 @@
                   android:textColor="@color/black"
                   android:inputType="number"/>
         <TextView android:layout_width="0dp"
-                  android:layout_height="fill_parent"
+                  android:layout_height="match_parent"
                   android:gravity="center"
                   android:layout_weight="1"
                   android:textSize="@dimen/small_text"
@@ -67,14 +67,14 @@
                   android:textColor="@color/black"/>
         <TextView android:id="@+id/idDailyoverviewCaloriesConsumed"
                   android:layout_width="0dp"
-                  android:layout_height="fill_parent"
+                  android:layout_height="match_parent"
                   android:gravity="center"
                   android:layout_weight="1"
                   android:textSize="@dimen/small_text"
                   android:text=""
                   android:textColor="@color/black"/>
         <TextView android:layout_width="0dp"
-                  android:layout_height="fill_parent"
+                  android:layout_height="match_parent"
                   android:gravity="center"
                   android:layout_weight="1"
                   android:textSize="@dimen/small_text"
@@ -82,7 +82,7 @@
                   android:textColor="@color/black"/>
         <TextView android:id="@+id/idDailyoverviewCaloriesLeft"
                   android:layout_width="0dp"
-                  android:layout_height="fill_parent"
+                  android:layout_height="match_parent"
                   android:gravity="center"
                   android:layout_weight="1"
                   android:textSize="@dimen/small_text"
@@ -131,7 +131,7 @@
                       android:textColor="@color/list_headline_textcolor"/>
         </LinearLayout>
         <TextView android:id="@+id/idDailyoverviewNoResults"
-                  android:layout_width="fill_parent"
+                  android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:gravity="center"
                   android:text="@string/dailyoverview_no_results"

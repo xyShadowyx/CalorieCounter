@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:focusable="true">
     <TextView android:id="@+id/idGroceryManagementTitle"
               android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                           android:inputType="numberDecimal"/>
                 <Spinner android:id="@+id/idGroceryManagementSpinner"
                          android:layout_width="0dp"
-                         android:layout_height="fill_parent"
+                         android:layout_height="match_parent"
                          android:prompt="@string/grocerymanagement_default_spinnerstatus"
                          android:layout_weight="0.30"/>
                 <LinearLayout
@@ -113,13 +113,13 @@
                           android:textSize="@dimen/list_headline_textsize"
                           android:textColor="@color/list_headline_textcolor"/>
             </LinearLayout>
-            <TextView android:layout_width="fill_parent"
+            <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:gravity="center"
                       android:text="@string/grocerymanagement_no_results"
                       android:id="@+id/idGroceryManagementNoResults"/>
             <ListView android:id="@+id/idGroceryManagementListView"
-                      android:layout_width="fill_parent"
+                      android:layout_width="match_parent"
                       android:layout_height="match_parent"
                       android:focusable="true"
                       android:focusableInTouchMode="true">
@@ -130,7 +130,6 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_alignParentBottom="true"
-                  android:layout_alignParentStart="true"
                   android:id="@+id/idGroceryManagementNavHolder">
         <LinearLayout android:orientation="vertical"
                       android:layout_width="0dp"

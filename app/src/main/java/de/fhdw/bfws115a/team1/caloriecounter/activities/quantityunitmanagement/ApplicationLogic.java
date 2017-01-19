@@ -8,6 +8,11 @@ import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 import de.fhdw.bfws115a.team1.caloriecounter.utilities.Validation;
+import java.util.Collections;
+
+/**
+ * @author Florian Obladen.
+ */
 
 public class ApplicationLogic {
 
@@ -51,6 +56,7 @@ public class ApplicationLogic {
      */
     private void initGui() {
         mGui.getListView().setEmptyView(mGui.getEmptyListTextView());
+        mGui.getNewQuantityUnitName().setText(mData.getNewQuantityUnitName());
     }
 
     /**
@@ -84,6 +90,7 @@ public class ApplicationLogic {
                     databaseUnit = databaseEntityManager.createUnit(newQuantity);
 
                     mData.getQuantityUnits().add(databaseUnit);
+                    Collections.sort(mData.getQuantityUnits(), new UnitComparetor());
                     mListAdapter.notifyDataSetChanged();
 
                     mData.setNewQuantityUnitName("");

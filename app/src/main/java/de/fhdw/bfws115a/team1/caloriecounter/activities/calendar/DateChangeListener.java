@@ -2,13 +2,19 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
 
 import android.widget.CalendarView;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class DateChangeListener implements CalendarView.OnDateChangeListener {
 
     /* Member variable */
     private ApplicationLogic mApplicationLogic;
+    private Data mData;
 
-    public DateChangeListener(ApplicationLogic applicationLogic) {
+    public DateChangeListener(ApplicationLogic applicationLogic, Data data) {
         mApplicationLogic = applicationLogic;
+        mData = data;
     }
 
     /**
@@ -21,6 +27,8 @@ public class DateChangeListener implements CalendarView.OnDateChangeListener {
      */
     @Override
     public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
-        mApplicationLogic.onDateSelect(year, month, day);
+        if(year != mData.getSelectedYear() || month != mData.getSelectedMonth() || day != mData.getSelectedDay()) {
+            mApplicationLogic.onDateSelect(year, month, day);
+        }
     }
 }

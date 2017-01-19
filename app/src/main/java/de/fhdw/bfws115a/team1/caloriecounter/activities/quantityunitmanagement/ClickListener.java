@@ -3,6 +3,10 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 import android.view.View;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class ClickListener implements View.OnClickListener {
 
     /* Member variable */

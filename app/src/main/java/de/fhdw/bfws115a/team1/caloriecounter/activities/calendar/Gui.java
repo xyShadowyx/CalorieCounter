@@ -2,11 +2,14 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
 
 import android.widget.Button;
 import android.widget.CalendarView;
+import de.fhdw.bfws115a.team1.caloriecounter.R;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import de.fhdw.bfws115a.team1.caloriecounter.R;
+/**
+ * @author Florian Obladen.
+ */
 
 public class Gui {
 
@@ -40,6 +43,6 @@ public class Gui {
         Calendar date;
         date = Calendar.getInstance();
         date.set(year, month, day);
-        mCalendarView.setDate(date.getTimeInMillis(), true, true);
+        mCalendarView.setDate(date.getTimeInMillis(), false, true);
     }
 }

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * TODO: add close method after using cursor
      * TODO: comprimize getAll methods by adding where clause
      */
+    public Context mContext;
 
     public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "database.db";
@@ -151,6 +153,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        mContext = context;
     }
 
     @Override
@@ -163,6 +166,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_TABLE_MENU_ENTRY);
         sqLiteDatabase.execSQL(CREATE_TABLE_MENU_ENTRY_GROCERY);
         sqLiteDatabase.execSQL(CREATE_TABLE_UNIT);
+
+        ContentValues values;
+        String[] undeletable = mContext.getResources().getStringArray(R.array.undeletable_units);
+        for(int i = 0; i < undeletable.length; i++) {
+            values = new ContentValues();
+            values.put(UNIT_NAME, undeletable[i]);
+            sqLiteDatabase.insert(TABLE_UNIT, null, values);
+        }
     }
 
     @Override

@@ -2,6 +2,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
@@ -18,14 +19,16 @@ public class Data {
     private double mSelectedAmount;
     private String mSpinnerStatus;
     private ArrayList<String> mUnitList;
+    private boolean mIsMenu;
 
     /* Default values */
     private final double DEFAULT_SELECTEDAMOUNT = 0;
 
     /* Keys */
-    private final String KEY_PICKEDGROCERY = "selectamount1";
-    private final String KEY_SELECTAMOUNT = "selectamount2";
-    private final String KEY_SPINNERSTATUS = "selectamount3";
+    private final String KEY_PICKED_GROCERY = "selectamount1";
+    private final String KEY_SELECTED_AMOUNT = "selectamount2";
+    private final String KEY_SPINNER_STATUS = "selectamount3";
+    private final String KEY_IS_MENU = "selectamount3";
 
     /**
      * Method which gets the current layout attributes and put them into an 'Intent' object.
@@ -42,8 +45,9 @@ public class Data {
             intent = mActivity.getIntent();
             mPickedGrocery = mActivity.getResources().getString(R.string.selectamount_default_pickedgrocery);
             mSelectedAmount = DEFAULT_SELECTEDAMOUNT;
-            mSpinnerStatus = mActivity.getResources().getString(R.string.selectamount_default_spinnerstatus);
+            mSpinnerStatus = "";
             mUnitList = new ArrayList<String>();
+            mUnitList.add(mActivity.getResources().getString(R.string.selectamount_default_spinnerstatus));
             GroceriesEntity groceriesEntity = (GroceriesEntity) intent.getSerializableExtra("groceriesEntity");
 
             if (groceriesEntity instanceof Grocery) {
@@ -57,8 +61,11 @@ public class Data {
                 Menu menu;
                 menu = (Menu) groceriesEntity;
                 mPickedGrocery = menu.getName();
-                mUnitList.add("Portion");
+                mUnitList.clear();
+                mUnitList.add(mActivity.getResources().getString(R.string.selectamount_menu_unit));
+                mSpinnerStatus = mActivity.getResources().getString(R.string.selectamount_menu_unit);
                 mSelectedAmount = menu.getAmount();
+                mIsMenu = true;
             }
             if (groceriesEntity instanceof FixGrocery) {
                 FixGrocery fixGrocery;
@@ -79,9 +86,10 @@ public class Data {
      * @param b The bundle where the data will be saved.
      */
     public void saveDataInBundle(Bundle b) {
-        b.putString(KEY_PICKEDGROCERY, mPickedGrocery);
-        b.putDouble(KEY_SELECTAMOUNT, mSelectedAmount);
-        b.putString(KEY_SPINNERSTATUS, mSpinnerStatus);
+        b.putString(KEY_PICKED_GROCERY, mPickedGrocery);
+        b.putDouble(KEY_SELECTED_AMOUNT, mSelectedAmount);
+        b.putString(KEY_SPINNER_STATUS, mSpinnerStatus);
+        b.putBoolean(KEY_IS_MENU, mIsMenu);
     }
 
     /**
@@ -90,9 +98,10 @@ public class Data {
      * @param b The bundle where the data is saved in.
      */
     private void restoreDataFromBundle(Bundle b) {
-        mPickedGrocery = b.getString(KEY_PICKEDGROCERY);
-        mSelectedAmount = b.getDouble(KEY_SELECTAMOUNT);
-        mSpinnerStatus = b.getString(KEY_SPINNERSTATUS);
+        mPickedGrocery = b.getString(KEY_PICKED_GROCERY);
+        mSelectedAmount = b.getDouble(KEY_SELECTED_AMOUNT);
+        mSpinnerStatus = b.getString(KEY_SPINNER_STATUS);
+        mIsMenu = b.getBoolean(KEY_IS_MENU);
     }
 
     /* Getter methods */
@@ -116,6 +125,10 @@ public class Data {
         return mUnitList;
     }
 
+    public boolean getIsMenu() {
+        return mIsMenu;
+    }
+
     /* Setter methods */
     public void setActivity(Init mActivity) {
         this.mActivity = mActivity;
@@ -129,7 +142,7 @@ public class Data {
         this.mSelectedAmount = mSelectedAmount;
     }
 
-    public void setSpinnerStatus(String mSpinnerStatus) {
-        this.mSpinnerStatus = this.mSpinnerStatus;
+    public void setSpinnerStatus(String spinnerStatus) {
+        mSpinnerStatus = spinnerStatus;
     }
 }
