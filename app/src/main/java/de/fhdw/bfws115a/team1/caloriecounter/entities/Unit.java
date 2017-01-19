@@ -4,12 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 /**
  * This class represents a QuantityUnit object.
  */
 
-public class Unit implements Serializable {
+public class Unit implements Serializable, Comparator<Unit> {
     private String mName;
 
     /**
@@ -55,5 +56,10 @@ public class Unit implements Serializable {
      */
     public String toString() {
         return "Unit(Name: " + getName() + ")";
+    }
+
+    @Override
+    public int compare(Unit unit, Unit t1) {
+        return 0;
     }
 }

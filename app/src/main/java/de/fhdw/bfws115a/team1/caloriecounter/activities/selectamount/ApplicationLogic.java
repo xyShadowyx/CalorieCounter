@@ -31,8 +31,8 @@ public class ApplicationLogic {
      */
     private void initGui() {
         ArrayAdapter<String> arrayAdapter;
-        arrayAdapter = new ArrayAdapter<String>(mData.getActivity(), android.R.layout.simple_spinner_item, mData.getUnitList());
-        mGui.getSpinnerStatus().setAdapter(arrayAdapter);
+        arrayAdapter = new ArrayAdapter<String>(mData.getActivity(), android.R.layout.simple_list_item_1, mData.getUnitList());
+        mGui.getSpinner().setAdapter(arrayAdapter);
         mGui.getSelectedAmount().setText(String.valueOf(mData.getSelectedAmount()));
         mGui.getPickedGrocery().setText(mData.getPickedGrocery());
     }
@@ -44,13 +44,14 @@ public class ApplicationLogic {
         ClickListener cl;
         TextChangeListener tcl;
 
-        cl = new ClickListener(this);
+        cl = new ClickListener(this, mData);
         tcl = new TextChangeListener(this, mGui);
 
         mGui.getSelectedAmount().setOnClickListener(cl);
-        mGui.getSpinnerStatus().setOnItemSelectedListener(cl);
         mGui.getAddAmount().setOnClickListener(cl);
         mGui.getSelectedAmount().addTextChangedListener(tcl);
+
+        mGui.getSpinner().setOnItemSelectedListener(cl);
     }
 
     /**
@@ -58,11 +59,11 @@ public class ApplicationLogic {
      * A validation checker checks if the input has a valid value.
      */
     public void onAddAmountClicked() {
-        if (Validation.checkNumberValue(mData.getSelectedAmount())) {
+        if (Validation.checkNumberValue(mData.getSelectedAmount()) && !Validation.checkIfEmpty(mData.getSpinnerStatus())) {
             Intent resultIntent;
             resultIntent = new Intent();
             resultIntent.putExtra("amount", mData.getSelectedAmount());
-            resultIntent.putExtra("unit", new Unit(mGui.getSpinnerStatus().getSelectedItem().toString()));
+            resultIntent.putExtra("unit", new Unit(mData.getSpinnerStatus()));
             mData.getActivity().setResult(Activity.RESULT_OK, resultIntent);
             mData.getActivity().finish();
         } else {
@@ -80,7 +81,16 @@ public class ApplicationLogic {
      * @param newValue Sets the the amount value.
      */
     public void onAmountChanged(String newValue) {
-        Log.d("Debug", "New Value: " + newValue);
         mData.setSelectedAmount(Double.parseDouble(newValue));
+    }
+
+
+    /**
+     * Called if user changes the unit spinner.
+     *
+     * @param status sets the selected unit position.
+     */
+    public void onSpinnerStateChanged(String status) {
+        mData.setSpinnerStatus(status);
     }
 }

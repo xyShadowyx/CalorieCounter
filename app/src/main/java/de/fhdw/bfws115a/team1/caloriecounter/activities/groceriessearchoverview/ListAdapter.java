@@ -32,8 +32,6 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
         mDatabaseGroceriesEntities = mData.getDatabaseGroceriesEntityList();
         mFilter = new GroceriesEntityFilter(mDatabaseGroceriesEntities, this);
         mFilteredDatabaseGroceriesEntities = mDatabaseGroceriesEntities;
-
-        Log.d("Dabug", "Init");
     }
 
     public void setFilteredDatabaseGroceriesEntities(ArrayList<DatabaseGroceriesEntity> filteredDatabaseGroceriesEntities) {
@@ -75,7 +73,6 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Log.d("Dabug", "Click");
         GroceriesEntity clickedItem = (GroceriesEntity) getItem(i);
         mApplicationLogic.onItemSelected(clickedItem);
     }

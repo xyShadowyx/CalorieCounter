@@ -14,6 +14,7 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceryUnit;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 import de.fhdw.bfws115a.team1.caloriecounter.utilities.Validation;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,9 @@ public class ApplicationLogic {
     /* Member variables */
     private Data mData;
     private Gui mGui;
+
     private ListAdapter mListAdapter;
+    private ArrayAdapter<String> mSpinnerAdapter;
 
     public ApplicationLogic(Data data, Gui gui) {
         mData = data;
@@ -45,6 +48,7 @@ public class ApplicationLogic {
         mGui.getGroceryName().addTextChangedListener(new TextChangeListener(this, mGui.getGroceryName()));
         mGui.getNewUnitAmount().addTextChangedListener(new TextChangeListener(this, mGui.getNewUnitAmount()));
         mGui.getGroceryCalories().addTextChangedListener(new TextChangeListener(this, mGui.getGroceryCalories()));
+
         mGui.getUnitSpinner().setOnItemSelectedListener(new SpinnerItemSelectListener(this, mData));
     }
 
@@ -61,9 +65,14 @@ public class ApplicationLogic {
      * Initialization.
      */
     private void initAdapter() {
-        ArrayAdapter<String> adapter;
-        adapter = new ArrayAdapter<String>(mData.getActivity(), android.R.layout.simple_list_item_1, mData.getUnitList());
-        mGui.getUnitSpinner().setAdapter(adapter);
+        mSpinnerAdapter = new ArrayAdapter<String>(mData.getActivity(), android.R.layout.simple_list_item_1, mData.getUnitList());
+        mGui.getUnitSpinner().setAdapter(mSpinnerAdapter);
+
+        for(int i = 0; i < mData.getUnitList().size(); i++) {
+            if(mData.getUnitList().get(i).equals(mData.getNewUnitName())) {
+                mGui.getUnitSpinner().setSelection(i, false);
+            }
+        }
 
         mListAdapter = new ListAdapter(mData, this);
         mGui.getGroceryUnitsList().setAdapter(mListAdapter);
@@ -74,9 +83,15 @@ public class ApplicationLogic {
      * The added new quantity unit will also be saved in the personal database.
      */
     public void onAddNewQuantityClicked() {
-        if (Validation.checkNumberValue(mData.getNewUnitAmount())) {
+        if (Validation.checkNumberValue(mData.getNewUnitAmount()) && !Validation.checkIfEmpty(mData.getNewUnitName())) {
             mData.getGroceryUnits().add(new GroceryUnit(new Unit(mData.getNewUnitName()), mData.getNewUnitAmount()));
             mListAdapter.notifyDataSetChanged();
+
+            mSpinnerAdapter.remove(mData.getNewUnitName());
+            mSpinnerAdapter.notifyDataSetChanged();
+            mGui.getUnitSpinner().setSelection(0, true);
+            mData.setNewUnitName("");
+            mGui.getNewUnitAmount().setText("");
         } else {
             Context context = mData.getActivity().getApplicationContext();
             Toast toast = Toast.makeText(context, R.string.selectamount_emptyamounttoast, Toast.LENGTH_SHORT);
@@ -90,7 +105,10 @@ public class ApplicationLogic {
      */
     public void onDeleteQuantityClicked(GroceryUnit groceryUnit) {
         mData.getGroceryUnits().remove(groceryUnit);
+        mSpinnerAdapter.add(groceryUnit.getUnit().getName());
+
         mListAdapter.notifyDataSetChanged();
+        mSpinnerAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -119,7 +137,7 @@ public class ApplicationLogic {
         if (Validation.checkLenght(DatabaseHelper.MEDIUM_NAME_LENGTH, mData.getGroceryName())
                 && databaseEntityManager.isGroceryNameAvailable(mData.getGroceryName())) {
 
-            if (Validation.checkNumberValue(mData.getGroceryCalories())) {
+            if (Validation.checkNumberValue(mData.getGroceryCalories()) && !Validation.checkIfEmpty(mData.getGroceryName())) {
                 Grocery newGrocery;
                 newGrocery = new Grocery(mData.getGroceryName(), mData.getGroceryCalories());
                 newGrocery.getGroceryUnits().addAll(mData.getGroceryUnits());

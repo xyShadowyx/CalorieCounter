@@ -9,6 +9,8 @@ import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceryEntry;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseMenuEntry;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
+import java.util.Calendar;
+
 public class ApplicationLogic {
 
     /* Member variables */
@@ -53,6 +55,9 @@ public class ApplicationLogic {
         ButtonClickListener bcl;
         bcl = new ButtonClickListener(this);
 
+        mGui.getTodayDateText().setOnClickListener(bcl);
+        mGui.getNextDayButton().setOnClickListener(bcl);
+        mGui.getPrevDayButton().setOnClickListener(bcl);
         mGui.getTodayDateText().setOnClickListener(bcl);
         mGui.getGroceryButton().setOnClickListener(bcl);
         mGui.getMenuButton().setOnClickListener(bcl);
@@ -123,8 +128,7 @@ public class ApplicationLogic {
         changedIntent.putExtra("day", day);
         changedIntent.putExtra("month", month);
         changedIntent.putExtra("year", year);
-        mData.getActivity().finish();
-        mData.getActivity().startActivity(mData.getActivity().getIntent());
+        reload();
     }
 
     /**
@@ -155,14 +159,12 @@ public class ApplicationLogic {
             fixGrocery = (FixGrocery) groceriesEntity;
             groceryEntry = new GroceryEntry(mData.getSelectedYear(), mData.getSelectedMonth(), mData.getSelectedDay(), fixGrocery);
             databaseEntityManager.createGroceryEntry(groceryEntry);
-            Log.d("CreateNewEntry", groceryEntry.toString());
         } else if (groceriesEntity instanceof Menu) {
             Menu menu;
             MenuEntry menuEntry;
             menu = (Menu) groceriesEntity;
             menuEntry = new MenuEntry(mData.getSelectedYear(), mData.getSelectedMonth(), mData.getSelectedDay(), menu);
             databaseEntityManager.createMenuEntry(menuEntry);
-            Log.d("CreateNewEntry", menuEntry.toString());
         }
         reload();
     }
@@ -263,5 +265,39 @@ public class ApplicationLogic {
             mData.setMaxCalories(0);
         }
         calculateCalories();
+    }
+
+    /**
+     * Leads to the next day.
+     */
+    public void onNextDayClicked() {
+        Intent changedIntent;
+
+        Calendar c = Calendar.getInstance();
+        c.set(mData.getSelectedYear(), mData.getSelectedMonth(), mData.getSelectedDay());
+        c.add(Calendar.DAY_OF_MONTH, 1);
+
+        changedIntent = mData.getActivity().getIntent();
+        changedIntent.putExtra("year", c.get(Calendar.YEAR));
+        changedIntent.putExtra("month", c.get(Calendar.MONTH));
+        changedIntent.putExtra("day", c.get(Calendar.DAY_OF_MONTH));
+        reload();
+    }
+
+    /**
+     * Leads to the previous day.
+     */
+    public void onPrevDayClicked() {
+        Intent changedIntent;
+
+        Calendar c = Calendar.getInstance();
+        c.set(mData.getSelectedYear(), mData.getSelectedMonth(), mData.getSelectedDay());
+        c.add(Calendar.DAY_OF_MONTH, -1);
+
+        changedIntent = mData.getActivity().getIntent();
+        changedIntent.putExtra("year", c.get(Calendar.YEAR));
+        changedIntent.putExtra("month", c.get(Calendar.MONTH));
+        changedIntent.putExtra("day", c.get(Calendar.DAY_OF_MONTH));
+        reload();
     }
 }

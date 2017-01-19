@@ -1,5 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
@@ -11,10 +12,11 @@ public class ClickListener implements View.OnClickListener, AdapterView.OnItemSe
 
     /* Member variables */
     private ApplicationLogic mApplicationLogic;
-    private Gui mGui;
+    private Data mData;
 
-    public ClickListener(ApplicationLogic applicationLogic) {
+    public ClickListener(ApplicationLogic applicationLogic, Data data) {
         mApplicationLogic = applicationLogic;
+        mData = data;
     }
 
     /**
@@ -41,6 +43,11 @@ public class ClickListener implements View.OnClickListener, AdapterView.OnItemSe
      */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        if(i > 0) {
+            mApplicationLogic.onSpinnerStateChanged(mData.getUnitList().get(i));
+        } else if(!mData.getIsMenu()) {
+            mApplicationLogic.onSpinnerStateChanged("");
+        }
     }
 
     /**

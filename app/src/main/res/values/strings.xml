@@ -5,14 +5,14 @@
     <!-- ### ACTIVITIES STRING DEFAULT VALUES ARE DEFINED HERE ### -->
     <!-- Default values 'selectamount'-activity -->
     <string name="selectamount_default_pickedgrocery">Error</string>
-    <string name="selectamount_default_spinnerstatus">Einheit</string>
+    <string name="selectamount_default_spinnerstatus">Einheit auswählen</string>
 
     <!-- Default values 'quantityunitmanagement'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
 
     <!-- Default values 'menumanagement'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
-    <string name="grocerymanagement_default_spinnerstatus">Einheit</string>
+    <string name="grocerymanagement_default_spinnerstatus">Einheit auswählen</string>
 
     <!-- Default values 'grocerymanagement'-activity -->
     <!-- #No values to define. If String values have to be defined, check e.g. 'selectamount'-activity for further approach# -->
@@ -121,4 +121,5 @@
     <string name="menumanagement_updatedindb">Ihr Menü wurde erfolgreich geändert.</string>
     <string name="grocerymanagement_addedtodb">Ihr Lebensmittel wurde erfolgreich in der Datenbank gespeichert.</string>
     <string name="grocerymanagement_updatedindb">Ihr Lebensmittel wurde erfolgreich geändert.</string>
+    <string name="selectamount_menu_unit">Portion</string>
 </resources>

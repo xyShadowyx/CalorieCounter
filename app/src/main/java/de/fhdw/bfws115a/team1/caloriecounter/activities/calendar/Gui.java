@@ -40,6 +40,6 @@ public class Gui {
         Calendar date;
         date = Calendar.getInstance();
         date.set(year, month, day);
-        mCalendarView.setDate(date.getTimeInMillis(), true, true);
+        mCalendarView.setDate(date.getTimeInMillis(), false, true);
     }
 }

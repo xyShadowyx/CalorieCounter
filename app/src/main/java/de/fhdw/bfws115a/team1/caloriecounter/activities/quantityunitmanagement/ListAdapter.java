@@ -10,6 +10,7 @@ import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
 
@@ -80,8 +81,13 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
         }
 
         listViewHolder.setDatabaseUnit(databaseUnit);
-        listViewHolder.getNameText().setText(String.format("%s", databaseUnit.getName())
-        );
+        listViewHolder.getNameText().setText(String.format("%s", databaseUnit.getName()));
+
+        if(Arrays.asList(mContext.getResources().getStringArray(R.array.undeletable_units)).contains(databaseUnit.getName())) {
+            listViewHolder.getDeleteImage().setVisibility(View.INVISIBLE);
+        } else {
+            listViewHolder.getDeleteImage().setVisibility(View.VISIBLE);
+        }
         return convertView;
     }
 }

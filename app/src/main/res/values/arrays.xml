@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="undeletable_units">
+        <item>g</item>
+        <item>EL</item>
+        <item>TL</item>
+        <item>Stück</item>
+        <item>ml</item>
+        <item>Portion</item>
+    </string-array>
 </resources>

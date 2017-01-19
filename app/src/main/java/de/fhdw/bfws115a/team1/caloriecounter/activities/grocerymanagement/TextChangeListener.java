@@ -31,7 +31,6 @@ public class TextChangeListener implements TextWatcher {
      */
     @Override
     public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-        Log.d("Debug", "OnChangeListener called: " + charSequence);
         switch (mView.getId()) {
             case R.id.idGroceryManagementGroceryName: {
                 mApplicationLogic.onGroceryNameChanged(charSequence.toString());

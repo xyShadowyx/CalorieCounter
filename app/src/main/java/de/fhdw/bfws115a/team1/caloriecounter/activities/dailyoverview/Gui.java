@@ -36,8 +36,8 @@ public class Gui {
         activity.setContentView(R.layout.dailyoverview);
 
         mTodayDateText = (TextView) activity.findViewById(R.id.idDailyoverviewDate);
-        mPrevDayButton = (ImageView) activity.findViewById(R.id.idDailyOverviewPreviousday);
-        mNextDayButton = (ImageView) activity.findViewById(R.id.idDailyoverviewNextday);
+        mPrevDayButton = (ImageView) activity.findViewById(R.id.idDailyOverviewPreviousDay);
+        mNextDayButton = (ImageView) activity.findViewById(R.id.idDailyoverviewNextDay);
         mUnitQuantityButton = (ImageView) activity.findViewById(R.id.idDailyoverviewSpoonButton);
         mMenuButton = (ImageView) activity.findViewById(R.id.idDailyoverviewMenuButton);
         mGroceryButton = (ImageView) activity.findViewById(R.id.idDailyoverviewGroceryButton);
@@ -107,7 +107,12 @@ public class Gui {
     }
 
     public void setMaxCalories(int amount) {
-        mMaxCalories.setText(String.valueOf(amount));
+        if(amount > 0) {
+            mMaxCalories.setText(String.valueOf(amount));
+        }
+        else {
+            mMaxCalories.setText("");
+        }
     }
 
     public void setLeftCalories(int amount) {

@@ -3,8 +3,10 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Data {
@@ -12,14 +14,15 @@ public class Data {
     /* Member variables */
     private Init mActivity;
     private String mNewQuantityUnitName;
-    private ArrayList<DatabaseUnit> mQuantityUnit;
+    private ArrayList<DatabaseUnit> mQuantityUnits;
     private DatabaseEntityManager mDatabaseEntityManager;
 
     /* Default values */
     private final String DEFAULT_NEWQUANTITYUNITNAME = "";
 
     /* Keys */
-    private final String KEY_NEWQUANTITYUNITNAME = "quantityunitmanagement1";
+    private final String KEY_NEW_QUANTITY_UNIT_NAME = "quantityunitmanagement1";
+    private final String KEY_QUANTITY_UNITS = "quantityunitmanagement2";
 
     /**
      * Method which gets the current layout attributes and put them into an 'Intent' object.
@@ -34,11 +37,11 @@ public class Data {
 
         mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
         allDbUnits = mDatabaseEntityManager.getAllUnits();
-        mQuantityUnit = new ArrayList<DatabaseUnit>();
-
+        mQuantityUnits = new ArrayList<DatabaseUnit>();
         for (DatabaseUnit dbu : allDbUnits) {
-            mQuantityUnit.add(dbu);
+            mQuantityUnits.add(dbu);
         }
+        Collections.sort(mQuantityUnits, new UnitComparetor());
 
         if (savedInstanceState == null) {
             mNewQuantityUnitName = DEFAULT_NEWQUANTITYUNITNAME;
@@ -53,7 +56,8 @@ public class Data {
      * @param b The bundle where the data will be saved.
      */
     public void saveDataInBundle(Bundle b) {
-        b.putString(KEY_NEWQUANTITYUNITNAME, mNewQuantityUnitName);
+        b.putString(KEY_NEW_QUANTITY_UNIT_NAME, mNewQuantityUnitName);
+        b.putSerializable(KEY_QUANTITY_UNITS, mQuantityUnits);
     }
 
     /**
@@ -62,7 +66,8 @@ public class Data {
      * @param b The bundle where the data is saved in.
      */
     private void restoreDataFromBundle(Bundle b) {
-        mNewQuantityUnitName = b.getString(KEY_NEWQUANTITYUNITNAME);
+        mNewQuantityUnitName = b.getString(KEY_NEW_QUANTITY_UNIT_NAME);
+        mQuantityUnits = (ArrayList<DatabaseUnit>)b.getSerializable(KEY_QUANTITY_UNITS);
     }
 
     /* Getter methods */
@@ -79,7 +84,7 @@ public class Data {
     }
 
     public ArrayList<DatabaseUnit> getQuantityUnits() {
-        return mQuantityUnit;
+        return mQuantityUnits;
     }
 
     /* Setter methods */

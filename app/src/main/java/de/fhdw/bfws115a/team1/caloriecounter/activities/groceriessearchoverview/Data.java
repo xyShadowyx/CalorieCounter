@@ -37,9 +37,7 @@ public class Data {
         mActivity = activity;
         mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
         SearchSettings searchSettings;
-        Log.d("Data", "Loading!");
         if (savedInstanceState == null) {
-            Log.d("Data", "savedInstanceState is null!");
             Intent intent = mActivity.getIntent();
             searchSettings = SearchSettings.values()[intent.getIntExtra("searchSettings", DEFAULT_SEARCH_SETTINGS)];
             mDatabaseGroceriesEntityList = new ArrayList<DatabaseGroceriesEntity>();
@@ -52,7 +50,6 @@ public class Data {
                 mDatabaseGroceriesEntityList.addAll(mDatabaseEntityManager.getAllMenus());
             }
         } else {
-            Log.d("Data", "savedInstanceState is not null!");
             restoreDataFromBundle(savedInstanceState);
         }
     }

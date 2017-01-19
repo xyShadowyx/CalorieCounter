@@ -39,6 +39,15 @@ public class ButtonClickListener implements Button.OnClickListener {
             }
             case R.id.idDailyoverviewAddNewEntry: {
                 mApplicationLogic.onClickAddEntry();
+                break;
+            }
+            case R.id.idDailyoverviewNextDay: {
+                mApplicationLogic.onNextDayClicked();
+                break;
+            }
+            case R.id.idDailyOverviewPreviousDay: {
+                mApplicationLogic.onPrevDayClicked();
+                break;
             }
         }
     }

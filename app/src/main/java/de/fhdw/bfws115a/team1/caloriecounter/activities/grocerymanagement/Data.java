@@ -31,13 +31,15 @@ public class Data {
     private final int DEFAULT_GROCERYCALORIES = 0;
     private final String DEFAULT_NEWUNITNAME = "";
     private final double DEFAULT_NEWUNITAMOUNT = 0;
-    private final int DEFAULT_GROCERYUNITS = 0;
 
     /* Keys */
-    private final String KEY_GROCERYNAME = "grocerymanagement1";
-    private final String KEY_GROCERYCALORIES = "grocerymanagement2";
-    private final String KEY_NEWUNITAMOUNT = "grocerymanagement3";
-    private final String KEY_GROCERYUNITS = "grocerymanagement4";
+    private final String KEY_GROCERY_NAME = "grocerymanagement1";
+    private final String KEY_GROCERY_CALORIES = "grocerymanagement2";
+    private final String KEY_NEW_UNIT_NAME = "grocerymanagement3";
+    private final String KEY_NEW_UNIT_AMOUNT = "grocerymanagement4";
+    private final String KEY_UNIT_LIST = "grocerymanagement5";
+    private final String KEY_GROCERY_UNITS = "grocerymanagement6";
+    private final String KEY_INPUT_GROCERY = "grocerymanagement7";
 
     /**
      * Method which gets the current layout attributes and put them into an 'Intent' object.
@@ -53,7 +55,7 @@ public class Data {
         mDatabaseEntityManager = new DatabaseEntityManager(mActivity.getApplicationContext());
         mGroceryUnits = new ArrayList<GroceryUnit>();
         mUnitList = new ArrayList<String>();
-
+        mUnitList.add(mActivity.getResources().getString(R.string.selectamount_default_spinnerstatus));
         for (Unit u : mDatabaseEntityManager.getAllUnits()) {
             mUnitList.add(u.getName());
         }
@@ -66,12 +68,13 @@ public class Data {
                 mGroceryCalories = mInputGrocery.getKcal();
                 for (GroceryUnit gu : mInputGrocery.getGroceryUnits()) {
                     mGroceryUnits.add(gu);
+                    mUnitList.remove(gu.getUnit().getName());
                 }
             } else {
                 mGroceryName = DEFAULT_GROCERYNAME;
                 mGroceryCalories = DEFAULT_GROCERYCALORIES;
             }
-            mNewUnitName = mActivity.getResources().getString(R.string.selectamount_default_spinnerstatus);
+            mNewUnitName = DEFAULT_NEWUNITNAME;
             mNewUnitAmount = DEFAULT_NEWUNITAMOUNT;
 
         } else {
@@ -85,10 +88,13 @@ public class Data {
      * @param b The bundle where the data will be saved.
      */
     public void saveDataInBundle(Bundle b) {
-        b.putString(KEY_GROCERYNAME, mGroceryName);
-        b.putDouble(KEY_GROCERYCALORIES, mGroceryCalories);
-        b.putString(KEY_NEWUNITAMOUNT, mNewUnitName);
-        b.putDouble(KEY_GROCERYUNITS, mNewUnitAmount);
+        b.putString(KEY_GROCERY_NAME, mGroceryName);
+        b.putDouble(KEY_GROCERY_CALORIES, mGroceryCalories);
+        b.putString(KEY_NEW_UNIT_NAME, mNewUnitName);
+        b.putDouble(KEY_NEW_UNIT_AMOUNT, mNewUnitAmount);
+        b.putSerializable(KEY_UNIT_LIST, mUnitList);
+        b.putSerializable(KEY_GROCERY_UNITS, mGroceryUnits);
+        b.putSerializable(KEY_INPUT_GROCERY, mInputGrocery);
     }
 
     /**
@@ -97,10 +103,13 @@ public class Data {
      * @param b The bundle where the data is saved in.
      */
     private void restoreDataFromBundle(Bundle b) {
-        mGroceryName = b.getString(KEY_GROCERYNAME);
-        mGroceryCalories = b.getInt(KEY_GROCERYCALORIES);
-        mNewUnitName = b.getString(KEY_NEWUNITAMOUNT);
-        mNewUnitAmount = b.getDouble(KEY_GROCERYUNITS);
+        mGroceryName = b.getString(KEY_GROCERY_NAME);
+        mGroceryCalories = b.getInt(KEY_GROCERY_CALORIES);
+        mNewUnitName = b.getString(KEY_NEW_UNIT_NAME);
+        mNewUnitAmount = b.getDouble(KEY_NEW_UNIT_AMOUNT);
+        mUnitList = (ArrayList<String>) b.getSerializable(KEY_UNIT_LIST);
+        mGroceryUnits = (ArrayList<GroceryUnit>)b.getSerializable(KEY_GROCERY_UNITS);
+        mInputGrocery = (DatabaseGrocery) b.getSerializable(KEY_INPUT_GROCERY);
     }
 
     /* Getter methods */
