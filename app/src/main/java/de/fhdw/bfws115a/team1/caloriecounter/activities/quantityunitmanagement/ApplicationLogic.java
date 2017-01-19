@@ -8,8 +8,11 @@ import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 import de.fhdw.bfws115a.team1.caloriecounter.utilities.Validation;
-
 import java.util.Collections;
+
+/**
+ * @author Florian Obladen.
+ */
 
 public class ApplicationLogic {
 

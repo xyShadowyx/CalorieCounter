@@ -6,8 +6,12 @@ import android.util.Log;
 
 import java.util.Calendar;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class ApplicationLogic {
-    /* Member variables */
+    /*Member variable*/
     private Data mData;
     private Gui mGui;
 

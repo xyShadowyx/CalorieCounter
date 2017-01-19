@@ -2,6 +2,10 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
 
 import android.widget.CalendarView;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class DateChangeListener implements CalendarView.OnDateChangeListener {
 
     /* Member variable */

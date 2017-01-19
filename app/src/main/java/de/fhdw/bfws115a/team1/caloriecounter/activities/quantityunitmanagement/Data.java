@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class Data {
 
     /* Member variables */

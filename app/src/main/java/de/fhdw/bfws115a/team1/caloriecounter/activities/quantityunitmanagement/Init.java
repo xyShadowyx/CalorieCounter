@@ -3,6 +3,10 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 import android.app.Activity;
 import android.os.Bundle;
 
+/**
+ * @author Florian Obladen.
+ */
+
 public class Init extends Activity {
 
     /* Member variables */

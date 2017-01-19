@@ -1,11 +1,14 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
+
+/**
+ * @author Florian Obladen.
+ */
 
 public class Gui {
 

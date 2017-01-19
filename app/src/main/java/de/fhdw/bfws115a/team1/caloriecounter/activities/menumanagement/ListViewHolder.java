@@ -20,6 +20,14 @@ public class ListViewHolder {
     private ImageView mDeleteImage;
     private FixGrocery mFixGrocery;
 
+    /**
+     * Connects view elements from frontend with backend variables.
+     * Reasons are modifying options in backend later on.
+     *
+     * @param view             The view where the elements are in.
+     * @param applicationLogic ApplicationLogic instance.
+     */
+
     public ListViewHolder(View view, ApplicationLogic applicationLogic) {
         mApplicationLogic = applicationLogic;
         mFixGrocery = null;
