@@ -17,7 +17,12 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
 import java.util.ArrayList;
 
+/**
+ * @author Viktor Schroeder.
+ */
 public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.OnItemClickListener {
+
+    /* Member variables */
     private Data mData;
     private ApplicationLogic mApplicationLogic;
     private final Context mContext;
@@ -77,6 +82,15 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
         mApplicationLogic.onItemSelected(clickedItem);
     }
 
+    /**
+     * Gets the layout of one list entry and fills it with additional list items.
+     * If it's not issued yet, it creates one.
+     *
+     * @param position    The position of the item within the adapter's data set of the item whose view is wanted.
+     * @param convertView The view which should be get.
+     * @param parent      The parent view.
+     * @return The Layout of one list entry.
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ListViewHolder listViewHolder;
@@ -94,6 +108,11 @@ public class ListAdapter extends BaseAdapter implements Filterable, AdapterView.
         return convertView;
     }
 
+    /**
+     * Gets the filter.
+     *
+     * @return The filter.
+     */
     @Override
     public Filter getFilter() {
         return mFilter;

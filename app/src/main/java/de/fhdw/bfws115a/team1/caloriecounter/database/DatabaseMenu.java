@@ -3,7 +3,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.database;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Menu;
 
 /**
- * Created by xySha on 18.11.2016.
+ * @author Viktor Schroeder.
  */
 public class DatabaseMenu extends Menu implements DatabaseGroceriesEntity {
     private long mId;
@@ -19,6 +19,6 @@ public class DatabaseMenu extends Menu implements DatabaseGroceriesEntity {
     }
 
     public String toString() {
-        return "DatabaseMenu(Id: " + getId() +", Menu: " + super.toString() + ")";
+        return "DatabaseMenu(Id: " + getId() + ", Menu: " + super.toString() + ")";
     }
 }

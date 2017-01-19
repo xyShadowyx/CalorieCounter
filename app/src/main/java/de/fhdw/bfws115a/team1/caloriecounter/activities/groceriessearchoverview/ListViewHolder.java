@@ -7,16 +7,26 @@ import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceriesEntity;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
+/**
+ * @author Viktor Schroeder.
+ */
 public class ListViewHolder {
+
+    /* Member variables */
     private ApplicationLogic mApplicationLogic;
     private ListButtonClickListener mListButtonClickListener;
-
     private TextView mNameText;
     private ImageView mDeleteImage;
     private ImageView mEditImage;
-
     private DatabaseGroceriesEntity mDatabaseGroceriesEntity;
 
+    /**
+     * Connects view elements from frontend with backend variables.
+     * Reasons are modifying options in backend later on.
+     *
+     * @param view             The view where the elements are in.
+     * @param applicationLogic ApplicationLogic instance.
+     */
     public ListViewHolder(View view, ApplicationLogic applicationLogic) {
         mApplicationLogic = applicationLogic;
         mDatabaseGroceriesEntity = null;

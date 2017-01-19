@@ -5,9 +5,8 @@ import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Created by Viktor on 15.11.2016.
+ * @author Viktor Schroeder.
  */
-
 public class Entry implements Serializable {
     private String mName;
 

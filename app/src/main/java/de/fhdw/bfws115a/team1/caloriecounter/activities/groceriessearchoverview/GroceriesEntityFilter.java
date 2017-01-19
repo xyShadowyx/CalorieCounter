@@ -8,9 +8,11 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 import java.util.ArrayList;
 
 /**
- * Created by xySha on 14.01.2017.
+ * @author Viktor Schroeder.
  */
 public class GroceriesEntityFilter extends Filter {
+
+    /* Member variables */
     private ArrayList<DatabaseGroceriesEntity> mDatabaseGroceriesEntities;
     private ListAdapter mListAdapter;
 
@@ -19,6 +21,12 @@ public class GroceriesEntityFilter extends Filter {
         mListAdapter = listAdapter;
     }
 
+    /**
+     * Performs the filter respectively for groceries and menus.
+     *
+     * @param constraint The filter.
+     * @return The result which entity should be filtered.
+     */
     @Override
     protected FilterResults performFiltering(CharSequence constraint) {
         String filterString;
@@ -44,6 +52,12 @@ public class GroceriesEntityFilter extends Filter {
         return results;
     }
 
+    /**
+     * Actually filters the list.
+     *
+     * @param constraint The filter.
+     * @param results    The result which entity should be filtered.
+     */
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
         mListAdapter.setFilteredDatabaseGroceriesEntities((ArrayList<DatabaseGroceriesEntity>) results.values);

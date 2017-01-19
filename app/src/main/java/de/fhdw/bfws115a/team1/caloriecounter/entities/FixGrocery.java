@@ -3,7 +3,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.entities;
 import android.widget.Filterable;
 
 /**
- * Created by xySha on 25.11.2016.
+ * @author Viktor Schroeder.
  */
 public class FixGrocery extends GroceriesEntity {
     private Unit mUnit;

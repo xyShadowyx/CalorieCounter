@@ -6,7 +6,12 @@ import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntry;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceriesEntity;
 
+/**
+ * @author Viktor Schroeder.
+ */
 public class ListButtonClickListener implements View.OnClickListener {
+
+    /* Member variables */
     private DatabaseEntry mDatabaseEntry;
     private ApplicationLogic mApplicationLogic;
 
@@ -19,6 +24,11 @@ public class ListButtonClickListener implements View.OnClickListener {
         mDatabaseEntry = databaseEntry;
     }
 
+    /**
+     * Assign layout components to backend functionality if triggered by user.
+     *
+     * @param view The specific view which should be assigned with functionality.
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

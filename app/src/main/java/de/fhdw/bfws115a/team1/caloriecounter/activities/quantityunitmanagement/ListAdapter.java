@@ -64,12 +64,18 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
         return i;
     }
 
-    //TODO Löschen?
+    /**
+     * Never used in our application.
+     * @param adapterView
+     * @param view
+     * @param i
+     * @param l
+     */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
     }
 
-    //TODO Was macht diese Methode?
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ListViewHolder listViewHolder;
@@ -87,7 +93,7 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
         listViewHolder.setDatabaseUnit(databaseUnit);
         listViewHolder.getNameText().setText(String.format("%s", databaseUnit.getName()));
 
-        if(Arrays.asList(mContext.getResources().getStringArray(R.array.undeletable_units)).contains(databaseUnit.getName())) {
+        if (Arrays.asList(mContext.getResources().getStringArray(R.array.undeletable_units)).contains(databaseUnit.getName())) {
             listViewHolder.getDeleteImage().setVisibility(View.INVISIBLE);
         } else {
             listViewHolder.getDeleteImage().setVisibility(View.VISIBLE);

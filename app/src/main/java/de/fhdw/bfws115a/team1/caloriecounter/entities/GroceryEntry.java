@@ -1,9 +1,8 @@
 package de.fhdw.bfws115a.team1.caloriecounter.entities;
 
 /**
- * Created by Viktor on 16.11.2016.
+ * @author Viktor Schroeder.
  */
-
 public class GroceryEntry extends Entry {
     private FixGrocery mFixGrocery;
 

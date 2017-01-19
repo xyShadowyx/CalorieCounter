@@ -3,7 +3,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.database;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 
 /**
- * Created by xySha on 18.11.2016.
+ * @author Viktor Schroeder.
  */
 public class DatabaseUnit extends Unit implements DatabaseEntity {
     private long mId;
@@ -19,6 +19,6 @@ public class DatabaseUnit extends Unit implements DatabaseEntity {
     }
 
     public String toString() {
-        return "DatabaseUnit(Id: " + getId() +", Unit: " + super.toString() + ")";
+        return "DatabaseUnit(Id: " + getId() + ", Unit: " + super.toString() + ")";
     }
 }

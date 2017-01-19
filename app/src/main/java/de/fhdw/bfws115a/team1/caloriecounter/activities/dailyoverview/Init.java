@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+/**
+ * @author Viktor Schroeder.
+ */
 public class Init extends Activity {
 
     /* Member variables */

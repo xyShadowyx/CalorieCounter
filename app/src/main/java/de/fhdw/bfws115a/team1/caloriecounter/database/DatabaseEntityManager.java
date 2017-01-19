@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Viktor on 18.11.2016.
+ * @author Viktor Schroeder.
  */
 public class DatabaseEntityManager {
     private DatabaseHelper mDatabaseHelper;

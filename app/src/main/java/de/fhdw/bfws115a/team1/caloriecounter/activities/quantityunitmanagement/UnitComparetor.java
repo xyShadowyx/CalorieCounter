@@ -5,7 +5,7 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 import java.util.Comparator;
 
 /**
- * Created by xySha on 19.01.2017.
+ * @author Florian Obladen.
  */
 public class UnitComparetor implements Comparator<Unit> {
     @Override

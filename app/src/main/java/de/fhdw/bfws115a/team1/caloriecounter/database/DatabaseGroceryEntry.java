@@ -4,7 +4,7 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceryEntry;
 
 /**
- * Created by xySha on 18.11.2016.
+ * @author Viktor Schroeder.
  */
 public class DatabaseGroceryEntry extends GroceryEntry implements DatabaseEntry {
     private long mId;
@@ -20,7 +20,7 @@ public class DatabaseGroceryEntry extends GroceryEntry implements DatabaseEntry 
     }
 
     public String toString() {
-        return "DatabaseGroceryEntry(Id: " + getId() +", GroceryEntry: " + super.toString() + ")";
+        return "DatabaseGroceryEntry(Id: " + getId() + ", GroceryEntry: " + super.toString() + ")";
     }
 
     @Override

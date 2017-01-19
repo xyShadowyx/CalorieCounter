@@ -4,7 +4,7 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.Menu;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.MenuEntry;
 
 /**
- * Created by xySha on 18.11.2016.
+ * @author Viktor Schroeder.
  */
 public class DatabaseMenuEntry extends MenuEntry implements DatabaseEntry {
     private long mId;
@@ -20,7 +20,7 @@ public class DatabaseMenuEntry extends MenuEntry implements DatabaseEntry {
     }
 
     public String toString() {
-        return "DatabaseMenuEntry(Id: " + getId() +", MenuEntry: " + super.toString() + ")";
+        return "DatabaseMenuEntry(Id: " + getId() + ", MenuEntry: " + super.toString() + ")";
     }
 
     @Override
@@ -50,6 +50,6 @@ public class DatabaseMenuEntry extends MenuEntry implements DatabaseEntry {
 
     @Override
     public int compareTo(DatabaseEntry databaseEntry) {
-        return (int)databaseEntry.getId();
+        return (int) databaseEntry.getId();
     }
 }

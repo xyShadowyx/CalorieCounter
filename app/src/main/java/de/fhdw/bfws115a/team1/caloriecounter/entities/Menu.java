@@ -3,7 +3,9 @@ package de.fhdw.bfws115a.team1.caloriecounter.entities;
 import java.util.ArrayList;
 
 /**
- * This class contains the structure of a menu.
+ * @author Viktor Schroeder.
+ *         <p>
+ *         This class contains the structure of a menu.
  */
 public class Menu extends GroceriesEntity {
     private double mAmount;

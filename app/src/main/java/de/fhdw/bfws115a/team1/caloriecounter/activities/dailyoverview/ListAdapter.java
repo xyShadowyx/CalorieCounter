@@ -17,7 +17,12 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
 import java.util.ArrayList;
 
+/**
+ * @author Viktor Schroeder.
+ */
 public class ListAdapter extends BaseAdapter {
+
+    /* Member variables */
     private Data mData;
     private ApplicationLogic mApplicationLogic;
     private final Context mContext;

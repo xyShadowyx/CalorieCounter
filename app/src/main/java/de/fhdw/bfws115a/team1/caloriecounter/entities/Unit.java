@@ -7,9 +7,10 @@ import java.io.Serializable;
 import java.util.Comparator;
 
 /**
- * This class represents a QuantityUnit object.
+ * @author Viktor Schroeder.
+ *         <p>
+ *         This class represents a QuantityUnit object.
  */
-
 public class Unit implements Serializable, Comparator<Unit> {
     private String mName;
 

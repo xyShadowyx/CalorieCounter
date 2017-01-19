@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+/**
+ * @author Viktor Schroeder.
+ */
 public class Init extends Activity {
 
     /* Member variables */
@@ -58,7 +61,6 @@ public class Init extends Activity {
         super.onSaveInstanceState(outState);
     }
 
-    //TODO Was macht dise Methode?
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {

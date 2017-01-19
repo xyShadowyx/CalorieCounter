@@ -8,6 +8,9 @@ import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntry;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * @author Viktor Schroeder.
+ */
 public class Data {
 
     /* Member variables */
@@ -19,22 +22,18 @@ public class Data {
     private int mSelectedYear;
     private int mSelectedMonth;
     private int mSelectedDay;
-
     private int mUsedCalories;
     private int mMaxCalories;
     private int mLeftCalories;
 
     /* Keys */
     private final String KEY_DAILYOVERVIEW_DATABASE_ENTRY_LIST = "dailyoverview1";
-
     private final String KEY_DAILYOVERVIEW_SELECTED_YEAR = "dailyoverview2";
     private final String KEY_DAILYOVERVIEW_SELECTED_MONTH = "dailyoverview3";
     private final String KEY_DAILYOVERVIEW_SELECTED_DAY = "dailyoverview4";
-
     private final String KEY_DAILYOVERVIEW_USED_CALORIES = "dailyoverview5";
     private final String KEY_DAILYOVERVIEW_MAX_CALORIES = "dailyoverview6";
     private final String KEY_DAILYOVERVIEW_LEFT_CALORIES = "dailyoverview7";
-
     private final String KEY_DAILYOVERVIEW_ENTRY_TO_COPY = "dailyoverview8";
     private final String KEY_DAILYOVERVIEW_ENTRY_TO_EDIT = "dailyoverview9";
 

@@ -3,9 +3,8 @@ package de.fhdw.bfws115a.team1.caloriecounter.entities;
 import java.util.ArrayList;
 
 /**
- * Created by Viktor on 15.11.2016.
+ * @author Viktor Schroeder.
  */
-
 public class Grocery extends GroceriesEntity {
     private ArrayList<GroceryUnit> mGroceryUnits;
     private int mKcal;
@@ -18,7 +17,7 @@ public class Grocery extends GroceriesEntity {
 
     public Grocery(Grocery grocery) {
         this(grocery.getName(), grocery.getKcal());
-        for(GroceryUnit gu : grocery.getGroceryUnits()) {
+        for (GroceryUnit gu : grocery.getGroceryUnits()) {
             addGroceryUnit(new GroceryUnit(gu));
         }
     }
@@ -28,8 +27,8 @@ public class Grocery extends GroceriesEntity {
     }
 
     public boolean addGroceryUnit(GroceryUnit groceryUnit) {
-        for(GroceryUnit gu : mGroceryUnits) {
-            if(gu.equals(groceryUnit)) return false;
+        for (GroceryUnit gu : mGroceryUnits) {
+            if (gu.equals(groceryUnit)) return false;
         }
         mGroceryUnits.add(new GroceryUnit(groceryUnit));
         return true;

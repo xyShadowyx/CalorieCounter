@@ -15,11 +15,10 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Created by Viktor on 15.11.2016.
- * <p>
- * DatabaseHelper handles the database
+ * @author Viktor Schroeder.
+ *         <p>
+ *         DatabaseHelper handles the database
  */
-
 public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * TODO: add close method after using cursor
@@ -169,7 +168,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues values;
         String[] undeletable = mContext.getResources().getStringArray(R.array.undeletable_units);
-        for(int i = 0; i < undeletable.length; i++) {
+        for (int i = 0; i < undeletable.length; i++) {
             values = new ContentValues();
             values.put(UNIT_NAME, undeletable[i]);
             sqLiteDatabase.insert(TABLE_UNIT, null, values);

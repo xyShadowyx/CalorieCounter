@@ -10,6 +10,9 @@ import android.widget.TextView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import org.w3c.dom.Text;
 
+/**
+ * @author Viktor Schroeder.
+ */
 public class Gui {
 
     /* Member variables */
@@ -22,7 +25,6 @@ public class Gui {
     private ImageView mNewEntryButton;
     private ListView mEntryListView;
     private TextView mEmptyListTextView;
-
     private EditText mMaxCalories;
     private TextView mUsedCalories;
     private TextView mLeftCalories;
@@ -97,6 +99,10 @@ public class Gui {
         return mLeftCalories;
     }
 
+    public TextView getEmptyListTextView() {
+        return mEmptyListTextView;
+    }
+
     /* Setter methods */
     public void setDate(int day, int month, int year) {
         mTodayDateText.setText(String.format("%02d.%02d.%04d", day, (month + 1), year));
@@ -107,23 +113,18 @@ public class Gui {
     }
 
     public void setMaxCalories(int amount) {
-        if(amount > 0) {
+        if (amount > 0) {
             mMaxCalories.setText(String.valueOf(amount));
-        }
-        else {
+        } else {
             mMaxCalories.setText("");
         }
     }
 
     public void setLeftCalories(int amount) {
         mLeftCalories.setText(String.valueOf(amount));
-        if(amount < 0)
+        if (amount < 0)
             mLeftCalories.setTextColor(Color.RED);
         else
             mLeftCalories.setTextColor(Color.GREEN);
-    }
-
-    public TextView getEmptyListTextView() {
-        return mEmptyListTextView;
     }
 }

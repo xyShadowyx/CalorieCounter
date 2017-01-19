@@ -11,12 +11,14 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.Calendar;
 
+/**
+ * @author Viktor Schroeder.
+ */
 public class ApplicationLogic {
 
     /* Member variables */
     private Data mData;
     private Gui mGui;
-
     private ListAdapter mListAdapter;
 
     public ApplicationLogic(Data data, Gui gui) {
@@ -38,16 +40,6 @@ public class ApplicationLogic {
         calculateCalories();
     }
 
-    private void calculateCalories() {
-        mData.setUsedCalories(0);
-        for (DatabaseEntry databaseEntry : mData.getDatabaseEntryList()) {
-            mData.setUsedCalories(databaseEntry.getCalories() + mData.getUsedCalories());
-        }
-        mGui.setUsedCalories(mData.getUsedCalories());
-        mData.setLeftCalories(mData.getMaxCalories() - mData.getUsedCalories());
-        mGui.setLeftCalories(mData.getLeftCalories());
-    }
-
     /**
      * Initialization.
      */
@@ -66,9 +58,25 @@ public class ApplicationLogic {
         mGui.getMaxCalories().addTextChangedListener(new TextChangeListener(this, mGui.getMaxCalories()));
     }
 
+    /**
+     * Initialization.
+     */
     private void initAdapter() {
         mListAdapter = new ListAdapter(mData, this);
         mGui.getEntryListView().setAdapter(mListAdapter);
+    }
+
+    /**
+     * Calculates the calories.
+     */
+    private void calculateCalories() {
+        mData.setUsedCalories(0);
+        for (DatabaseEntry databaseEntry : mData.getDatabaseEntryList()) {
+            mData.setUsedCalories(databaseEntry.getCalories() + mData.getUsedCalories());
+        }
+        mGui.setUsedCalories(mData.getUsedCalories());
+        mData.setLeftCalories(mData.getMaxCalories() - mData.getUsedCalories());
+        mGui.setLeftCalories(mData.getLeftCalories());
     }
 
     /**
@@ -177,6 +185,11 @@ public class ApplicationLogic {
         mData.getActivity().startActivity(mData.getActivity().getIntent());
     }
 
+    /**
+     * Deletes one an item.
+     *
+     * @param databaseEntry The DatabaseEntry which should be deleted.
+     */
     public void deleteItem(DatabaseEntry databaseEntry) {
         DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
         if (databaseEntry instanceof DatabaseGroceryEntry) {
@@ -189,6 +202,11 @@ public class ApplicationLogic {
         calculateCalories();
     }
 
+    /**
+     * First method to start with copying an entry.
+     *
+     * @param databaseEntry The database entry which should be copied.
+     */
     public void onSelectCopyItem(DatabaseEntry databaseEntry) {
         mData.setEntryToCopy(databaseEntry);
 
@@ -199,6 +217,13 @@ public class ApplicationLogic {
         mData.getActivity().startActivityForResult(intent, ResultCodes.COPYTODATE);
     }
 
+    /**
+     * Copies and item into a specific date.
+     *
+     * @param year  The year.
+     * @param month The month.
+     * @param day   The day.
+     */
     public void copyItemTo(int year, int month, int day) {
         DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
         DatabaseEntry databaseEntry = mData.getEntryToCopy();
@@ -210,6 +235,11 @@ public class ApplicationLogic {
         }
     }
 
+    /**
+     * Gets triggered when a date gets copied.
+     *
+     * @param data The intention filled with data like the day, the month and ultimately the year.
+     */
     public void onCopyDateSelected(Intent data) {
         Intent changedIntent;
 
@@ -227,6 +257,11 @@ public class ApplicationLogic {
         mData.getActivity().startActivity(mData.getActivity().getIntent());
     }
 
+    /**
+     * Triggers when user edits an entry.
+     *
+     * @param databaseEntry The database entry which should be edited.
+     */
     public void onEditEntry(DatabaseEntry databaseEntry) {
         Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount.Init.class);
 
@@ -243,6 +278,11 @@ public class ApplicationLogic {
         mData.getActivity().startActivityForResult(intent, ResultCodes.EDITENTRY);
     }
 
+    /**
+     * Saves the edited entry into the database.
+     *
+     * @param data The intention containing changed values of the entry.
+     */
     public void onEntryEdited(Intent data) {
         DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
         double selectedAmount = data.getDoubleExtra("amount", 0.0);
@@ -258,6 +298,11 @@ public class ApplicationLogic {
         reload();
     }
 
+    /**
+     * Changes the calory limit.
+     *
+     * @param s
+     */
     public void onCaloriesLimitChanged(String s) {
         try {
             mData.setMaxCalories(Integer.valueOf(s));

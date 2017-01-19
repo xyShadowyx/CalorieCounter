@@ -3,9 +3,10 @@ package de.fhdw.bfws115a.team1.caloriecounter.entities;
 import android.view.MotionEvent;
 
 /**
- * This class represents a specific entry at a day.
+ * @author Viktor Schroeder.
+ *         <p>
+ *         This class represents a specific entry at a day.
  */
-
 public class MenuEntry extends Entry {
     private Menu mMenu;
 

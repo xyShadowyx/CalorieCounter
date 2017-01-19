@@ -8,12 +8,14 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
 
+/**
+ * @author Viktor Schroeder.
+ */
 public class ApplicationLogic {
 
     /* Member variables */
     private Data mData;
     private Gui mGui;
-
     private ListAdapter mListAdapter;
 
     public ApplicationLogic(Data data, Gui gui) {
@@ -71,12 +73,18 @@ public class ApplicationLogic {
         mListAdapter.getFilter().filter(name);
     }
 
+    /**
+     * Deletes a specific grocery or a menu.
+     *
+     * @param databaseGroceriesEntity The DatabaseGroceriesEntity which should be deleted.
+     */
     public void deleteItem(DatabaseGroceriesEntity databaseGroceriesEntity) {
-        DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
-        if(databaseGroceriesEntity instanceof DatabaseMenu) {
-            databaseEntityManager.deleteMenu((DatabaseMenu)databaseGroceriesEntity);
+        DatabaseEntityManager databaseEntityManager;
+        databaseEntityManager = mData.getDatabaseEntityManager();
+        if (databaseGroceriesEntity instanceof DatabaseMenu) {
+            databaseEntityManager.deleteMenu((DatabaseMenu) databaseGroceriesEntity);
         } else if (databaseGroceriesEntity instanceof DatabaseGrocery) {
-            databaseEntityManager.deleteGrocery((DatabaseGrocery)databaseGroceriesEntity);
+            databaseEntityManager.deleteGrocery((DatabaseGrocery) databaseGroceriesEntity);
         }
         mData.getDatabaseGroceriesEntityList().remove(databaseGroceriesEntity);
         mListAdapter.notifyDataSetChanged();
@@ -133,7 +141,6 @@ public class ApplicationLogic {
             }
         } else if (mData.getSelectedEntity() instanceof Menu) {
             Menu selectedMenu = (Menu) mData.getSelectedEntity();
-            // TODO: check calculation of menu kcal with set amount
             selectedMenu.setAmount(selectedAmount);
             groceriesEntity = selectedMenu;
         }
@@ -163,15 +170,14 @@ public class ApplicationLogic {
 
     public void editItem(DatabaseGroceriesEntity databaseGroceriesEntity) {
         Intent intent;
-        if(databaseGroceriesEntity instanceof DatabaseMenu) {
+        if (databaseGroceriesEntity instanceof DatabaseMenu) {
             intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement.Init.class);
             intent.putExtra("databaseMenu", (DatabaseMenu) databaseGroceriesEntity);
-        }
-        else if(databaseGroceriesEntity instanceof DatabaseGrocery) {
+        } else if (databaseGroceriesEntity instanceof DatabaseGrocery) {
             intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement.Init.class);
             intent.putExtra("databaseGrocery", (DatabaseGrocery) databaseGroceriesEntity);
         } else {
-            return; // prevent crashes
+            return;
         }
         mData.getActivity().startActivityForResult(intent, ResultCodes.RELOAD);
     }

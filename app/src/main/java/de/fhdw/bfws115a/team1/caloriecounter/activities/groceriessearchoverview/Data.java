@@ -11,6 +11,9 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.ArrayList;
 
+/**
+ * @author Viktor Schroeder.
+ */
 public class Data {
 
     /* Member variable */
