@@ -1,7 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.dailyoverview;
 
 import android.content.Intent;
-import android.util.Log;
 import de.fhdw.bfws115a.team1.caloriecounter.constants.SearchSettings;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntry;
@@ -11,6 +10,9 @@ import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
 import java.util.Calendar;
 
+/**
+ * @author Viktor Schroeder
+ */
 public class ApplicationLogic {
 
     /* Member variables */
@@ -19,6 +21,10 @@ public class ApplicationLogic {
 
     private ListAdapter mListAdapter;
 
+    /**
+     * @param data
+     * @param gui
+     */
     public ApplicationLogic(Data data, Gui gui) {
         mData = data;
         mGui = gui;
@@ -38,6 +44,9 @@ public class ApplicationLogic {
         calculateCalories();
     }
 
+    /**
+     * Calculate calories
+     */
     private void calculateCalories() {
         mData.setUsedCalories(0);
         for (DatabaseEntry databaseEntry : mData.getDatabaseEntryList()) {
@@ -66,6 +75,9 @@ public class ApplicationLogic {
         mGui.getMaxCalories().addTextChangedListener(new TextChangeListener(this, mGui.getMaxCalories()));
     }
 
+    /**
+     * Initialization.
+     */
     private void initAdapter() {
         mListAdapter = new ListAdapter(mData, this);
         mGui.getEntryListView().setAdapter(mListAdapter);
@@ -177,6 +189,11 @@ public class ApplicationLogic {
         mData.getActivity().startActivity(mData.getActivity().getIntent());
     }
 
+    /**
+     * Delete entry
+     *
+     * @param databaseEntry
+     */
     public void deleteItem(DatabaseEntry databaseEntry) {
         DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
         if (databaseEntry instanceof DatabaseGroceryEntry) {
@@ -189,6 +206,11 @@ public class ApplicationLogic {
         calculateCalories();
     }
 
+    /**
+     * Select entry for a copy
+     *
+     * @param databaseEntry
+     */
     public void onSelectCopyItem(DatabaseEntry databaseEntry) {
         mData.setEntryToCopy(databaseEntry);
 
@@ -199,6 +221,13 @@ public class ApplicationLogic {
         mData.getActivity().startActivityForResult(intent, ResultCodes.COPYTODATE);
     }
 
+    /**
+     * Copy selected entry to date
+     *
+     * @param year
+     * @param month
+     * @param day
+     */
     public void copyItemTo(int year, int month, int day) {
         DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
         DatabaseEntry databaseEntry = mData.getEntryToCopy();
@@ -210,6 +239,11 @@ public class ApplicationLogic {
         }
     }
 
+    /**
+     * Date selected for selected entry to copy to
+     *
+     * @param data
+     */
     public void onCopyDateSelected(Intent data) {
         Intent changedIntent;
 
@@ -227,6 +261,11 @@ public class ApplicationLogic {
         mData.getActivity().startActivity(mData.getActivity().getIntent());
     }
 
+    /**
+     * Start edit entry
+     *
+     * @param databaseEntry
+     */
     public void onEditEntry(DatabaseEntry databaseEntry) {
         Intent intent = new Intent(mData.getActivity(), de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount.Init.class);
 
@@ -243,6 +282,11 @@ public class ApplicationLogic {
         mData.getActivity().startActivityForResult(intent, ResultCodes.EDITENTRY);
     }
 
+    /**
+     * Entry editing done
+     *
+     * @param data
+     */
     public void onEntryEdited(Intent data) {
         DatabaseEntityManager databaseEntityManager = mData.getDatabaseEntityManager();
         double selectedAmount = data.getDoubleExtra("amount", 0.0);
@@ -258,6 +302,11 @@ public class ApplicationLogic {
         reload();
     }
 
+    /**
+     * Called when calorie limit changed
+     *
+     * @param s
+     */
     public void onCaloriesLimitChanged(String s) {
         try {
             mData.setMaxCalories(Integer.valueOf(s));

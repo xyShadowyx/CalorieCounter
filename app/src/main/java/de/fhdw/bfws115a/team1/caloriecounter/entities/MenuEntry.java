@@ -12,10 +12,10 @@ public class MenuEntry extends Entry {
     /**
      * Constructor
      *
-     * @param year year of entry
+     * @param year  year of entry
      * @param month month of entry
-     * @param day day of entry
-     * @param menu menu for entry
+     * @param day   day of entry
+     * @param menu  menu for entry
      */
     public MenuEntry(int year, int month, int day, Menu menu) {
         super(year, month, day);

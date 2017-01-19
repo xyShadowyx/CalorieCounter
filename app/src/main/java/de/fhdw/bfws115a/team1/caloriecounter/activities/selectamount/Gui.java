@@ -1,7 +1,9 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount;
 
-import android.widget.*;
-
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
 /**

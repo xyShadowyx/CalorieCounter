@@ -12,9 +12,9 @@ public class GroceryEntry extends Entry {
     /**
      * Constructor
      *
-     * @param year year of entry
-     * @param month month of entry
-     * @param day day of entry
+     * @param year       year of entry
+     * @param month      month of entry
+     * @param day        day of entry
      * @param fixGrocery fixed grocery with unit and size
      */
     public GroceryEntry(int year, int month, int day, FixGrocery fixGrocery) {

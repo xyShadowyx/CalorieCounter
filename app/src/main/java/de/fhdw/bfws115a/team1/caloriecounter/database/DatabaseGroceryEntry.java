@@ -16,11 +16,11 @@ public class DatabaseGroceryEntry extends GroceryEntry implements DatabaseEntry 
      * Constructor
      * Is package-private to prevent wrong usage.
      *
-     * @param year year of entry
-     * @param month month of entry
-     * @param day day of month of entry
+     * @param year       year of entry
+     * @param month      month of entry
+     * @param day        day of month of entry
      * @param fixGrocery fix grocery of entry
-     * @param id id of entry in database
+     * @param id         id of entry in database
      */
     DatabaseGroceryEntry(int year, int month, int day, FixGrocery fixGrocery, long id) {
         super(year, month, day, fixGrocery);
@@ -43,7 +43,7 @@ public class DatabaseGroceryEntry extends GroceryEntry implements DatabaseEntry 
      * @return this object as a text
      */
     public String toString() {
-        return "DatabaseGroceryEntry(Id: " + getId() +", GroceryEntry: " + super.toString() + ")";
+        return "DatabaseGroceryEntry(Id: " + getId() + ", GroceryEntry: " + super.toString() + ")";
     }
 
     /**
@@ -67,6 +67,16 @@ public class DatabaseGroceryEntry extends GroceryEntry implements DatabaseEntry 
     }
 
     /**
+     * Set new amount
+     *
+     * @param amount new amount
+     */
+    @Override
+    public void setAmount(double amount) {
+        this.getFixGrocery().setAmount(amount);
+    }
+
+    /**
      * Get unit name of grocery.
      *
      * @return unit name
@@ -84,15 +94,6 @@ public class DatabaseGroceryEntry extends GroceryEntry implements DatabaseEntry 
     @Override
     public int getCalories() {
         return this.getFixGrocery().getKcal();
-    }
-
-    /**
-     * Set new amount
-     * @param amount new amount
-     */
-    @Override
-    public void setAmount(double amount) {
-        this.getFixGrocery().setAmount(amount);
     }
 
     /**

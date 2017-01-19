@@ -16,11 +16,11 @@ import java.util.ArrayList;
  */
 public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
 
+    private final Context mContext;
+    private final ArrayList<GroceryUnit> mGroceryUnits;
     /* Member variables */
     private Data mData;
     private ApplicationLogic mApplicationLogic;
-    private final Context mContext;
-    private final ArrayList<GroceryUnit> mGroceryUnits;
 
     public ListAdapter(Data data, ApplicationLogic applicationLogic) {
         mData = data;

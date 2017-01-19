@@ -2,21 +2,15 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
-import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGrocery;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseHelper;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Grocery;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceryUnit;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 import de.fhdw.bfws115a.team1.caloriecounter.utilities.Validation;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Niklas Lammers
@@ -68,8 +62,8 @@ public class ApplicationLogic {
         mSpinnerAdapter = new ArrayAdapter<String>(mData.getActivity(), android.R.layout.simple_list_item_1, mData.getUnitList());
         mGui.getUnitSpinner().setAdapter(mSpinnerAdapter);
 
-        for(int i = 0; i < mData.getUnitList().size(); i++) {
-            if(mData.getUnitList().get(i).equals(mData.getNewUnitName())) {
+        for (int i = 0; i < mData.getUnitList().size(); i++) {
+            if (mData.getUnitList().get(i).equals(mData.getNewUnitName())) {
                 mGui.getUnitSpinner().setSelection(i, false);
             }
         }

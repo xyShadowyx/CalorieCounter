@@ -13,6 +13,14 @@ import java.util.ArrayList;
  */
 public class Data {
 
+    /* Default values */
+    private final String DEFAULT_MENUNAME = "";
+    private final double DEFAULT_PORTIONSIZE = 0.0;
+    /* Keys */
+    private final String KEY_MENU_NAME = "menumanagement1";
+    private final String KEY_PORTION_SIZE = "menumanagement2";
+    private final String KEY_MENU_FIX_GROCERIES = "menumanagement3";
+    private final String KEY_INPUT_MENU = "menumanagement4";
     /* Member variables */
     private Init mActivity;
     private String mMenuName;
@@ -20,16 +28,6 @@ public class Data {
     private ArrayList<FixGrocery> mMenuFixGroceries;
     private DatabaseMenu mInputMenu;
     private DatabaseEntityManager mDatabaseEntityManager;
-
-    /* Default values */
-    private final String DEFAULT_MENUNAME = "";
-    private final double DEFAULT_PORTIONSIZE = 0.0;
-
-    /* Keys */
-    private final String KEY_MENU_NAME = "menumanagement1";
-    private final String KEY_PORTION_SIZE = "menumanagement2";
-    private final String KEY_MENU_FIX_GROCERIES = "menumanagement3";
-    private final String KEY_INPUT_MENU = "menumanagement4";
 
     /**
      * Method which gets the current layout attributes and put them into an Intent object.
@@ -94,12 +92,25 @@ public class Data {
         return mActivity;
     }
 
+    /* Setter methods */
+    public void setActivity(Init mActivity) {
+        this.mActivity = mActivity;
+    }
+
     public String getMenuName() {
         return mMenuName;
     }
 
+    public void setMenuName(String mMenuName) {
+        this.mMenuName = mMenuName;
+    }
+
     public double getPortionSize() {
         return mPortionSize;
+    }
+
+    public void setPortionSize(double mPortionSize) {
+        this.mPortionSize = mPortionSize;
     }
 
     public ArrayList<FixGrocery> getMenuFixGroceries() {
@@ -112,18 +123,5 @@ public class Data {
 
     public DatabaseMenu getInputMenu() {
         return mInputMenu;
-    }
-
-    /* Setter methods */
-    public void setActivity(Init mActivity) {
-        this.mActivity = mActivity;
-    }
-
-    public void setMenuName(String mMenuName) {
-        this.mMenuName = mMenuName;
-    }
-
-    public void setPortionSize(double mPortionSize) {
-        this.mPortionSize = mPortionSize;
     }
 }

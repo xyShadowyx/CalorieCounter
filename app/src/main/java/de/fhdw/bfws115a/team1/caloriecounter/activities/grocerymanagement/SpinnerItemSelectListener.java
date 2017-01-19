@@ -27,7 +27,7 @@ public class SpinnerItemSelectListener implements AdapterView.OnItemSelectedList
      */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if(i > 0) {
+        if (i > 0) {
             mApplicationLogic.onNewUnitNameChanged(mData.getUnitList().get(i));
         }
     }

@@ -31,7 +31,7 @@ public class Grocery extends GroceriesEntity {
      */
     public Grocery(Grocery grocery) {
         this(grocery.getName(), grocery.getKcal());
-        for(GroceryUnit gu : grocery.getGroceryUnits()) {
+        for (GroceryUnit gu : grocery.getGroceryUnits()) {
             addGroceryUnit(new GroceryUnit(gu));
         }
     }
@@ -52,8 +52,8 @@ public class Grocery extends GroceriesEntity {
      * @return true if add was successful
      */
     public boolean addGroceryUnit(GroceryUnit groceryUnit) {
-        for(GroceryUnit gu : mGroceryUnits) {
-            if(gu.equals(groceryUnit)) return false;
+        for (GroceryUnit gu : mGroceryUnits) {
+            if (gu.equals(groceryUnit)) return false;
         }
         mGroceryUnits.add(new GroceryUnit(groceryUnit));
         return true;
@@ -93,7 +93,6 @@ public class Grocery extends GroceriesEntity {
      * @return this object as a text
      */
     public String toString() {
-        /* TODO: add GroceryUnits to string */
         return "Grocery(Name: " + getName() + ")";
     }
 }

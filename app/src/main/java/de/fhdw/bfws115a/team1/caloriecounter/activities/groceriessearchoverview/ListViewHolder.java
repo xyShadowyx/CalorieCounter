@@ -5,8 +5,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceriesEntity;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
+/**
+ * @author Viktor Schroeder
+ */
 public class ListViewHolder {
     private ApplicationLogic mApplicationLogic;
     private ListButtonClickListener mListButtonClickListener;
@@ -17,6 +19,13 @@ public class ListViewHolder {
 
     private DatabaseGroceriesEntity mDatabaseGroceriesEntity;
 
+    /**
+     * Connects view elements from frontend with backend variables.
+     * Reasons are modifying options in backend later on.
+     *
+     * @param view             The view where the elements are in.
+     * @param applicationLogic ApplicationLogic instance.
+     */
     public ListViewHolder(View view, ApplicationLogic applicationLogic) {
         mApplicationLogic = applicationLogic;
         mDatabaseGroceriesEntity = null;
@@ -30,10 +39,12 @@ public class ListViewHolder {
         mEditImage.setOnClickListener(mListButtonClickListener);
     }
 
+    /* Setter methods */
     public void setDatabaseGroceriesEntity(DatabaseGroceriesEntity databaseGroceriesEntity) {
         mListButtonClickListener.setDatabaseGroceriesEntity(databaseGroceriesEntity);
     }
 
+    /* Getter methods */
     public TextView getNameText() {
         return mNameText;
     }

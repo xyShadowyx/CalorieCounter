@@ -2,7 +2,6 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 

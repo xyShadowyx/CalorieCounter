@@ -9,6 +9,7 @@ package de.fhdw.bfws115a.team1.caloriecounter.database;
 public interface DatabaseGroceriesEntity extends DatabaseEntity {
     /**
      * Get the name.
+     *
      * @return name
      */
     String getName();

@@ -3,11 +3,19 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview
 import android.view.View;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
+/**
+ * @author Viktor Schroeder
+ */
 public class ClickListener implements View.OnClickListener {
 
     /* Member variable */
     private ApplicationLogic mApplicationLogic;
 
+    /**
+     * Constructor
+     *
+     * @param applicationLogic
+     */
     public ClickListener(ApplicationLogic applicationLogic) {
         mApplicationLogic = applicationLogic;
     }

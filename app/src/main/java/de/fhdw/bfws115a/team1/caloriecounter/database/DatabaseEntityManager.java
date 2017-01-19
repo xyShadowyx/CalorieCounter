@@ -158,7 +158,7 @@ public class DatabaseEntityManager {
     }
 
     /* Get Entiries */
-    public ArrayList<DatabaseEntry> getEntriesOf(int year, int month, int day)  {
+    public ArrayList<DatabaseEntry> getEntriesOf(int year, int month, int day) {
         return mDatabaseHelper.getEntriesOf(year, month, day);
     }
 }

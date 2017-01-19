@@ -1,8 +1,9 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement;
 
-import android.view.View;
-import android.widget.*;
-
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
 /**

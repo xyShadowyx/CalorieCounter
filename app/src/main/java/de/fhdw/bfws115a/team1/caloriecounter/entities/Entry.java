@@ -1,8 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * This class is a generalisation class for entries to a specific date
@@ -19,9 +17,9 @@ public class Entry implements Serializable {
     /**
      * Constructor
      *
-     * @param year year of entry
+     * @param year  year of entry
      * @param month month of entry
-     * @param day day of month of entry
+     * @param day   day of month of entry
      */
     public Entry(int year, int month, int day) {
         mYear = year;
@@ -68,9 +66,9 @@ public class Entry implements Serializable {
     /**
      * Set the date for entry
      *
-     * @param year new year
+     * @param year  new year
      * @param month new month
-     * @param day new day
+     * @param day   new day
      */
     public void setDate(int year, int month, int day) {
         mYear = year;

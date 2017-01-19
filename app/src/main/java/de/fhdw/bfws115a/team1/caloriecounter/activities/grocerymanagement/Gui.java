@@ -1,6 +1,5 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.grocerymanagement;
 
-import android.view.View;
 import android.widget.*;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
@@ -18,6 +17,7 @@ public class Gui {
     private ImageView mAddNewQuantity;
     private ImageView mSaveGrocery;
     private TextView mEmptyListTextView;
+
     /**
      * Assign layout components to member variables so that they can be changed in backend.
      *

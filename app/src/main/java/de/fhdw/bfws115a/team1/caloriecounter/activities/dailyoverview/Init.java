@@ -3,8 +3,10 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.dailyoverview;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
+/**
+ * @author Viktor Schroeder
+ */
 public class Init extends Activity {
 
     /* Member variables */
@@ -60,7 +62,7 @@ public class Init extends Activity {
     }
 
     /**
-     * //TODO was macht diese Methode????
+     * Catches activity results
      *
      * @param requestCode
      * @param resultCode

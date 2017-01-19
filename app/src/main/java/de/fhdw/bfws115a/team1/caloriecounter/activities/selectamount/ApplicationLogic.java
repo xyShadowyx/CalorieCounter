@@ -3,7 +3,6 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import de.fhdw.bfws115a.team1.caloriecounter.R;

@@ -2,7 +2,6 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 
 import java.util.Calendar;
 

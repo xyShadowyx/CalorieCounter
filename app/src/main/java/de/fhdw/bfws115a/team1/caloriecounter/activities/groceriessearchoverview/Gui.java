@@ -1,9 +1,14 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview;
 
-import android.widget.*;
-
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.TextView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
+/**
+ * @author Viktor Schroeder
+ */
 public class Gui {
 
     /* Member variables */

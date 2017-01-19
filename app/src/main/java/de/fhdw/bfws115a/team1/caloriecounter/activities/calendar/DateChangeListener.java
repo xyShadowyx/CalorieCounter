@@ -27,7 +27,7 @@ public class DateChangeListener implements CalendarView.OnDateChangeListener {
      */
     @Override
     public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
-        if(year != mData.getSelectedYear() || month != mData.getSelectedMonth() || day != mData.getSelectedDay()) {
+        if (year != mData.getSelectedYear() || month != mData.getSelectedMonth() || day != mData.getSelectedDay()) {
             mApplicationLogic.onDateSelect(year, month, day);
         }
     }

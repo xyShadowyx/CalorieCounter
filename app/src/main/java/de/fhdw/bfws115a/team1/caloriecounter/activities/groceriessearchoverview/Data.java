@@ -2,29 +2,28 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import de.fhdw.bfws115a.team1.caloriecounter.constants.SearchSettings;
-import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntity;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceriesEntity;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
+import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
 import java.util.ArrayList;
 
+/**
+ * @author Viktor Schroeder
+ */
 public class Data {
 
+    /* Default values */
+    private final int DEFAULT_SEARCH_SETTINGS = SearchSettings.DISPLAY_ALL.ordinal();
+    /* Keys */
+    private final String KEY_DATABASE_GROCERIES_ENTITY_LIST = "groceriessearchoverview1";
+    private final String KEY_SELECTED_ENTITY = "groceriessearchoverview2";
     /* Member variable */
     private Init mActivity;
     private ArrayList<DatabaseGroceriesEntity> mDatabaseGroceriesEntityList;
     private DatabaseEntityManager mDatabaseEntityManager;
     private GroceriesEntity mSelectedEntity;
-
-    /* Default values */
-    private final int DEFAULT_SEARCH_SETTINGS = SearchSettings.DISPLAY_ALL.ordinal();
-
-    /* Keys */
-    private final String KEY_DATABASE_GROCERIES_ENTITY_LIST = "groceriessearchoverview1";
-    private final String KEY_SELECTED_ENTITY = "groceriessearchoverview2";
 
     /**
      * Method which gets the current layout attributes and put them into an 'Intent' object.
@@ -87,12 +86,12 @@ public class Data {
         return mSelectedEntity;
     }
 
-    public DatabaseEntityManager getDatabaseEntityManager() {
-        return mDatabaseEntityManager;
-    }
-
     /* Setter methods */
     public void setSelectedEntity(GroceriesEntity mSelectedEntity) {
         this.mSelectedEntity = mSelectedEntity;
+    }
+
+    public DatabaseEntityManager getDatabaseEntityManager() {
+        return mDatabaseEntityManager;
     }
 }

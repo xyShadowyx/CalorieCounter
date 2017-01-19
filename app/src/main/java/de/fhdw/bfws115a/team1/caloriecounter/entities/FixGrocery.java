@@ -14,10 +14,10 @@ public class FixGrocery extends GroceriesEntity {
     /**
      * Constructor
      *
-     * @param name name of fixed grocery
-     * @param unit unit of fixed grocery
+     * @param name   name of fixed grocery
+     * @param unit   unit of fixed grocery
      * @param amount amount of fixed grocery
-     * @param kcal calories of fixed grocery
+     * @param kcal   calories of fixed grocery
      */
     public FixGrocery(String name, Unit unit, double amount, int kcal) {
         super(name);
@@ -38,7 +38,7 @@ public class FixGrocery extends GroceriesEntity {
     /**
      * Constructor to concat a GroceryUnit to Grocery
      *
-     * @param grocery not fixed grocery
+     * @param grocery     not fixed grocery
      * @param groceryUnit unit with amount
      */
     public FixGrocery(Grocery grocery, GroceryUnit groceryUnit) {

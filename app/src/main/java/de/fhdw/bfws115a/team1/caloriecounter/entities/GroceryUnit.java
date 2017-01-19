@@ -15,7 +15,7 @@ public class GroceryUnit implements Serializable {
     /**
      * Constructor
      *
-     * @param unit unit
+     * @param unit   unit
      * @param amount amount of unit
      */
     public GroceryUnit(Unit unit, double amount) {

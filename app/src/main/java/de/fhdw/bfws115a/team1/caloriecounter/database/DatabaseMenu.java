@@ -15,9 +15,9 @@ public class DatabaseMenu extends Menu implements DatabaseGroceriesEntity {
      * Constructor
      * Is package-private to prevent wrong usage.
      *
-     * @param name menu name
+     * @param name     menu name
      * @param portions menu portion
-     * @param id menu id in database
+     * @param id       menu id in database
      */
     DatabaseMenu(String name, double portions, long id) {
         super(name, portions);
@@ -40,6 +40,6 @@ public class DatabaseMenu extends Menu implements DatabaseGroceriesEntity {
      * @return this object as a text
      */
     public String toString() {
-        return "DatabaseMenu(Id: " + getId() +", Menu: " + super.toString() + ")";
+        return "DatabaseMenu(Id: " + getId() + ", Menu: " + super.toString() + ")";
     }
 }

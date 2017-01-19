@@ -4,7 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.FixGrocery;
 
@@ -15,11 +16,11 @@ import java.util.ArrayList;
  */
 public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
 
+    private final Context mContext;
+    private final ArrayList<FixGrocery> mFixGroceryEntities;
     /* Member variables */
     private Data mData;
     private ApplicationLogic mApplicationLogic;
-    private final Context mContext;
-    private final ArrayList<FixGrocery> mFixGroceryEntities;
 
     public ListAdapter(Data data, ApplicationLogic applicationLogic) {
         mData = data;

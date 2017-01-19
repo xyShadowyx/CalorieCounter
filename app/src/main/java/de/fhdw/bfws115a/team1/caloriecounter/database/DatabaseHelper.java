@@ -19,27 +19,20 @@ import java.util.List;
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    /* Member variables */
-    public Context mContext;
-
     /* Database structure variables */
     public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "database.db";
-
     public final static int SHORT_NAME_LENGTH = 16;
     public final static int MEDIUM_NAME_LENGTH = 32;
     public final static int LONG_NAME_LENGTH = 64;
-
     private final static String TABLE_GROCERY = "grocery";
     private final static String GROCERY_ID = "id";
     private final static String GROCERY_NAME = "name";
     private final static String GROCERY_KCAL = "kcal";
-
     private final static String TABLE_GROCERY_UNITS = "grocery_units";
     private final static String GROCERY_UNITS_GROCERY_ID = "grocery_id";
     private final static String GROCERY_UNITS_UNIT = "unit";
     private final static String GROCERY_UNITS_AMOUNT = "amount";
-
     private final static String TABLE_GROCERY_ENTRY = "grocery_entry";
     private final static String GROCERY_ENTRY_ID = "id";
     private final static String GROCERY_ENTRY_NAME = "name";
@@ -47,12 +40,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final static String GROCERY_ENTRY_UNIT = "unit";
     private final static String GROCERY_ENTRY_AMOUNT = "amount";
     private final static String GROCERY_ENTRY_KCAL = "kcal";
-
     private final static String TABLE_MENU = "menu";
     private final static String MENU_ID = "id";
     private final static String MENU_NAME = "name";
     private final static String MENU_PORTIONS = "portions";
-
     private final static String TABLE_MENU_GROCERY = "menu_grocery";
     private final static String MENU_GROCERY_ID = "id";
     private final static String MENU_GROCERY_MENU_ID = "menu_id";
@@ -60,13 +51,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final static String MENU_GROCERY_UNIT = "unit";
     private final static String MENU_GROCERY_AMOUNT = "amount";
     private final static String MENU_GROCERY_KCAL = "kcal";
-
     private final static String TABLE_MENU_ENTRY = "menu_entry";
     private final static String MENU_ENTRY_ID = "id";
     private final static String MENU_ENTRY_NAME = "name";
     private final static String MENU_ENTRY_DATE = "date";
     private final static String MENU_ENTRY_PORTIONS = "portions";
-
     private final static String TABLE_MENU_ENTRY_GROCERY = "menu_entry_grocery";
     private final static String MENU_ENTRY_GROCERY_ID = "id";
     private final static String MENU_ENTRY_GROCERY_MENU_ENTRY_ID = "menu_entry_id";
@@ -74,18 +63,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final static String MENU_ENTRY_GROCERY_UNIT = "unit";
     private final static String MENU_ENTRY_GROCERY_AMOUNT = "amount";
     private final static String MENU_ENTRY_GROCERY_KCAL = "kcal";
-
     private final static String TABLE_UNIT = "unit";
     private final static String UNIT_ID = "id";
     private final static String UNIT_NAME = "name";
-
     private static final String CREATE_TABLE_GROCERY = "CREATE TABLE "
             + TABLE_GROCERY + "("
             + GROCERY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + GROCERY_NAME + " VARCHAR (" + MEDIUM_NAME_LENGTH + "),"
             + GROCERY_KCAL + " INTEGER"
             + ");";
-
     private static final String CREATE_TABLE_GROCERY_UNITS = "CREATE TABLE "
             + TABLE_GROCERY_UNITS + "("
             + GROCERY_UNITS_GROCERY_ID + " INTEGER,"
@@ -95,7 +81,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + "," + GROCERY_UNITS_UNIT
             + "," + GROCERY_UNITS_AMOUNT
             + "));";
-
     private static final String CREATE_TABLE_GROCERY_ENTRY = "CREATE TABLE "
             + TABLE_GROCERY_ENTRY + "("
             + GROCERY_ENTRY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -105,14 +90,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + GROCERY_ENTRY_AMOUNT + " DOUBLE,"
             + GROCERY_ENTRY_KCAL + " INTEGER"
             + ");";
-
     private static final String CREATE_TABLE_MENU = "CREATE TABLE "
             + TABLE_MENU + "("
             + MENU_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + MENU_NAME + " VARCHAR (" + MEDIUM_NAME_LENGTH + "),"
             + MENU_PORTIONS + " DOUBLE"
             + ");";
-
     private static final String CREATE_TABLE_MENU_GROCERY = "CREATE TABLE "
             + TABLE_MENU_GROCERY + "("
             + MENU_GROCERY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -122,7 +105,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + MENU_GROCERY_AMOUNT + " DOUBLE,"
             + MENU_GROCERY_KCAL + " INTEGER"
             + ");";
-
     private static final String CREATE_TABLE_MENU_ENTRY = "CREATE TABLE "
             + TABLE_MENU_ENTRY + "("
             + MENU_ENTRY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -130,7 +112,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + MENU_ENTRY_DATE + " DATE,"
             + MENU_ENTRY_PORTIONS + " DOUBLE"
             + ");";
-
     private static final String CREATE_TABLE_MENU_ENTRY_GROCERY = "CREATE TABLE "
             + TABLE_MENU_ENTRY_GROCERY + "("
             + MENU_ENTRY_GROCERY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -140,12 +121,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + MENU_ENTRY_GROCERY_AMOUNT + " DOUBLE,"
             + MENU_ENTRY_GROCERY_KCAL + " INTEGER"
             + ");";
-
     private static final String CREATE_TABLE_UNIT = "CREATE TABLE "
             + TABLE_UNIT + "("
             + UNIT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UNIT_NAME + " VARCHAR (" + SHORT_NAME_LENGTH + ")"
             + ");";
+    /* Member variables */
+    public Context mContext;
 
     /**
      * Constructor

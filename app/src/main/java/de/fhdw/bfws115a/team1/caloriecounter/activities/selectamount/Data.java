@@ -2,7 +2,6 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.selectamount;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.*;
 
@@ -13,6 +12,13 @@ import java.util.ArrayList;
  */
 public class Data {
 
+    /* Default values */
+    private final double DEFAULT_SELECTEDAMOUNT = 0;
+    /* Keys */
+    private final String KEY_PICKED_GROCERY = "selectamount1";
+    private final String KEY_SELECTED_AMOUNT = "selectamount2";
+    private final String KEY_SPINNER_STATUS = "selectamount3";
+    private final String KEY_IS_MENU = "selectamount3";
     /* Member variables */
     private Init mActivity;
     private String mPickedGrocery;
@@ -20,15 +26,6 @@ public class Data {
     private String mSpinnerStatus;
     private ArrayList<String> mUnitList;
     private boolean mIsMenu;
-
-    /* Default values */
-    private final double DEFAULT_SELECTEDAMOUNT = 0;
-
-    /* Keys */
-    private final String KEY_PICKED_GROCERY = "selectamount1";
-    private final String KEY_SELECTED_AMOUNT = "selectamount2";
-    private final String KEY_SPINNER_STATUS = "selectamount3";
-    private final String KEY_IS_MENU = "selectamount3";
 
     /**
      * Method which gets the current layout attributes and put them into an 'Intent' object.
@@ -74,7 +71,7 @@ public class Data {
                 mUnitList.add(fixGrocery.getUnit().getName());
                 mSelectedAmount = fixGrocery.getAmount();
             }
-            
+
         } else {
             restoreDataFromBundle(savedInstanceState);
         }
@@ -109,16 +106,33 @@ public class Data {
         return mActivity;
     }
 
+    /* Setter methods */
+    public void setActivity(Init mActivity) {
+        this.mActivity = mActivity;
+    }
+
     public String getPickedGrocery() {
         return mPickedGrocery;
+    }
+
+    public void setPickedGrocery(String mPickedGrocery) {
+        this.mPickedGrocery = mPickedGrocery;
     }
 
     public double getSelectedAmount() {
         return mSelectedAmount;
     }
 
+    public void setSelectedAmount(double mSelectedAmount) {
+        this.mSelectedAmount = mSelectedAmount;
+    }
+
     public String getSpinnerStatus() {
         return mSpinnerStatus;
+    }
+
+    public void setSpinnerStatus(String spinnerStatus) {
+        mSpinnerStatus = spinnerStatus;
     }
 
     public ArrayList<String> getUnitList() {
@@ -127,22 +141,5 @@ public class Data {
 
     public boolean getIsMenu() {
         return mIsMenu;
-    }
-
-    /* Setter methods */
-    public void setActivity(Init mActivity) {
-        this.mActivity = mActivity;
-    }
-
-    public void setPickedGrocery(String mPickedGrocery) {
-        this.mPickedGrocery = mPickedGrocery;
-    }
-
-    public void setSelectedAmount(double mSelectedAmount) {
-        this.mSelectedAmount = mSelectedAmount;
-    }
-
-    public void setSpinnerStatus(String spinnerStatus) {
-        mSpinnerStatus = spinnerStatus;
     }
 }

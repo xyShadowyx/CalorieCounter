@@ -6,6 +6,9 @@ import android.widget.TextView;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntry;
 
+/**
+ * @author Viktor Schroeder
+ */
 public class ListViewHolder {
     private ApplicationLogic mApplicationLogic;
     private ListButtonClickListener mListButtonClickListener;
@@ -19,6 +22,13 @@ public class ListViewHolder {
 
     private DatabaseEntry mDatabaseEntry;
 
+    /**
+     * Connects view elements from frontend with backend variables.
+     * Reasons are modifying options in backend later on.
+     *
+     * @param view             The view where the elements are in.
+     * @param applicationLogic ApplicationLogic instance.
+     */
     public ListViewHolder(View view, ApplicationLogic applicationLogic) {
         mApplicationLogic = applicationLogic;
         mDatabaseEntry = null;
@@ -36,10 +46,12 @@ public class ListViewHolder {
         mCopyImage.setOnClickListener(mListButtonClickListener);
     }
 
+    /* Setter methods */
     public void setDatabaseEntry(DatabaseEntry databaseEntry) {
         mListButtonClickListener.setDatabaseEntry(databaseEntry);
     }
 
+    /* Getter methods */
     public TextView getNameText() {
         return mNameText;
     }

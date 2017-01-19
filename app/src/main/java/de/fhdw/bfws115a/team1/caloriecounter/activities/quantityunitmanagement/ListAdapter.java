@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
@@ -16,13 +15,13 @@ import java.util.Arrays;
  * @author Florian Obladen.
  */
 
-public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
+public class ListAdapter extends BaseAdapter {
 
+    private final Context mContext;
+    private final ArrayList<DatabaseUnit> mQuantityUnitEntities;
     /* Member variables */
     private Data mData;
     private ApplicationLogic mApplicationLogic;
-    private final Context mContext;
-    private final ArrayList<DatabaseUnit> mQuantityUnitEntities;
 
     public ListAdapter(Data data, ApplicationLogic applicationLogic) {
         mData = data;
@@ -64,12 +63,15 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
         return i;
     }
 
-    //TODO Löschen?
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-    }
-
-    //TODO Was macht diese Methode?
+    /**
+     * Gets the layout of one list entry and fills it with additional list items.
+     * If it's not issued yet, it creates one.
+     *
+     * @param position    The position of the item within the adapter's data set of the item whose view is wanted.
+     * @param convertView The view which should be get.
+     * @param parent      The parent view.
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ListViewHolder listViewHolder;
@@ -87,7 +89,7 @@ public class ListAdapter extends BaseAdapter implements AdapterView.OnItemClickL
         listViewHolder.setDatabaseUnit(databaseUnit);
         listViewHolder.getNameText().setText(String.format("%s", databaseUnit.getName()));
 
-        if(Arrays.asList(mContext.getResources().getStringArray(R.array.undeletable_units)).contains(databaseUnit.getName())) {
+        if (Arrays.asList(mContext.getResources().getStringArray(R.array.undeletable_units)).contains(databaseUnit.getName())) {
             listViewHolder.getDeleteImage().setVisibility(View.INVISIBLE);
         } else {
             listViewHolder.getDeleteImage().setVisibility(View.VISIBLE);

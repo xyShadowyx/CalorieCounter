@@ -8,8 +8,21 @@ import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntry;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * @author Viktor Schroeder
+ */
 public class Data {
 
+    /* Keys */
+    private final String KEY_DAILYOVERVIEW_DATABASE_ENTRY_LIST = "dailyoverview1";
+    private final String KEY_DAILYOVERVIEW_SELECTED_YEAR = "dailyoverview2";
+    private final String KEY_DAILYOVERVIEW_SELECTED_MONTH = "dailyoverview3";
+    private final String KEY_DAILYOVERVIEW_SELECTED_DAY = "dailyoverview4";
+    private final String KEY_DAILYOVERVIEW_USED_CALORIES = "dailyoverview5";
+    private final String KEY_DAILYOVERVIEW_MAX_CALORIES = "dailyoverview6";
+    private final String KEY_DAILYOVERVIEW_LEFT_CALORIES = "dailyoverview7";
+    private final String KEY_DAILYOVERVIEW_ENTRY_TO_COPY = "dailyoverview8";
+    private final String KEY_DAILYOVERVIEW_ENTRY_TO_EDIT = "dailyoverview9";
     /* Member variables */
     private Init mActivity;
     private DatabaseEntityManager mDatabaseEntityManager;
@@ -19,24 +32,9 @@ public class Data {
     private int mSelectedYear;
     private int mSelectedMonth;
     private int mSelectedDay;
-
     private int mUsedCalories;
     private int mMaxCalories;
     private int mLeftCalories;
-
-    /* Keys */
-    private final String KEY_DAILYOVERVIEW_DATABASE_ENTRY_LIST = "dailyoverview1";
-
-    private final String KEY_DAILYOVERVIEW_SELECTED_YEAR = "dailyoverview2";
-    private final String KEY_DAILYOVERVIEW_SELECTED_MONTH = "dailyoverview3";
-    private final String KEY_DAILYOVERVIEW_SELECTED_DAY = "dailyoverview4";
-
-    private final String KEY_DAILYOVERVIEW_USED_CALORIES = "dailyoverview5";
-    private final String KEY_DAILYOVERVIEW_MAX_CALORIES = "dailyoverview6";
-    private final String KEY_DAILYOVERVIEW_LEFT_CALORIES = "dailyoverview7";
-
-    private final String KEY_DAILYOVERVIEW_ENTRY_TO_COPY = "dailyoverview8";
-    private final String KEY_DAILYOVERVIEW_ENTRY_TO_EDIT = "dailyoverview9";
 
     /**
      * Method which gets the current layout attributes and put them into an 'Intent' object.
@@ -141,41 +139,41 @@ public class Data {
         return mEntryToCopy;
     }
 
-    public DatabaseEntry getEntryToEdit() {
-        return mEntryToEdit;
-    }
-
-    public int getUsedCalories() {
-        return mUsedCalories;
-    }
-
-    public int getMaxCalories() {
-        return mMaxCalories;
-    }
-
-    public int getLeftCalories() {
-        return mLeftCalories;
-    }
-
     /* Setter Methods */
     public void setEntryToCopy(DatabaseEntry entryToCopy) {
         this.mEntryToCopy = entryToCopy;
+    }
+
+    public DatabaseEntry getEntryToEdit() {
+        return mEntryToEdit;
     }
 
     public void setEntryToEdit(DatabaseEntry entryToEdit) {
         this.mEntryToEdit = entryToEdit;
     }
 
+    public int getUsedCalories() {
+        return mUsedCalories;
+    }
+
     public void setUsedCalories(int amount) {
         mUsedCalories = amount;
     }
 
-    public void setLeftCalories(int amount) {
-        mLeftCalories = amount;
+    public int getMaxCalories() {
+        return mMaxCalories;
     }
 
     public void setMaxCalories(int amount) {
         mMaxCalories = amount;
         Globals.CALORIES_LIMIT = amount;
+    }
+
+    public int getLeftCalories() {
+        return mLeftCalories;
+    }
+
+    public void setLeftCalories(int amount) {
+        mLeftCalories = amount;
     }
 }

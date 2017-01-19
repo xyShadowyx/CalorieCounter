@@ -16,11 +16,11 @@ public class DatabaseMenuEntry extends MenuEntry implements DatabaseEntry {
      * Constructor
      * Is package-private to prevent wrong usage.
      *
-     * @param year year of entry
+     * @param year  year of entry
      * @param month month of entry
-     * @param day day of month of entry
-     * @param menu menu of entry
-     * @param id id of entry in database
+     * @param day   day of month of entry
+     * @param menu  menu of entry
+     * @param id    id of entry in database
      */
     DatabaseMenuEntry(int year, int month, int day, Menu menu, long id) {
         super(year, month, day, menu);
@@ -44,7 +44,7 @@ public class DatabaseMenuEntry extends MenuEntry implements DatabaseEntry {
      * @return this object as a text
      */
     public String toString() {
-        return "DatabaseMenuEntry(Id: " + getId() +", MenuEntry: " + super.toString() + ")";
+        return "DatabaseMenuEntry(Id: " + getId() + ", MenuEntry: " + super.toString() + ")";
     }
 
     /**
@@ -68,16 +68,6 @@ public class DatabaseMenuEntry extends MenuEntry implements DatabaseEntry {
     }
 
     /**
-     * Get unit name.
-     *
-     * @return unit name
-     */
-    @Override
-    public String getUnitName() {
-        return "Port.";
-    }
-
-    /**
      * Set portion size.
      *
      * @param amount new size
@@ -85,6 +75,16 @@ public class DatabaseMenuEntry extends MenuEntry implements DatabaseEntry {
     @Override
     public void setAmount(double amount) {
         this.getMenu().setAmount(amount);
+    }
+
+    /**
+     * Get unit name.
+     *
+     * @return unit name
+     */
+    @Override
+    public String getUnitName() {
+        return "Port.";
     }
 
     /**
@@ -105,6 +105,6 @@ public class DatabaseMenuEntry extends MenuEntry implements DatabaseEntry {
      */
     @Override
     public int compareTo(DatabaseEntry databaseEntry) {
-        return (int)databaseEntry.getId();
+        return (int) databaseEntry.getId();
     }
 }

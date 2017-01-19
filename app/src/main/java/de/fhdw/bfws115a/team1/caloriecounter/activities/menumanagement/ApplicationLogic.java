@@ -3,7 +3,6 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.menumanagement;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.constants.SearchSettings;

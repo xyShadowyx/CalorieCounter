@@ -3,7 +3,6 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.quantityunitmanagement;
 import android.os.Bundle;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntityManager;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseUnit;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.Unit;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,18 +14,16 @@ import java.util.List;
 
 public class Data {
 
+    /* Default values */
+    private final String DEFAULT_NEWQUANTITYUNITNAME = "";
+    /* Keys */
+    private final String KEY_NEW_QUANTITY_UNIT_NAME = "quantityunitmanagement1";
+    private final String KEY_QUANTITY_UNITS = "quantityunitmanagement2";
     /* Member variables */
     private Init mActivity;
     private String mNewQuantityUnitName;
     private ArrayList<DatabaseUnit> mQuantityUnits;
     private DatabaseEntityManager mDatabaseEntityManager;
-
-    /* Default values */
-    private final String DEFAULT_NEWQUANTITYUNITNAME = "";
-
-    /* Keys */
-    private final String KEY_NEW_QUANTITY_UNIT_NAME = "quantityunitmanagement1";
-    private final String KEY_QUANTITY_UNITS = "quantityunitmanagement2";
 
     /**
      * Method which gets the current layout attributes and put them into an 'Intent' object.
@@ -71,7 +68,7 @@ public class Data {
      */
     private void restoreDataFromBundle(Bundle b) {
         mNewQuantityUnitName = b.getString(KEY_NEW_QUANTITY_UNIT_NAME);
-        mQuantityUnits = (ArrayList<DatabaseUnit>)b.getSerializable(KEY_QUANTITY_UNITS);
+        mQuantityUnits = (ArrayList<DatabaseUnit>) b.getSerializable(KEY_QUANTITY_UNITS);
     }
 
     /* Getter methods */
@@ -83,16 +80,16 @@ public class Data {
         return mNewQuantityUnitName;
     }
 
+    /* Setter methods */
+    public void setNewQuantityUnitName(String mNewQuantityUnitName) {
+        this.mNewQuantityUnitName = mNewQuantityUnitName;
+    }
+
     public DatabaseEntityManager getDatabaseEntityManager() {
         return mDatabaseEntityManager;
     }
 
     public ArrayList<DatabaseUnit> getQuantityUnits() {
         return mQuantityUnits;
-    }
-
-    /* Setter methods */
-    public void setNewQuantityUnitName(String mNewQuantityUnitName) {
-        this.mNewQuantityUnitName = mNewQuantityUnitName;
     }
 }

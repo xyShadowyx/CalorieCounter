@@ -1,10 +1,6 @@
 package de.fhdw.bfws115a.team1.caloriecounter.entities;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
-import java.util.Comparator;
 
 /**
  * This class represents a QuantityUnit object.

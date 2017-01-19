@@ -1,24 +1,34 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.groceriessearchoverview;
 
 import android.widget.Filter;
-import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntity;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceriesEntity;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
 import java.util.ArrayList;
 
 /**
- * Created by xySha on 14.01.2017.
+ * @author Viktor Schroeder
  */
 public class GroceriesEntityFilter extends Filter {
     private ArrayList<DatabaseGroceriesEntity> mDatabaseGroceriesEntities;
     private ListAdapter mListAdapter;
 
+    /**
+     * Constructor
+     *
+     * @param databaseGroceriesEntities
+     * @param listAdapter
+     */
     public GroceriesEntityFilter(ArrayList<DatabaseGroceriesEntity> databaseGroceriesEntities, ListAdapter listAdapter) {
         mDatabaseGroceriesEntities = databaseGroceriesEntities;
         mListAdapter = listAdapter;
     }
 
+    /**
+     * Filter List
+     *
+     * @param constraint filter condition
+     * @return
+     */
     @Override
     protected FilterResults performFiltering(CharSequence constraint) {
         String filterString;
@@ -44,6 +54,12 @@ public class GroceriesEntityFilter extends Filter {
         return results;
     }
 
+    /**
+     * Apply filter to list
+     *
+     * @param constraint
+     * @param results
+     */
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
         mListAdapter.setFilteredDatabaseGroceriesEntities((ArrayList<DatabaseGroceriesEntity>) results.values);

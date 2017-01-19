@@ -3,7 +3,9 @@ package de.fhdw.bfws115a.team1.caloriecounter.database;
 import de.fhdw.bfws115a.team1.caloriecounter.entities.Grocery;
 
 /**
- * This class represents a grocery
+ * This class represents a grocery.
+ *
+ * @author Viktor Schroeder
  */
 public class DatabaseGrocery extends Grocery implements DatabaseGroceriesEntity {
     /* Member variables */
@@ -15,7 +17,7 @@ public class DatabaseGrocery extends Grocery implements DatabaseGroceriesEntity 
      *
      * @param name grocery name
      * @param kcal grocery calories
-     * @param id grocery database id
+     * @param id   grocery database id
      */
     public DatabaseGrocery(String name, int kcal, long id) {
         super(name, kcal);
@@ -39,6 +41,6 @@ public class DatabaseGrocery extends Grocery implements DatabaseGroceriesEntity 
      * @return this object as a text
      */
     public String toString() {
-        return "DatabaseGrocery(Id: " + getId() +", Grocery: " + super.toString() + ")";
+        return "DatabaseGrocery(Id: " + getId() + ", Grocery: " + super.toString() + ")";
     }
 }

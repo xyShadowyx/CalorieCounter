@@ -1,28 +1,30 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.dailyoverview;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseEntry;
-import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseGroceryEntry;
-import de.fhdw.bfws115a.team1.caloriecounter.database.DatabaseMenuEntry;
-import de.fhdw.bfws115a.team1.caloriecounter.entities.GroceriesEntity;
 
 import java.util.ArrayList;
 
+/**
+ * @author Viktor Schroeder
+ */
 public class ListAdapter extends BaseAdapter {
-    private Data mData;
-    private ApplicationLogic mApplicationLogic;
     private final Context mContext;
     private final ArrayList<DatabaseEntry> mDatabaseEntries;
+    private Data mData;
+    private ApplicationLogic mApplicationLogic;
 
+    /**
+     * Constructor
+     *
+     * @param data
+     * @param applicationLogic
+     */
     public ListAdapter(Data data, ApplicationLogic applicationLogic) {
         mData = data;
         mApplicationLogic = applicationLogic;
@@ -62,6 +64,15 @@ public class ListAdapter extends BaseAdapter {
         return i;
     }
 
+    /**
+     * Gets the layout of one list entry and fills it with additional list items.
+     * If it's not issued yet, it creates one.
+     *
+     * @param position    The position of the item within the adapter's data set of the item whose view is wanted.
+     * @param convertView The view which should be get.
+     * @param parent      The parent view.
+     * @return The Layout of one list entry.
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ListViewHolder listViewHolder;

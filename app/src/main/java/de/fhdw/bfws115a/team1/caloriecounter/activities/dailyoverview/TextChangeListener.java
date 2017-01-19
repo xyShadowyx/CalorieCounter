@@ -6,7 +6,7 @@ import android.view.View;
 import de.fhdw.bfws115a.team1.caloriecounter.R;
 
 /**
- * @author Niklas Lammers and Florian Obladen.
+ * @author Viktor Schroeder
  */
 public class TextChangeListener implements TextWatcher {
 

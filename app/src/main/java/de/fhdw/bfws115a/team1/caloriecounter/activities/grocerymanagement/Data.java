@@ -15,6 +15,19 @@ import java.util.ArrayList;
  */
 public class Data {
 
+    /* Default values */
+    private final String DEFAULT_GROCERYNAME = "";
+    private final int DEFAULT_GROCERYCALORIES = 0;
+    private final String DEFAULT_NEWUNITNAME = "";
+    private final double DEFAULT_NEWUNITAMOUNT = 0;
+    /* Keys */
+    private final String KEY_GROCERY_NAME = "grocerymanagement1";
+    private final String KEY_GROCERY_CALORIES = "grocerymanagement2";
+    private final String KEY_NEW_UNIT_NAME = "grocerymanagement3";
+    private final String KEY_NEW_UNIT_AMOUNT = "grocerymanagement4";
+    private final String KEY_UNIT_LIST = "grocerymanagement5";
+    private final String KEY_GROCERY_UNITS = "grocerymanagement6";
+    private final String KEY_INPUT_GROCERY = "grocerymanagement7";
     /* Member variables */
     private Init mActivity;
     private String mGroceryName;
@@ -25,21 +38,6 @@ public class Data {
     private ArrayList<GroceryUnit> mGroceryUnits;
     private DatabaseGrocery mInputGrocery;
     private DatabaseEntityManager mDatabaseEntityManager;
-
-    /* Default values */
-    private final String DEFAULT_GROCERYNAME = "";
-    private final int DEFAULT_GROCERYCALORIES = 0;
-    private final String DEFAULT_NEWUNITNAME = "";
-    private final double DEFAULT_NEWUNITAMOUNT = 0;
-
-    /* Keys */
-    private final String KEY_GROCERY_NAME = "grocerymanagement1";
-    private final String KEY_GROCERY_CALORIES = "grocerymanagement2";
-    private final String KEY_NEW_UNIT_NAME = "grocerymanagement3";
-    private final String KEY_NEW_UNIT_AMOUNT = "grocerymanagement4";
-    private final String KEY_UNIT_LIST = "grocerymanagement5";
-    private final String KEY_GROCERY_UNITS = "grocerymanagement6";
-    private final String KEY_INPUT_GROCERY = "grocerymanagement7";
 
     /**
      * Method which gets the current layout attributes and put them into an 'Intent' object.
@@ -108,7 +106,7 @@ public class Data {
         mNewUnitName = b.getString(KEY_NEW_UNIT_NAME);
         mNewUnitAmount = b.getDouble(KEY_NEW_UNIT_AMOUNT);
         mUnitList = (ArrayList<String>) b.getSerializable(KEY_UNIT_LIST);
-        mGroceryUnits = (ArrayList<GroceryUnit>)b.getSerializable(KEY_GROCERY_UNITS);
+        mGroceryUnits = (ArrayList<GroceryUnit>) b.getSerializable(KEY_GROCERY_UNITS);
         mInputGrocery = (DatabaseGrocery) b.getSerializable(KEY_INPUT_GROCERY);
     }
 
@@ -121,16 +119,33 @@ public class Data {
         return mGroceryName;
     }
 
+    /* Setter methods */
+    public void setGroceryName(String mGroceryName) {
+        this.mGroceryName = mGroceryName;
+    }
+
     public int getGroceryCalories() {
         return mGroceryCalories;
+    }
+
+    public void setGroceryCalories(int mGroceryCalories) {
+        this.mGroceryCalories = mGroceryCalories;
     }
 
     public String getNewUnitName() {
         return mNewUnitName;
     }
 
+    public void setNewUnitName(String mNewUnitName) {
+        this.mNewUnitName = mNewUnitName;
+    }
+
     public double getNewUnitAmount() {
         return mNewUnitAmount;
+    }
+
+    public void setNewUnitAmount(double mNewUnitAmount) {
+        this.mNewUnitAmount = mNewUnitAmount;
     }
 
     public DatabaseEntityManager getDatabaseEntityManager() {
@@ -147,22 +162,5 @@ public class Data {
 
     public ArrayList<GroceryUnit> getGroceryUnits() {
         return mGroceryUnits;
-    }
-
-    /* Setter methods */
-    public void setGroceryName(String mGroceryName) {
-        this.mGroceryName = mGroceryName;
-    }
-
-    public void setGroceryCalories(int mGroceryCalories) {
-        this.mGroceryCalories = mGroceryCalories;
-    }
-
-    public void setNewUnitAmount(double mNewUnitAmount) {
-        this.mNewUnitAmount = mNewUnitAmount;
-    }
-
-    public void setNewUnitName(String mNewUnitName) {
-        this.mNewUnitName = mNewUnitName;
     }
 }

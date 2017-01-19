@@ -2,7 +2,6 @@ package de.fhdw.bfws115a.team1.caloriecounter.activities.calendar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import java.util.Calendar;
 
@@ -11,17 +10,16 @@ import java.util.Calendar;
  */
 
 public class Data {
-    /*Member variable*/
-    private Init mActivity;
-    private int mSelectedYear;
-    private int mSelectedMonth;
-    private int mSelectedDay;
-
-    /*Keys*/
-
     private final String KEYSELECTEDYEAR = "calendar1";
     private final String KEYSELECTEDMONTH = "calendar2";
     private final String KEYSELECTEDDAY = "calendar3";
+    /*Member variable*/
+    private Init mActivity;
+
+    /*Keys*/
+    private int mSelectedYear;
+    private int mSelectedMonth;
+    private int mSelectedDay;
 
     /**
      * Method which gets the current layout attributes and put them into an 'Intent' object.
@@ -78,21 +76,21 @@ public class Data {
         return mSelectedYear;
     }
 
-    public int getSelectedMonth() {
-        return mSelectedMonth;
-    }
-
-    public int getSelectedDay() {
-        return mSelectedDay;
-    }
-
     /* Setter methods */
     public void setSelectedYear(int mSelectedYear) {
         this.mSelectedYear = mSelectedYear;
     }
 
+    public int getSelectedMonth() {
+        return mSelectedMonth;
+    }
+
     public void setSelectedMonth(int mSelectedMonth) {
         this.mSelectedMonth = mSelectedMonth;
+    }
+
+    public int getSelectedDay() {
+        return mSelectedDay;
     }
 
     public void setSelectedDay(int mSelectedDay) {

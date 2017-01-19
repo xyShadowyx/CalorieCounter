@@ -1,15 +1,15 @@
 package de.fhdw.bfws115a.team1.caloriecounter.activities.dailyoverview;
 
 import android.graphics.Color;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import de.fhdw.bfws115a.team1.caloriecounter.R;
-import org.w3c.dom.Text;
 
+/**
+ * @author Viktor Schroeder
+ */
 public class Gui {
 
     /* Member variables */
@@ -89,38 +89,37 @@ public class Gui {
         return mUsedCalories;
     }
 
+    public void setUsedCalories(int amount) {
+        mUsedCalories.setText(String.valueOf(amount));
+    }
+
     public TextView getMaxCalories() {
         return mMaxCalories;
+    }
+
+    public void setMaxCalories(int amount) {
+        if (amount > 0) {
+            mMaxCalories.setText(String.valueOf(amount));
+        } else {
+            mMaxCalories.setText("");
+        }
     }
 
     public TextView getLeftCalories() {
         return mLeftCalories;
     }
 
-    /* Setter methods */
-    public void setDate(int day, int month, int year) {
-        mTodayDateText.setText(String.format("%02d.%02d.%04d", day, (month + 1), year));
-    }
-
-    public void setUsedCalories(int amount) {
-        mUsedCalories.setText(String.valueOf(amount));
-    }
-
-    public void setMaxCalories(int amount) {
-        if(amount > 0) {
-            mMaxCalories.setText(String.valueOf(amount));
-        }
-        else {
-            mMaxCalories.setText("");
-        }
-    }
-
     public void setLeftCalories(int amount) {
         mLeftCalories.setText(String.valueOf(amount));
-        if(amount < 0)
+        if (amount < 0)
             mLeftCalories.setTextColor(Color.RED);
         else
             mLeftCalories.setTextColor(Color.GREEN);
+    }
+
+    /* Setter methods */
+    public void setDate(int day, int month, int year) {
+        mTodayDateText.setText(String.format("%02d.%02d.%04d", day, (month + 1), year));
     }
 
     public TextView getEmptyListTextView() {

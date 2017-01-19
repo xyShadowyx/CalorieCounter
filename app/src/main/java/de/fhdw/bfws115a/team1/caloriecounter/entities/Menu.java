@@ -16,7 +16,7 @@ public class Menu extends GroceriesEntity {
     /**
      * Constructor
      *
-     * @param name menu name
+     * @param name   menu name
      * @param amount portion size of menu
      */
     public Menu(String name, double amount) {
@@ -94,7 +94,6 @@ public class Menu extends GroceriesEntity {
      * Removes a grocery with fixed size and unit from the menu
      *
      * @param fixGrocery FoxGrocery for remove
-     *
      * @return grocery successfully removed.
      */
     public boolean removeGrocery(FixGrocery fixGrocery) {
